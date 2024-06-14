@@ -22,3 +22,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# For Gatsby
+node_modules/
+.cache/
+public
+src/gatsby-types.d.ts
+
