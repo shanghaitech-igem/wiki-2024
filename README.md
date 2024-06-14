@@ -1,80 +1,49 @@
-# Team Shanghaitech-China 2024 Wiki
+<p align="center">
+  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts">
+    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
+  </a>
+</p>
+<h1 align="center">
+  Gatsby Minimal TypeScript Starter
+</h1>
 
-This repository uses `TypeScript` and `React` to manage the wikis.
+## 🚀 Quick start
 
-This repository **MUST** contain all coding assets to generate your team's wiki
-(HTML, CSS, JavaScript, TypeScript, Python, etc).
+1.  **Create a Gatsby site.**
 
-Images, photos, icons and fonts **MUST** be stored on `static.igem.wiki` using
-[tools.igem.org](https://tools.igem.org), and Videos **must** be embedded
-from [iGEM Video Universe](https://video.igem.org).
+    Use the Gatsby CLI to create a new site, specifying the minimal TypeScript starter.
 
-For up-to-date requirements, resources, help and guidance, visit
-[competition.igem.org/deliverables/team-wiki](https://competition.igem.org/deliverables/team-wiki).
+    ```shell
+    # create a new Gatsby site using the minimal TypeScript starter
+    npm init gatsby -- -ts
+    ```
 
-## Getting Started
+2.  **Start developing.**
 
-Before refactoring the code of this template to suit your wiki needs, please make sure you have the ability to use React
-for web development.
+    Navigate into your new site’s directory and start it up.
 
-1. Clone the repository:
-   ```bash
-   git clone https://gitlab.igem.org/2024/shanghaitech-china
-   cd shanghaitech-china
-   ```
-2. Install the dependencies:
+    ```shell
+    cd my-gatsby-site/
+    npm run develop
+    ```
 
-   ```bash
-   yarn install
-   ```
+3.  **Open the code and start customizing!**
 
-   ### Important:
+    Your site is now running at http://localhost:8000!
 
-   Ensure you are using Node.js version `^18.18.0 or >=20.0.0` to mostly avoid compatibility issues. Node `v18.20.0` is
-   recommended for this project. You can check your Node version by running `node -v` in your terminal.
+    Edit `src/pages/index.tsx` to see your site update in real-time!
 
-3. Start the development server:
-   ```bash
-   yarn run dev
-   ```
-4. Navigate to the files you wish to edit:
-   - The main App component can be found under `src/containers/App`
-   - Pre-built components are located under `src/components`
-   - Individual pages can be modified in the `src/pages.ts`
-   - Content pages can be updated in the `src/contents`
-5. Once you are done, save the changes by **committing** them to the _main branch_ of the repository
-6. An automated script will build, test and deploy your wiki to the iGEM server
+4.  **Learn more**
 
-## About This Template
+    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
+    - [Tutorials](https://www.gatsbyjs.com/docs/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
+    - [Guides](https://www.gatsbyjs.com/docs/how-to/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
+    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
+    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
+    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
 
-### Files
+## 🚀 Quick start (Netlify)
 
-Below is the structure of important files and directories in this project:
+Deploy this starter with one click on [Netlify](https://app.netlify.com/signup):
 
-    ├── README.md            -> The file you are currently reading
-    ├── index.html           -> Single HTML file for the wiki
-    ├── package.json         -> Manages project metadata and dependencies
-    ├── src/
-    │   ├── components/      -> Pre-built components(like Navbar, Footer, etc.)
-    │   ├── containers/
-    │   │   └── App/         -> Main React application container
-    │   ├── contents/
-    │   │   ├── *.tsx        -> Page components for the wiki
-    │   ├── main.tsx         -> Entry point of the wiki application
-    │   ├── pages.ts         -> Page definition and path mapping
-    │   ├── utils/           -> Utility functions
-    │   └── vite-env.d.ts    -> TypeScript definitions for Vite
-    ├── tsconfig.json        -> Configures TypeScript options
-    ├── tsconfig.node.json   -> TypeScript settings for Node.js
-    ├── vite.config.ts       -> Configuration for the Vite tool
-    └── yarn.lock            -> Yarn lock file for dependency management
-
-### Technologies
-
-- [React](https://reactjs.org): A JavaScript library for building user interfaces
-- [TypeScript](https://www.typescriptlang.org): Extends JavaScript by adding types
-- [Vite](https://vitejs.dev): Frontend tooling that provides faster and leaner development builds
-- [Bootstrap](https://getbootstrap.com): Framework for building responsive, mobile-first sites
-- [React Bootstrap](https://react-bootstrap.github.io): Bootstrap components built with React
-- [React Router](https://reactrouter.com): Declarative routing for React applications
-- (Optional) [Prettier](https://prettier.io): Code formatter
+[<img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-minimal-ts)
