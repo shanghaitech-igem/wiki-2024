@@ -1,9 +1,5 @@
 import type { GatsbyConfig } from "gatsby";
 
-module.exports = {
-  pathPrefix: `/shanghaitech-china`,
-};
-
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `Shanghaitech iGEM Wiki`,
@@ -13,6 +9,7 @@ const config: GatsbyConfig = {
   // If you use VSCode you can also use the GraphQL plugin
   // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: true,
+  pathPrefix: `/shanghaitech-china`,
   plugins: [
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
