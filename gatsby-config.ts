@@ -1,5 +1,9 @@
 import type { GatsbyConfig } from "gatsby";
 
+module.exports = {
+  pathPrefix: `/shanghaitech-china`,
+};
+
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `Shanghaitech iGEM Wiki`,
