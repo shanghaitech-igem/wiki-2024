@@ -31,12 +31,12 @@ const Layout: React.FC<LayoutProps> = ({ pageTitle, children }) => {
       <nav>
         <ul className={navLinks}>
           <li className={navLinkItem}>
-            <Link to="/" className={navLinkText}>
+            <Link to="/shanghaitech-china" className={navLinkText}>
               Home
             </Link>
           </li>
           <li className={navLinkItem}>
-            <Link to="/description" className={navLinkText}>
+            <Link to="/shanghaitech-china/description" className={navLinkText}>
               Description
             </Link>
           </li>
