@@ -1,8 +1,8 @@
 {
-  "name": "shanghaitech-i-gem-wiki",
+  "name": "shanghaitech-igem-wiki",
   "version": "1.0.0",
   "private": true,
-  "description": "shanghaitech-i-gem-wiki",
+  "description": "shanghaitech-igem-wiki",
   "author": "zivmax",
   "keywords": [
     "gatsby"
