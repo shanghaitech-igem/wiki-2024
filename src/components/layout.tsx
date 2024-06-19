@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link, useStaticQuery, withPrefix, graphql } from "gatsby";
+import { Link, useStaticQuery, graphql } from "gatsby";
 import {
   container,
   heading,
@@ -31,12 +31,12 @@ const Layout: React.FC<LayoutProps> = ({ pageTitle, children }) => {
       <nav>
         <ul className={navLinks}>
           <li className={navLinkItem}>
-            <Link to={("/")} className={navLinkText}>
+            <Link to={"/"} className={navLinkText}>
               Home
             </Link>
           </li>
           <li className={navLinkItem}>
-            <Link to={("/description")} className={navLinkText}>
+            <Link to={"/description"} className={navLinkText}>
               Description
             </Link>
           </li>
