@@ -11,6 +11,6 @@ const IndexPage: React.FC = () => {
 }
 
 
-export const Head: React.FC = () => <Seo title="Home Page" />
+export const Head: React.FC = () => <Seo title="Home" />
 
 export default IndexPage
