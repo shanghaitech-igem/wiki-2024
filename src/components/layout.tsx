@@ -1,13 +1,6 @@
-import * as React from "react";
+import React from "react";
 import { Link, useStaticQuery, graphql } from "gatsby";
-import {
-  container,
-  heading,
-  navLinks,
-  navLinkItem,
-  navLinkText,
-  siteTitle,
-} from "./layout.module.css";
+import * as styles from "./layout.module.scss";
 
 interface LayoutProps {
   pageTitle: string;
@@ -25,18 +18,20 @@ const Layout: React.FC<LayoutProps> = ({ pageTitle, children }) => {
     }
   `);
 
+  const { container, siteTitle, navLinks, heading } = styles;
+
   return (
     <div className={container}>
       <header className={siteTitle}>{data.site.siteMetadata.title}</header>
       <nav>
         <ul className={navLinks}>
-          <li className={navLinkItem}>
-            <Link to={"/"} className={navLinkText}>
+          <li className={styles.navLinkItem}>
+            <Link to="/" className={styles.navLinkText}>
               Home
             </Link>
           </li>
-          <li className={navLinkItem}>
-            <Link to={"/description"} className={navLinkText}>
+          <li className={styles.navLinkItem}>
+            <Link to="/description" className={styles.navLinkText}>
               Description
             </Link>
           </li>
