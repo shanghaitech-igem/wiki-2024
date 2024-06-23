@@ -50,7 +50,8 @@
     ```
 
 4. Start the development server
-   If you choose to install `gatsby-cli` globally, you can run the following command:
+   If you choose to install `gatsby-cli` globally by `npm install -g gatsby-cli` 
+   you can run the following command:
     ```bash
     gatsby develop
     ```
