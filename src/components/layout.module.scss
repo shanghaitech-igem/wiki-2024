@@ -18,7 +18,7 @@ $nav-link-text-color: black;
 @keyframes staggeredFadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(15px);
   }
   to {
     opacity: 1;
@@ -71,7 +71,7 @@ $nav-link-text-color: black;
 
 .fade-in-child {
   opacity: 0;
-  animation: staggeredFadeIn 1s ease-in-out forwards;
+  animation: staggeredFadeIn 0.8s ease-in-out forwards;
 }
 
 @media (max-width: 600px) {
