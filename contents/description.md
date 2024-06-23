@@ -11,3 +11,4 @@ Our ultimate goal is to use these genetically modified *E. coli* to identify and
 The transformative potential of this project lies in its application to the fashion and cosmetics industry. 
 By developing new, safe, and effective anti-itch treatments derived from natural sources, we can create innovative skincare products that address itchiness—a common concern for many consumers. 
 This aligns perfectly with the industry's move towards sustainability and cruelty-free solutions.
+
