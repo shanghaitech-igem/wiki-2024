@@ -1,49 +1,84 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
+<p style="text-align:center;">
+  <a href="https://www.shanghaitech.edu.cn/">
+    <img alt="ShanghaiTech" src="https://static.igem.wiki/teams/5174/repo-readme/shanghaitech-logo.svg" width="60" style="margin: 0 20px; vertical-align: middle;" />
+  </a>
+  <a href="https://www.gatsbyjs.com/">
+    <img alt="Gatsby" src="https://static.igem.wiki/teams/5174/repo-readme/gatsby-logo.svg" width="60" style="margin: 0 20px; vertical-align: middle;" />
+  </a>
+  <a href="https://react.dev/">
+    <img alt="React" src="https://static.igem.wiki/teams/5174/repo-readme/react-logo.svg" width="60" style="margin: 0 20px; vertical-align: middle;" />
+  </a>
+  <a href="https://www.typescriptlang.org/">
+    <img alt="TypeScript" src="https://static.igem.wiki/teams/5174/repo-readme/typescript-logo.svg" width="60" style="margin: 0 20px; vertical-align: middle;" />
   </a>
 </p>
-<h1 align="center">
-  Gatsby Minimal TypeScript Starter
+
+<h1 style="text-align:center;">
+  ShanghaiTech - iGEM 2024 Wiki Repository
 </h1>
 
-## 🚀 Quick start
+## Getting Started
 
-1.  **Create a Gatsby site.**
+### Prerequisites
 
-    Use the Gatsby CLI to create a new site, specifying the minimal TypeScript starter.
+- [Node.js](https://nodejs.org/en/download/)
+  - For managing dependencies
+  - For local running web server
+  - LTS version is recommended
 
-    ```shell
-    # create a new Gatsby site using the minimal TypeScript starter
-    npm init gatsby -- -ts
+- [Git](https://git-scm.com/downloads)
+  - For cloning the repository
+  - For version control
+### Running the Project
+
+1. Clone the repository
+    ```bash
+    git clone https://gitlab.igem.org/2024/shanghaitech-china.git
+    ```
+2. Navigate to the project directory
+    ```bash
+    cd shanghaitech-china
+    ```
+    Or you may renamed the directory
+    ```bash
+    cd <renamed-directory-name>
+    ```
+    
+3. Install dependencies
+    ```bash
+    npm install
     ```
 
-2.  **Start developing.**
-
-    Navigate into your new site’s directory and start it up.
-
-    ```shell
-    cd my-gatsby-site/
+4. Start the development server
+   If you choose to install `gatsby-cli` globally, you can run the following command:
+    ```bash
+    gatsby develop
+    ```
+    Otherwise, you can run:
+    ```bash
     npm run develop
     ```
 
-3.  **Open the code and start customizing!**
+  5. The site is now running at `http://localhost:8000`
 
-    Your site is now running at http://localhost:8000!
+    
+## Technical Stack
 
-    Edit `src/pages/index.tsx` to see your site update in real-time!
+### Gatsby
+- [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
+- [Tutorials](https://www.gatsbyjs.com/docs/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
+- [Guides](https://www.gatsbyjs.com/docs/how-to/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
+- [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
+- [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
+- [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
 
-4.  **Learn more**
+### React
 
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Tutorials](https://www.gatsbyjs.com/docs/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Guides](https://www.gatsbyjs.com/docs/how-to/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
+- [Tutorials](https://react.dev/learn)
+- [API Reference](https://react.dev/reference/react)
+- [Community](https://react.dev/community)
 
-## 🚀 Quick start (Netlify)
+### TypeScript
 
-Deploy this starter with one click on [Netlify](https://app.netlify.com/signup):
-
-[<img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-minimal-ts)
+- [Documentation](https://www.typescriptlang.org/docs/)
+- [Playground](https://www.typescriptlang.org/play)
