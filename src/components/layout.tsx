@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useStaticQuery, graphql } from "gatsby";
+import { Link } from "gatsby";
 import * as styles from "./layout.module.scss";
 
 interface LayoutProps {
@@ -8,38 +8,41 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ pageTitle, children }) => {
-  const data = useStaticQuery(graphql`
-    query {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `);
-
-  const { container, siteTitle, navLinks, heading } = styles;
+  const {
+    container,
+    navLinks,
+    heading,
+    navLinkItem,
+    navLinkText,
+    fadeInChild,
+  } = styles;
 
   return (
     <div className={container}>
-      <header className={siteTitle}>{data.site.siteMetadata.title}</header>
       <nav>
         <ul className={navLinks}>
-          <li className={styles.navLinkItem}>
-            <Link to="/" className={styles.navLinkText}>
+          <li className={navLinkItem}>
+            <Link to="/" className={navLinkText}>
               Home
             </Link>
           </li>
-          <li className={styles.navLinkItem}>
-            <Link to="/description" className={styles.navLinkText}>
+          <li className={navLinkItem}>
+            <Link to="/description" className={navLinkText}>
               Description
             </Link>
           </li>
         </ul>
       </nav>
       <main>
-        <h1 className={heading}>{pageTitle}</h1>
-        {children}
+        <header className={heading}>{pageTitle}</header>
+        {React.Children.map(children, (child, index) => (
+          <div
+            className={fadeInChild}
+            style={{ animationDelay: `${0.3}s` }}
+          >
+            {child}
+          </div>
+        ))}
       </main>
     </div>
   );

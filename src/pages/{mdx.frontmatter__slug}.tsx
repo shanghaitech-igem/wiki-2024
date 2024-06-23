@@ -23,7 +23,6 @@ const DescriptionPage: React.FC<DescriptionPageProps> = ({
 
   return (
     <Layout pageTitle={frontmatter.title}>
-      <p>{frontmatter.date}</p>
       {children}
     </Layout>
   );
@@ -34,7 +33,6 @@ export const query = graphql`
     mdx(id: {eq: $id}) {
       frontmatter {
         title
-        date(formatString: "MMMM D, YYYY")
       }
     }
   }

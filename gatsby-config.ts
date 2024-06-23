@@ -11,9 +11,9 @@ const config: GatsbyConfig = {
   // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: true,
   plugins: [
-    "gatsby-plugin-image",
-    "gatsby-plugin-sharp",
-    "gatsby-plugin-sass",
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-sass`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -21,7 +21,7 @@ const config: GatsbyConfig = {
         path: `${__dirname}/contents/`,
       },
     },
-    "gatsby-plugin-mdx",
+    `gatsby-plugin-mdx`,
   ],
 };
 

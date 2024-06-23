@@ -4,11 +4,12 @@ import Seo from '../components/seo'
 
 const IndexPage: React.FC = () => {
   return (
-    <Layout pageTitle="Home Page">
-      <p>Welcome to ShanghaiTech's iGEM Wiki page!</p>
+    <Layout pageTitle="Welcome!">
+      <h3 style={{ textAlign: 'center' }}>Welcome to ShanghaiTech's iGEM Wiki page!</h3>
     </Layout>
   )
 }
+
 
 export const Head: React.FC = () => <Seo title="Home Page" />
 
