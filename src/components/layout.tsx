@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
-import * as styles from "./layout.module.scss";
+import * as styles from "../styles/layout.module.scss";
 import { renderToString } from "react-dom/server";
 import parse from "html-react-parser";
 
