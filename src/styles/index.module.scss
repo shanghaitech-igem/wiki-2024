@@ -1,0 +1,40 @@
+@import "~picnic/src/picnic.scss";
+
+$max-width: 1000px;
+$font-family: sans-serif;
+$site-title-color: gray;
+$nav-link-text-color: black;
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes staggeredFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-fade-in {
+  opacity: 0;
+  animation: staggeredFadeIn 0.8s ease-in-out forwards;
+}
+
+.heading {
+  font-size: 3rem;
+  color: $site-title-color;
+  font-weight: 700;
+  margin: 3rem 0;
+  text-align: center;
+  animation: fadeIn 1s ease-in-out;
+}
