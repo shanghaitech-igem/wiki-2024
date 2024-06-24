@@ -1,6 +1,7 @@
 ---
 title: "Description"
 date: "2024-06-15"
+favicon: "https://static.igem.org/websites/common/2022/favicons/favicon.svg"
 slug: "description"
 ---
 

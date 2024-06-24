@@ -23,16 +23,14 @@ export const Head: React.FC = () => {
       }
     }
   `);
+  
   return (
     <div>
       <Seo title="Home" />
-      <link
-        key="favicon"
-        rel="icon"
-        href={data.site.siteMetadata.favicon}
-      />
+      <link key="favicon" rel="icon" href={data.site.siteMetadata.favicon} />
     </div>
   );
 };
+
 
 export default IndexPage;

@@ -8,6 +8,7 @@ interface DescriptionPageProps {
     mdx: {
       frontmatter: {
         title: string;
+        favicon: string;
       };
     };
     site: {
@@ -33,6 +34,7 @@ export const query = graphql`
     mdx(id: { eq: $id }) {
       frontmatter {
         title
+        favicon
       }
     }
     site {
@@ -43,13 +45,16 @@ export const query = graphql`
   }
 `;
 
+
 export const Head: React.FC<DescriptionPageProps> = ({ data }) => {
+  const pageFavicon = data.mdx.frontmatter.favicon || data.site.siteMetadata.favicon;
   return (
     <div>
       <Seo title={data.mdx.frontmatter.title} />
-      <link key="favicon" rel="icon" href={data.site.siteMetadata.favicon} />
+      <link key="favicon" rel="icon" href={pageFavicon} />
     </div>
   );
 };
+
 
 export default DescriptionPage;
