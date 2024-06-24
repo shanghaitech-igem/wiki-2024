@@ -62,6 +62,11 @@
 
   5. The site is now running at `http://localhost:8000`
 
+
+## What's Next
+
+Plans are coverd in [Gitlab Milestones](https://gitlab.igem.org/2024/shanghaitech-china/-/milestones).
+
     
 ## Technical Stack
 
