@@ -1,7 +1,7 @@
 import * as React from "react";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
-import { graphql, useStaticQuery } from "gatsby";
+import Favicon from "../components/favicon";
 
 const IndexPage: React.FC = () => {
   return (
@@ -14,23 +14,12 @@ const IndexPage: React.FC = () => {
 };
 
 export const Head: React.FC = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      site {
-        siteMetadata {
-          favicon
-        }
-      }
-    }
-  `);
-  
   return (
     <div>
       <Seo title="Home" />
-      <link key="favicon" rel="icon" href={data.site.siteMetadata.favicon} />
+      <Favicon />
     </div>
   );
 };
-
 
 export default IndexPage;

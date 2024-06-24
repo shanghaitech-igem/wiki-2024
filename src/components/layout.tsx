@@ -28,14 +28,17 @@ const Layout: React.FC<LayoutProps> = ({ pageTitle, children }) => {
   );
 
   // Add styles to each valid child element
-  const styledElements = React.Children.map(filteredElements, (child, index) => (
-    <div
-      className={fadeInChild}
-      style={{ animationDelay: `${(index + 1) * 0.2}s` }}
-    >
-      {child}
-    </div>
-  ));
+  const styledElements = React.Children.map(
+    filteredElements,
+    (child, index) => (
+      <div
+        className={fadeInChild}
+        style={{ animationDelay: `${(index + 1) * 0.2}s` }}
+      >
+        {child}
+      </div>
+    )
+  );
 
   return (
     <div className={container}>
