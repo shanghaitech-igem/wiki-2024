@@ -29,9 +29,11 @@
   </a>
 </p>
 
-<h1 style="text-align:center;">
-  ShanghaiTech - iGEM 2024 Wiki Repository
-</h1>
+<div style="text-align:center;">
+
+# ShanghaiTech - iGEM 2024 Wiki Repository
+
+</div>
 
 ## Getting Started
 
