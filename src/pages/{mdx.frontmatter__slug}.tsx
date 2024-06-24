@@ -8,7 +8,11 @@ interface DescriptionPageProps {
     mdx: {
       frontmatter: {
         title: string;
-        date: string;
+      };
+    };
+    site: {
+      siteMetadata: {
+        favicon: string;
       };
     };
   };
@@ -20,26 +24,32 @@ const DescriptionPage: React.FC<DescriptionPageProps> = ({
   children,
 }) => {
   const { frontmatter } = data.mdx;
-
-  return (
-    <Layout pageTitle={frontmatter.title}>
-      {children}
-    </Layout>
-  );
+ 
+  return <Layout pageTitle={frontmatter.title}>{children}</Layout>;
 };
 
 export const query = graphql`
   query ($id: String) {
-    mdx(id: {eq: $id}) {
+    mdx(id: { eq: $id }) {
       frontmatter {
         title
       }
     }
+    site {
+      siteMetadata {
+        favicon
+      }
+    }
   }
-`
+`;
 
-export const Head: React.FC<DescriptionPageProps> = ({ data }) => (
-  <Seo title={data.mdx.frontmatter.title} />
-);
+export const Head: React.FC<DescriptionPageProps> = ({ data }) => {
+  return (
+    <div>
+      <Seo title={data.mdx.frontmatter.title} />
+      <link key="favicon" rel="icon" href={data.site.siteMetadata.favicon} />
+    </div>
+  );
+};
 
 export default DescriptionPage;

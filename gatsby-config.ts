@@ -4,6 +4,7 @@ const config: GatsbyConfig = {
   siteMetadata: {
     title: `ShanghaiTech 2024 iGEM Wiki`,
     siteUrl: `https://2024.igem.wiki/shanghaitech-china`,
+    favicon: `https://static.igem.org/websites/common/2022/favicons/favicon.svg`
   },
   pathPrefix: `/shanghaitech-china`,
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
