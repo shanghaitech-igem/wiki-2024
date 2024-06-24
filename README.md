@@ -1,33 +1,18 @@
-<style>
-  .logo-container {
-    text-align: center;
-  }
-  .logo-container a {
-    margin: 0 20px;
-    vertical-align: middle;
-  }
-  .logo-container img {
-    width: 60px;
-  }
-  .logo-container a:hover {
-    text-decoration: none;
-  }
-</style>
-
-<p class="logo-container">
-  <a href="https://www.shanghaitech.edu.cn/">
-    <img alt="ShanghaiTech" src="https://static.igem.wiki/teams/5174/repo-readme/shanghaitech-logo.svg" />
+<p class="logo-container" style="text-align: center;">
+  <a href="https://www.shanghaitech.edu.cn/" style="margin: 0 20px; vertical-align: middle;">
+    <img alt="ShanghaiTech" src="https://static.igem.wiki/teams/5174/repo-readme/shanghaitech-logo.svg" style="width: 60px;" />
   </a>
-  <a href="https://www.gatsbyjs.com/">
-    <img alt="Gatsby" src="https://static.igem.wiki/teams/5174/repo-readme/gatsby-logo.svg" />
+  <a href="https://www.gatsbyjs.com/" style="margin: 0 20px; vertical-align: middle;">
+    <img alt="Gatsby" src="https://static.igem.wiki/teams/5174/repo-readme/gatsby-logo.svg" style="width: 60px;" />
   </a>
-  <a href="https://react.dev/">
-    <img alt="React" src="https://static.igem.wiki/teams/5174/repo-readme/react-logo.svg" />
+  <a href="https://react.dev/" style="margin: 0 20px; vertical-align: middle;">
+    <img alt="React" src="https://static.igem.wiki/teams/5174/repo-readme/react-logo.svg" style="width: 60px;" />
   </a>
-  <a href="https://www.typescriptlang.org/">
-    <img alt="TypeScript" src="https://static.igem.wiki/teams/5174/repo-readme/typescript-logo.svg" />
+  <a href="https://www.typescriptlang.org/" style="margin: 0 20px; vertical-align: middle;">
+    <img alt="TypeScript" src="https://static.igem.wiki/teams/5174/repo-readme/typescript-logo.svg" style="width: 60px;" />
   </a>
 </p>
+
 
 <div style="text-align:center;">
 
