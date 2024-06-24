@@ -1,33 +1,33 @@
-  <style>
-    .logo-container {
-      text-align: center;
-    }
-    .logo-container a {
-      margin: 0 20px;
-      vertical-align: middle;
-    }
-    .logo-container img {
-      width: 60px;
-    }
-    .logo-container a:hover {
-      text-decoration: none;
-    }
-  </style>
+<style>
+  .logo-container {
+    text-align: center;
+  }
+  .logo-container a {
+    margin: 0 20px;
+    vertical-align: middle;
+  }
+  .logo-container img {
+    width: 60px;
+  }
+  .logo-container a:hover {
+    text-decoration: none;
+  }
+</style>
 
-  <p class="logo-container">
-    <a href="https://www.shanghaitech.edu.cn/">
-      <img alt="ShanghaiTech" src="https://static.igem.wiki/teams/5174/repo-readme/shanghaitech-logo.svg" />
-    </a>
-    <a href="https://www.gatsbyjs.com/">
-      <img alt="Gatsby" src="https://static.igem.wiki/teams/5174/repo-readme/gatsby-logo.svg" />
-    </a>
-    <a href="https://react.dev/">
-      <img alt="React" src="https://static.igem.wiki/teams/5174/repo-readme/react-logo.svg" />
-    </a>
-    <a href="https://www.typescriptlang.org/">
-      <img alt="TypeScript" src="https://static.igem.wiki/teams/5174/repo-readme/typescript-logo.svg" />
-    </a>
-  </p>
+<p class="logo-container">
+  <a href="https://www.shanghaitech.edu.cn/">
+    <img alt="ShanghaiTech" src="https://static.igem.wiki/teams/5174/repo-readme/shanghaitech-logo.svg" />
+  </a>
+  <a href="https://www.gatsbyjs.com/">
+    <img alt="Gatsby" src="https://static.igem.wiki/teams/5174/repo-readme/gatsby-logo.svg" />
+  </a>
+  <a href="https://react.dev/">
+    <img alt="React" src="https://static.igem.wiki/teams/5174/repo-readme/react-logo.svg" />
+  </a>
+  <a href="https://www.typescriptlang.org/">
+    <img alt="TypeScript" src="https://static.igem.wiki/teams/5174/repo-readme/typescript-logo.svg" />
+  </a>
+</p>
 
 <h1 style="text-align:center;">
   ShanghaiTech - iGEM 2024 Wiki Repository
