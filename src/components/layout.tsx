@@ -1,13 +1,14 @@
 import React from "react";
 import { Link } from "gatsby";
 import * as styles from "../styles/layout.module.scss";
+import Navigation from "./navbar";
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-  const { container, navLinks, navLinkItem, navLinkText } = styles;
+  const { container, navLinks, navLinkItem, navLinkText, navDropdown } = styles;
 
   return (
     <div className={container}>
@@ -18,11 +19,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               Home
             </Link>
           </li>
-          <li className={navLinkItem}>
-            <Link to="/description" className={navLinkText}>
-              Description
-            </Link>
-          </li>
+          <Navigation />
         </ul>
       </nav>
       <main>{children}</main>
