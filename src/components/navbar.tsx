@@ -65,24 +65,22 @@ const NavItemComponent: React.FC<NavItemProps> = ({ item }) => {
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
-
+  console.log(isOpen);
   return (
     <li className={navLinkItem}>
       {item.children ? (
         <>
-          <button onClick={toggleDropdown} className={navDropdown}>
+          <button onClick={toggleDropdown}>
             {item.name}
           </button>
-          {isOpen && (
-            <ul className={navDropdown}>
-              {item.children.map((child) => (
-                <NavItemComponent key={child.slug} item={child} />
-              ))}
-            </ul>
-          )}
+          <ul className={`${isOpen ? navDropdown : ""}`}>
+            {item.children.map((child) => (
+              <NavItemComponent key={child.slug} item={child} />
+            ))}
+          </ul>
         </>
       ) : (
-        <Link to={"/" + item.slug} className={navLinkText}>
+        <Link to={item.path} className={navLinkText}>
           {item.name}
         </Link>
       )}
