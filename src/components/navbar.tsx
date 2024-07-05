@@ -10,15 +10,19 @@ interface NavItemProps {
 }
 
 const NavItem: React.FC<NavItemProps> = ({ item, isOpen, onToggle }) => {
-  const { navLink, navDropdown, dropdownBtn,submenu, submenuItem } = styles;
+  const { navLink, navDropdownBtn, submenu, submenuItem } = styles;
   console.log(item);
   return (
     <>
       {item.children.length != 0 ? (
-        <div className={navDropdown}>
-          <button className={dropdownBtn} onClick={onToggle}>
+        <>
+          <div
+            key={item.index}
+            className={navDropdownBtn}
+            onClick={onToggle}
+          >
             {item.name}
-          </button>
+          </div>
           {isOpen && (
             <div className={submenu}>
               {item.children.map((child) => (
@@ -32,7 +36,7 @@ const NavItem: React.FC<NavItemProps> = ({ item, isOpen, onToggle }) => {
               ))}
             </div>
           )}
-        </div>
+        </>
       ) : (
         <Link to={`/${item.slug}`} className={navLink}>
           {item.name}
@@ -82,16 +86,28 @@ const NavBar: React.FC = () => {
   }, []);
 
   return (
-    <div className={styles.navBar} ref={navBarRef}>
-      {navItems.map((item, index) => (
-        <NavItem
-          key={item.index}
-          item={item}
-          isOpen={openIndex === index}
-          onToggle={() => handleToggle(index)}
-        />
-      ))}
-    </div>
+    <>
+      {/* Responsive Activator */}
+      <input id="bmenub" type="checkbox" className={styles.show} />
+      <label
+        htmlFor="bmenub"
+        className={`${styles.burger} ${styles.pseudo} ${styles.button}`}
+      >
+        &#9776;
+      </label>
+      {/* Responsive Activator */}
+
+      <div className={styles.navBar} ref={navBarRef}>
+        {navItems.map((item, index) => (
+          <NavItem
+            key={item.index}
+            item={item}
+            isOpen={openIndex === index}
+            onToggle={() => handleToggle(index)}
+          />
+        ))}
+      </div>
+    </>
   );
 };
 

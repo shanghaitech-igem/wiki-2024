@@ -12,55 +12,49 @@ $nav-submenu-min-width: 100px;
     margin-right: 2rem;
     color: $nav-link-text-color;
     position: relative;
-    
+
     transition: all 0.25s ease-in-out;
-    
+
     &:hover {
       transform: scale(1.1);
     }
   }
-  
-  .nav-dropdown {
-    position: relative;
-    display: inline-block;
-    
-    .dropdown-btn {
-      @extend .nav-link;
-      padding-right: 30px; // Adjust padding to accommodate the triangle
-      &::after {
-        content: "";
-        position: absolute;
-        top: 50%;
-        right: 15px; // Adjust position to ensure triangle is within the background
-        transform: translateY(-50%);
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-width: 5px 5px 0 5px;
-        border-color: #000 transparent transparent transparent; // Adjust the color as needed
-      }
-    }
 
-
-    .submenu {
-      display: none;
+  .nav-dropdown-btn {
+    @extend .nav-link;
+    padding-right: 30px; // Adjust padding to accommodate the triangle
+    &::after {
+      content: "";
       position: absolute;
-      background-color: white;
-      min-width: $nav-submenu-min-width;
-      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-      z-index: 1;
+      top: 50%;
+      right: 15px; // Adjust position to ensure triangle is within the background
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 5px 5px 0 5px;
+      border-color: #000 transparent transparent transparent; // Adjust the color as needed
+    }
+  }
+
+  .submenu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: $nav-submenu-min-width;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    display: block;
+    border-radius: 8px; // Add this line to round the corners
+
+    .submenu-item {
+      color: $nav-link-text-color;
+      padding: 12px 16px;
+      text-decoration: none;
       display: block;
-      border-radius: 8px; // Add this line to round the corners
 
-      .submenu-item {
-        color: $nav-link-text-color;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-
-        &:hover {
-          background-color: #f1f1f1;
-        }
+      &:hover {
+        background-color: #f1f1f1;
       }
     }
   }
