@@ -1,29 +1,26 @@
 import React from "react";
 import { Link } from "gatsby";
 import * as styles from "../styles/layout.module.scss";
+import NavBar from "./navbar";
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-  const { container, navLinks, navLinkItem, navLinkText } = styles;
-
+  const { container, navBar } = styles;
+  const { brand, logo } = styles;
   return (
     <div className={container}>
       <nav>
-        <ul className={navLinks}>
-          <li className={navLinkItem}>
-            <Link to="/" className={navLinkText}>
-              Home
-            </Link>
-          </li>
-          <li className={navLinkItem}>
-            <Link to="/description" className={navLinkText}>
-              Description
-            </Link>
-          </li>
-        </ul>
+        <Link to="/" className={brand}>
+          <img
+            className={logo}
+            src="https://static.igem.org/websites/common/2022/favicons/favicon.svg"
+          />
+          <span>Home</span>
+        </Link>
+        <NavBar />
       </nav>
       <main>{children}</main>
     </div>
