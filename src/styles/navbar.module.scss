@@ -5,10 +5,11 @@ $nav-submenu-min-width: 100px;
 
 .nav-bar {
   @extend .menu;
+  margin-right: 5rem;
   .nav-link {
     @extend .button;
     @extend .pseudo;
-    margin-right: $nav-submenu-min-width;
+    margin-right: 2rem;
     color: $nav-link-text-color;
     position: relative;
 

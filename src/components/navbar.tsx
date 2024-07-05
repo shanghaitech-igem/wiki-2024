@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useStaticQuery, graphql } from "gatsby";
 import * as styles from "../styles/navbar.module.scss";
 
 interface NavItemProps {
   item: NavItem;
+  isOpen: boolean;
+  onToggle: () => void;
 }
 
 interface NavItem {
@@ -66,38 +68,27 @@ const generateNavItems = (files: string[]): NavItem[] => {
   return convertToArray(navItems);
 };
 
-const NavItem: React.FC<NavItemProps> = ({ item }) => {
+const NavItem: React.FC<NavItemProps> = ({ item, isOpen, onToggle }) => {
   const { navLink, navDropdown, submenu, submenuItem } = styles;
-  const [isDropdownOpen, setDropdownOpen] = useState(false);
-
-  const toggleDropdown = () => {
-    setDropdownOpen(!isDropdownOpen);
-  };
-  console.log(item);
 
   return (
     <div className={navDropdown}>
       {item.children ? (
         <>
-          <div className={navLink} onClick={toggleDropdown}>
+          <div className={navLink} onClick={onToggle}>
             {item.name}
           </div>
-          {isDropdownOpen && (
+          {isOpen && (
             <div className={submenu}>
-              {item.children.map(
-                (child) => (
-                  console.log(child),
-                  (
-                    <Link
-                      key={child.index}
-                      to={`/${child.slug}`}
-                      className={submenuItem}
-                    >
-                      {child.name}
-                    </Link>
-                  )
-                )
-              )}
+              {item.children.map((child) => (
+                <Link
+                  key={child.index}
+                  to={`/${child.slug}`}
+                  className={submenuItem}
+                >
+                  {child.name}
+                </Link>
+              ))}
             </div>
           )}
         </>
@@ -126,10 +117,38 @@ const NavBar: React.FC = () => {
   const files = data.allFile.edges.map((edge: any) => edge.node.relativePath);
   const navItems = generateNavItems(files);
 
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const navBarRef = useRef<HTMLDivElement>(null);
+
+  const handleToggle = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      navBarRef.current &&
+      !navBarRef.current.contains(event.target as Node)
+    ) {
+      setOpenIndex(null);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div className={styles.navBar}>
-      {navItems.map((item) => (
-        <NavItem key={item.index} item={item} />
+    <div className={styles.navBar} ref={navBarRef}>
+      {navItems.map((item, index) => (
+        <NavItem
+          key={item.index}
+          item={item}
+          isOpen={openIndex === index}
+          onToggle={() => handleToggle(index)}
+        />
       ))}
     </div>
   );
