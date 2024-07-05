@@ -42,7 +42,7 @@ const MDXPage: React.FC<DescriptionPageProps> = ({ data, children }) => {
     (child, index) => (
       <div
         className={slideFadeIn}
-        style={{ animationDelay: `${(index + 1) * 0.2}s` }}
+        style={{ animationDelay: `${(index + 1) * 0.15}s` }}
       >
         {child}
       </div>
