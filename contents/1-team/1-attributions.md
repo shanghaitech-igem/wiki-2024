@@ -5,4 +5,7 @@ favicon: "https://static.igem.org/websites/common/2022/favicons/favicon.svg"
 slug: "attributions"
 ---
 
-# TEST
+# What will this page contain?
+
+- Contributions from our team members.
+

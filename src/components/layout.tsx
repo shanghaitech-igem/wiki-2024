@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 import * as styles from "../styles/layout.module.scss";
-import Navigation from "./navbar";
+import NavBar from "./navbar";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -20,9 +20,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           />
           <span>Home</span>
         </Link>
-        <div className={navBar}>
-          <Navigation />
-        </div>
+        <NavBar />
       </nav>
       <main>{children}</main>
     </div>

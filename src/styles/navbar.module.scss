@@ -1,0 +1,48 @@
+@import "~picnic/src/picnic.scss";
+
+$nav-link-text-color: black;
+$nav-submenu-min-width: 100px;
+
+.nav-bar {
+  @extend .menu;
+  .nav-link {
+    @extend .button;
+    @extend .pseudo;
+    margin-right: $nav-submenu-min-width;
+    color: $nav-link-text-color;
+    position: relative;
+
+    transition: all 0.25s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  .nav-dropdown {
+    position: relative;
+    display: inline-block;
+
+    .submenu {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: $nav-submenu-min-width;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      display: block;
+      border-radius: 8px; // Add this line to round the corners
+
+      .submenu-item {
+        color: $nav-link-text-color;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+
+        &:hover {
+          background-color: #f1f1f1;
+        }
+      }
+    }
+  }
+}

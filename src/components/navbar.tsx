@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useStaticQuery, graphql } from "gatsby";
-import * as styles from "../styles/layout.module.scss";
+import * as styles from "../styles/navbar.module.scss";
 
 interface NavItemProps {
   item: NavItem;
@@ -17,11 +17,11 @@ interface NavItem {
 const generateNavItems = (files: string[]): NavItem[] => {
   const navItems: { [key: string]: NavItem } = {};
 
-  files.forEach((file) => {
+  files.forEach((file, index) => {
     const parts = file.split("/");
     let currentLevel: { [key: string]: NavItem } = navItems;
 
-    parts.forEach((part, index) => {
+    parts.forEach((part) => {
       const isFile = part.endsWith(".md") || part.endsWith(".mdx");
       const name = part.replace(/^\d+-/, "").replace(/\.mdx?$/, "");
       const displayName = name.charAt(0).toUpperCase() + name.slice(1);
@@ -38,14 +38,11 @@ const generateNavItems = (files: string[]): NavItem[] => {
           name: displayName,
           path: isFile ? path : "",
           slug: isFile ? name : "",
-          children: isFile ? undefined : [],
+          children: isFile ? [] : [],
         };
       }
 
       if (!isFile) {
-        if (!currentLevel[name].children) {
-          currentLevel[name].children = [];
-        }
         currentLevel = currentLevel[name].children as unknown as {
           [key: string]: NavItem;
         };
@@ -57,32 +54,66 @@ const generateNavItems = (files: string[]): NavItem[] => {
     return Object.values(items).sort((a, b) => a.path.localeCompare(b.path));
   };
 
-  return sortNavItems(navItems);
+  const convertToArray = (items: { [key: string]: NavItem }): NavItem[] => {
+    return Object.values(items).map((item) => ({
+      ...item,
+      children: sortNavItems(
+        item.children as unknown as { [key: string]: NavItem }
+      ),
+    }));
+  };
+
+  return convertToArray(navItems);
 };
 
-const NavItemComponent: React.FC<NavItemProps> = ({ item }) => {
-  const { navLink, navDropdown } = styles;
+const NavItem: React.FC<NavItemProps> = ({ item }) => {
+  const { navLink, navDropdown, submenu, submenuItem } = styles;
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setDropdownOpen(!isDropdownOpen);
+  };
   console.log(item);
+
   return (
-    <>
+    <div className={navDropdown}>
       {item.children ? (
         <>
-          <div>
+          <div className={navLink} onClick={toggleDropdown}>
+            {item.name}
           </div>
+          {isDropdownOpen && (
+            <div className={submenu}>
+              {item.children.map(
+                (child) => (
+                  console.log(child),
+                  (
+                    <Link
+                      key={child.index}
+                      to={`/${child.slug}`}
+                      className={submenuItem}
+                    >
+                      {child.name}
+                    </Link>
+                  )
+                )
+              )}
+            </div>
+          )}
         </>
       ) : (
         <Link to={`/${item.slug}`} className={navLink}>
           {item.name}
         </Link>
       )}
-    </>
+    </div>
   );
 };
 
-const Navigation: React.FC = () => {
+const NavBar: React.FC = () => {
   const data = useStaticQuery(graphql`
     query {
-      allFile {
+      allFile(sort: { relativePath: ASC }) {
         edges {
           node {
             relativePath
@@ -96,12 +127,12 @@ const Navigation: React.FC = () => {
   const navItems = generateNavItems(files);
 
   return (
-    <>
+    <div className={styles.navBar}>
       {navItems.map((item) => (
-        <NavItemComponent key={item.index} item={item} />
+        <NavItem key={item.index} item={item} />
       ))}
-    </>
+    </div>
   );
 };
 
-export default Navigation;
+export default NavBar;

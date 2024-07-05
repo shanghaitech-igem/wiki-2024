@@ -2,8 +2,6 @@
 
 $max-width: 1000px;
 $font-family: sans-serif;
-$site-title-color: gray;
-$nav-link-text-color: black;
 
 .container {
   @extend .container;
@@ -15,20 +13,4 @@ $nav-link-text-color: black;
 
 .nav-bar {
   @extend .menu;
-
-  .nav-link {
-    @extend .button;
-    @extend .pseudo;
-    margin-right: 2rem;
-    color: $nav-link-text-color;
-    position: relative;
-
-    transition: all 0.3s ease-in-out;
-    position: relative;
-
-    &:hover {
-      transform: scale(1.1);
-    }
-
-  }
 }
