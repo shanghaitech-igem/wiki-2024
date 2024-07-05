@@ -10,15 +10,15 @@ interface NavItemProps {
 }
 
 const NavItem: React.FC<NavItemProps> = ({ item, isOpen, onToggle }) => {
-  const { navLink, navDropdown, submenu, submenuItem } = styles;
+  const { navLink, navDropdown, dropdownBtn,submenu, submenuItem } = styles;
   console.log(item);
   return (
-    <div className={navDropdown}>
+    <>
       {item.children.length != 0 ? (
-        <>
-          <div className={navLink} onClick={onToggle}>
+        <div className={navDropdown}>
+          <button className={dropdownBtn} onClick={onToggle}>
             {item.name}
-          </div>
+          </button>
           {isOpen && (
             <div className={submenu}>
               {item.children.map((child) => (
@@ -32,13 +32,13 @@ const NavItem: React.FC<NavItemProps> = ({ item, isOpen, onToggle }) => {
               ))}
             </div>
           )}
-        </>
+        </div>
       ) : (
         <Link to={`/${item.slug}`} className={navLink}>
           {item.name}
         </Link>
       )}
-    </div>
+    </>
   );
 };
 
