@@ -2,7 +2,7 @@ export interface NavItemType {
   index: number;
   name: string;
   slug: string;
-  children?: NavItemType[];
+  children: NavItemType[];
 }
 
 export const generateNavItems = (files: string[]): NavItemType[] => {
@@ -30,8 +30,8 @@ export const generateNavItems = (files: string[]): NavItemType[] => {
         currentLevel[name] = {
           index: index,
           name: displayName,
-          slug: isFile ? name : "",
-          children: isFile ? [] : [],
+          slug: isFile ? name.toLowerCase() : "",
+          children: [],
         };
       }
 

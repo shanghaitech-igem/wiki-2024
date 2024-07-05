@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useStaticQuery, graphql } from "gatsby";
 import * as styles from "../styles/navbar.module.scss";
-import  {generateNavItems, NavItemType} from "../utils/generate-nav-Items";
+import { generateNavItems, NavItemType } from "../utils/generate-nav-Items";
 
 interface NavItemProps {
   item: NavItemType;
@@ -14,7 +14,7 @@ const NavItem: React.FC<NavItemProps> = ({ item, isOpen, onToggle }) => {
   console.log(item);
   return (
     <div className={navDropdown}>
-      {item.children ? (
+      {item.children.length != 0 ? (
         <>
           <div className={navLink} onClick={onToggle}>
             {item.name}
