@@ -14,13 +14,9 @@ const NavItem: React.FC<NavItemProps> = ({ item, isOpen, onToggle }) => {
   console.log(item);
   return (
     <>
-      {item.children.length != 0 ? (
+      {item.children.length !== 0 ? (
         <>
-          <div
-            key={item.index}
-            className={navDropdownBtn}
-            onClick={onToggle}
-          >
+          <div key={item.index} className={navDropdownBtn} onClick={onToggle}>
             {item.name}
           </div>
           {isOpen && (
