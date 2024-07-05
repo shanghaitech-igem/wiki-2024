@@ -1,25 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useStaticQuery, graphql } from "gatsby";
 import * as styles from "../styles/navbar.module.scss";
-import  generateNavItems from "../utils/generate-nav-Items";
+import  {generateNavItems, NavItemType} from "../utils/generate-nav-Items";
 
 interface NavItemProps {
-  item: NavItem;
+  item: NavItemType;
   isOpen: boolean;
   onToggle: () => void;
 }
 
-export interface NavItem {
-  index: number;
-  name: string;
-  path: string;
-  slug: string;
-  children?: NavItem[];
-}
-
 const NavItem: React.FC<NavItemProps> = ({ item, isOpen, onToggle }) => {
   const { navLink, navDropdown, submenu, submenuItem } = styles;
-
+  console.log(item);
   return (
     <div className={navDropdown}>
       {item.children ? (
