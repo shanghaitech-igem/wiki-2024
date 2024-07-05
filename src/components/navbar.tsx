@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, useStaticQuery, graphql } from "gatsby";
 import * as styles from "../styles/layout.module.scss";
 
@@ -7,6 +7,7 @@ interface NavItemProps {
 }
 
 interface NavItem {
+  index: number;
   name: string;
   path: string;
   slug: string;
@@ -33,6 +34,7 @@ const generateNavItems = (files: string[]): NavItem[] => {
 
       if (!currentLevel[name]) {
         currentLevel[name] = {
+          index: index,
           name: displayName,
           path: isFile ? path : "",
           slug: isFile ? name : "",
@@ -59,32 +61,21 @@ const generateNavItems = (files: string[]): NavItem[] => {
 };
 
 const NavItemComponent: React.FC<NavItemProps> = ({ item }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const { navLinkItem, navLinkText, navDropdown } = styles;
-
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
-  console.log(isOpen);
+  const { navLink, navDropdown } = styles;
+  console.log(item);
   return (
-    <li className={navLinkItem}>
+    <>
       {item.children ? (
         <>
-          <button onClick={toggleDropdown}>
-            {item.name}
-          </button>
-          <ul className={`${isOpen ? navDropdown : ""}`}>
-            {item.children.map((child) => (
-              <NavItemComponent key={child.slug} item={child} />
-            ))}
-          </ul>
+          <div>
+          </div>
         </>
       ) : (
-        <Link to={item.path} className={navLinkText}>
+        <Link to={`/${item.slug}`} className={navLink}>
           {item.name}
         </Link>
       )}
-    </li>
+    </>
   );
 };
 
@@ -105,11 +96,11 @@ const Navigation: React.FC = () => {
   const navItems = generateNavItems(files);
 
   return (
-    <ul className={styles.navLinks}>
+    <>
       {navItems.map((item) => (
-        <NavItemComponent key={item.slug} item={item} />
+        <NavItemComponent key={item.index} item={item} />
       ))}
-    </ul>
+    </>
   );
 };
 

@@ -8,19 +8,21 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-  const { container, navLinks, navLinkItem, navLinkText, navDropdown } = styles;
-
+  const { container, navBar } = styles;
+  const { brand, logo } = styles;
   return (
     <div className={container}>
       <nav>
-        <ul className={navLinks}>
-          <li className={navLinkItem}>
-            <Link to="/" className={navLinkText}>
-              Home
-            </Link>
-          </li>
+        <Link to="/" className={brand}>
+          <img
+            className={logo}
+            src="https://static.igem.org/websites/common/2022/favicons/favicon.svg"
+          />
+          <span>Home</span>
+        </Link>
+        <div className={navBar}>
           <Navigation />
-        </ul>
+        </div>
       </nav>
       <main>{children}</main>
     </div>
