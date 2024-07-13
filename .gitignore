@@ -2,5 +2,5 @@ node_modules/
 .cache/
 public
 src/gatsby-types.d.ts
-contents/*MDX-test.md
-contents/*TSX-test.mdx
+contents/*-test.mdx
+contents/*-test.md
