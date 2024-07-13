@@ -14,7 +14,7 @@ import "prismjs/plugins/command-line/prism-command-line.min.css";
 import "../styles/prismjs-config.css";
 import * as styles from "../styles/mdx.module.scss";
 
-interface DescriptionPageProps {
+interface MdxPageProps {
   data: {
     mdx: {
       frontmatter: {
@@ -31,7 +31,7 @@ interface DescriptionPageProps {
   children: React.ReactNode;
 }
 
-const MDXPage: React.FC<DescriptionPageProps> = ({ data, children }) => {
+const MDXPage: React.FC<MdxPageProps> = ({ data, children }) => {
   const { frontmatter } = data.mdx;
   const { slideFadeIn, heading } = styles;
 
@@ -75,7 +75,7 @@ export const query = graphql`
   }
 `;
 
-export const Head: React.FC<DescriptionPageProps> = ({ data }) => {
+export const Head: React.FC<MdxPageProps> = ({ data }) => {
   return (
     <div>
       <Seo title={data.mdx.frontmatter.title} />
