@@ -1,11 +1,17 @@
 import * as React from "react";
+import { renderToString } from "react-dom/server";
+import parse from "html-react-parser";
 import { graphql } from "gatsby";
+
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 import Favicon from "../components/favicon";
-import { renderToString } from "react-dom/server";
-import parse from "html-react-parser";
+
 import "katex/dist/katex.min.css";
+import "prismjs/themes/prism.min.css";
+import "prismjs/plugins/line-numbers/prism-line-numbers.min.css";
+import "prismjs/plugins/command-line/prism-command-line.min.css";
+import "../styles/prismjs-config.css";
 import * as styles from "../styles/mdx.module.scss";
 
 interface DescriptionPageProps {
