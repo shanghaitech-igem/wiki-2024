@@ -1,6 +1,9 @@
-import type { GatsbyConfig } from "gatsby";
+import { fileURLToPath } from "url"
+import { dirname } from "path"
+const __dirname = dirname(fileURLToPath(import.meta.url))
+import remarkGfm from "remark-gfm";
 
-const config: GatsbyConfig = {
+const config = {
   siteMetadata: {
     title: `ShanghaiTech 2024 iGEM Wiki`,
     siteUrl: `https://2024.igem.wiki/shanghaitech-china`,
@@ -26,8 +29,16 @@ const config: GatsbyConfig = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.mdx`, `.md`],
+        mdxOptions: {
+          remarkPlugins: [
+            // Add GitHub Flavored Markdown (GFM) support
+            remarkGfm,
+          ],
+        },
         gatsbyRemarkPlugins: [
+          `gatsby-remark-autolink-headers`,
           `gatsby-remark-responsive-iframe`,
+          `gatsby-remark-smartypants`,
           {
             resolve: `gatsby-remark-images`,
             options: {

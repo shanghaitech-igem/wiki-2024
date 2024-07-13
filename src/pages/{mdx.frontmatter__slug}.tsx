@@ -3,10 +3,10 @@ import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 import Favicon from "../components/favicon";
-import * as styles from "../styles/mdx.module.scss";
 import { renderToString } from "react-dom/server";
 import parse from "html-react-parser";
 import "katex/dist/katex.min.css";
+import * as styles from "../styles/mdx.module.scss";
 
 interface DescriptionPageProps {
   data: {
@@ -43,7 +43,7 @@ const MDXPage: React.FC<DescriptionPageProps> = ({ data, children }) => {
     (child, index) => (
       <div
         className={slideFadeIn}
-        style={{ animationDelay: `${(index + 1) * 0.15}s` }}
+        style={{ animationDelay: `${(index + 1) * 0.15 * 0}s` }}
       >
         {child}
       </div>
