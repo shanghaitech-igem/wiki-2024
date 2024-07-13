@@ -1,6 +1,6 @@
-import { fileURLToPath } from "url"
-import { dirname } from "path"
-const __dirname = dirname(fileURLToPath(import.meta.url))
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+const __dirname = dirname(fileURLToPath(import.meta.url));
 import remarkGfm from "remark-gfm";
 
 const config = {
@@ -18,6 +18,7 @@ const config = {
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-sass`,
+    `gatsby-transformer-sharp`, // Needed for dynamic images
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -45,7 +46,7 @@ const config = {
               // It's important to specify the maxWidth (in pixels) of
               // the content container as this plugin uses this as the
               // base for generating different widths of each image.
-              maxWidth: 200,
+              maxWidth: 390,
             },
           },
           {
