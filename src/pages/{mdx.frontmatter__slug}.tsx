@@ -6,6 +6,7 @@ import Favicon from "../components/favicon";
 import * as styles from "../styles/mdx.module.scss";
 import { renderToString } from "react-dom/server";
 import parse from "html-react-parser";
+import "katex/dist/katex.min.css";
 
 interface DescriptionPageProps {
   data: {
