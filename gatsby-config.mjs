@@ -1,5 +1,5 @@
 import { fileURLToPath } from "url";
-import { dirname } from "path";
+import { dirname, resolve } from "path";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 import remarkGfm from "remark-gfm";
 
@@ -41,13 +41,8 @@ const config = {
           `gatsby-remark-responsive-iframe`,
           `gatsby-remark-smartypants`,
           {
-            resolve: `gatsby-remark-images`,
-            options: {
-              // It's important to specify the maxWidth (in pixels) of
-              // the content container as this plugin uses this as the
-              // base for generating different widths of each image.
-              maxWidth: 390,
-            },
+            resolve: resolve("./plugins/gatsby-remark-remote-images"),
+            options: {},
           },
           {
             resolve: `gatsby-remark-prismjs`,
