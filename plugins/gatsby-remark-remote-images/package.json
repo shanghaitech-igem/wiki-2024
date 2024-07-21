@@ -1,7 +1,7 @@
 {
     "name": "gatsby-remark-remote-images",
     "version": "1.0.0",
-    "main": "index.ts",
+    "main": "index.js",
     "dependencies": {
         "image-size": "^1.0.0",
         "node-fetch": "^2.6.1",
