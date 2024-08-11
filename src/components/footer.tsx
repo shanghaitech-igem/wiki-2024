@@ -9,12 +9,18 @@ const Footer: React.FC = () => {
           <div className={styles.section}>
             <h3>Links</h3>
             <ul>
-              <li><a href="https://www.shanghaitech.edu.cn">Shanghaitech</a></li>
+              <li>
+                <a href="https://www.shanghaitech.edu.cn">Shanghaitech</a>
+              </li>
             </ul>
           </div>
           <div className={styles.section}>
             <h3>Contact</h3>
-            <p><a href="mailto:igemshanghaitech@163.com">igemshanghaitech@163.com</a></p>
+            <p>
+              <a href="mailto:igemshanghaitech@163.com">
+                igemshanghaitech@163.com
+              </a>
+            </p>
           </div>
         </div>
         <div className={styles.footerBottom}>
@@ -24,13 +30,13 @@ const Footer: React.FC = () => {
               Creative Commons Attribution 4.0 International license
             </a>
             .
-            <p>
-              The repository used to create this website is available at{" "}
-              <a href="gitlab.igem.org/2024/shanghaitech-china">
-                gitlab.igem.org/2024/shanghaitech-china
-              </a>
-              .
-            </p>
+          </p>
+          <p>
+            The repository used to create this website is available at{" "}
+            <a href="gitlab.igem.org/2024/shanghaitech-china">
+              gitlab.igem.org/2024/shanghaitech-china
+            </a>
+            .
           </p>
         </div>
       </div>
