@@ -34,7 +34,7 @@ interface MdxPageProps {
 
 const MDXPage: React.FC<MdxPageProps> = ({ data, children }) => {
   const { frontmatter } = data.mdx;
-  const { slideFadeIn, heading } = styles;
+  const { heading } = styles;
 
   // const htmlString = renderToString(children);
   // // Parse the HTML string into React elements
