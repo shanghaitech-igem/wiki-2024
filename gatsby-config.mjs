@@ -1,6 +1,9 @@
-import type { GatsbyConfig } from "gatsby";
+import { fileURLToPath } from "url";
+import { dirname, resolve } from "path";
+const __dirname = dirname(fileURLToPath(import.meta.url));
+import remarkGfm from "remark-gfm";
 
-const config: GatsbyConfig = {
+const config = {
   siteMetadata: {
     title: `ShanghaiTech 2024 iGEM Wiki`,
     siteUrl: `https://2024.igem.wiki/shanghaitech-china`,
@@ -15,6 +18,7 @@ const config: GatsbyConfig = {
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-sass`,
+    `gatsby-transformer-sharp`, // Needed for dynamic images
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -26,16 +30,19 @@ const config: GatsbyConfig = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.mdx`, `.md`],
+        mdxOptions: {
+          remarkPlugins: [
+            // Add GitHub Flavored Markdown (GFM) support
+            remarkGfm,
+          ],
+        },
         gatsbyRemarkPlugins: [
+          `gatsby-remark-autolink-headers`,
           `gatsby-remark-responsive-iframe`,
+          `gatsby-remark-smartypants`,
           {
-            resolve: `gatsby-remark-images`,
-            options: {
-              // It's important to specify the maxWidth (in pixels) of
-              // the content container as this plugin uses this as the
-              // base for generating different widths of each image.
-              maxWidth: 200,
-            },
+            resolve: resolve("./plugins/gatsby-remark-remote-images"),
+            options: {},
           },
           {
             resolve: `gatsby-remark-prismjs`,
