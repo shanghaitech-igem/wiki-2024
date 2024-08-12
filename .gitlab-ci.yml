@@ -1,4 +1,4 @@
-image: node:lts-alpine3.19
+image: node-lts:latest
 
 # This folder is cached between builds
 # https://docs.gitlab.com/ce/ci/yaml/README.html#cache
