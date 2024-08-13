@@ -1,6 +1,4 @@
 import * as React from "react";
-import { renderToString } from "react-dom/server";
-// import parse from "html-react-parser";
 import { graphql } from "gatsby";
 
 import "prismjs/themes/prism.min.css";

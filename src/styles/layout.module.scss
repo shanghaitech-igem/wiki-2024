@@ -1,5 +1,3 @@
-@import "~picnic/src/picnic.scss";
-
 $max-width: 1000px;
 $font-family: sans-serif;
 
@@ -19,8 +17,4 @@ $font-family: sans-serif;
 
 .content {
   flex: 1;
-}
-
-.nav-bar {
-  @extend .menu;
 }

@@ -1,5 +1,5 @@
 import { fileURLToPath } from "url";
-import { dirname, resolve } from "path";
+import { dirname } from "path";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 import remarkGfm from "remark-gfm";
 
@@ -15,10 +15,7 @@ const config = {
   // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: true,
   plugins: [
-    `gatsby-plugin-image`,
-    `gatsby-plugin-sharp`,
     `gatsby-plugin-sass`,
-    `gatsby-transformer-sharp`, // Needed for dynamic images
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -39,10 +36,6 @@ const config = {
         gatsbyRemarkPlugins: [
           `gatsby-remark-autolink-headers`,
           `gatsby-remark-smartypants`,
-          {
-            resolve: resolve("./plugins/gatsby-remark-remote-images"),
-            options: {},
-          },
           {
             resolve: `gatsby-remark-prismjs`,
             options: {
@@ -108,27 +101,28 @@ const config = {
               escapeEntities: {},
             },
           },
-          {
-            resolve: `gatsby-plugin-purgecss`,
-            options: {
-              printRejected: true, // Print removed selectors and processed file names
-              // develop: true, // Enable while using `gatsby develop`
-              // tailwind: true, // Enable tailwindcss support
-              // ignore: ['/ignored.css', 'prismjs/', 'docsearch.js/'], // Ignore files/folders
-              // purgeOnly : ['components/', '/main.css', 'bootstrap/'], // Purge only these files/folders
-              purgeCSSOptions: {
-                // https://purgecss.com/configuration.html#options
-                // safelist: ['safelist'], // Don't remove this selector
-              },
-              // More options defined here https://purgecss.com/configuration.html#options
-            },
-          },
+          // {
+          //   resolve: `gatsby-plugin-purgecss`,
+          //   options: {
+          //     printRejected: true, // Print removed selectors and processed file names
+          //     develop: false, // Enable while using `gatsby develop`
+          //     // tailwind: true, // Enable tailwindcss support
+          //     // ignore: ['navbar.module.scss'], // Ignore files/folders
+          //     // purgeOnly : ['components/', '/main.css', 'bootstrap/'], // Purge only these files/folders
+          //     purgeCSSOptions: {
+          //       // https://purgecss.com/configuration.html#options
+          //       // safelist: ['safelist'], // Don't remove this selector
+          //     },
+          //     // More options defined here https://purgecss.com/configuration.html#options
+          //   },
+          // },
           {
             resolve: `gatsby-remark-katex`,
             options: {
               // Add any KaTeX options from https://github.com/KaTeX/KaTeX/blob/master/docs/options.md here
               strict: `ignore`,
               trust: true,
+              output: "mathml",
             },
           },
         ],
