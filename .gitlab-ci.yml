@@ -8,6 +8,9 @@ cache:
     # Enables git-lab CI caching. Both .cache and public must be cached, otherwise builds will fail.
     - .cache/
     - public/
+  
+before_script:
+  - npm ci --cache .npm --prefer-offline
 
 pages:
   stage: deploy
