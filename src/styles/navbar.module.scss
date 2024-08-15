@@ -1,9 +1,4 @@
-@use 'sass:math';
-@import '~picnic/src/themes/default/theme';
-@import '~picnic/src/vendor/compass-breakpoint/stylesheets/breakpoint';
-@import "~picnic/src/plugins/label/plugin";
-@import "~picnic/src/plugins/button/plugin";
-@import "~picnic/src/plugins/nav/plugin";
+@import "~picnic/src/picnic";
 
 $nav-link-text-color: black;
 $nav-submenu-min-width: 100px;
