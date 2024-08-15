@@ -22,5 +22,8 @@ pages:
   artifacts:
     paths:
       - public
+    exclude:
+      - public/**/*.map
+      - public/**/*.LICENSE.txt
   only:
     - main
