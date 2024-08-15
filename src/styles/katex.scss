@@ -1,0 +1,5 @@
+@use '../../node_modules/katex/src/styles/katex' with (
+  $use-ttf: false,
+  $use-woff: false,
+  $use-woff2: true,
+);

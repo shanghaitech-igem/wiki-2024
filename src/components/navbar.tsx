@@ -11,7 +11,6 @@ interface NavItemProps {
 
 const NavItem: React.FC<NavItemProps> = ({ item, isOpen, onToggle }) => {
   const { navLink, navDropdownBtn, subMenu, subMenuItem, navDropdown } = styles;
-  console.log(item);
   return (
     <>
       {item.children.length !== 0 ? (
@@ -83,6 +82,8 @@ const NavBar: React.FC = () => {
     };
   }, []);
 
+  const { navBar } = styles;
+
   return (
     <>
       {/* Responsive Activator */}
@@ -95,7 +96,7 @@ const NavBar: React.FC = () => {
       </label>
       {/* Responsive Activator */}
 
-      <div className={styles.navBar} ref={navBarRef}>
+      <div className={navBar} ref={navBarRef}>
         {navItems.map((item, index) => (
           <NavItem
             key={item.index}

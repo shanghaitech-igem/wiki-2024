@@ -3,15 +3,16 @@ import { renderToString } from "react-dom/server";
 import parse from "html-react-parser";
 import { graphql } from "gatsby";
 
+import "prismjs/themes/prism.min.css";
+import "prismjs/plugins/line-numbers/prism-line-numbers.min.css";
+import "prismjs/plugins/command-line/prism-command-line.min.css";
+
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 import Favicon from "../components/favicon";
 
-import "katex/dist/katex.min.css";
-import "prismjs/themes/prism.min.css";
-import "prismjs/plugins/line-numbers/prism-line-numbers.min.css";
-import "prismjs/plugins/command-line/prism-command-line.min.css";
 import "../styles/prismjs-config.css";
+import "../styles/katex.scss";
 import * as styles from "../styles/mdx.module.scss";
 
 interface MdxPageProps {
@@ -33,33 +34,33 @@ interface MdxPageProps {
 
 const MDXPage: React.FC<MdxPageProps> = ({ data, children }) => {
   const { frontmatter } = data.mdx;
-  const { slideFadeIn, heading } = styles;
+  const { heading } = styles;
 
-  const htmlString = renderToString(children);
-  // Parse the HTML string into React elements
-  const parsedElements = parse(htmlString);
-  // Convert parsed elements to an array and filter out non-element nodes
-  const filteredElements = React.Children.toArray(parsedElements).filter(
-    (child) => React.isValidElement(child)
-  );
+  // const htmlString = renderToString(children);
+  // // Parse the HTML string into React elements
+  // const parsedElements = parse(htmlString);
+  // // Convert parsed elements to an array and filter out non-element nodes
+  // const filteredElements = React.Children.toArray(parsedElements).filter(
+  //   (child) => React.isValidElement(child)
+  // );
 
-  // Add styles to each valid child element
-  const styledElements = React.Children.map(
-    filteredElements,
-    (child, index) => (
-      <div
-        className={slideFadeIn}
-        style={{ animationDelay: `${(index + 1) * 0.15 * 0}s` }}
-      >
-        {child}
-      </div>
-    )
-  );
+  // // Add styles to each valid child element
+  // const styledElements = React.Children.map(
+  //   filteredElements,
+  //   (child, index) => (
+  //     <div
+  //       className={slideFadeIn}
+  //       style={{ animationDelay: `${(index + 1) * 0.05}s` }}
+  //     >
+  //       {child}
+  //     </div>
+  //   )
+  // );
 
   return (
     <Layout>
       <header className={heading}>{frontmatter.title}</header>
-      {styledElements}
+      {children}
     </Layout>
   );
 };

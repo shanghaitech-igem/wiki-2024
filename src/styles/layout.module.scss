@@ -1,16 +1,22 @@
-@import "~picnic/src/picnic.scss";
+@import "~picnic/src/picnic";
 
 $max-width: 1000px;
 $font-family: sans-serif;
 
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .container {
-  @extend .container;
+  flex: 1;
   margin: auto;
   max-width: $max-width;
   font-family: $font-family;
   padding: 2rem;
 }
 
-.nav-bar {
-  @extend .menu;
+.content {
+  flex: 1;
 }

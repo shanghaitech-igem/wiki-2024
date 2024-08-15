@@ -1,5 +1,5 @@
 import { fileURLToPath } from "url";
-import { dirname, resolve } from "path";
+import { dirname } from "path";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 import remarkGfm from "remark-gfm";
 
@@ -15,8 +15,6 @@ const config = {
   // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: true,
   plugins: [
-    `gatsby-plugin-image`,
-    `gatsby-plugin-sharp`,
     `gatsby-plugin-sass`,
     `gatsby-transformer-sharp`, // Needed for dynamic images
     {
@@ -38,12 +36,7 @@ const config = {
         },
         gatsbyRemarkPlugins: [
           `gatsby-remark-autolink-headers`,
-          `gatsby-remark-responsive-iframe`,
           `gatsby-remark-smartypants`,
-          {
-            resolve: resolve("./plugins/gatsby-remark-remote-images"),
-            options: {},
-          },
           {
             resolve: `gatsby-remark-prismjs`,
             options: {
@@ -110,10 +103,27 @@ const config = {
             },
           },
           {
+            resolve: `gatsby-plugin-purgecss`,
+            options: {
+              printRejected: true, // Print removed selectors and processed file names
+              develop: true, // Enable while using `gatsby develop`
+              // tailwind: true, // Enable tailwindcss support
+              ignore: ['navbar.module.scss', 'prism.min.css'], // Ignore files/folders
+              // purgeOnly : ['components/', '/main.css', 'bootstrap/'], // Purge only these files/folders
+              purgeCSSOptions: {
+                // https://purgecss.com/configuration.html#options
+                safelist: ['navbar-module*', 'brand', 'logo'], // Don't remove this selector
+              },
+              // More options defined here https://purgecss.com/configuration.html#options
+            },
+          },
+          {
             resolve: `gatsby-remark-katex`,
             options: {
               // Add any KaTeX options from https://github.com/KaTeX/KaTeX/blob/master/docs/options.md here
               strict: `ignore`,
+              trust: true,
+              output: "mathml",
             },
           },
         ],
