@@ -3,6 +3,7 @@ image: node:lts-slim
 # This folder is cached between builds
 # https://docs.gitlab.com/ce/ci/yaml/README.html#cache
 cache:
+  key: "$CI_COMMIT_REF_SLUG"
   paths:
     - node_modules/
     # Enables git-lab CI caching. Both .cache and public must be cached, otherwise builds will fail.
@@ -17,7 +18,7 @@ pages:
   script:
     - npm install
     - ./node_modules/.bin/gatsby build --prefix-paths
-    - du -sh public/
+    - du -sh public/ # Check the size of the unzipped artifacts.
   artifacts:
     paths:
       - public
