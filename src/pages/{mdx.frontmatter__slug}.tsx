@@ -1,6 +1,4 @@
 import * as React from "react";
-import { renderToString } from "react-dom/server";
-import parse from "html-react-parser";
 import { graphql } from "gatsby";
 
 import "prismjs/themes/prism.min.css";
@@ -35,27 +33,6 @@ interface MdxPageProps {
 const MDXPage: React.FC<MdxPageProps> = ({ data, children }) => {
   const { frontmatter } = data.mdx;
   const { heading } = styles;
-
-  // const htmlString = renderToString(children);
-  // // Parse the HTML string into React elements
-  // const parsedElements = parse(htmlString);
-  // // Convert parsed elements to an array and filter out non-element nodes
-  // const filteredElements = React.Children.toArray(parsedElements).filter(
-  //   (child) => React.isValidElement(child)
-  // );
-
-  // // Add styles to each valid child element
-  // const styledElements = React.Children.map(
-  //   filteredElements,
-  //   (child, index) => (
-  //     <div
-  //       className={slideFadeIn}
-  //       style={{ animationDelay: `${(index + 1) * 0.05}s` }}
-  //     >
-  //       {child}
-  //     </div>
-  //   )
-  // );
 
   return (
     <Layout>

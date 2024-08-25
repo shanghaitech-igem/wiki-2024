@@ -16,7 +16,6 @@ const config = {
   graphqlTypegen: true,
   plugins: [
     `gatsby-plugin-sass`,
-    `gatsby-transformer-sharp`, // Needed for dynamic images
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -112,7 +111,7 @@ const config = {
               // purgeOnly : ['components/', '/main.css', 'bootstrap/'], // Purge only these files/folders
               purgeCSSOptions: {
                 // https://purgecss.com/configuration.html#options
-                safelist: ['navbar-module*', 'brand', 'logo'], // Don't remove this selector
+                safelist: [], // Don't remove this selector
               },
               // More options defined here https://purgecss.com/configuration.html#options
             },

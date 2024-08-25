@@ -1,5 +1,3 @@
-@import "~picnic/src/picnic";
-
 $max-width: 1000px;
 $font-family: sans-serif;
 
@@ -10,13 +8,13 @@ $font-family: sans-serif;
 }
 
 .container {
-  flex: 1;
   margin: auto;
+  padding: 0 20px;
   max-width: $max-width;
   font-family: $font-family;
-  padding: 2rem;
 }
 
 .content {
-  flex: 1;
+  display: flex;
+  justify-content: space-around;
 }

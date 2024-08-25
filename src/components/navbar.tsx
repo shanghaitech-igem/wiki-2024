@@ -82,10 +82,17 @@ const NavBar: React.FC = () => {
     };
   }, []);
 
-  const { navBar } = styles;
+  const { navBar, brand, logo } = styles;
 
   return (
-    <>
+    <nav>
+      <Link to="/" className={brand}>
+        <img
+          className={logo}
+          src="https://static.igem.org/websites/common/2022/favicons/favicon.svg"
+        />
+        <span>Home</span>
+      </Link>
       {/* Responsive Activator */}
       <input id="bmenub" type="checkbox" className={styles.show} />
       <label
@@ -106,7 +113,7 @@ const NavBar: React.FC = () => {
           />
         ))}
       </div>
-    </>
+    </nav>
   );
 };
 
