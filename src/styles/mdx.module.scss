@@ -11,3 +11,9 @@ $nav-link-text-color: black;
   text-align: center;
 }
 
+img {
+  max-width: 60%;
+  height: auto;
+  display: block; /* Make it a block element */
+  margin: 0 auto; /* Center it */
+}

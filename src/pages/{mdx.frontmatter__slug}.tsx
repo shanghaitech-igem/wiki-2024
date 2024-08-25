@@ -55,10 +55,10 @@ export const query = graphql`
 
 export const Head: React.FC<MdxPageProps> = ({ data }) => {
   return (
-    <div>
+    <>
       <Seo title={data.mdx.frontmatter.title} />
       <Favicon pageFavicon={data.mdx.frontmatter.favicon} />
-    </div>
+    </>
   );
 };
 

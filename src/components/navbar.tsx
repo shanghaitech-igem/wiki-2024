@@ -60,7 +60,7 @@ const NavBar: React.FC = () => {
   const navItems = generateNavItems(files);
 
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const navBarRef = useRef<HTMLDivElement>(null);
+  const navMenuRef = useRef<HTMLDivElement>(null);
 
   const handleToggle = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -68,8 +68,8 @@ const NavBar: React.FC = () => {
 
   const handleClickOutside = (event: MouseEvent) => {
     if (
-      navBarRef.current &&
-      !navBarRef.current.contains(event.target as Node)
+      navMenuRef.current &&
+      !navMenuRef.current.contains(event.target as Node)
     ) {
       setOpenIndex(null);
     }
@@ -82,7 +82,7 @@ const NavBar: React.FC = () => {
     };
   }, []);
 
-  const { navBar, brand, logo } = styles;
+  const { navMenu, brand, logo } = styles;
 
   return (
     <nav>
@@ -93,6 +93,7 @@ const NavBar: React.FC = () => {
         />
         <span>Home</span>
       </Link>
+
       {/* Responsive Activator */}
       <input id="bmenub" type="checkbox" className={styles.show} />
       <label
@@ -103,7 +104,7 @@ const NavBar: React.FC = () => {
       </label>
       {/* Responsive Activator */}
 
-      <div className={navBar} ref={navBarRef}>
+      <div className={navMenu} ref={navMenuRef}>
         {navItems.map((item, index) => (
           <NavItem
             key={item.index}

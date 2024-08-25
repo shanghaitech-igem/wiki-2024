@@ -3,7 +3,7 @@
 $nav-link-text-color: black;
 $nav-submenu-min-width: 100px;
 
-.nav-bar {
+.nav-menu {
   @extend .menu;
   margin-right: 5rem;
 
@@ -81,4 +81,9 @@ $nav-submenu-min-width: 100px;
       }
     }
   }
+}
+
+.logo {
+  @extend .logo;
+  display: inline;
 }

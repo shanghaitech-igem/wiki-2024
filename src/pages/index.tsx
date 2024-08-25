@@ -19,10 +19,10 @@ const IndexPage: React.FC = () => {
 
 export const Head: React.FC = () => {
   return (
-    <div>
+    <>
       <Seo title="Home" />
       <Favicon />
-    </div>
+    </>
   );
 };
 
