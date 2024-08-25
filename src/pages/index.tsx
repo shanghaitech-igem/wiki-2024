@@ -5,12 +5,12 @@ import Favicon from "../components/favicon";
 import * as styles from "../styles/index.module.scss";
 
 const IndexPage: React.FC = () => {
-  const { slideFadeIn, heading } = styles;
+  const { heading } = styles;
 
   return (
     <Layout>
       <header className={heading}>Welcome!</header>
-      <h3 className={slideFadeIn} style={{ textAlign: "center" }}>
+      <h3 style={{ textAlign: "center" }}>
         Welcome to ShanghaiTech's 2024 iGEM wiki page!
       </h3>
     </Layout>
