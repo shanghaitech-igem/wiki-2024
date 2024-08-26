@@ -10,3 +10,53 @@ $nav-link-text-color: black;
   margin: 3rem 0;
   text-align: center;
 }
+
+.video-container {
+  display: flex;
+  justify-content: center; // Center horizontally
+  align-items: center; // Center vertically
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.video {
+  // Define variables
+  $video-width: 80%; // Width of the video
+  $aspect-ratio: calc(16 / 9); // Aspect ratio (16:9 in this case)
+
+  position: relative;
+  width: $video-width; // Adjust width as needed
+  padding-top: calc($video-width / $aspect-ratio);
+  overflow: hidden; // Hide any overflow
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none; // Remove border
+  }
+}
+
+.pdf-container {
+  display: flex;
+  justify-content: center; // Center horizontally
+  align-items: center; // Center vertically
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.pdf {
+  position: relative;
+  width: 100%; // Adjust width as needed
+  height: 70vh;
+  overflow: hidden; // Hide any overflow
+
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: none; // Remove border
+  }
+}
+
