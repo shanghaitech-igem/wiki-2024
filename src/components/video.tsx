@@ -12,7 +12,6 @@ const Video: React.FC<VideoProps> = ({ url, ...props }) => (
       <div className={styles.video}>
         <iframe
           src={url}
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
           {...props} // Spread any additional props onto the iframe
         />

@@ -19,6 +19,7 @@
     "@jpfulton/gatsby-remark-copy-button": "^1.0.10",
     "@mdx-js/react": "^2.3.0",
     "gatsby": "^5.13.7",
+    "gatsby-plugin-catch-links": "^5.13.1",
     "gatsby-plugin-mdx": "^5.13.1",
     "gatsby-plugin-purgecss": "^6.2.1",
     "gatsby-plugin-sass": "^6.13.1",
@@ -32,6 +33,7 @@
     "prismjs": "^1.29.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-h5-audio-player": "^3.9.3",
     "remark-gfm": "^3.0.1",
     "sass": "^1.77.6"
   },
