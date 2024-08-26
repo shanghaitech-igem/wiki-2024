@@ -1,6 +1,6 @@
 import React from "react";
 
-import * as styles from "../styles/mdx.module.scss";
+import * as styles from "../styles/video.module.scss";
 
 interface VideoProps {
   url: string;
