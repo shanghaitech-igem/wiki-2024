@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
             <h3>Links</h3>
             <ul>
               <li>
-                <a href="https://www.shanghaitech.edu.cn">Shanghaitech</a>
+                <a href="https://www.shanghaitech.edu.cn">ShanghaiTech</a>
               </li>
             </ul>
           </div>

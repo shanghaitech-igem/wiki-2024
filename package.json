@@ -16,14 +16,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@jpfulton/gatsby-remark-copy-button": "^1.0.10",
     "@mdx-js/react": "^2.3.0",
-    "katex": "^0.16.11",
-    "picnic": "^7.1.0",
-    "prismjs": "^1.29.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "remark-gfm": "^3.0.1",
-    "sass": "^1.77.6",
     "gatsby": "^5.13.7",
     "gatsby-plugin-mdx": "^5.13.1",
     "gatsby-plugin-purgecss": "^6.2.1",
@@ -32,7 +26,14 @@
     "gatsby-remark-katex": "^7.13.1",
     "gatsby-remark-prismjs": "^7.13.1",
     "gatsby-remark-smartypants": "^6.13.1",
-    "gatsby-source-filesystem": "^5.13.1"
+    "gatsby-source-filesystem": "^5.13.1",
+    "katex": "^0.16.11",
+    "picnic": "^7.1.0",
+    "prismjs": "^1.29.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "remark-gfm": "^3.0.1",
+    "sass": "^1.77.6"
   },
   "devDependencies": {
     "@types/node": "^20.11.19",

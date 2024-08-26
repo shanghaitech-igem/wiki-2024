@@ -29,13 +29,36 @@ const config = {
         extensions: [`.mdx`, `.md`],
         mdxOptions: {
           remarkPlugins: [
-            // Add GitHub Flavored Markdown (GFM) support
-            remarkGfm,
+            remarkGfm, // Add GitHub Flavored Markdown (GFM) support
           ],
         },
         gatsbyRemarkPlugins: [
-          `gatsby-remark-autolink-headers`,
-          `gatsby-remark-smartypants`,
+          `gatsby-remark-autolink-headers`, // Adds GitHub-style hover links to headers in your markdown files when they’re rendered.
+          `gatsby-remark-smartypants`, // Replaces “dumb” punctuation marks with “smart” punctuation marks using the retext-smartypants plugin.
+          {
+            resolve: `@jpfulton/gatsby-remark-copy-button`,
+            options: {
+              // Provide a text label for the copy button.
+              // Default: null
+              buttonText: null,
+              // Provide a complete SVG tag string to replace the default
+              // copy icon. Be sure to include a class of "copy-icon" on your custom
+              // SVG tag when using this option.
+              copySvg: null,
+              // Provide a complete SVG tag string to replace the default
+              // success icon.  Be sure to include a class of "success-icon" on your custom
+              // SVG tag when using this option.
+              successSvg: null,
+              // Provide a custom container class for the <div> tag that contains
+              // the copy button to apply custom styling.
+              // Default: "gatsby-remark-copy-button-container"
+              customButtonContainerClass: null,
+              // Provide a custom button class for the copy button to apply
+              // custom styling.
+              // Default: "gatsby-remark-copy-button"
+              customButtonClass: null,
+            },
+          },
           {
             resolve: `gatsby-remark-prismjs`,
             options: {
@@ -66,7 +89,7 @@ const config = {
               // Defaults to false.
               // If you wish to only show line numbers on certain code blocks,
               // leave false and use the {numberLines: true} syntax below
-              showLineNumbers: false,
+              showLineNumbers: true,
               // If setting this to true, the parser won't handle and highlight inline
               // code used in markdown i.e. single backtick code like `this`.
               noInlineHighlight: false,
@@ -93,7 +116,7 @@ const config = {
               prompt: {
                 user: "root",
                 host: "localhost",
-                global: false,
+                global: true,
               },
               // By default the HTML entities <>&'" are escaped.
               // Add additional HTML escapes by providing a mapping
@@ -107,7 +130,7 @@ const config = {
               printRejected: true, // Print removed selectors and processed file names
               develop: false, // Enable while using `gatsby develop`
               // tailwind: true, // Enable tailwindcss support
-              ignore: ['navbar.module.scss', 'prism.min.css'], // Ignore files/folders
+              ignore: ["navbar.module.scss", "prism.min.css"], // Ignore files/folders
               // purgeOnly : ['components/', '/main.css', 'bootstrap/'], // Purge only these files/folders
               purgeCSSOptions: {
                 // https://purgecss.com/configuration.html#options

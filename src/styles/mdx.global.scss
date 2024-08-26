@@ -1,0 +1,28 @@
+$max-width: 1000px;
+$font-family: sans-serif;
+$site-title-color: gray;
+$nav-link-text-color: black;
+
+/* Style the copy button container */
+.gatsby-remark-copy-button-container {
+  position: absolute;
+  top: 10px; /* Adjust this value to position the button vertically */
+  right: 10px; /* Adjust this value to position the button horizontally */
+}
+
+/* Style the copy button */
+.gatsby-remark-copy-button {
+  background: #007acc; /* Button background color */
+  border: none; /* Removes default button border */
+  padding: 5px; /* Adds padding inside the button */
+  border-radius: 4px; /* Rounds the button corners */
+  display: flex; /* Ensures the icons are aligned properly */
+  align-items: center; /* Centers the icons vertically */
+}
+
+img {
+  max-width: 60%;
+  height: auto;
+  display: block; /* Make it a block element */
+  margin: 0 auto; /* Center it */
+}
