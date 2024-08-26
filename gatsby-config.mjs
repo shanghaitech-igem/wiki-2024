@@ -16,6 +16,7 @@ const config = {
   graphqlTypegen: true,
   plugins: [
     `gatsby-plugin-sass`,
+    `gatsby-plugin-catch-links`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
