@@ -3,10 +3,12 @@ $font-family: sans-serif;
 $site-title-color: gray;
 $nav-link-text-color: black;
 
-.heading {
-  font-size: 3rem;
-  color: $site-title-color;
-  font-weight: 700;
-  margin: 3rem 0;
-  text-align: center;
+main {
+  .heading {
+    font-size: 3rem;
+    color: $site-title-color;
+    font-weight: 700;
+    margin: 3rem 0;
+    text-align: center;
+  }
 }
