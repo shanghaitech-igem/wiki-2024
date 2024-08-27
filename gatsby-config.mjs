@@ -53,11 +53,11 @@ const config = {
               // Provide a custom container class for the <div> tag that contains
               // the copy button to apply custom styling.
               // Default: "gatsby-remark-copy-button-container"
-              customButtonContainerClass: null,
+              customButtonContainerClass: "copy-button-container",
               // Provide a custom button class for the copy button to apply
               // custom styling.
               // Default: "gatsby-remark-copy-button"
-              customButtonClass: null,
+              customButtonClass: "copy-button",
             },
           },
           {
@@ -129,7 +129,7 @@ const config = {
             resolve: `gatsby-plugin-purgecss`,
             options: {
               printRejected: true, // Print removed selectors and processed file names
-              develop: true, // Enable while using `gatsby develop`
+              develop: false, // Enable while using `gatsby develop`
               // tailwind: true, // Enable tailwindcss support
               ignore: [], // Ignore files/folders
               purgeOnly: ["navbar.module.scss"], // Purge only these files/folders
