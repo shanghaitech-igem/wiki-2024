@@ -15,6 +15,7 @@ const Audio: React.FC<AudioProps> = ({ url, ...props }) => (
       <AudioPlayer
         src={url}
         // other props here
+        {...props}
       />
     </div>
   </div>
