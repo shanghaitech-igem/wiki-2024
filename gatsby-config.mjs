@@ -132,10 +132,26 @@ const config = {
               develop: true, // Enable while using `gatsby develop`
               // tailwind: true, // Enable tailwindcss support
               ignore: [], // Ignore files/folders
-              purgeOnly : [], // Purge only these files/folders
+              purgeOnly: ["navbar.module.scss"], // Purge only these files/folders
               purgeCSSOptions: {
                 // https://purgecss.com/configuration.html#options
-                safelist: [], // Don't remove this selector
+                safelist: [
+                  /^nav/,
+                  "sub-menu",
+                  "sub-menu-item",
+                  "brand",
+                  "logo",
+                  "pseudo",
+                  "button",
+                  "show",
+                  "blockquote",
+                  "table",
+                  "thead",
+                  "tr",
+                  "th",
+                  "td",
+                  "tbody",
+                ], // Don't remove this selector
               },
               // More options defined here https://purgecss.com/configuration.html#options
             },
