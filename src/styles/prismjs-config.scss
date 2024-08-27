@@ -43,6 +43,13 @@ pre[class*="language-"] {
   }
 }
 
+pre[class*="language-"]::selection,
+pre[class*="language-"] ::selection,
+code[class*="language-"]::selection,
+code[class*="language-"] ::selection {
+  background: #C6C6C6;
+}
+
 .command-line-prompt {
   > span:before {
     color: $prompt-color;
