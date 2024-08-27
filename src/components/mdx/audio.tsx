@@ -2,7 +2,7 @@ import React from "react";
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/src/styles.scss';
 
-import * as styles from "../styles/audio.module.scss";
+import * as styles from "../../styles/audio.module.scss";
 
 interface AudioProps {
   url: string;

@@ -1,6 +1,6 @@
 import React from "react";
 
-import * as styles from "../styles/pdf.module.scss";
+import * as styles from "../../styles/pdf.module.scss";
 
 interface PDFProps {
   url: string;

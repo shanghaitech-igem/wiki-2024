@@ -2,7 +2,7 @@ import React from "react";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 
 import "react-photo-view/dist/react-photo-view.css";
-import "../styles/image.global.scss";
+import "../../styles/image.global.scss";
 
 interface ImageProps {
   url: string;
