@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link, useStaticQuery, graphql } from "gatsby";
+import { Link } from "gatsby";
 import * as styles from "../styles/navbar.module.scss";
-import { generateNavItems, NavItemType } from "../utils/generate-nav-Items";
+import { generateNavItems, NavItemType } from "../utils/generate-nav-items";
 
 interface NavItemProps {
   item: NavItemType;
@@ -43,20 +43,8 @@ const NavItem: React.FC<NavItemProps> = ({ item, isOpen, onToggle }) => {
 };
 
 const NavBar: React.FC = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      allFile(sort: { relativePath: ASC }) {
-        edges {
-          node {
-            relativePath
-          }
-        }
-      }
-    }
-  `);
-
-  const files = data.allFile.edges.map((edge: any) => edge.node.relativePath);
-  const navItems = generateNavItems(files);
+  const exclude = ["MDX-test", "MD-test"];
+  const navItems = generateNavItems(exclude);
 
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const navMenuRef = useRef<HTMLDivElement>(null);
