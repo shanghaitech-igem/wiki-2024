@@ -14,7 +14,7 @@ import "../styles/katex.scss";
 import "../styles/mdx.global.scss";
 import * as styles from "../styles/mdx.module.scss";
 
-import handleCopyTex from "../utils/copy-tex";
+import handleCopyTex from "../plugins/copy-tex";
 
 interface MdxPageProps {
   data: {
