@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "gatsby";
 import * as styles from "../styles/navbar.module.scss";
-import { generateNavItems, NavItemType } from "../utils/generate-nav-items";
+import { generateNavItems, NavItemType } from "../utils/generate-nav-item";
 
 interface NavItemProps {
   item: NavItemType;
