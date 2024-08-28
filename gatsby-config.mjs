@@ -132,7 +132,7 @@ const config = {
               develop: false, // Enable while using `gatsby develop`
               // tailwind: true, // Enable tailwindcss support
               ignore: [], // Ignore files/folders
-              purgeOnly: ["navbar.module.scss"], // Purge only these files/folders
+              purgeOnly: ["navbar.module.scss", "mdx.global.scss"], // Purge only these files/folders
               purgeCSSOptions: {
                 // https://purgecss.com/configuration.html#options
                 safelist: [
