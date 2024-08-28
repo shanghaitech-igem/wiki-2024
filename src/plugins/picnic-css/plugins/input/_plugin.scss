@@ -1,8 +1,7 @@
 // Input
 // Handle the writing of text and some other user-generated content
 
-@import 'class';
-
+@import "class";
 
 // Browser treats unknow type as "text", so we'll do the same
 input,
@@ -15,12 +14,11 @@ textarea {
   height: auto;
 }
 
-[type=file],
-[type=color] {
+[type="file"],
+[type="color"] {
   cursor: pointer;
 }
 
-[type=file] {
+[type="file"] {
   height: auto;
 }
-

@@ -1,6 +1,5 @@
 // Inherit from the class
-@import 'class';
-
+@import "class";
 
 // For the toggle buttons
 :checked + .toggle,
@@ -23,6 +22,6 @@
 // Implement the abstract class for real elements
 button,
 .button,
-[type=submit] {
+[type="submit"] {
   @extend %button;
 }

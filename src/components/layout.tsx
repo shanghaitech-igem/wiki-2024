@@ -1,18 +1,18 @@
 import React from "react";
-import * as styles from "../styles/layout.module.scss";
 import NavBar from "./navbar";
 import Footer from "./footer";
+
+import * as styles from "../styles/layout.module.scss";
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-  const { container, layout } = styles;
   return (
-    <div className={layout}>
+    <div className={styles.layout}>
       <NavBar />
-      <main className={container}>{children}</main>
+      <main className={styles.container}>{children}</main>
       <Footer />
     </div>
   );

@@ -5,11 +5,9 @@ import Favicon from "../components/favicon";
 import * as styles from "../styles/index.module.scss";
 
 const IndexPage: React.FC = () => {
-  const { heading } = styles;
-
   return (
     <Layout>
-      <header className={heading}>Welcome!</header>
+      <header className={styles.heading}>Welcome!</header>
       <h3 style={{ textAlign: "center" }}>
         Welcome to ShanghaiTech's 2024 iGEM wiki page!
       </h3>

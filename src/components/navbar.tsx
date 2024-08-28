@@ -10,22 +10,21 @@ interface NavItemProps {
 }
 
 const NavItem: React.FC<NavItemProps> = ({ item, isOpen, onToggle }) => {
-  const { navLink, navDropdownBtn, subMenu, subMenuItem, navDropdown } = styles;
   return (
     <>
       {item.children.length !== 0 ? (
         <>
-          <div className={navDropdown}>
-            <a key={item.index} className={navDropdownBtn} onClick={onToggle}>
+          <div className={styles.navDropdown}>
+            <a key={item.index} className={styles.navDropdownBtn} onClick={onToggle}>
               {item.name}
             </a>
             {isOpen && (
-              <div className={subMenu}>
+              <div className={styles.subMenu}>
                 {item.children.map((child) => (
                   <Link
                     key={child.index}
                     to={`/${child.slug}`}
-                    className={subMenuItem}
+                    className={styles.subMenuItem}
                   >
                     {child.name}
                   </Link>
@@ -35,7 +34,7 @@ const NavItem: React.FC<NavItemProps> = ({ item, isOpen, onToggle }) => {
           </div>
         </>
       ) : (
-        <Link to={`/${item.slug}`} className={navLink}>
+        <Link to={`/${item.slug}`} className={styles.navLink}>
           {item.name}
         </Link>
       )}
@@ -82,13 +81,11 @@ const NavBar: React.FC = () => {
     };
   }, []);
 
-  const { navMenu, brand, logo } = styles;
-
   return (
     <nav>
-      <Link to="/" className={brand}>
+      <Link to="/" className={styles.brand}>
         <img
-          className={logo}
+          className={styles.logo}
           src="https://static.igem.org/websites/common/2022/favicons/favicon.svg"
         />
         <span>Home</span>
@@ -104,7 +101,7 @@ const NavBar: React.FC = () => {
       </label>
       {/* Responsive Activator */}
 
-      <div className={navMenu} ref={navMenuRef}>
+      <div className={styles.navMenu} ref={navMenuRef}>
         {navItems.map((item, index) => (
           <NavItem
             key={item.index}

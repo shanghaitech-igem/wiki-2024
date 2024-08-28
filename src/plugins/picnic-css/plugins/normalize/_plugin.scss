@@ -1,7 +1,6 @@
 $picnic-normalize-display: true !default;
 $picnic-normalize-ie: true !default;
 
-
 /**
  * 1. Set default font family to sans-serif.
  * 2. Prevent iOS text size adjust after orientation change, without disabling
@@ -84,7 +83,6 @@ audio:not([controls]) {
     display: none;
   }
 }
-
 
 /* Links
    ========================================================================== */
@@ -310,7 +308,9 @@ button,
 html input[type="button"], /* 1 */
 input[type="reset"],
 input[type="submit"] {
-  -webkit-appearance: button; /* 2 */
+  appearance: button; /* Standard property */
+  -webkit-appearance: button; /* Vendor prefix for older WebKit browsers */
+  cursor: pointer; /* Cursor style */
   cursor: pointer; /* 3 */
 }
 

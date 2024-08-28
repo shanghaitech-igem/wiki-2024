@@ -9,9 +9,9 @@ import Layout from "../components/layout";
 import Seo from "../components/seo";
 import Favicon from "../components/favicon";
 
-import "../styles/prismjs-config.scss";
-import "../styles/katex.scss";
-import "../styles/mdx.global.scss";
+import "../styles/global/prismjs.scss";
+import "../plugins/katex-css/katex.scss";
+import "../styles/global/mdx.scss";
 import * as styles from "../styles/mdx.module.scss";
 
 import handleCopyTex from "../plugins/copy-tex";
@@ -46,11 +46,10 @@ const MDXPage: React.FC<MdxPageProps> = ({ data, children }) => {
   }, []);
 
   const { frontmatter } = data.mdx;
-  const { heading } = styles;
 
   return (
     <Layout>
-      <header className={heading}>{frontmatter.title}</header>
+      <header className={styles.heading}>{frontmatter.title}</header>
       {children}
     </Layout>
   );

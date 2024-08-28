@@ -1,4 +1,8 @@
-@import "../plugins/picnic-css/picnic.scss";
+@use "sass:math";
+@import "/src/plugins/picnic-css/themes/default/theme";
+@import "/src/plugins/picnic-css/plugins/label/plugin";
+@import "/src/plugins/picnic-css/plugins/button/plugin";
+@import "/src/plugins/picnic-css/plugins/nav/plugin";
 
 $nav-link-text-color: black;
 $nav-submenu-min-width: 100px;
@@ -19,6 +23,10 @@ nav {
     .nav-dropdown {
       position: relative;
       display: inline-block;
+
+      @media all and (width <= $picnic-breakpoint) {
+        display: block;
+      }
 
       .nav-dropdown-btn {
         @extend .nav-link;
@@ -82,6 +90,10 @@ nav {
         }
       }
     }
+  }
+
+  input {
+    display: none;
   }
 
   .logo {

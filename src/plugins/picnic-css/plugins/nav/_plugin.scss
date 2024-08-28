@@ -1,5 +1,5 @@
 // Navigation bar
-@import 'class';
+@import "class";
 
 nav {
   @extend %nav;
@@ -11,7 +11,6 @@ nav {
   }
 
   @media all and (max-width: $picnic-breakpoint) {
-
     nav {
       .burger {
         display: inline-block;
@@ -28,10 +27,9 @@ nav {
         min-height: 100%;
         top: 0;
 
-        @if $picnic-nav-open-left{
+        @if $picnic-nav-open-left {
           left: 0;
-        }
-        @else{
+        } @else {
           right: 0;
         }
 
@@ -54,8 +52,6 @@ nav {
         transition: all $picnic-nav-timing ease;
       }
 
-
-
       // Show animation
       .show ~ .menu {
         width: 70%;
@@ -75,22 +71,28 @@ nav {
       }
 
       .show:checked ~ .menu > *:nth-child(1) {
-        transition: all $picnic-nav-timing cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+        transition: all $picnic-nav-timing cubic-bezier(0.645, 0.045, 0.355, 1)
+          0s;
       }
       .show:checked ~ .menu > *:nth-child(2) {
-        transition: all $picnic-nav-timing cubic-bezier(0.645, 0.045, 0.355, 1) $picnic-nav-timing * 0.2;
+        transition: all $picnic-nav-timing cubic-bezier(0.645, 0.045, 0.355, 1)
+          $picnic-nav-timing * 0.2;
       }
       .show:checked ~ .menu > *:nth-child(3) {
-        transition: all $picnic-nav-timing cubic-bezier(0.645, 0.045, 0.355, 1) $picnic-nav-timing * 0.4;
+        transition: all $picnic-nav-timing cubic-bezier(0.645, 0.045, 0.355, 1)
+          $picnic-nav-timing * 0.4;
       }
       .show:checked ~ .menu > *:nth-child(4) {
-        transition: all $picnic-nav-timing cubic-bezier(0.645, 0.045, 0.355, 1) $picnic-nav-timing * 0.6;
+        transition: all $picnic-nav-timing cubic-bezier(0.645, 0.045, 0.355, 1)
+          $picnic-nav-timing * 0.6;
       }
       .show:checked ~ .menu > *:nth-child(5) {
-        transition: all $picnic-nav-timing cubic-bezier(0.645, 0.045, 0.355, 1) $picnic-nav-timing * 0.8;
+        transition: all $picnic-nav-timing cubic-bezier(0.645, 0.045, 0.355, 1)
+          $picnic-nav-timing * 0.8;
       }
       .show:checked ~ .menu > *:nth-child(6) {
-        transition: all $picnic-nav-timing cubic-bezier(0.645, 0.045, 0.355, 1) $picnic-nav-timing * 1;
+        transition: all $picnic-nav-timing cubic-bezier(0.645, 0.045, 0.355, 1)
+          $picnic-nav-timing * 1;
       }
 
       .show:checked ~ .menu {
@@ -100,11 +102,10 @@ nav {
 
         & > * {
           transform: translateX(0);
-          transition: all $picnic-nav-timing ease-in-out $picnic-nav-timing * 1.2;
+          transition: all $picnic-nav-timing ease-in-out $picnic-nav-timing *
+            1.2;
         }
       }
-
-
 
       .burger ~ .menu > * {
         display: block;
