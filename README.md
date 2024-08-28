@@ -49,9 +49,7 @@
     npm install
     ```
 
-4. Start the development server
-   If you choose to install `gatsby-cli` globally by `npm install -g gatsby-cli` 
-   you can run the following command:
+4. Start the development server if you choose to install `gatsby-cli` globally by `npm install -g gatsby-cli` you can run the following command:
     ```bash
     gatsby develop
     ```
@@ -60,7 +58,7 @@
     npm run develop
     ```
 
-  5. The site is now running at `http://localhost:8000`
+5. The site is now running at `http://localhost:8000` if nothing is running on port 8000 already, otherwise, it will be running on the next available port.
 
 
 ## What's Next
