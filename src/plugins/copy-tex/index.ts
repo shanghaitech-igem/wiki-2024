@@ -1,3 +1,3 @@
-import handleCopyTex from "./copy-tex";
+import handleCopyTex from "./src/copy-tex";
 
 export default handleCopyTex;
