@@ -37,6 +37,12 @@ export interface PhotoViewProps {
   triggers?: ('onClick' | 'onDoubleClick')[];
 }
 
+// Define the type of the listener object correctly
+interface Listener {
+  onClick?: (event: React.MouseEvent) => void; // Replace 'any' with a specific event type
+  onDoubleClick?: (event: React.MouseEvent) => void; // Replace 'any' with a specific event type
+}
+
 const PhotoView: React.FC<PhotoViewProps> = ({
   src,
   render,
@@ -78,12 +84,12 @@ const PhotoView: React.FC<PhotoViewProps> = ({
   });
 
   const eventListeners = useMemo(() => {
-    const listener = {};
+    const listener: Listener = {};
     triggers.forEach((eventName) => {
       listener[eventName] = fn.show.bind(null, eventName);
     });
     return listener;
-  }, []);
+  }, [triggers, fn]);
 
   useEffect(() => {
     photoContext.update({
