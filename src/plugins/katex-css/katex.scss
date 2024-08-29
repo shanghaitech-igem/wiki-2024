@@ -1,10 +1,6 @@
 /* stylelint-disable font-family-no-missing-generic-family-keyword */
 @import "./fonts.scss";
 
-$use-ttf: false;
-$use-woff: false;
-$use-woff2: true;
-
 // The mu unit is defined as 1/18 em
 $mu: calc(1em / 18);
 
