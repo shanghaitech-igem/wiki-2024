@@ -24,7 +24,6 @@ import {
   getMainLayoutClassName,
   getDisplayTimeBySeconds,
 } from "./src/utils";
-import { FALSE } from "sass";
 
 type CustomUIModule = RHAP_UI | ReactElement;
 type CustomUIModules = Array<CustomUIModule>;
@@ -157,7 +156,7 @@ class H5AudioPlayer extends Component<PlayerProps> {
     autoPlayAfterSrcChange: true,
     listenInterval: 1000,
     progressJumpStep: 5000,
-    progressJumpSteps: {},
+    progressJumpSteps: {}, // define when removing progressJumpStep
     volumeJumpStep: 0.1,
     loop: false,
     muted: false,
@@ -206,15 +205,12 @@ class H5AudioPlayer extends Component<PlayerProps> {
   };
 
   audio = createRef<HTMLAudioElement>();
+
   progressBar = createRef<HTMLDivElement>();
+
   container = createRef<HTMLDivElement>();
 
-  lastVolume: number; // Declare without initialization
-
-  constructor(props: PlayerProps) {
-    super(props);
-    this.lastVolume = props.volume !== undefined ? props.volume : 1; // Provide a default value
-  }
+  lastVolume: number = this.props.volume; // To store the volume before clicking mute button
 
   listenTracker?: number; // Determine whether onListen event should be called continuously
 
@@ -225,7 +221,6 @@ class H5AudioPlayer extends Component<PlayerProps> {
   togglePlay = (e: React.SyntheticEvent): void => {
     e.stopPropagation();
     const audio = this.audio.current;
-    if (!audio) return;
     if ((audio.paused || audio.ended) && audio.src) {
       this.playAudioPromise();
     } else if (!audio.paused) {
@@ -239,13 +234,10 @@ class H5AudioPlayer extends Component<PlayerProps> {
    * Reference: https://developers.google.com/web/updates/2017/06/play-request-was-interrupted
    */
   playAudioPromise = (): void => {
-    const audio = this.audio.current;
-    if (!audio) return;
-
-    if (audio.error) {
-      audio.load();
+    if (this.audio.current.error) {
+      this.audio.current.load();
     }
-    const playPromise = audio.play();
+    const playPromise = this.audio.current.play();
     // playPromise is null in IE 11
     if (playPromise) {
       playPromise.then(null).catch((err) => {
@@ -289,7 +281,6 @@ class H5AudioPlayer extends Component<PlayerProps> {
 
   handleClickVolumeButton = (): void => {
     const audio = this.audio.current;
-    if (!audio) return;
     if (audio.volume > 0) {
       this.lastVolume = audio.volume;
       audio.volume = 0;
@@ -303,27 +294,24 @@ class H5AudioPlayer extends Component<PlayerProps> {
   };
 
   handleClickLoopButton = (): void => {
-    const audio = this.audio.current;
-    if (!audio) return;
-    audio.loop = !audio.loop;
+    this.audio.current.loop = !this.audio.current.loop;
     this.forceUpdate();
   };
 
   handleClickRewind = (): void => {
     const { progressJumpSteps, progressJumpStep } = this.props;
-    const jumpStep = progressJumpSteps?.backward ?? progressJumpStep;
-    this.setJumpTime(-(jumpStep ?? 0));
+    const jumpStep = progressJumpSteps.backward || progressJumpStep;
+    this.setJumpTime(-jumpStep);
   };
 
   handleClickForward = (): void => {
     const { progressJumpSteps, progressJumpStep } = this.props;
-    const jumpStep = progressJumpSteps?.forward ?? progressJumpStep;
-    this.setJumpTime(jumpStep ?? 0);
+    const jumpStep = progressJumpSteps.forward || progressJumpStep;
+    this.setJumpTime(jumpStep);
   };
 
   setJumpTime = (time: number): void => {
     const audio = this.audio.current;
-    if (!audio) return;
     const { duration, currentTime: prevTime } = audio;
     if (
       audio.readyState === audio.HAVE_NOTHING ||
@@ -352,13 +340,11 @@ class H5AudioPlayer extends Component<PlayerProps> {
     }
   };
 
-  setJumpVolume = (volume: number | undefined): void => {
-    const audio = this.audio.current;
-    if (!audio) return;
-    let newVolume = audio.volume + (volume ?? 0); // Provide a default value for volume
+  setJumpVolume = (volume: number): void => {
+    let newVolume = this.audio.current.volume + volume;
     if (newVolume < 0) newVolume = 0;
     else if (newVolume > 1) newVolume = 1;
-    audio.volume = newVolume;
+    this.audio.current.volume = newVolume;
   };
 
   handleKeyDown = (e: React.KeyboardEvent): void => {
@@ -385,7 +371,7 @@ class H5AudioPlayer extends Component<PlayerProps> {
           break;
         case "ArrowDown":
           e.preventDefault(); // Prevent scrolling page by pressing arrow key
-          this.setJumpVolume(-(this.props.volumeJumpStep ?? 0));
+          this.setJumpVolume(-this.props.volumeJumpStep);
           break;
         case "l":
           this.handleClickLoopButton();
@@ -400,6 +386,7 @@ class H5AudioPlayer extends Component<PlayerProps> {
   renderUIModules = (modules: CustomUIModules): Array<ReactElement> => {
     return modules.map((comp, i) => this.renderUIModule(comp, i));
   };
+
   renderUIModule = (comp: CustomUIModule, key: Key): ReactElement => {
     const {
       defaultCurrentTime,
@@ -408,7 +395,7 @@ class H5AudioPlayer extends Component<PlayerProps> {
       showFilledProgress,
       showFilledVolume,
       defaultDuration,
-      customIcons = {}, // Default to an empty object
+      customIcons,
       showSkipControls,
       onClickPrevious,
       onClickNext,
@@ -421,7 +408,7 @@ class H5AudioPlayer extends Component<PlayerProps> {
       volume: volumeProp,
       loop: loopProp,
       mse,
-      i18nAriaLabels = {}, // Default to an empty object
+      i18nAriaLabels,
     } = this.props;
 
     switch (comp) {
@@ -433,10 +420,10 @@ class H5AudioPlayer extends Component<PlayerProps> {
             className="rhap_time rhap_current-time"
           >
             <CurrentTime
-              audio={this.audio.current ?? undefined}
+              audio={this.audio.current}
               isLeftTime={false}
               defaultCurrentTime={defaultCurrentTime}
-              timeFormat={timeFormat ?? "mm:ss"}
+              timeFormat={timeFormat}
             />
           </div>
         );
@@ -448,10 +435,10 @@ class H5AudioPlayer extends Component<PlayerProps> {
             className="rhap_time rhap_current-left-time"
           >
             <CurrentTime
-              audio={this.audio.current ?? undefined}
+              audio={this.audio.current}
               isLeftTime={true}
               defaultCurrentTime={defaultCurrentTime}
-              timeFormat={timeFormat ?? "mm:ss"}
+              timeFormat={timeFormat}
             />
           </div>
         );
@@ -460,14 +447,14 @@ class H5AudioPlayer extends Component<PlayerProps> {
           <ProgressBar
             key={key}
             ref={this.progressBar}
-            audio={this.audio.current || new Audio()} // Fallback to a new Audio object
-            progressUpdateInterval={progressUpdateInterval ?? 1000} // Default value
-            showDownloadProgress={showDownloadProgress ?? false} // Default to false
-            showFilledProgress={showFilledProgress ?? false} // Default to false
+            audio={this.audio.current}
+            progressUpdateInterval={progressUpdateInterval}
+            showDownloadProgress={showDownloadProgress}
+            showFilledProgress={showFilledProgress}
             onSeek={mse && mse.onSeek}
             onChangeCurrentTimeError={onChangeCurrentTimeError}
             srcDuration={mse && mse.srcDuration}
-            i18nProgressBar={i18nAriaLabels.progressControl ?? "Default Label"} // Default label
+            i18nProgressBar={i18nAriaLabels.progressControl}
           />
         );
       case RHAP_UI.DURATION:
@@ -477,13 +464,13 @@ class H5AudioPlayer extends Component<PlayerProps> {
               getDisplayTimeBySeconds(
                 mse.srcDuration,
                 mse.srcDuration,
-                this.props.timeFormat ?? "mm:ss"
+                this.props.timeFormat
               )
             ) : (
               <Duration
-                audio={this.audio.current ?? undefined}
+                audio={this.audio.current}
                 defaultDuration={defaultDuration}
-                timeFormat={timeFormat ?? "mm:ss"}
+                timeFormat={timeFormat}
               />
             )}
           </div>
@@ -491,7 +478,7 @@ class H5AudioPlayer extends Component<PlayerProps> {
       case RHAP_UI.ADDITIONAL_CONTROLS:
         return (
           <div key={key} className="rhap_additional-controls">
-            {this.renderUIModules(customAdditionalControls ?? [])}
+            {this.renderUIModules(customAdditionalControls)}
           </div>
         );
       case RHAP_UI.MAIN_CONTROLS: {
@@ -514,7 +501,7 @@ class H5AudioPlayer extends Component<PlayerProps> {
           <div key={key} className="rhap_main-controls">
             {showSkipControls && (
               <button
-                aria-label={i18nAriaLabels.previous ?? "Previous"}
+                aria-label={i18nAriaLabels.previous}
                 className="rhap_button-clear rhap_main-controls-button rhap_skip-button"
                 type="button"
                 onClick={onClickPrevious}
@@ -528,7 +515,7 @@ class H5AudioPlayer extends Component<PlayerProps> {
             )}
             {showJumpControls && (
               <button
-                aria-label={i18nAriaLabels.rewind ?? "Rewind"}
+                aria-label={i18nAriaLabels.rewind}
                 className="rhap_button-clear rhap_main-controls-button rhap_rewind-button"
                 type="button"
                 onClick={this.handleClickRewind}
@@ -542,9 +529,7 @@ class H5AudioPlayer extends Component<PlayerProps> {
             )}
             <button
               aria-label={
-                isPlaying
-                  ? i18nAriaLabels.pause ?? "Pause"
-                  : i18nAriaLabels.play ?? "Play"
+                isPlaying ? i18nAriaLabels.pause : i18nAriaLabels.play
               }
               className="rhap_button-clear rhap_main-controls-button rhap_play-pause-button"
               type="button"
@@ -554,7 +539,7 @@ class H5AudioPlayer extends Component<PlayerProps> {
             </button>
             {showJumpControls && (
               <button
-                aria-label={i18nAriaLabels.forward ?? "Forward"}
+                aria-label={i18nAriaLabels.forward}
                 className="rhap_button-clear rhap_main-controls-button rhap_forward-button"
                 type="button"
                 onClick={this.handleClickForward}
@@ -568,7 +553,7 @@ class H5AudioPlayer extends Component<PlayerProps> {
             )}
             {showSkipControls && (
               <button
-                aria-label={i18nAriaLabels.next ?? "Next"}
+                aria-label={i18nAriaLabels.next}
                 className="rhap_button-clear rhap_main-controls-button rhap_skip-button"
                 type="button"
                 onClick={onClickNext}
@@ -586,7 +571,7 @@ class H5AudioPlayer extends Component<PlayerProps> {
       case RHAP_UI.VOLUME_CONTROLS:
         return (
           <div key={key} className="rhap_volume-controls">
-            {this.renderUIModules(customVolumeControls ?? [])}
+            {this.renderUIModules(customVolumeControls)}
           </div>
         );
       case RHAP_UI.LOOP: {
@@ -609,11 +594,7 @@ class H5AudioPlayer extends Component<PlayerProps> {
         return (
           <button
             key={key}
-            aria-label={
-              loop
-                ? i18nAriaLabels.loop ?? "Loop"
-                : i18nAriaLabels.loopOff ?? "Loop Off"
-            }
+            aria-label={loop ? i18nAriaLabels.loop : i18nAriaLabels.loopOff}
             className="rhap_button-clear rhap_repeat-button"
             type="button"
             onClick={this.handleClickLoopButton}
@@ -633,7 +614,7 @@ class H5AudioPlayer extends Component<PlayerProps> {
             <Icon icon="mdi:volume-high" />
           );
         } else {
-          volumeIcon = customIcons.volumeMute ? (
+          volumeIcon = customIcons.volume ? (
             customIcons.volumeMute
           ) : (
             <Icon icon="mdi:volume-mute" />
@@ -643,9 +624,7 @@ class H5AudioPlayer extends Component<PlayerProps> {
           <div key={key} className="rhap_volume-container">
             <button
               aria-label={
-                volume
-                  ? i18nAriaLabels.volume ?? "Volume"
-                  : i18nAriaLabels.volumeMute ?? "Mute"
+                volume ? i18nAriaLabels.volume : i18nAriaLabels.volumeMute
               }
               onClick={this.handleClickVolumeButton}
               type="button"
@@ -653,23 +632,19 @@ class H5AudioPlayer extends Component<PlayerProps> {
             >
               {volumeIcon}
             </button>
-            {this.audio.current && (
-              <VolumeBar
-                audio={this.audio.current || new Audio()} // Fallback to a new Audio object
-                volume={volume ?? 1} // Default to 1 if undefined
-                onMuteChange={this.handleMuteChange}
-                showFilledVolume={showFilledVolume ?? false} // Default to false
-                i18nVolumeControl={
-                  i18nAriaLabels.volumeControl ?? "Volume Control"
-                } // Default label
-              />
-            )}
+            <VolumeBar
+              audio={this.audio.current}
+              volume={volume}
+              onMuteChange={this.handleMuteChange}
+              showFilledVolume={showFilledVolume}
+              i18nVolumeControl={i18nAriaLabels.volumeControl}
+            />
           </div>
         );
       }
       default:
         if (!isValidElement(comp)) {
-          return <></>;
+          return null;
         }
         return comp.key ? comp : cloneElement(comp as ReactElement, { key });
     }
@@ -680,7 +655,6 @@ class H5AudioPlayer extends Component<PlayerProps> {
     this.forceUpdate();
     // audio player object
     const audio = this.audio.current;
-    if (!audio) return;
 
     if (this.props.muted) {
       audio.volume = 0;
@@ -778,7 +752,7 @@ class H5AudioPlayer extends Component<PlayerProps> {
       "timeupdate",
       throttle((e) => {
         this.props.onListen && this.props.onListen(e);
-      }, this.props.listenInterval || 0) // Provide a default value of 0
+      }, this.props.listenInterval)
     );
 
     audio.addEventListener("volumechange", (e) => {
@@ -815,8 +789,8 @@ class H5AudioPlayer extends Component<PlayerProps> {
       header,
       footer,
       layout,
-      customProgressBarSection = [], // Provide a default value of an empty array
-      customControlsSection = [], // Provide a default value of an empty array
+      customProgressBarSection,
+      customControlsSection,
       children,
       style,
       i18nAriaLabels,
@@ -834,7 +808,7 @@ class H5AudioPlayer extends Component<PlayerProps> {
         role="group"
         /* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */
         tabIndex={0}
-        aria-label={i18nAriaLabels?.player ?? ""}
+        aria-label={i18nAriaLabels.player}
         className={`rhap_container ${loopClass} ${isPlayingClass} ${className}`}
         onKeyDown={this.handleKeyDown}
         ref={this.container}
@@ -855,9 +829,7 @@ class H5AudioPlayer extends Component<PlayerProps> {
           {children}
         </audio>
         {header && <div className="rhap_header">{header}</div>}
-        <div
-          className={`rhap_main ${getMainLayoutClassName(layout ?? "stacked")}`}
-        >
+        <div className={`rhap_main ${getMainLayoutClassName(layout)}`}>
           <div className="rhap_progress-section">
             {this.renderUIModules(customProgressBarSection)}
           </div>
