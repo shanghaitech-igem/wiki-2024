@@ -16,6 +16,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@iconify/react": "^5.0.2",
     "@jpfulton/gatsby-remark-copy-button": "^1.0.10",
     "@mdx-js/react": "^2.3.0",
     "gatsby": "^5.13.7",
@@ -32,7 +33,6 @@
     "prismjs": "^1.29.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-h5-audio-player": "^3.9.3",
     "remark-gfm": "^3.0.1",
     "sass": "^1.77.6"
   },
