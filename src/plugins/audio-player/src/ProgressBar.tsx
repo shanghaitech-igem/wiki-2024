@@ -41,7 +41,7 @@ class ProgressBar extends Component<ProgressBarProps, ProgressBarState> {
 
   hasAddedAudioEventListener = false
 
-  downloadProgressAnimationTimer?: number
+  downloadProgressAnimationTimer?: ReturnType<typeof setTimeout>
 
   state: ProgressBarState = {
     isDraggingProgress: false,
@@ -66,9 +66,9 @@ class ProgressBar extends Component<ProgressBarProps, ProgressBarState> {
       return { currentTime: 0, currentTimePos: '0%' }
     }
 
-    const progressBarRect = progressBar.current.getBoundingClientRect()
-    const maxRelativePos = progressBarRect.width
-    let relativePos = getPosX(event) - progressBarRect.left
+    const progressBarRect = progressBar.current?.getBoundingClientRect()
+    const maxRelativePos = progressBarRect?.width || 0;
+    let relativePos = progressBarRect ? getPosX(event) - progressBarRect.left : 0;
 
     if (relativePos < 0) {
       relativePos = 0
@@ -233,7 +233,7 @@ class ProgressBar extends Component<ProgressBarProps, ProgressBarState> {
         role="progressbar"
         aria-valuemin={0}
         aria-valuemax={100}
-        aria-valuenow={Number(currentTimePos.split('%')[0])}
+        aria-valuenow={Number(currentTimePos?.split('%')[0] || 0)}
         tabIndex={0}
         onMouseDown={this.handleMouseDownOrTouchStartProgressBar}
         onTouchStart={this.handleMouseDownOrTouchStartProgressBar}

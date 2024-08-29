@@ -27,7 +27,7 @@ class VolumeControls extends Component<VolumeControlsProps, VolumeControlsState>
 
   volumeBar = createRef<HTMLDivElement>()
 
-  volumeAnimationTimer = 0
+  volumeAnimationTimer: NodeJS.Timeout | number = 0
 
   lastVolume = this.props.volume // To store the volume before clicking mute button
 
