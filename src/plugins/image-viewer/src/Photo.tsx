@@ -62,6 +62,7 @@ export default function Photo({
           onLoad={handleImageLoaded}
           onError={handleImageBroken}
           alt=""
+          onDragStart={(e) => e.preventDefault()} // Prevent default drag behavior
           {...restProps}
         />
         {!loaded &&
