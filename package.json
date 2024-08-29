@@ -16,6 +16,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@babel/runtime": "^7.25.4",
     "@iconify/react": "^5.0.2",
     "@jpfulton/gatsby-remark-copy-button": "^1.0.10",
     "@mdx-js/react": "^2.3.0",
