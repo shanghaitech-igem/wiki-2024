@@ -1,10 +1,14 @@
 /**
- * 获取旋转后的宽高
+ * Get the width and height after rotation
  */
-export default function getRotateSize(rotate: number, width: number, height: number) {
+export default function getRotateSize(
+  rotate: number,
+  width: number,
+  height: number
+) {
   const isVertical = rotate % 180 !== 0;
 
-  // 若图片不是水平则调换属性
+  // If the image is not horizontal, swap the properties
   if (isVertical) {
     return [height, width, isVertical] as const;
   }

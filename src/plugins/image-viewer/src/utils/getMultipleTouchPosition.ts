@@ -1,10 +1,10 @@
-import type React from 'react';
+import type React from "react";
 
 /**
- * 从 Touch 事件中获取两个触控中心位置
+ * Get the center position of two touch points from a Touch event
  */
 export default function getMultipleTouchPosition(
-  evt: TouchEvent | React.TouchEvent,
+  evt: TouchEvent | React.TouchEvent
 ): [clientX: number, clientY: number, touchLength: number] {
   const { clientX, clientY } = evt.touches[0];
   if (evt.touches.length >= 2) {

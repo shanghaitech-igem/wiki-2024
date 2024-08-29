@@ -1,4 +1,4 @@
-import { useCallback, useRef } from 'react';
+import { useCallback, useRef } from "react";
 
 interface DebounceCallback<CallbackArguments extends any[]> {
   (...args: CallbackArguments): void;
@@ -15,14 +15,15 @@ export default function useDebounceCallback<CallbackArguments extends any[]>(
     leading?: boolean;
     maxWait?: number;
     wait?: number;
-  },
+  }
 ): DebounceCallback<CallbackArguments> {
   const callbackRef = useRef(callback);
   callbackRef.current = callback;
 
   const prev = useRef(0);
   const trailingTimeout = useRef<ReturnType<typeof setTimeout>>();
-  const clearTrailing = () => trailingTimeout.current && clearTimeout(trailingTimeout.current);
+  const clearTrailing = () =>
+    trailingTimeout.current && clearTimeout(trailingTimeout.current);
 
   const fn = useCallback(
     (...args: CallbackArguments) => {
@@ -60,7 +61,7 @@ export default function useDebounceCallback<CallbackArguments extends any[]>(
         prev.current = 0;
       }, wait);
     },
-    [wait, maxWait, leading],
+    [wait, maxWait, leading]
   );
   (fn as DebounceCallback<CallbackArguments>).cancel = clearTrailing;
 

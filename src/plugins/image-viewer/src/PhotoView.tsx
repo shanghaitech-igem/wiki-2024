@@ -1,40 +1,48 @@
-import type React from 'react';
-import { useImperativeHandle, Children, cloneElement, useContext, useEffect, useMemo, useRef } from 'react';
-import useInitial from './hooks/useInitial';
-import useMethods from './hooks/useMethods';
-import type { PhotoContextType } from './photo-context';
-import PhotoContext from './photo-context';
-import type { PhotoRenderParams } from './types';
+import type React from "react";
+import {
+  useImperativeHandle,
+  Children,
+  cloneElement,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+} from "react";
+import useInitial from "./hooks/useInitial";
+import useMethods from "./hooks/useMethods";
+import type { PhotoContextType } from "./photo-context";
+import PhotoContext from "./photo-context";
+import type { PhotoRenderParams } from "./types";
 
 export interface PhotoViewProps {
   /**
-   * 图片地址
+   * Image URL
    */
   src?: string;
   /**
-   * 自定义渲染，优先级比 src 低
+   * Custom render, lower priority than src
    */
   render?: (props: PhotoRenderParams) => React.ReactNode;
   /**
-   * 自定义覆盖节点
+   * Custom overlay node
    */
   overlay?: React.ReactNode;
   /**
-   * 自定义渲染节点宽度
+   * Custom render node width
    */
   width?: number;
   /**
-   * 自定义渲染节点高度
+   * Custom render node height
    */
   height?: number;
   /**
-   * 子节点，一般为缩略图
+   * Child nodes, usually thumbnails
    */
   children?: React.ReactElement;
   /**
-   * 触发的事件
+   * Triggered events
    */
-  triggers?: ('onClick' | 'onDoubleClick')[];
+  triggers?: ("onClick" | "onDoubleClick")[];
 }
 
 // Define the type of the listener object correctly
@@ -49,14 +57,17 @@ const PhotoView: React.FC<PhotoViewProps> = ({
   overlay,
   width,
   height,
-  triggers = ['onClick'],
+  triggers = ["onClick"],
   children,
 }) => {
   const photoContext = useContext<PhotoContextType>(PhotoContext);
   const key = useInitial(() => photoContext.nextId());
   const originRef = useRef<HTMLElement>(null);
 
-  useImperativeHandle((children as React.FunctionComponentElement<HTMLElement>)?.ref, () => originRef.current);
+  useImperativeHandle(
+    (children as React.FunctionComponentElement<HTMLElement>)?.ref,
+    () => originRef.current
+  );
 
   useEffect(() => {
     return () => {
@@ -104,7 +115,9 @@ const PhotoView: React.FC<PhotoViewProps> = ({
   }, [src]);
 
   if (children) {
-    return Children.only(cloneElement(children, { ...eventListeners, ref: originRef }));
+    return Children.only(
+      cloneElement(children, { ...eventListeners, ref: originRef })
+    );
   }
   return null;
 };

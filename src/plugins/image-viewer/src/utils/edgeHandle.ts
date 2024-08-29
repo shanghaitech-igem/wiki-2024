@@ -1,34 +1,42 @@
-import type { CloseEdgeType, ReachType, TouchStartType } from '../types';
+import type { CloseEdgeType, ReachType, TouchStartType } from "../types";
 
 /**
- * 获取接触边缘类型
+ * Get the type of edge reached
  */
 export const getReachType = (
   initialTouchState: TouchStartType,
   horizontalCloseEdge: CloseEdgeType,
   verticalCloseEdge: CloseEdgeType,
-  reachPosition: ReachType,
+  reachPosition: ReachType
 ): ReachType => {
-  if ((horizontalCloseEdge && initialTouchState === 1) || reachPosition === 'x') {
-    return 'x';
+  if (
+    (horizontalCloseEdge && initialTouchState === 1) ||
+    reachPosition === "x"
+  ) {
+    return "x";
   }
-  if ((verticalCloseEdge && initialTouchState > 1) || reachPosition === 'y') {
-    return 'y';
+  if ((verticalCloseEdge && initialTouchState > 1) || reachPosition === "y") {
+    return "y";
   }
   return undefined;
 };
 
 /**
- * 计算接触边缘位置
+ * Calculate the position of the edge reached
  * @param position - x/y
  * @param scale
  * @param size - width/height
  * @param innerSize - innerWidth/innerHeight
  * @return [CloseEdgeType, position]
  */
-export const computePositionEdge = (position: number, scale: number, size: number, innerSize: number) => {
+export const computePositionEdge = (
+  position: number,
+  scale: number,
+  size: number,
+  innerSize: number
+) => {
   const currentWidth = size * scale;
-  // 图片超出的宽度
+  // Width that exceeds the image
   const outOffset = (currentWidth - innerSize) / 2;
   let closedEdge: CloseEdgeType;
 

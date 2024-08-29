@@ -1,9 +1,9 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
 
 export default function useEventListener<K extends keyof WindowEventMap>(
   type: K | undefined,
   fn: (evt: WindowEventMap[K]) => void,
-  options?: AddEventListenerOptions,
+  options?: AddEventListenerOptions
 ) {
   const latest = useRef(fn);
   latest.current = fn;

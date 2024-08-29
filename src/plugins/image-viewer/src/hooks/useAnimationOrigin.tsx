@@ -1,15 +1,15 @@
-import type { Dispatch, MutableRefObject, SetStateAction } from 'react';
-import { useState, useEffect, useRef } from 'react';
-import type { EasingMode, OriginRectType } from '../types';
-import useMethods from './useMethods';
-import { maxWaitAnimationTime } from '../variables';
+import type { Dispatch, MutableRefObject, SetStateAction } from "react";
+import { useState, useEffect, useRef } from "react";
+import type { EasingMode, OriginRectType } from "../types";
+import useMethods from "./useMethods";
+import { maxWaitAnimationTime } from "../variables";
 
 const initialRect: OriginRectType = {
   T: 0,
   L: 0,
   W: 0,
   H: 0,
-  // 图像填充方式
+  // Image fill mode
   FIT: undefined,
 };
 
@@ -18,14 +18,14 @@ export default function useAnimationOrigin(
   originRef: MutableRefObject<HTMLElement | null> | undefined,
   loaded: boolean,
   speed: number,
-  updateEasing: (pause: boolean) => void,
+  updateEasing: (pause: boolean) => void
 ): [
-  // 动画状态
+  // Animation state
   easingMode: EasingMode,
-  originRect: OriginRectType,
+  originRect: OriginRectType
 ] {
   const [originRect, updateOriginRect] = useState(initialRect);
-  // 动画状态
+  // Animation state
   const [easingMode, updateEasingMode] = useState<EasingMode>(0);
   const initialTime = useRef<number>();
 
@@ -34,7 +34,7 @@ export default function useAnimationOrigin(
   });
 
   useEffect(() => {
-    // 记录初始打开的时间
+    // Record the initial open time
     if (!initialTime.current) {
       initialTime.current = Date.now();
     }
@@ -42,12 +42,12 @@ export default function useAnimationOrigin(
       return;
     }
     handleUpdateOrigin(originRef, updateOriginRect);
-    // 打开动画处理
+    // Open animation handling
     if (visible) {
-      // 小于最大允许动画时间，则执行缩放动画
+      // If less than the maximum allowed animation time, execute the scaling animation
       if (Date.now() - initialTime.current < maxWaitAnimationTime) {
         updateEasingMode(1);
-        // 延时执行动画，保持 transition 生效
+        // Delay executing the animation to maintain transition effect
         requestAnimationFrame(() => {
           updateEasingMode(2);
           requestAnimationFrame(() => handleToShape(3));
@@ -55,11 +55,11 @@ export default function useAnimationOrigin(
         setTimeout(fn.OK, speed);
         return;
       }
-      // 超出则不执行
+      // If exceeded, do not execute
       updateEasingMode(4);
       return;
     }
-    // 关闭动画处理
+    // Close animation handling
     handleToShape(5);
   }, [visible, loaded]);
 
@@ -72,24 +72,30 @@ export default function useAnimationOrigin(
 }
 
 /**
- * 更新缩略图位置信息
+ * Update thumbnail position information
  */
 function handleUpdateOrigin(
   originRef: MutableRefObject<HTMLElement | null> | undefined,
-  updateOriginRect: Dispatch<SetStateAction<typeof initialRect>>,
+  updateOriginRect: Dispatch<SetStateAction<typeof initialRect>>
 ) {
   const element = originRef && originRef.current;
 
   if (element && element.nodeType === 1) {
-    // 获取触发时节点位置
+    // Get the position of the triggered node
     const { top, left, width, height } = element.getBoundingClientRect();
-    const isImage = element.tagName === 'IMG';
+    const isImage = element.tagName === "IMG";
     updateOriginRect({
       T: top,
       L: left,
       W: width,
       H: height,
-      FIT: isImage ? (getComputedStyle(element).objectFit as 'contain' | 'cover' | 'fill' | undefined) : undefined,
+      FIT: isImage
+        ? (getComputedStyle(element).objectFit as
+            | "contain"
+            | "cover"
+            | "fill"
+            | undefined)
+        : undefined,
     });
   }
 }

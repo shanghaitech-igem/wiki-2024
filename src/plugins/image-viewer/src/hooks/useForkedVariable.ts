@@ -1,11 +1,14 @@
-import { useRef, useMemo } from 'react';
+import { useRef, useMemo } from "react";
 
 /**
- * 逻辑分叉变量处理
- * 此 hook 不触发额外渲染
+ * Logic branching variable handling
+ * This hook does not trigger additional renders
  */
-export default function useForkedVariable<T>(initial: T, updater: (modify: (variable: T) => void) => void) {
-  // 初始分叉变量
+export default function useForkedVariable<T>(
+  initial: T,
+  updater: (modify: (variable: T) => void) => void
+) {
+  // Initial forked variable
   const forkedRef = useRef(initial);
 
   function modify(next: T) {
@@ -13,7 +16,7 @@ export default function useForkedVariable<T>(initial: T, updater: (modify: (vari
   }
 
   useMemo(() => {
-    // 参数变化之后同步内部分叉变量
+    // Synchronize the internal forked variable when parameters change
     updater(modify);
   }, [initial]);
 
