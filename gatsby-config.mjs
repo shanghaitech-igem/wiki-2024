@@ -1,6 +1,7 @@
 import { fileURLToPath } from "url";
 import * as path from "path";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 import remarkGfm from "remark-gfm";
 
 const config = {
@@ -34,18 +35,15 @@ const config = {
         },
         gatsbyRemarkPlugins: [
           `gatsby-remark-autolink-headers`, // Adds GitHub-style hover links to headers in your markdown files when they’re rendered.
+          `gatsby-remark-smartypants`, // Replaces “dumb” punctuation marks with “smart” punctuation marks using the retext-smartypants plugin.
           {
             resolve: `gatsby-remark-table-of-contents`,
             options: {
-              exclude: "Table of Contents",
-              tight: false,
+              tight: true,
               ordered: false,
-              fromHeading: 1,
-              toHeading: 6,
               className: "table-of-contents",
             },
           },
-          `gatsby-remark-smartypants`, // Replaces “dumb” punctuation marks with “smart” punctuation marks using the retext-smartypants plugin.
           {
             // !!! Run `gastby clean` after any changes to this plugin !!!
             resolve: `@jpfulton/gatsby-remark-copy-button`,

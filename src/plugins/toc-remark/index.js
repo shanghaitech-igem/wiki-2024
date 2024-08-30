@@ -1,109 +1,59 @@
 'use strict';
-// convert "in-string" to "inString"
-const strToCamel = (str) => {
-  return str.replace(/-(.)/g, (match, chr) => chr.toUpperCase());
-};
-// convert "{'in-key': val}" to "{'inKey': val}"
-const keysToCamel = (obj) => {
-  if (obj) {
-    const newObj = {};
-    Object.keys(obj).forEach((k) => {
-      newObj[strToCamel(k)] = obj[k];
-    });
-    return newObj;
-  }
-  return obj;
-};
-const util = require("mdast-util-toc");
-// todo: as soon as js-yaml version 4 is out
-// we can import a three-shaked version
-// https://github.com/nodeca/js-yaml/pull/558
-const yaml = require("js-yaml");
+
+const toc = require("mdast-util-toc"); // Import the Table of Contents utility
+
+// Default preferences for TOC generation
 const defaultPrefs = {
   tight: false,
-  fromHeading: 2,
-  toHeading: 6,
   className: "toc",
   ordered: false,
-
 };
-const parsePrefs = (prefsStrYaml) => {
-  try {
-    return yaml.safeLoad(prefsStrYaml);
 
-  } catch (e) {
-    console.log("Can't parse TOC-Configuration", e);
-    return {};
-  }
-};
-const transformer = (markdownAST, pluginOptions) => {
-  // find position of TOC
-  const index = markdownAST.children.findIndex(
-    (node) => node.type === "code" && node.lang === "toc"
-  );
-  // we have no TOC
-  if (index === -1) {
-    return;
+// Validate class name for XSS safety
+const isValidClassName = (className) => /^[a-zA-Z0-9_-]+$/.test(className);
 
-  }
-  const prefs = {
-    ...defaultPrefs,
-    ...keysToCamel(pluginOptions),
-    ...keysToCamel(parsePrefs(markdownAST.children[index].value)),
-
-  };
-  // For XSS safety, we only allow basic css names
-  if (!prefs.className.match(/^[ a-zA-Z0-9_-]*$/)) {
-    prefs.className = "toc";
-
-  }
-  // this isn't the ast we need consider
+// Create a TOC from the Markdown AST
+const createTOC = (markdownAST, prefs) => {
   const tocMarkdownAST = {
     ...markdownAST,
-    children: [],
-
+    children: markdownAST.children.filter(node => node.type === "heading" && node.depth > 0),
   };
-  // add all headings
-  markdownAST.children.forEach((node) => {
-    if (node.type === "heading" && node.depth > prefs.fromHeading - 1) {
-      tocMarkdownAST.children.push(node);
 
-    }
-  });
-  // calculate TOC
-  const result = util(tocMarkdownAST, {
-    maxDepth: prefs.toHeading,
+  return toc(tocMarkdownAST, {
+    maxDepth: 1,
     tight: prefs.tight,
     ordered: prefs.ordered,
-    skip: Array.isArray(prefs.exclude)
-      ? prefs.exclude.join("|")
-      : prefs.exclude,
-
+    skip: Array.isArray(prefs.exclude) ? prefs.exclude.join("|") : prefs.exclude,
   });
-
-  // insert the TOC
-  // eslint-disable-next-line
-  markdownAST.children = [].concat(
-    markdownAST.children.slice(0, index),
-    {
-      type: "html",
-      value: `<div class="${prefs.className}">`,
-    },
-    result.map,
-    {
-      type: "html",
-      value: "</div>",
-
-    },
-    markdownAST.children.slice(index + 1)
-  );
 };
-var index = (
-  pluginOptions
 
-) => {
-  return transformer(markdownAST, {
+// Transformer function to process the Markdown AST and insert a TOC
+const transformer = (markdownAST, pluginOptions) => {
+  const firstHeadingIndex = markdownAST.children.findIndex(node => node.type === "heading");
+
+  // If no headings are found, exit the function
+  if (firstHeadingIndex === -1) return;
+
+  // Merge default preferences with user-defined options
+  const prefs = {
+    ...defaultPrefs,
     ...pluginOptions,
-  });
+    className: isValidClassName(pluginOptions.className) ? pluginOptions.className : defaultPrefs.className,
+  };
+
+  const result = createTOC(markdownAST, prefs);
+
+  const tocDiv = {
+    type: 'element',
+    tagName: 'div',
+    properties: { className: [prefs.className] },
+    children: result.map.children,
+  };
+
+  // Insert the generated TOC into the original AST, wrapped by the div
+  markdownAST.children.unshift(tocDiv); 
 };
-module.exports = index;
+
+module.exports = async ({ markdownAST }, pluginOptions) => {
+  transformer(markdownAST, pluginOptions);
+};
