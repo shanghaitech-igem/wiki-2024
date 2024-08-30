@@ -43,7 +43,7 @@ const NavItem: React.FC<NavItemProps> = ({ item, isOpen, onToggle }) => {
 };
 
 const NavBar: React.FC = () => {
-  const exclude = ["MDX-test", "MD-test", "style-test"];
+  const exclude = ["MDX-test", "MD-test", "style-test", "TOC-test"];
   const navItems = generateNavItems(exclude);
 
   const [openIndex, setOpenIndex] = useState<number | null>(null);
