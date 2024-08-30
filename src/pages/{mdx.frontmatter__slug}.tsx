@@ -15,7 +15,7 @@ import "../styles/global/footnote.scss";
 import "../styles/global/copy-btn.scss";
 import "../styles/global/mdx.scss";
 
-import * as styles from "../styles/mdx.module.scss";
+import * as styles from "../styles/modules/mdx.module.scss";
 
 import handleCopyTex from "../plugins/katex-copy-tex";
 

@@ -2,7 +2,7 @@ import React from "react";
 import AudioPlayer from "../../plugins/audio-player";
 
 import "../../plugins/audio-player/src/styles.scss";
-import * as styles from "../../styles/audio.module.scss";
+import * as styles from "../../styles/modules/audio.module.scss";
 
 interface AudioProps {
   url: string;

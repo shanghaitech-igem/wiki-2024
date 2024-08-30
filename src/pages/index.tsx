@@ -2,7 +2,7 @@ import * as React from "react";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 import Favicon from "../components/favicon";
-import * as styles from "../styles/index.module.scss";
+import * as styles from "../styles/modules/index.module.scss";
 
 const IndexPage: React.FC = () => {
   return (

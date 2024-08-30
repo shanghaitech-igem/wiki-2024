@@ -1,7 +1,7 @@
 import React from "react";
 import { PhotoProvider, PhotoView } from "../../plugins/image-viewer";
 
-import * as styles from  "../../styles/image.module.scss";
+import * as styles from  "../../styles/modules/image.module.scss";
 
 interface ImageProps {
   url: string;
