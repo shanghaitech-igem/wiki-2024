@@ -1,0 +1,54 @@
+main {
+  /* Style the copy button container */
+  span:has(.copy-button-container) {
+    position: relative;
+    float: right;
+
+    .copy-button-container {
+      touch-action: none;
+      display: flex;
+      justify-content: flex-end;
+      pointer-events: none;
+      position: absolute;
+      top: 10px; /* Adjust this value to position the button vertically */
+      right: 10px; /* Adjust this value to position the button horizontally */
+
+      /* Style the copy button */
+      .copy-button {
+        border-radius: 0.375em;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        pointer-events: initial;
+        border: #fff solid 1px;
+        background-color: #a7c0d1;
+        padding: 4px;
+        min-height: 32px;
+        min-width: 32px;
+        transform: translateX(1px);
+        z-index: 100;
+
+        @keyframes fadeInFromNone {
+          0% {
+            opacity: 0; // Start fully transparent
+          }
+          100% {
+            opacity: 1; // End fully opaque
+          }
+        }
+
+        .copy-icon {
+          margin: auto;
+          animation: fadeInFromNone 1s ease-out;
+        }
+
+        .success-icon {
+          display: none;
+          margin: auto;
+          animation: fadeInFromNone 1s ease-out;
+        }
+      }
+    }
+  }
+}

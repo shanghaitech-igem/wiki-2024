@@ -16,61 +16,6 @@ main {
     text-align: center;
   }
 
-  /* Style the copy button container */
-  span:has(.copy-button-container) {
-    position: relative;
-    top: -10px;
-    float: right;
-    margin-bottom: -1.6rem;
-
-    .copy-button-container {
-      touch-action: none;
-      display: flex;
-      justify-content: flex-end;
-      pointer-events: none;
-      position: absolute;
-      top: 10px; /* Adjust this value to position the button vertically */
-      right: 10px; /* Adjust this value to position the button horizontally */
-
-      /* Style the copy button */
-      .copy-button {
-        color: #fff;
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-        pointer-events: initial;
-        border: #fff solid 1px;
-        background-color: #358ccb;
-        border-radius: 4px;
-        padding: 4px;
-        min-height: 32px;
-        min-width: 32px;
-        transform: translateX(1px);
-        z-index: 100;
-
-        @keyframes fadeInFromNone {
-          0% {
-            opacity: 0; // Start fully transparent
-          }
-          100% {
-            opacity: 1; // End fully opaque
-          }
-        }
-
-        .copy-icon {
-          margin: auto;
-          animation: fadeInFromNone 1s ease-out;
-        }
-
-        .success-icon {
-          display: none;
-          margin: auto;
-          animation: fadeInFromNone 1s ease-out;
-        }
-      }
-    }
-  }
-
   img:not(.PhotoView-Portal img) {
     max-width: 60%;
     height: auto;
@@ -78,35 +23,5 @@ main {
     margin: 0 auto; /* Center it */
   }
 
-  /* Style the footnotes section. */
-  .footnotes {
-    font-size: smaller;
-    color: #8b949e;
-    border-top: 1px solid #30363d;
-  }
 
-  /* Hide the section label for visual users. */
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    word-wrap: normal;
-    border: 0;
-  }
-
-  /* Place `[` and `]` around footnote references. */
-  [data-footnote-ref]::before {
-    content: "[";
-  }
-
-  [data-footnote-ref]::after {
-    content: "]";
-  }
-
-  del code {
-    text-decoration: inherit;
-  }
 }
