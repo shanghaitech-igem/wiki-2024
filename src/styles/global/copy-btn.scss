@@ -16,7 +16,6 @@ main {
       /* Style the copy button */
       .copy-button {
         border-radius: 0.375em;
-        color: #fff;
         display: flex;
         align-items: center;
         cursor: pointer;
@@ -39,12 +38,14 @@ main {
         }
 
         .copy-icon {
+          fill: white;
           margin: auto;
           animation: fadeInFromNone 1s ease-out;
         }
 
         .success-icon {
           display: none;
+          fill: white;
           margin: auto;
           animation: fadeInFromNone 1s ease-out;
         }
