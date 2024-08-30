@@ -36,6 +36,7 @@ const config = {
           `gatsby-remark-autolink-headers`, // Adds GitHub-style hover links to headers in your markdown files when they’re rendered.
           `gatsby-remark-smartypants`, // Replaces “dumb” punctuation marks with “smart” punctuation marks using the retext-smartypants plugin.
           {
+            // !!! Run `gastby clean` after any changes to this plugin !!!
             resolve: `@jpfulton/gatsby-remark-copy-button`,
             options: {
               // Provide a text label for the copy button.
@@ -150,6 +151,7 @@ const config = {
       },
     },
     {
+      // !!! Run `gastby clean` after any changes to this plugin !!!
       resolve: `gatsby-plugin-purgecss`,
       options: {
         printRejected: true, // Print removed selectors and processed file names
