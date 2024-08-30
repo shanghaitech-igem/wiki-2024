@@ -1,13 +1,20 @@
 import * as React from "react";
 import { graphql } from "gatsby";
+import { MDXProvider } from "@mdx-js/react";
 
-import "prismjs/themes/prism-solarizedlight.css";
-import "prismjs/plugins/line-numbers/prism-line-numbers.min.css";
-import "prismjs/plugins/command-line/prism-command-line.min.css";
+import Video from "../components/mdx/video";
+import PDF from "../components/mdx/pdf";
+import Audio from "../components/mdx/audio";
+import Image from "../components/mdx/image";
+const shortcodes = { Video, PDF, Audio, Image };
 
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 import Favicon from "../components/favicon";
+
+import "prismjs/themes/prism-solarizedlight.css";
+import "prismjs/plugins/line-numbers/prism-line-numbers.min.css";
+import "prismjs/plugins/command-line/prism-command-line.min.css";
 
 import "../styles/global/prismjs.scss";
 import "../styles/global/katex.scss";
@@ -37,11 +44,10 @@ interface MdxPageProps {
 }
 
 const MDXPage: React.FC<MdxPageProps> = ({ data, children }) => {
-
   React.useEffect(() => {
     // Attach the copy event listener
     document.addEventListener("copy", handleCopyTex);
-  
+
     // Cleanup event listener on component unmount
     return () => {
       document.removeEventListener("copy", handleCopyTex);
@@ -53,7 +59,7 @@ const MDXPage: React.FC<MdxPageProps> = ({ data, children }) => {
   return (
     <Layout>
       <header className={styles.heading}>{frontmatter.title}</header>
-      {children}
+      <MDXProvider components={shortcodes}>{children}</MDXProvider>
     </Layout>
   );
 };

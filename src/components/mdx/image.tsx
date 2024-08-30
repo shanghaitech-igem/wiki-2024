@@ -1,14 +1,14 @@
 import React from "react";
 import { PhotoProvider, PhotoView } from "../../plugins/image-viewer";
 
-import * as styles from  "../../styles/modules/image.module.scss";
+import * as styles from "../../styles/modules/image.module.scss";
 
 interface ImageProps {
   url: string;
   alt?: string;
 }
 
-export default function Image({ url, alt }: ImageProps) {
+const Image: React.FC<ImageProps> = ({ url, alt }: ImageProps) => {
   return (
     <PhotoProvider className={styles.toppest}>
       <PhotoView src={url}>
@@ -16,4 +16,6 @@ export default function Image({ url, alt }: ImageProps) {
       </PhotoView>
     </PhotoProvider>
   );
-}
+};
+
+export default Image;
