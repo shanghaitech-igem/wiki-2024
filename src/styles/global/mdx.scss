@@ -2,26 +2,11 @@
 @import "/src/plugins/picnic-css/themes/default/theme";
 @import "/src/plugins/picnic-css/plugins/table/plugin";
 
-$max-width: 1000px;
-$font-family: sans-serif;
-$site-title-color: gray;
-$nav-link-text-color: black;
-
 main {
-  .heading {
-    font-size: 3rem;
-    color: $site-title-color;
-    font-weight: 700;
-    margin: 3rem 0;
-    text-align: center;
-  }
-
   img:not(.PhotoView-Portal img) {
     max-width: 60%;
     height: auto;
     display: block; /* Make it a block element */
     margin: 0 auto; /* Center it */
   }
-
-
 }

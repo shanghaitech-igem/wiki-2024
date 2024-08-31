@@ -15,7 +15,11 @@ const NavItem: React.FC<NavItemProps> = ({ item, isOpen, onToggle }) => {
       {item.children.length !== 0 ? (
         <>
           <div className={styles.navDropdown}>
-            <a key={item.index} className={styles.navDropdownBtn} onClick={onToggle}>
+            <a
+              key={item.index}
+              className={styles.navDropdownBtn}
+              onClick={onToggle}
+            >
               {item.name}
             </a>
             {isOpen && (
@@ -70,13 +74,12 @@ const NavBar: React.FC = () => {
   }, []);
 
   return (
-    <nav>
+    <nav className={styles.navbar}>
       <Link to="/" className={styles.brand}>
         <img
           className={styles.logo}
-          src="https://static.igem.org/websites/common/2022/favicons/favicon.svg"
+          src="https://static.igem.wiki/teams/5174/icons/main-logo.svg"
         />
-        <span>Home</span>
       </Link>
 
       {/* Responsive Activator */}
