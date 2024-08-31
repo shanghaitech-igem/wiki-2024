@@ -6,7 +6,13 @@ import Video from "../components/mdx/video";
 import PDF from "../components/mdx/pdf";
 import Audio from "../components/mdx/audio";
 import Image from "../components/mdx/image";
-const shortcodes = { Video, PDF, Audio, Image };
+const components = {
+  Video,
+  PDF,
+  Audio,
+  Image,
+  img: Image,
+};
 
 import Layout from "../components/layout";
 import Seo from "../components/seo";
@@ -59,7 +65,7 @@ const MDXPage: React.FC<MdxPageProps> = ({ data, children }) => {
   return (
     <Layout>
       <header className={styles.heading}>{frontmatter.title}</header>
-      <MDXProvider components={shortcodes}>{children}</MDXProvider>
+      <MDXProvider components={components}>{children}</MDXProvider>
     </Layout>
   );
 };

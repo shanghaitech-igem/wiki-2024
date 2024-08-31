@@ -5,15 +5,15 @@ import "../../plugins/audio-player/src/styles.scss";
 import * as styles from "../../styles/modules/audio.module.scss";
 
 interface AudioProps {
-  url: string;
+  src: string;
   [key: string]: any; // Allows for any additional props
 }
 
-const Audio: React.FC<AudioProps> = ({ url, ...props }) => (
+const Audio: React.FC<AudioProps> = ({ src, ...props }) => (
   <div className={styles.audioContainer}>
     <div className={styles.audio}>
       <AudioPlayer
-        src={url}
+        src={src}
         // other props here
         {...props}
       />
