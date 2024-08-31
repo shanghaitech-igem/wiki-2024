@@ -1,6 +1,6 @@
 @use "../../plugins/katex-css/katex" with (
   $use-ttf: false,
-  $use-woff: false,
+  $use-woff: true,
   $use-woff2: true,
-  $font-folder: "../../plugins/katex-css/fonts/"
+  $use-remote: true,
 );
