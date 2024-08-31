@@ -78,7 +78,7 @@ $nav-submenu-min-width: 100px;
         }
 
         .sub-menu-item {
-          color: $nav-link-text-color;
+          color: light.$pacify-char-content;
           padding: 12px 18px;
           text-decoration: none;
           display: block;
