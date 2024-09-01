@@ -13,6 +13,7 @@ pages:
     paths:
       - public
     exclude:
+      - public/test/
       - public/**/*.map
       - public/**/*.LICENSE.txt
   only:

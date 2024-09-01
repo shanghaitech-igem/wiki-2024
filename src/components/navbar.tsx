@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "gatsby";
+import { Link, useStaticQuery, graphql } from "gatsby";
 import * as styles from "../styles/modules/navbar.module.scss";
 import { generateNavItems, NavItemType } from "../utils/generate-nav-item";
 
@@ -12,11 +12,11 @@ interface NavItemProps {
 const NavItem: React.FC<NavItemProps> = ({ item, isOpen, onToggle }) => {
   return (
     <>
-      {item.children.length !== 0 ? (
+      {item.children !== null ? (
         <>
           <div className={styles.navDropdown}>
             <a
-              key={item.index}
+              key={item.id}
               className={styles.navDropdownBtn}
               onClick={onToggle}
             >
@@ -26,7 +26,7 @@ const NavItem: React.FC<NavItemProps> = ({ item, isOpen, onToggle }) => {
               <div className={styles.subMenu}>
                 {item.children.map((child) => (
                   <Link
-                    key={child.index}
+                    key={child.id}
                     to={`/${child.slug}`}
                     className={styles.subMenuItem}
                   >
@@ -47,8 +47,7 @@ const NavItem: React.FC<NavItemProps> = ({ item, isOpen, onToggle }) => {
 };
 
 const NavBar: React.FC = () => {
-  const exclude = ["MDX-test", "MD-test", "style-test", "TOC-test"];
-  const navItems = generateNavItems(exclude);
+  const navItems = generateNavItems();
 
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const navMenuRef = useRef<HTMLDivElement>(null);
@@ -73,6 +72,16 @@ const NavBar: React.FC = () => {
     };
   }, []);
 
+  const data = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          favicon
+        }
+      }
+    }
+  `);
+
   return (
     <nav className={styles.navbar}>
       <Link to="/" className={styles.brand}>
@@ -95,7 +104,7 @@ const NavBar: React.FC = () => {
       <div className={styles.navMenu} ref={navMenuRef}>
         {navItems.map((item, index) => (
           <NavItem
-            key={item.index}
+            key={item.id}
             item={item}
             isOpen={openIndex === index}
             onToggle={() => handleToggle(index)}
