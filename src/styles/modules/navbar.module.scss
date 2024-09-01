@@ -58,7 +58,6 @@ $nav-submenu-min-width: 100px;
       }
 
       .sub-menu {
-        @extend .nav-link;
         display: none; /* Hide by default */
         position: absolute;
         background-color: white;
