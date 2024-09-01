@@ -51,7 +51,7 @@ nav {
         }
       }
 
-      .subMenu {
+      .sub-menu {
         display: none; /* Hide by default */
         position: absolute;
         background-color: white;
@@ -68,20 +68,20 @@ nav {
 
       // Show sub-menu on hover for desktop
       @media (min-width: $picnic-breakpoint) {
-        &:hover .subMenu {
+        &:hover .sub-menu {
           display: block; /* Show on hover */
         }
       }
 
       // Show sub-menu on click for mobile
       @media all and (width <= $picnic-breakpoint) {
-        .nav-dropdown-btn:focus + .subMenu,
-        .nav-dropdown-btn:active + .subMenu {
+        .nav-dropdown-btn:focus + .sub-menu,
+        .nav-dropdown-btn:active + .sub-menu {
           display: block; /* Show on click */
         }
       }
 
-      .subMenuItem {
+      .sub-menu-item {
         color: $nav-link-text-color;
         padding: 12px 18px;
         text-decoration: none;
