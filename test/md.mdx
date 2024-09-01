@@ -1,0 +1,182 @@
+---
+title: "MD Test"
+date: "2024-07-05"
+favicon: "https://static.igem.org/websites/common/2022/favicons/favicon.svg"
+slug: "test/md"
+---
+
+
+# Link Jump Test
+
+[In Page Jump Test](#footnote)
+
+[In Site Jump Test](/description)
+
+You will like those projects!
+
+# Headings
+
+# h1 Heading
+
+## h2 Heading
+
+### h3 Heading
+
+#### h4 Heading
+
+##### h5 Heading
+
+###### h6 Heading
+
+# Horizontal Rules
+
+---
+
+---
+
+---
+
+# Emphasis
+
+**This is bold text**
+
+**This is bold text**
+
+_This is italic text_
+
+_This is italic text_
+
+# Blockquotes
+
+> Blockquotes can also be nested...
+>
+> > ...by using additional greater-than signs right next to each other...
+> >
+> > > ...or with spaces between arrows.
+
+# Lists
+
+Unordered
+
+- Create a list by starting a line with `+`, `-`, or `*`
+- Sub-lists are made by indenting 2 spaces:
+  - Marker character change forces new list start:
+    - Ac tristique libero volutpat at
+    * Facilisis in pretium nisl aliquet
+    - Nulla volutpat aliquam velit
+- Very easy!
+
+Ordered
+
+1. Lorem ipsum dolor sit amet
+2. Consectetur adipiscing elit
+3. Integer molestie lorem at massa
+
+4. You can use sequential numbers...
+5. ...or keep all the numbers as `1.`
+
+Start numbering with offset:
+
+57. foo
+1. bar
+
+# Code
+
+Inline `code`
+
+Block code "fences"
+
+```
+Sample text here...
+```
+
+Syntax highlighting
+
+```js {clipboardButton: true}
+var foo = function (bar) {
+  return bar++;
+};
+
+console.log(foo(5));
+```
+
+```js {numberLines: true}
+// In your gatsby-config.js
+plugins: [
+  {
+    resolve: `gatsby-transformer-remark`,
+    options: {
+      plugins: [`gatsby-remark-prismjs`],
+    },
+  },
+];
+```
+
+```shell
+cd test/
+```
+
+# KaTex
+
+## Math Equations
+
+$a^2 + b^2 = c^2$
+
+$$
+a^2 + b^2 = c^2
+$$
+
+$$
+\frac{n!}{k!(n-k)!} = \binom{n}{k}
+$$
+
+## Chemical Equations
+
+Here is a chemical equation:
+
+$$
+\ce{H2O -> H2 + O2}
+$$
+
+# Images
+
+![Minion](https://static.igem.wiki/teams/5174/test/hula-loop-octodex-gif.webp)
+![Stormtroopocat](https://static.igem.wiki/teams/5174/test/justicetocat.webp "The Stormtroopocat")
+
+Like links, Images also have a footnote style syntax
+
+![Alt text][id]
+
+With a reference later in the document defining the URL location:
+
+[id]: https://static.igem.wiki/teams/5174/test/nux-octodex-gif.webp "The Dojocat"
+
+# Github Flavor Markdown (GFM)
+
+## Autolink literals
+
+www.example.com, https://example.com, and contact@example.com.
+
+## Footnote
+
+A note[^1]
+
+[^1]: Big note.
+
+## Strikethrough
+
+~~two~~ tildes.
+
+## Table
+
+| AAA | BBB | CCC | DDD |
+| :-: | :-: | :-: | :-: |
+|  1  |  2  |  3  |  4  |
+|  5  |  6  |  7  |  8  |
+
+I get 10 times more traffic from [Google][] than from
+[Yahoo][] or [MSN][].
+
+[google]: http://google.com/ "Google"
+[yahoo]: http://search.yahoo.com/ "Yahoo Search"
+[msn]: http://search.msn.com/ "MSN Search"
