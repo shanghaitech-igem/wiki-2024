@@ -8,10 +8,6 @@ interface NavItemProps {
 }
 
 const NavItem: React.FC<NavItemProps> = ({ item }) => {
-  const handleSubMenuClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    event.stopPropagation();
-  };
-
   return (
     <>
       {item.children !== null ? (
@@ -28,7 +24,6 @@ const NavItem: React.FC<NavItemProps> = ({ item }) => {
                 key={child.id}
                 to={`/${child.slug}`}
                 className={styles.subMenuItem}
-                onClick={handleSubMenuClick}
               >
                 {child.name}
               </Link>
