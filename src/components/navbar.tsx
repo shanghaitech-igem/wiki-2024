@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "gatsby";
+import { Link, useStaticQuery, graphql } from "gatsby";
 import * as styles from "../styles/modules/navbar.module.scss";
 import { generateNavItems, NavItemType } from "../utils/generate-nav-item";
 
@@ -72,13 +72,20 @@ const NavBar: React.FC = () => {
     };
   }, []);
 
+  const data = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          favicon
+        }
+      }
+    }
+  `);
+
   return (
     <nav>
       <Link to="/" className={styles.brand}>
-        <img
-          className={styles.logo}
-          src="https://static.igem.org/websites/common/2022/favicons/favicon.svg"
-        />
+        <img className={styles.logo} src={data.site.siteMetadata.favicon} />
         <span>Home</span>
       </Link>
 
