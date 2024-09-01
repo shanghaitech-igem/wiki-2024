@@ -21,11 +21,11 @@ nav {
     .nav-dropdown {
       position: relative;
       display: inline-block;
-    
+
       @media all and (width <= $picnic-breakpoint) {
         display: block; // Make it block in mobile
       }
-    
+
       .nav-dropdown-btn {
         @extend .nav-link;
         display: block;
@@ -42,7 +42,7 @@ nav {
           border-width: 5px 5px 0 5px;
           border-color: #000 transparent transparent transparent;
         }
-    
+
         @media all and (width <= $picnic-breakpoint) {
           transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0.2s;
           border-radius: 0.2em;
@@ -50,7 +50,7 @@ nav {
           text-align: left;
         }
       }
-    
+
       .subMenu {
         display: none; /* Hide by default */
         position: absolute;
@@ -58,21 +58,21 @@ nav {
         min-width: $nav-submenu-min-width;
         box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
         border-radius: 8px;
-    
+
         @media all and (width <= $picnic-breakpoint) {
           position: relative; // Change to relative in mobile
           width: 75%;
           left: 10%;
         }
       }
-    
+
       // Show sub-menu on hover for desktop
       @media (min-width: $picnic-breakpoint) {
         &:hover .subMenu {
           display: block; /* Show on hover */
         }
       }
-    
+
       // Show sub-menu on click for mobile
       @media all and (width <= $picnic-breakpoint) {
         .nav-dropdown-btn:focus + .subMenu,
@@ -80,7 +80,7 @@ nav {
           display: block; /* Show on click */
         }
       }
-    
+
       .subMenuItem {
         color: $nav-link-text-color;
         padding: 12px 18px;
@@ -88,7 +88,7 @@ nav {
         display: block;
         position: relative;
         border-radius: 8px;
-    
+
         @media all and (width <= $picnic-breakpoint) {
           &:before {
             content: "";
@@ -97,13 +97,12 @@ nav {
             height: 100%;
           }
         }
-    
+
         &:hover {
           background-color: #f1f1f1;
         }
       }
     }
-    
   }
 
   input {
