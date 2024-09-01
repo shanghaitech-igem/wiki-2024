@@ -25,10 +25,13 @@
   - For managing dependencies
   - For local running web server
   - LTS version is recommended
+  - Using Prebuilt Installer is recommended for Windows
+  - Using `nvm` is recommended for Linux and MacOS
 
 - [Git](https://git-scm.com/downloads)
   - For cloning the repository
   - For version control
+
 ### Running the Project
 
 1. Clone the repository
@@ -63,7 +66,7 @@
 
 ## What's Next
 
-Plans are coverd in [Gitlab Milestones](https://gitlab.igem.org/2024/shanghaitech-china/-/milestones).
+Plans are covered in [Gitlab Milestones](https://gitlab.igem.org/2024/shanghaitech-china/-/milestones).
 
     
 ## Technical Stack
