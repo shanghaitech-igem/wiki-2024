@@ -85,10 +85,7 @@ const NavBar: React.FC = () => {
   return (
     <nav className={styles.navbar}>
       <Link to="/" className={styles.brand}>
-        <img
-          className={styles.logo}
-          src={data.site.siteMetadata.favicon}
-        />
+        <img className={styles.logo} src={data.site.siteMetadata.favicon} />
       </Link>
 
       {/* Responsive Activator */}
