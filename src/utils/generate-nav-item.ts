@@ -79,8 +79,8 @@ export function generateNavItems(): NavItemType[] {
     if (relativeDirectory) {
       if (!navItems[relativeDirectory]) {
         navItems[relativeDirectory] = {
-          id,
-          index,
+          id: id,
+          index: index,
           name: relativeDirectory,
           slug: '',
           children: [],
@@ -90,18 +90,18 @@ export function generateNavItems(): NavItemType[] {
       // Add child item
       navItems[relativeDirectory].children?.push({
         id: node.id,
-        index,
-        name,
-        slug,
+        index: index,
+        name: name,
+        slug: slug,
         children: null,
       });
     } else {
       // Handle items without a relative directory
       navItems[name] = {
         id: node.id,
-        index,
-        name,
-        slug: '',
+        index: index,
+        name: name,
+        slug: slug,
         children: null,
       };
     }
