@@ -5,28 +5,30 @@ import { generateNavItems, NavItemType } from "../utils/generate-nav-item";
 
 interface NavItemProps {
   item: NavItemType;
-  isOpen: boolean;
-  onToggle: () => void;
 }
 
 const NavItem: React.FC<NavItemProps> = ({ item }) => {
+  const handleSubMenuClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.stopPropagation();
+  };
+
   return (
     <>
       {item.children !== null ? (
         <div className={styles.navDropdown}>
-          <Link
+          <button
             key={item.id}
-            to={`/${item.slug}`}
             className={styles.navDropdownBtn}
           >
             {item.name}
-          </Link>
+          </button>
           <div className={styles.subMenu}>
             {item.children.map((child) => (
               <Link
                 key={child.id}
                 to={`/${child.slug}`}
                 className={styles.subMenuItem}
+                onClick={handleSubMenuClick}
               >
                 {child.name}
               </Link>
@@ -44,30 +46,6 @@ const NavItem: React.FC<NavItemProps> = ({ item }) => {
 
 const NavBar: React.FC = () => {
   const navItems = generateNavItems();
-
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const navMenuRef = useRef<HTMLDivElement>(null);
-
-  const handleToggle = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
-  const handleClickOutside = (event: MouseEvent) => {
-    if (
-      navMenuRef.current &&
-      !navMenuRef.current.contains(event.target as Node)
-    ) {
-      setOpenIndex(null);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener("click", handleClickOutside);
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, []);
-
   const data = useStaticQuery(graphql`
     query {
       site {
@@ -94,13 +72,11 @@ const NavBar: React.FC = () => {
       </label>
       {/* Responsive Activator */}
 
-      <div className={styles.navMenu} ref={navMenuRef}>
-        {navItems.map((item, index) => (
+      <div className={styles.navMenu}>
+        {navItems.map((item) => (
           <NavItem
             key={item.id}
             item={item}
-            isOpen={openIndex === index}
-            onToggle={() => handleToggle(index)}
           />
         ))}
       </div>
