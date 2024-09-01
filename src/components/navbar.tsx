@@ -8,18 +8,11 @@ interface NavItemProps {
 }
 
 const NavItem: React.FC<NavItemProps> = ({ item }) => {
-  const handleSubMenuClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    event.stopPropagation();
-  };
-
   return (
     <>
       {item.children !== null ? (
         <div className={styles.navDropdown}>
-          <button
-            key={item.id}
-            className={styles.navDropdownBtn}
-          >
+          <button key={item.id} className={styles.navDropdownBtn}>
             {item.name}
           </button>
           <div className={styles.subMenu}>
@@ -28,7 +21,6 @@ const NavItem: React.FC<NavItemProps> = ({ item }) => {
                 key={child.id}
                 to={`/${child.slug}`}
                 className={styles.subMenuItem}
-                onClick={handleSubMenuClick}
               >
                 {child.name}
               </Link>
@@ -67,6 +59,7 @@ const NavBar: React.FC = () => {
       <label
         htmlFor="bmenub"
         className={`${styles.burger} ${styles.pseudo} ${styles.button}`}
+        style={{ color: "black" }}
       >
         &#9776;
       </label>
@@ -74,10 +67,7 @@ const NavBar: React.FC = () => {
 
       <div className={styles.navMenu}>
         {navItems.map((item) => (
-          <NavItem
-            key={item.id}
-            item={item}
-          />
+          <NavItem key={item.id} item={item} />
         ))}
       </div>
     </nav>
