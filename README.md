@@ -66,7 +66,7 @@
 
 ## What's Next
 
-Plans are coverd in [Gitlab Milestones](https://gitlab.igem.org/2024/shanghaitech-china/-/milestones).
+Plans are covered in [Gitlab Milestones](https://gitlab.igem.org/2024/shanghaitech-china/-/milestones).
 
     
 ## Technical Stack
