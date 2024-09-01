@@ -6,7 +6,7 @@
 @import "/src/plugins/picnic-css/plugins/button/plugin";
 @import "/src/plugins/picnic-css/plugins/nav/plugin";
 
-$nav-link-text-color: light.$pacify-char-layout;
+$nav-link-text-color: white;
 $nav-submenu-min-width: 100px;
 
 .navbar {
@@ -19,7 +19,8 @@ $nav-submenu-min-width: 100px;
     margin-right: 2.5rem;
 
     .nav-link {
-      margin: 0.5rem;
+      margin-right: 2.0rem;
+      padding: 0%;
       cursor: default;
       font-weight: bold;
       color: $nav-link-text-color;
@@ -28,33 +29,27 @@ $nav-submenu-min-width: 100px;
       &:hover {
         color: light.$pacify-char-layout-dimmed;
       }
+
+      @media all and (width <= $picnic-breakpoint) {
+        color: black;
+        display: block;
+      }
     }
     .nav-dropdown {
       position: relative;
       display: inline-block;
 
       @media all and (width <= $picnic-breakpoint) {
+        color: black;
         display: block;
       }
 
       .nav-dropdown-btn {
         @extend .nav-link;
         display: block;
-        padding-right: 30px;
-        &::after {
-          content: "";
-          position: absolute;
-          top: 50%;
-          right: 15px;
-          transform: translateY(-50%);
-          width: 0;
-          height: 0;
-          border-style: solid;
-          border-width: 5px 5px 0 5px;
-          border-color: #000 transparent transparent transparent;
-        }
 
         @media all and (width <= $picnic-breakpoint) {
+          color: black;
           transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0.2s;
           border-radius: 0.2em;
           width: 100%;
@@ -62,7 +57,8 @@ $nav-submenu-min-width: 100px;
         }
       }
 
-      .subMenu {
+      .sub-menu {
+        @extend .nav-link;
         display: none; /* Hide by default */
         position: absolute;
         background-color: white;
@@ -72,18 +68,20 @@ $nav-submenu-min-width: 100px;
         border-radius: 8px;
 
         @media all and (width <= $picnic-breakpoint) {
+          color: black;
           position: relative;
           width: 75%;
           left: 10%;
         }
       }
 
-      &:hover .subMenu {
+      &:hover .sub-menu {
         display: block; /* Show on hover */
       }
 
         .sub-menu-item {
           color: light.$pacify-char-content;
+          font-weight: normal;
           padding: 12px 18px;
           text-decoration: none;
           display: block;
