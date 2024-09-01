@@ -75,8 +75,19 @@ $nav-submenu-min-width: 100px;
         }
       }
 
-      &:hover .sub-menu {
-        display: block; /* Show on hover */
+      // Show sub-menu on hover for desktop
+      @media (min-width: $picnic-breakpoint) {
+        &:hover .sub-menu {
+          display: block; /* Show on hover */
+        }
+      }
+
+      // Show sub-menu on click for mobile
+      @media all and (width <= $picnic-breakpoint) {
+        .nav-dropdown-btn:focus + .sub-menu,
+        .nav-dropdown-btn:active + .sub-menu {
+          display: block; /* Show on click */
+        }
       }
 
         .sub-menu-item {
