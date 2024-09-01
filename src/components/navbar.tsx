@@ -9,34 +9,30 @@ interface NavItemProps {
   onToggle: () => void;
 }
 
-const NavItem: React.FC<NavItemProps> = ({ item, isOpen, onToggle }) => {
+const NavItem: React.FC<NavItemProps> = ({ item }) => {
   return (
     <>
       {item.children !== null ? (
-        <>
-          <div className={styles.navDropdown}>
-            <a
-              key={item.id}
-              className={styles.navDropdownBtn}
-              onClick={onToggle}
-            >
-              {item.name}
-            </a>
-            {isOpen && (
-              <div className={styles.subMenu}>
-                {item.children.map((child) => (
-                  <Link
-                    key={child.id}
-                    to={`/${child.slug}`}
-                    className={styles.subMenuItem}
-                  >
-                    {child.name}
-                  </Link>
-                ))}
-              </div>
-            )}
+        <div className={styles.navDropdown}>
+          <Link
+            key={item.id}
+            to={`/${item.slug}`}
+            className={styles.navDropdownBtn}
+          >
+            {item.name}
+          </Link>
+          <div className={styles.subMenu}>
+            {item.children.map((child) => (
+              <Link
+                key={child.id}
+                to={`/${child.slug}`}
+                className={styles.subMenuItem}
+              >
+                {child.name}
+              </Link>
+            ))}
           </div>
-        </>
+        </div>
       ) : (
         <Link to={`/${item.slug}`} className={styles.navLink}>
           {item.name}

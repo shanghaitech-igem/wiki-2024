@@ -18,7 +18,6 @@ nav {
       color: $nav-link-text-color;
       position: relative;
     }
-
     .nav-dropdown {
       position: relative;
       display: inline-block;
@@ -52,40 +51,44 @@ nav {
         }
       }
 
-      .sub-menu {
-        display: block;
+      .subMenu {
+        display: none; /* Hide by default */
         position: absolute;
         background-color: white;
         min-width: $nav-submenu-min-width;
         box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-        border-radius: 8px; // Add this line to round the corners
+        border-radius: 8px;
 
         @media all and (width <= $picnic-breakpoint) {
           position: relative;
           width: 75%;
           left: 10%;
         }
+      }
 
-        .sub-menu-item {
-          color: $nav-link-text-color;
-          padding: 12px 18px;
-          text-decoration: none;
-          display: block;
-          position: relative;
-          border-radius: 8px; // Add this line to round the corners
+      &:hover .subMenu {
+        display: block; /* Show on hover */
+      }
 
-          @media all and (width <= $picnic-breakpoint) {
-            &:before {
-              content: "";
-              display: inline-block;
-              width: 5px;
-              height: 100%;
-            }
+      .subMenuItem {
+        color: $nav-link-text-color;
+        padding: 12px 18px;
+        text-decoration: none;
+        display: block;
+        position: relative;
+        border-radius: 8px;
+
+        @media all and (width <= $picnic-breakpoint) {
+          &:before {
+            content: "";
+            display: inline-block;
+            width: 5px;
+            height: 100%;
           }
+        }
 
-          &:hover {
-            background-color: #f1f1f1;
-          }
+        &:hover {
+          background-color: #f1f1f1;
         }
       }
     }
