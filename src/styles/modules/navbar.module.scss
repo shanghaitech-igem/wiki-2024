@@ -84,15 +84,25 @@ $mobile-breakpoint: $picnic-breakpoint;
           .sub-menu {
             visibility: visible;
             color: $nav-link-hover-color;
+            .sub-menu-link {
+              opacity: 1;
+              transform: translateY(0);
+
+              $base-delay: 0.1s;
+              // Apply animation delay based on item index using a loop
+              @for $i from 1 through $sub-menu-item-count {
+                &:nth-child(#{$i}) {
+                  transition: color 0.3s, background 0.3s,
+                    opacity 0.3s $base-delay * $i,
+                    transform 0.3s $base-delay * $i,
+                    visibility 0.3s $base-delay * $i;
+                }
+              }
+            }
           }
 
           .sub-menu-root {
             color: $nav-link-hover-color;
-          }
-
-          .sub-menu:hover .sub-menu-link {
-            opacity: 1;
-            transform: translateY(0);
           }
         }
       }
@@ -126,8 +136,7 @@ $mobile-breakpoint: $picnic-breakpoint;
       .sub-menu {
         visibility: hidden;
         position: absolute;
-        margin-top: -3rem;
-        padding-top: calc($nav-bar-height / 2 + 2rem);
+        padding-top: calc($nav-bar-height / 2 - 1rem);
         background: none;
         min-width: $sub-menu-min-width;
         border-radius: $sub-menu-border-radius;
@@ -167,7 +176,6 @@ $mobile-breakpoint: $picnic-breakpoint;
           backdrop-filter: blur(10px);
 
           opacity: 0; // Initially hide the items
-          transition: opacity 0.3s, transform 0.3s, visibility 0.3s; // Add transition
           transform: translateY(-20px);
 
           &:hover {
@@ -177,14 +185,6 @@ $mobile-breakpoint: $picnic-breakpoint;
               #ffffff 84.94%
             );
             color: light.$pacify-secondary;
-          }
-
-          $base-delay: 0.1s;
-          // Apply animation delay based on item index using a loop
-          @for $i from 1 through $sub-menu-item-count {
-            &:nth-child(#{$i}) {
-              transition-delay: $base-delay * $i;
-            }
           }
         }
       }
