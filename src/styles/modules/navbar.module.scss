@@ -82,7 +82,7 @@ $mobile-breakpoint: $picnic-breakpoint;
       @media (min-width: $mobile-breakpoint) {
         &:hover {
           .sub-menu {
-            display: block; /* Show on hover */
+            visibility: visible;
             color: $nav-link-hover-color;
           }
 
@@ -124,10 +124,10 @@ $mobile-breakpoint: $picnic-breakpoint;
       }
 
       .sub-menu {
-        display: none; /* Hide by default */
+        visibility: hidden;
         position: absolute;
         margin-top: -3rem;
-        padding-top: $nav-bar-height / 2 + 2rem;
+        padding-top: calc($nav-bar-height / 2 + 2rem);
         background: none;
         min-width: $sub-menu-min-width;
         border-radius: $sub-menu-border-radius;
@@ -142,7 +142,7 @@ $mobile-breakpoint: $picnic-breakpoint;
 
           // Keep submenu open on hover
           &:hover {
-            display: block;
+            visibility: visible;
           }
         }
 
@@ -167,7 +167,7 @@ $mobile-breakpoint: $picnic-breakpoint;
           backdrop-filter: blur(10px);
 
           opacity: 0; // Initially hide the items
-          transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; // Add transition
+          transition: opacity 0.3s, transform 0.3s, visibility 0.3s; // Add transition
           transform: translateY(-20px);
 
           &:hover {
@@ -205,6 +205,6 @@ $mobile-breakpoint: $picnic-breakpoint;
     @extend .logo;
     display: inline;
     width: auto;
-    height: $nav-bar-height / 1.5;
+    height: calc($nav-bar-height / 1.5);
   }
 }
