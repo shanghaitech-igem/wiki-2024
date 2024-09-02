@@ -19,7 +19,7 @@ $nav-submenu-min-width: 100px;
     margin-right: 2.5rem;
 
     .nav-link {
-      margin-right: 2.0rem;
+      margin-right: 2rem;
       padding: 0%;
       cursor: default;
       font-weight: bold;
@@ -36,18 +36,34 @@ $nav-submenu-min-width: 100px;
         display: block;
       }
     }
+
     .nav-dropdown {
       position: relative;
       display: inline-block;
 
+      // Show sub-menu on hover for desktop
+      @media (min-width: $picnic-breakpoint) {
+        &:hover {
+          .sub-menu {
+            display: block; /* Show on hover */
+          }
+        }
+      }
+
+      // Show sub-menu on click for mobile
       @media all and (width <= $picnic-breakpoint) {
-        color: black;
         display: block;
+
+        .nav-dropdown-btn:focus + .sub-menu,
+        .nav-dropdown-btn:active + .sub-menu {
+          display: block; /* Show on click */
+        }
       }
 
       .nav-dropdown-btn {
         @extend .nav-link;
         display: block;
+        box-shadow: none;
 
         @media all and (width <= $picnic-breakpoint) {
           color: black;
@@ -72,6 +88,7 @@ $nav-submenu-min-width: 100px;
           position: relative;
           width: 75%;
           left: 10%;
+
           // Keep submenu open on hover
           &:hover {
             display: block;
@@ -86,33 +103,9 @@ $nav-submenu-min-width: 100px;
           position: relative;
           border-radius: 8px;
 
-          @media all and (width <= $picnic-breakpoint) {
-            &:before {
-              content: "";
-              display: inline-block;
-              width: 5px;
-              height: 100%;
-            }
-          }
-
           &:hover {
             background-color: #f1f1f1;
           }
-        }
-      }
-
-      // Show sub-menu on hover for desktop
-      @media (min-width: $picnic-breakpoint) {
-        &:hover .sub-menu {
-          display: block; /* Show on hover */
-        }
-      }
-
-      // Show sub-menu on click for mobile
-      @media all and (width <= $picnic-breakpoint) {
-        .nav-dropdown-btn:focus + .sub-menu,
-        .nav-dropdown-btn:active + .sub-menu {
-          display: block; /* Show on click */
         }
       }
     }
