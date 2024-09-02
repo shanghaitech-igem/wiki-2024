@@ -12,7 +12,7 @@ const NavItem: React.FC<NavItemProps> = ({ item }) => {
     <>
       {item.children !== null ? (
         <div className={styles.navDropdown}>
-          <button key={item.id} className={styles.navDropdownBtn}>
+          <button key={item.id} className={styles.subMenuBtn}>
             {item.name}
           </button>
           <div className={styles.subMenu}>

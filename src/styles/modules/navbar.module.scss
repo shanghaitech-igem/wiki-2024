@@ -9,21 +9,22 @@
 // Key properties extracted into variables
 $nav-bar-bg-color: light.$pacify-primary;
 $nav-bar-font-family: light.$pacify-main-font;
+$nav-bar-height: 6rem;
 
-$nav-link-text-color: white;
-$nav-link-margin-right: 2rem;
-$nav-link-font-weight: bold;
+$nav-link-text-color: light.$pacify-char-layout;
+$nav-link-margin-right: 1.7rem;
 $nav-link-hover-color: light.$pacify-char-layout-dimmed;
+$nav-link-font-weight: normal;
 
-$sub-menu-min-width: 100px;
-$sub-menu-bg-color: white;
-$sub-menu-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-$sub-menu-border-radius: 8px;
+$sub-menu-min-width: 13rem;
+$sub-menu-btn-font-weight: bold;
+$sub-menu-border-radius: 0.2rem;
 $sub-menu-item-padding: 12px 18px;
 $sub-menu-item-hover-bg: #f1f1f1;
-$sub-menu-dp-btn-color: black;
-$sub-menu-item-color: black;
-$sub-menu-item-border-radius: 0.2em;
+$sub-menu-item-color: light.$pacify-char-layout;
+$sub-menu-item-border-radius: 40px 0px;
+
+$mobile-sub-menu-dp-btn-color: black;
 
 // Media query breakpoints
 $mobile-breakpoint: $picnic-breakpoint;
@@ -31,28 +32,40 @@ $mobile-breakpoint: $picnic-breakpoint;
 .nav-bar {
   @extend nav;
   background: $nav-bar-bg-color;
+  height: $nav-bar-height;
+
   font-family: $nav-bar-font-family;
-  color: white;
+  font-size: larger;
+  color: light.$pacify-char-layout;
+
+  background: linear-gradient(
+    90deg,
+    rgba(231, 227, 215, 0.5) 0%,
+    rgba(129, 127, 120, 0.5) 100%
+  );
+  box-shadow: inset 0px 4px 6px 3px rgba(0, 0, 0, 0.25);
 
   .nav-menu {
     @extend .menu;
-    margin-right: 2.5rem;
+    margin-right: 2rem;
 
     .nav-link {
+      position: relative;
+
       margin-right: $nav-link-margin-right;
       padding: 0%;
-      cursor: default;
+
       font-weight: $nav-link-font-weight;
       color: $nav-link-text-color;
-      position: relative;
       background: none;
+      cursor: default;
 
       &:hover {
         color: $nav-link-hover-color;
       }
 
       @media all and (width <= $mobile-breakpoint) {
-        color: $sub-menu-dp-btn-color;
+        color: $mobile-sub-menu-dp-btn-color;
         display: block;
       }
     }
@@ -60,12 +73,18 @@ $mobile-breakpoint: $picnic-breakpoint;
     .nav-dropdown {
       position: relative;
       display: inline-block;
+      margin: 0;
 
       // Show sub-menu on hover for desktop
       @media (min-width: $mobile-breakpoint) {
         &:hover {
           .sub-menu {
             display: block; /* Show on hover */
+            color: $nav-link-hover-color;
+          }
+
+          .sub-menu-btn {
+            color: $nav-link-hover-color;
           }
         }
       }
@@ -74,19 +93,20 @@ $mobile-breakpoint: $picnic-breakpoint;
       @media all and (width <= $mobile-breakpoint) {
         display: block;
 
-        .nav-dropdown-btn:focus + .sub-menu,
-        .nav-dropdown-btn:active + .sub-menu {
+        .sub-menu-btn:focus + .sub-menu,
+        .sub-menu-btn:active + .sub-menu {
           display: block; /* Show on click */
         }
       }
 
-      .nav-dropdown-btn {
+      .sub-menu-btn {
         @extend .nav-link;
         display: block;
         box-shadow: none;
+        font-weight: $sub-menu-btn-font-weight;
 
         @media all and (width <= $mobile-breakpoint) {
-          color: $sub-menu-dp-btn-color;
+          color: $mobile-sub-menu-dp-btn-color;
           border-radius: $sub-menu-item-border-radius;
           width: 100%;
           text-align: left;
@@ -96,16 +116,17 @@ $mobile-breakpoint: $picnic-breakpoint;
       .sub-menu {
         display: none; /* Hide by default */
         position: absolute;
-        background-color: $sub-menu-bg-color;
+        padding-top: $nav-bar-height / 2 - 1rem;
+        background: none;
         min-width: $sub-menu-min-width;
-        box-shadow: $sub-menu-box-shadow;
         border-radius: $sub-menu-border-radius;
+        left: 60%;
+        transform: translateX(-60%);
 
         @media all and (width <= $mobile-breakpoint) {
           color: $sub-menu-item-color;
           position: relative;
           width: 75%;
-          left: 10%;
 
           // Keep submenu open on hover
           &:hover {
@@ -114,15 +135,28 @@ $mobile-breakpoint: $picnic-breakpoint;
         }
 
         .sub-menu-item {
-          color: $sub-menu-item-color;
-          padding: $sub-menu-item-padding;
-          text-decoration: none;
           display: block;
           position: relative;
-          border-radius: $sub-menu-border-radius;
+          margin-top: 0.5rem;
+          padding: $sub-menu-item-padding;
+          text-decoration: none;
+          border-radius: $sub-menu-item-border-radius;
+          text-align: center;
+
+          color: $sub-menu-item-color;
+          background: linear-gradient(
+            90.91deg,
+            rgba(231, 227, 215, 0.6) 21.56%,
+            rgba(192, 178, 166, 0.6) 84.94%
+          );
 
           &:hover {
-            background-color: $sub-menu-item-hover-bg;
+            background: linear-gradient(
+              90.91deg,
+              #e7e3d7 21.56%,
+              #ffffff 84.94%
+            );
+            color: light.$pacify-secondary;
           }
         }
       }
@@ -133,8 +167,16 @@ $mobile-breakpoint: $picnic-breakpoint;
     display: none;
   }
 
+  .brand {
+    @extend .brand;
+    font-size: larger;
+    left: 1.5em;
+  }
+
   .logo {
     @extend .logo;
     display: inline;
+    width: auto;
+    height: $nav-bar-height / 1.5;
   }
 }
