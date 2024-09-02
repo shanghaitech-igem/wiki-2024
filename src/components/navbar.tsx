@@ -59,7 +59,6 @@ const NavBar: React.FC = () => {
       <label
         htmlFor="bmenub"
         className={`${styles.burger} ${styles.pseudo} ${styles.button}`}
-        style={{ color: "black" }}
       >
         &#9776;
       </label>

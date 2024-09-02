@@ -13,6 +13,7 @@ $nav-submenu-min-width: 100px;
   @extend nav;
   background: light.$pacify-primary;
   font-family: light.$pacify-main-font;
+  color: white;
 
   .nav-menu {
     @extend .menu;
