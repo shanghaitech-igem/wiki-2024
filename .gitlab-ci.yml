@@ -13,7 +13,7 @@ pages:
     paths:
       - public
     exclude:
-      - public/test/
+      - public/test/**/* # Exclude test files from the artifacts.
       - public/**/*.map
       - public/**/*.LICENSE.txt
   only:
