@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import { Link, useStaticQuery, graphql } from "gatsby";
 import * as styles from "../styles/modules/navbar.module.scss";
 import { generateNavItems, NavItemType } from "../utils/generate-nav-item";
