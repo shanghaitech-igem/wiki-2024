@@ -110,6 +110,8 @@ $mobile-breakpoint: $picnic-breakpoint;
           border-radius: $sub-menu-item-border-radius;
           width: 100%;
           text-align: left;
+          padding: 0.3em 0.9em;
+          margin: 0.3em;
         }
       }
 
@@ -125,6 +127,7 @@ $mobile-breakpoint: $picnic-breakpoint;
 
         @media all and (width <= $mobile-breakpoint) {
           color: $sub-menu-item-color;
+          padding-top: inherit;
           position: relative;
           width: 75%;
 
