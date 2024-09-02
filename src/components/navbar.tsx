@@ -49,7 +49,7 @@ const NavBar: React.FC = () => {
   `);
 
   return (
-    <nav className={styles.navbar}>
+    <nav className={styles.navBar}>
       <Link to="/" className={styles.brand}>
         <img className={styles.logo} src={data.site.siteMetadata.favicon} />
       </Link>

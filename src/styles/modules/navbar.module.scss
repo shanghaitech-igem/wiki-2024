@@ -6,13 +6,32 @@
 @import "/src/plugins/picnic-css/plugins/button/plugin";
 @import "/src/plugins/picnic-css/plugins/nav/plugin";
 
-$nav-link-text-color: white;
-$nav-submenu-min-width: 100px;
+// Key properties extracted into variables
+$nav-bar-bg-color: light.$pacify-primary;
+$nav-bar-font-family: light.$pacify-main-font;
 
-.navbar {
+$nav-link-text-color: white;
+$nav-link-margin-right: 2rem;
+$nav-link-font-weight: bold;
+$nav-link-hover-color: light.$pacify-char-layout-dimmed;
+
+$sub-menu-min-width: 100px;
+$sub-menu-bg-color: white;
+$sub-menu-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+$sub-menu-border-radius: 8px;
+$sub-menu-item-padding: 12px 18px;
+$sub-menu-item-hover-bg: #f1f1f1;
+$sub-menu-dp-btn-color: black;
+$sub-menu-item-color: black;
+$sub-menu-item-border-radius: 0.2em;
+
+// Media query breakpoints
+$mobile-breakpoint: $picnic-breakpoint;
+
+.nav-bar {
   @extend nav;
-  background: light.$pacify-primary;
-  font-family: light.$pacify-main-font;
+  background: $nav-bar-bg-color;
+  font-family: $nav-bar-font-family;
   color: white;
 
   .nav-menu {
@@ -20,20 +39,20 @@ $nav-submenu-min-width: 100px;
     margin-right: 2.5rem;
 
     .nav-link {
-      margin-right: 2rem;
+      margin-right: $nav-link-margin-right;
       padding: 0%;
       cursor: default;
-      font-weight: bold;
+      font-weight: $nav-link-font-weight;
       color: $nav-link-text-color;
       position: relative;
       background: none;
 
       &:hover {
-        color: light.$pacify-char-layout-dimmed;
+        color: $nav-link-hover-color;
       }
 
-      @media all and (width <= $picnic-breakpoint) {
-        color: black;
+      @media all and (width <= $mobile-breakpoint) {
+        color: $sub-menu-dp-btn-color;
         display: block;
       }
     }
@@ -43,7 +62,7 @@ $nav-submenu-min-width: 100px;
       display: inline-block;
 
       // Show sub-menu on hover for desktop
-      @media (min-width: $picnic-breakpoint) {
+      @media (min-width: $mobile-breakpoint) {
         &:hover {
           .sub-menu {
             display: block; /* Show on hover */
@@ -52,7 +71,7 @@ $nav-submenu-min-width: 100px;
       }
 
       // Show sub-menu on click for mobile
-      @media all and (width <= $picnic-breakpoint) {
+      @media all and (width <= $mobile-breakpoint) {
         display: block;
 
         .nav-dropdown-btn:focus + .sub-menu,
@@ -66,10 +85,9 @@ $nav-submenu-min-width: 100px;
         display: block;
         box-shadow: none;
 
-        @media all and (width <= $picnic-breakpoint) {
-          color: black;
-          transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0.2s;
-          border-radius: 0.2em;
+        @media all and (width <= $mobile-breakpoint) {
+          color: $sub-menu-dp-btn-color;
+          border-radius: $sub-menu-item-border-radius;
           width: 100%;
           text-align: left;
         }
@@ -78,14 +96,13 @@ $nav-submenu-min-width: 100px;
       .sub-menu {
         display: none; /* Hide by default */
         position: absolute;
-        background-color: white;
-        min-width: $nav-submenu-min-width;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-        border-radius: 8px;
-        border-radius: 8px;
+        background-color: $sub-menu-bg-color;
+        min-width: $sub-menu-min-width;
+        box-shadow: $sub-menu-box-shadow;
+        border-radius: $sub-menu-border-radius;
 
-        @media all and (width <= $picnic-breakpoint) {
-          color: black;
+        @media all and (width <= $mobile-breakpoint) {
+          color: $sub-menu-item-color;
           position: relative;
           width: 75%;
           left: 10%;
@@ -97,15 +114,15 @@ $nav-submenu-min-width: 100px;
         }
 
         .sub-menu-item {
-          color: black;
-          padding: 12px 18px;
+          color: $sub-menu-item-color;
+          padding: $sub-menu-item-padding;
           text-decoration: none;
           display: block;
           position: relative;
-          border-radius: 8px;
+          border-radius: $sub-menu-border-radius;
 
           &:hover {
-            background-color: #f1f1f1;
+            background-color: $sub-menu-item-hover-bg;
           }
         }
       }
