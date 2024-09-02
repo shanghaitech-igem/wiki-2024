@@ -12,15 +12,15 @@ const NavItem: React.FC<NavItemProps> = ({ item }) => {
     <>
       {item.children !== null ? (
         <div className={styles.navDropdown}>
-          <button key={item.id} className={styles.subMenuBtn}>
+          <Link to={`#`} key={item.id} className={styles.subMenuRoot}>
             {item.name}
-          </button>
+          </Link>
           <div className={styles.subMenu}>
             {item.children.map((child) => (
               <Link
                 key={child.id}
                 to={`/${child.slug}`}
-                className={styles.subMenuItem}
+                className={styles.subMenuLink}
               >
                 {child.name}
               </Link>

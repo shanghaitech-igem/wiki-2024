@@ -18,14 +18,14 @@ $nav-link-font-weight: normal;
 
 $sub-menu-item-count: 5;
 $sub-menu-min-width: 13rem;
-$sub-menu-btn-font-weight: bold;
+$sub-menu-root-font-weight: bold;
 $sub-menu-border-radius: 0.2rem;
-$sub-menu-item-padding: 12px 18px;
-$sub-menu-item-hover-bg: #f1f1f1;
-$sub-menu-item-color: light.$pacify-char-layout;
-$sub-menu-item-border-radius: 40px 0px;
+$sub-menu-link-padding: 12px 18px;
+$sub-menu-link-hover-bg: #f1f1f1;
+$sub-menu-link-color: light.$pacify-char-layout;
+$sub-menu-link-border-radius: 40px 0px;
 
-$mobile-sub-menu-dp-btn-color: black;
+$mobile-sub-menu-dp-root-color: black;
 
 // Media query breakpoints
 $mobile-breakpoint: $picnic-breakpoint;
@@ -68,7 +68,7 @@ $mobile-breakpoint: $picnic-breakpoint;
       }
 
       @media all and (width <= $mobile-breakpoint) {
-        color: $mobile-sub-menu-dp-btn-color;
+        color: $mobile-sub-menu-dp-root-color;
         display: block;
       }
     }
@@ -86,11 +86,11 @@ $mobile-breakpoint: $picnic-breakpoint;
             color: $nav-link-hover-color;
           }
 
-          .sub-menu-btn {
+          .sub-menu-root {
             color: $nav-link-hover-color;
           }
 
-          .sub-menu:hover .sub-menu-item {
+          .sub-menu:hover .sub-menu-link {
             opacity: 1;
             transform: translateY(0);
           }
@@ -101,21 +101,21 @@ $mobile-breakpoint: $picnic-breakpoint;
       @media all and (width <= $mobile-breakpoint) {
         display: block;
 
-        .sub-menu-btn:focus + .sub-menu,
-        .sub-menu-btn:active + .sub-menu {
+        .sub-menu-root:focus + .sub-menu,
+        .sub-menu-root:active + .sub-menu {
           display: block; /* Show on click */
         }
       }
 
-      .sub-menu-btn {
+      .sub-menu-root {
         @extend .nav-link;
         display: block;
         box-shadow: none;
-        font-weight: $sub-menu-btn-font-weight;
+        font-weight: $sub-menu-root-font-weight;
 
         @media all and (width <= $mobile-breakpoint) {
-          color: $mobile-sub-menu-dp-btn-color;
-          border-radius: $sub-menu-item-border-radius;
+          color: $mobile-sub-menu-dp-root-color;
+          border-radius: $sub-menu-link-border-radius;
           width: 100%;
           text-align: left;
           padding: 0.3em 0.9em;
@@ -132,10 +132,10 @@ $mobile-breakpoint: $picnic-breakpoint;
         min-width: $sub-menu-min-width;
         border-radius: $sub-menu-border-radius;
         left: 60%;
-        transform: translateX(-60%);
+        translate: -60%;
 
         @media all and (width <= $mobile-breakpoint) {
-          color: $sub-menu-item-color;
+          color: $sub-menu-link-color;
           padding-top: inherit;
           position: relative;
           width: 75%;
@@ -147,16 +147,16 @@ $mobile-breakpoint: $picnic-breakpoint;
         }
 
         // Animation for sub-menu items
-        .sub-menu-item {
+        .sub-menu-link {
           display: block;
           position: relative;
           margin-top: 0.5rem;
-          padding: $sub-menu-item-padding;
+          padding: $sub-menu-link-padding;
           text-decoration: none;
-          border-radius: $sub-menu-item-border-radius;
+          border-radius: $sub-menu-link-border-radius;
           text-align: center;
 
-          color: $sub-menu-item-color;
+          color: $sub-menu-link-color;
           background: linear-gradient(
             90.91deg,
             rgba(231, 227, 215, 0.6) 21.56%,
