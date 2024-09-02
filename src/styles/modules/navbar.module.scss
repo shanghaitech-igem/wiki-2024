@@ -1,56 +1,64 @@
 @use "sass:math";
-@use "../themes/light";
-
 @import "/src/plugins/picnic-css/themes/default/theme";
 @import "/src/plugins/picnic-css/plugins/label/plugin";
 @import "/src/plugins/picnic-css/plugins/button/plugin";
 @import "/src/plugins/picnic-css/plugins/nav/plugin";
 
-$nav-link-text-color: white;
+$nav-link-text-color: black;
 $nav-submenu-min-width: 100px;
 
-.navbar {
-  @extend nav;
-  background: light.$pacify-primary;
-  font-family: light.$pacify-main-font;
-
+nav {
+  color: white;
+  
   .nav-menu {
     @extend .menu;
     margin-right: 2.5rem;
-
     .nav-link {
-      margin-right: 2.0rem;
-      padding: 0%;
-      cursor: default;
-      font-weight: bold;
+      @extend .button;
+      @extend .pseudo;
       color: $nav-link-text-color;
       position: relative;
-      background: none;
-
-      &:hover {
-        color: light.$pacify-char-layout-dimmed;
-      }
-
-      @media all and (width <= $picnic-breakpoint) {
-        color: black;
-        display: block;
-      }
     }
+
     .nav-dropdown {
       position: relative;
       display: inline-block;
 
+      // Show sub-menu on hover for desktop
+      @media (min-width: $picnic-breakpoint) {
+        &:hover .sub-menu {
+          display: block; /* Show on hover */
+        }
+      }
+
+      // Show sub-menu on click for mobile
       @media all and (width <= $picnic-breakpoint) {
-        color: black;
-        display: block;
+        display: block; // Make it block in mobile
+
+        .nav-dropdown-btn:focus + .sub-menu,
+        .nav-dropdown-btn:active + .sub-menu {
+          display: block; /* Show on click */
+        }
       }
 
       .nav-dropdown-btn {
         @extend .nav-link;
         display: block;
+        padding-right: 30px;
+        &::after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          right: 15px;
+          transform: translateY(-50%);
+          width: 0;
+          height: 0;
+          border-style: solid;
+          border-width: 5px 5px 0 5px;
+          border-color: #000 transparent transparent transparent;
+        }
 
         @media all and (width <= $picnic-breakpoint) {
-          color: black;
           transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0.2s;
           border-radius: 0.2em;
           width: 100%;
@@ -65,11 +73,9 @@ $nav-submenu-min-width: 100px;
         min-width: $nav-submenu-min-width;
         box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
         border-radius: 8px;
-        border-radius: 8px;
 
         @media all and (width <= $picnic-breakpoint) {
-          color: black;
-          position: relative;
+          position: relative; // Change to relative in mobile
           width: 75%;
           left: 10%;
           // Keep submenu open on hover
@@ -79,40 +85,16 @@ $nav-submenu-min-width: 100px;
         }
 
         .sub-menu-item {
-          color: black;
+          color: $nav-link-text-color;
           padding: 12px 18px;
           text-decoration: none;
           display: block;
           position: relative;
           border-radius: 8px;
 
-          @media all and (width <= $picnic-breakpoint) {
-            &:before {
-              content: "";
-              display: inline-block;
-              width: 5px;
-              height: 100%;
-            }
-          }
-
           &:hover {
             background-color: #f1f1f1;
           }
-        }
-      }
-
-      // Show sub-menu on hover for desktop
-      @media (min-width: $picnic-breakpoint) {
-        &:hover .sub-menu {
-          display: block; /* Show on hover */
-        }
-      }
-
-      // Show sub-menu on click for mobile
-      @media all and (width <= $picnic-breakpoint) {
-        .nav-dropdown-btn:focus + .sub-menu,
-        .nav-dropdown-btn:active + .sub-menu {
-          display: block; /* Show on click */
         }
       }
     }
