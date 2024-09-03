@@ -1,0 +1,74 @@
+// Serif Font
+@font-face {
+  font-family: "Cinzel";
+  font-style: normal;
+  src: url("https://static.igem.wiki/teams/5174/fonts/cinzel/cinzel-variablefont-wght.woff2")
+    format("woff2-variations");
+  font-display: swap; // Improves loading performance
+}
+
+// Serif Font
+@font-face {
+  font-family: "Cinzel Decorative";
+  font-weight: normal;
+  font-style: normal;
+  src: url("https://static.igem.wiki/teams/5174/fonts/cinzel-decorative/cinzeldecorative-regular.woff2")
+    format("woff2");
+  font-display: swap;
+}
+
+// Serif Font
+@font-face {
+  font-family: "Cinzel Decorative";
+  font-weight: bold;
+  font-style: normal;
+  src: url("https://static.igem.wiki/teams/5174/fonts/cinzel-decorative/cinzeldecorative-bold.woff2")
+    format("woff2");
+  font-display: swap;
+}
+
+// Serif Font
+@font-face {
+  font-family: "Cinzel Decorative";
+  font-weight: bolder;
+  font-style: normal;
+  src: url("https://static.igem.wiki/teams/5174/fonts/cinzel-decorative/cinzeldecorative-black.woff2")
+    format("woff2");
+  font-display: swap;
+}
+
+// Serif Font
+@font-face {
+  font-family: "Playfair Display";
+  font-style: normal;
+  src: url("https://static.igem.wiki/teams/5174/fonts/playfair-display/playfairdisplay-variablefont-wght.woff2")
+    format("woff2-variations");
+  font-display: swap;
+}
+
+// Serif Font
+@font-face {
+  font-family: "Playfair Display";
+  font-style: italic;
+  src: url("https://static.igem.wiki/teams/5174/fonts/playfair-display/playfairdisplay-italic-variablefont-wght.woff2")
+    format("woff2-variations");
+  font-display: swap;
+}
+
+// Sans Serif Font
+@font-face {
+  font-family: "Monsterrat";
+  font-style: normal;
+  src: url("https://static.igem.wiki/teams/5174/fonts/monsterrat/montserrat-variablefont-wght.woff2")
+    format("woff2-variations");
+  font-display: swap;
+}
+
+// Sans Serif Font
+@font-face {
+  font-family: "Monsterrat";
+  font-style: italic;
+  src: url("https://static.igem.wiki/teams/5174/fonts/monsterrat/montserrat-italic-variablefont-wght.woff2")
+    format("woff2-variations");
+  font-display: swap;
+}

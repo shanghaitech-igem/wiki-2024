@@ -1,3 +1,5 @@
+@import "./fonts.scss";
+
 $pacify-body: #e7e3d7 !default;
 $pacify-footer: #3c5c71 !default;
 
@@ -12,7 +14,7 @@ $pacify-char-content: #000000 !default;
 $pacify-char-layout: #ffffff !default;
 $pacify-char-layout-dimmed: #8d8d8d !default;
 
-$pacify-main-font: "Pacify_Main";
+$pacify-layout-font: "Cinzel";
 
 $pacify-color-variation: 10% !default;
 $pacify-transparency: 0.2 !default;
@@ -29,8 +31,3 @@ $pacify-overlay: rgba(#000000, $pacify-transparency);
 
 // Transitions
 $pacify-transition: all 0.3s;
-
-@font-face {
-  font-family: "Pacify_Main";
-  src: url("https://static.igem.wiki/teams/5174/fonts/cinzel/cinzel-variablefont-wght.woff2");
-}

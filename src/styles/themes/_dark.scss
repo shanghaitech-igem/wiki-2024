@@ -1,3 +1,5 @@
+@import "./fonts.scss";
+
 $pacify-body: #e7e3d7 !default;
 $pacify-footer: #3c5c71 !default;
 
@@ -5,11 +7,14 @@ $pacify-primary: #bccfb8 !default;
 $pacify-secondary: #c0b2a6 !default;
 $pacify-success: #5593e1 !default;
 $pacify-warning: #cc885b !default;
+$pacify-dull: #8d8d8d !default;
 
 $pacify-char-strong: #223541 !default;
 $pacify-char-content: #000000 !default;
 $pacify-char-layout: #ffffff !default;
 $pacify-char-layout-dimmed: #8d8d8d !default;
+
+$pacify-layout-font: "Cinzel";
 
 $pacify-color-variation: 10% !default;
 $pacify-transparency: 0.2 !default;
@@ -22,7 +27,7 @@ $pacify-breakpoint: 60em !default;
 $pacify-radius: 0.2em !default;
 $pacify-border: 1px solid $pacify-dull !default;
 $pacify-shadow: 0 0 0.2em rgba($pacify-dull, $pacify-transparency) !default;
-$pacify-overlay: rgba($pacify-black, $pacify-transparency);
+$pacify-overlay: rgba(#000000, $pacify-transparency);
 
 // Transitions
 $pacify-transition: all 0.3s;
