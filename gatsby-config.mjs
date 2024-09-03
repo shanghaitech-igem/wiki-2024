@@ -5,6 +5,10 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 import remarkGfm from "remark-gfm";
 
 const config = {
+  flags: {
+    DEV_SSR: true
+  },
+
   siteMetadata: {
     title: `ShanghaiTech 2024 iGEM Wiki`,
     siteUrl: `https://2024.igem.wiki/shanghaitech-china`,
@@ -42,13 +46,7 @@ const config = {
         },
         gatsbyRemarkPlugins: [
           `gatsby-remark-smartypants`, // Replaces “dumb” punctuation marks with “smart” punctuation marks using the retext-smartypants plugin.
-          {
-            // Adds GitHub-style hover links to headers in your markdown files when they’re rendered.
-            resolve: `gatsby-remark-autolink-headers`,
-            options: {
-              // offsetY: 100,
-            },
-          },
+          `gatsby-remark-autolink-headers`, // Adds GitHub-style hover links to headers in your markdown files when they’re rendered.
           {
             resolve: `gatsby-remark-table-of-contents`,
             options: {

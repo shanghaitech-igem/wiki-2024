@@ -32,16 +32,22 @@
     "gatsby-remark-table-of-contents": "file:src/plugins/toc-remark",
     "gatsby-source-filesystem": "^5.13.1",
     "katex": "^0.16.11",
+    "plotly.js": "^2.35.0",
     "prismjs": "^1.29.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-loadable": "^5.5.0",
+    "react-plotly.js": "^2.6.0",
     "remark-gfm": "^3.0.1",
     "sass": "^1.77.6"
   },
   "devDependencies": {
     "@types/node": "^20.11.19",
+    "@types/plotly.js": "^2.33.3",
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
+    "@types/react-loadable": "^5.5.11",
+    "@types/react-plotly.js": "^2.6.3",
     "typescript": "^5.3.3"
   }
 }
