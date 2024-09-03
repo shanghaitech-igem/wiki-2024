@@ -2,7 +2,16 @@
 @import "/src/plugins/picnic-css/themes/default/theme";
 @import "/src/plugins/picnic-css/plugins/table/plugin";
 
+html {
+  scroll-behavior: smooth;
+}
+
 main {
+
+  * {
+    scroll-margin-top: 3.5rem;
+  }
+
   img:not(.PhotoView-Portal img) {
     max-width: 60%;
     height: auto;

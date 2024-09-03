@@ -1,18 +1,28 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
+import React, { ReactElement } from "react";
+
+interface PluginOptions {
+  className?: string;
+  icon?: boolean | string;
+  offsetY?: number;
+}
+
+interface RenderBodyParams {
+  setHeadComponents: (components: ReactElement[]) => void;
+}
+
+const pluginDefaults: Required<PluginOptions> = {
+  className: "anchor",
+  icon: true,
+  offsetY: 0,
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.onRenderBody = void 0;
-const react_1 = __importDefault(require("react"));
-const pluginDefaults = {
-    className: "anchor",
-    icon: true,
-    offsetY: 0,
-};
-const onRenderBody = ({ setHeadComponents }, pluginOptions) => {
-    const { className, icon, offsetY } = Object.assign(Object.assign({}, pluginDefaults), pluginOptions);
-    const styles = `
+
+export const onRenderBody = (
+  { setHeadComponents }: RenderBodyParams,
+  pluginOptions: PluginOptions
+): void => {
+  const { className, icon, offsetY } = { ...pluginDefaults, ...pluginOptions };
+
+  const styles = `
     .${className}.before {
       position: absolute;
       top: 0;
@@ -47,7 +57,8 @@ const onRenderBody = ({ setHeadComponents }, pluginOptions) => {
       visibility: visible;
     }
   `;
-    const script = `
+
+  const script = `
     document.addEventListener("DOMContentLoaded", function(event) {
       var hash = window.decodeURI(location.hash.replace('#', ''))
       if (hash !== '') {
@@ -67,11 +78,20 @@ const onRenderBody = ({ setHeadComponents }, pluginOptions) => {
       }
     })
   `;
-    const style = icon ? (react_1.default.createElement("style", { key: "gatsby-remark-autolink-headers-style", type: "text/css" }, styles)) : null;
-    const components = [
-        style,
-        react_1.default.createElement("script", { key: "gatsby-remark-autolink-headers-script", dangerouslySetInnerHTML: { __html: script } }),
-    ].filter(Boolean);
-    setHeadComponents(components);
+
+  const style = icon ? (
+    <style key="gatsby-remark-autolink-headers-style" type="text/css">
+      {styles}
+    </style>
+  ) : null;
+
+  const components: ReactElement[] = [
+    style,
+    <script
+      key="gatsby-remark-autolink-headers-script"
+      dangerouslySetInnerHTML={{ __html: script }}
+    />,
+  ].filter(Boolean) as ReactElement[];
+
+  setHeadComponents(components);
 };
-exports.onRenderBody = onRenderBody;

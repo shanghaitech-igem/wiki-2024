@@ -46,7 +46,7 @@ const config = {
             // Adds GitHub-style hover links to headers in your markdown files when they’re rendered.
             resolve: `gatsby-remark-autolink-headers`,
             options: {
-              offsetY: 100,
+              // offsetY: 100,
             },
           },
           {
