@@ -26,8 +26,9 @@ $sub-menu-link-border-radius: 40px 0px;
 $sub-menu-link-color: light.$pacify-char-layout;
 $sub-menu-link-bg-gradient-start: rgba(231, 227, 215, 0.6);
 $sub-menu-link-bg-gradient-end: rgba(192, 178, 166, 0.6);
-$sub-menu-link-hover-bg-gradient-start: #e7e3d7;
-$sub-menu-link-hover-bg-gradient-end: #ffffff;
+$sub-menu-link-hover-bg-gradient-start: rgb(231, 227, 215, 0.6);
+$sub-menu-link-hover-bg-gradient-end: rgb(255, 255, 255, 0.6);
+$sub-menu-link-transition-time: 0.3s;
 
 $mobile-sub-menu-dp-root-color: black;
 
@@ -96,10 +97,10 @@ $mobile-breakpoint: $picnic-breakpoint;
               // Apply animation delay based on item index using a loop
               @for $i from 1 through $sub-menu-item-count {
                 &:nth-child(#{$i}) {
-                  transition: color 0.3s, background 0.3s,
-                    opacity 0.3s $base-delay * $i,
-                    transform 0.3s $base-delay * $i,
-                    visibility 0.3s $base-delay * $i;
+                  transition: color $sub-menu-link-transition-time, background-image $sub-menu-link-transition-time,
+                    opacity $sub-menu-link-transition-time $base-delay * $i,
+                    transform $sub-menu-link-transition-time $base-delay * $i,
+                    visibility $sub-menu-link-transition-time $base-delay * $i;
                 }
               }
             }
@@ -169,11 +170,6 @@ $mobile-breakpoint: $picnic-breakpoint;
           box-shadow: 0px 4px 8px 2px rgba(0, 0, 0, 0.15);
 
           color: $sub-menu-link-color;
-          background: linear-gradient(
-            90.91deg,
-            $sub-menu-link-bg-gradient-start 21.56%,
-            $sub-menu-link-bg-gradient-end 84.94%
-          );
 
           -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
@@ -181,12 +177,59 @@ $mobile-breakpoint: $picnic-breakpoint;
           opacity: 0; // Initially hide the items
           transform: translateY(-20px);
 
-          &:hover {
+          // Add pseudo-element for smooth background transition
+          &::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: linear-gradient(
               90.91deg,
               $sub-menu-link-hover-bg-gradient-start 21.56%,
               $sub-menu-link-hover-bg-gradient-end 84.94%
             );
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            transition: opacity $sub-menu-link-transition-time;
+            z-index: -1;
+            border-radius: inherit;
+          }
+
+          &:hover::before {
+            opacity: 1;
+          }
+
+          // Add pseudo-element for smooth background transition
+          &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+              90.91deg,
+              $sub-menu-link-bg-gradient-start 21.56%,
+              $sub-menu-link-bg-gradient-end 84.94%
+            );
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            opacity: 1;
+            transition: opacity $sub-menu-link-transition-time;
+            z-index: -1;
+            border-radius: inherit;
+          }
+
+          &:hover::after {
+            opacity: 0;
+          }
+
+          &:hover {
             color: light.$pacify-secondary;
           }
         }
