@@ -9,6 +9,8 @@
 // Key properties extracted into variables
 $nav-bar-bg-color: light.$pacify-primary;
 $nav-bar-font-family: light.$pacify-main-font;
+$nav-bar-gradient-start-color: rgba(231, 227, 215, 0.5);
+$nav-bar-gradient-end-color: rgba(129, 127, 120, 0.5);
 $nav-bar-height: 6rem;
 
 $nav-link-text-color: light.$pacify-char-layout;
@@ -19,11 +21,13 @@ $nav-link-font-weight: normal;
 $sub-menu-item-count: 5;
 $sub-menu-min-width: 13rem;
 $sub-menu-root-font-weight: bold;
-$sub-menu-border-radius: 0.2rem;
 $sub-menu-link-padding: 12px 18px;
-$sub-menu-link-hover-bg: #f1f1f1;
-$sub-menu-link-color: light.$pacify-char-layout;
 $sub-menu-link-border-radius: 40px 0px;
+$sub-menu-link-color: light.$pacify-char-layout;
+$sub-menu-link-bg-gradient-start: rgba(231, 227, 215, 0.6);
+$sub-menu-link-bg-gradient-end: rgba(192, 178, 166, 0.6);
+$sub-menu-link-hover-bg-gradient-start: #e7e3d7;
+$sub-menu-link-hover-bg-gradient-end: #ffffff;
 
 $mobile-sub-menu-dp-root-color: black;
 
@@ -41,8 +45,8 @@ $mobile-breakpoint: $picnic-breakpoint;
 
   background: linear-gradient(
     90deg,
-    rgba(231, 227, 215, 0.5) 0%,
-    rgba(129, 127, 120, 0.5) 100%
+    $nav-bar-gradient-start-color 0%,
+    $nav-bar-gradient-end-color 100%
   );
   box-shadow: inset 0px 4px 6px 3px rgba(0, 0, 0, 0.25);
   -webkit-backdrop-filter: blur(10px);
@@ -139,12 +143,10 @@ $mobile-breakpoint: $picnic-breakpoint;
         padding-top: calc($nav-bar-height / 2 - 1rem);
         background: none;
         min-width: $sub-menu-min-width;
-        border-radius: $sub-menu-border-radius;
         left: 60%;
         translate: -60%;
 
         @media all and (width <= $mobile-breakpoint) {
-          color: $sub-menu-link-color;
           padding-top: inherit;
           position: relative;
           width: 75%;
@@ -169,8 +171,8 @@ $mobile-breakpoint: $picnic-breakpoint;
           color: $sub-menu-link-color;
           background: linear-gradient(
             90.91deg,
-            rgba(231, 227, 215, 0.6) 21.56%,
-            rgba(192, 178, 166, 0.6) 84.94%
+            $sub-menu-link-bg-gradient-start 21.56%,
+            $sub-menu-link-bg-gradient-end 84.94%
           );
 
           -webkit-backdrop-filter: blur(10px);
@@ -182,8 +184,8 @@ $mobile-breakpoint: $picnic-breakpoint;
           &:hover {
             background: linear-gradient(
               90.91deg,
-              #e7e3d7 21.56%,
-              #ffffff 84.94%
+              $sub-menu-link-hover-bg-gradient-start 21.56%,
+              $sub-menu-link-hover-bg-gradient-end 84.94%
             );
             color: light.$pacify-secondary;
           }
