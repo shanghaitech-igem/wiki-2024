@@ -1,4 +1,3 @@
-"use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.shouldUpdateScroll = exports.onInitialClientRender = void 0;
 let offsetY = 0;
