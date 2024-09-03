@@ -26,7 +26,7 @@
     "gatsby-plugin-nprogress": "^5.13.1",
     "gatsby-plugin-purgecss": "^6.2.1",
     "gatsby-plugin-sass": "^6.13.1",
-    "gatsby-remark-autolink-headers": "^6.13.1",
+    "gatsby-remark-autolink-headers": "file:src/plugins/auto-linkheader",
     "gatsby-remark-katex": "file:src/plugins/katex-remark",
     "gatsby-remark-prismjs": "^7.13.1",
     "gatsby-remark-smartypants": "^6.13.1",
