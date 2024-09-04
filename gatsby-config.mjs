@@ -22,6 +22,7 @@ const config = {
       options: {
         name: `contents`,
         path: `${__dirname}/contents/`,
+        ignore: [`**/data/**`],
       },
     },
     {
@@ -29,6 +30,7 @@ const config = {
       options: {
         name: `test`,
         path: `${__dirname}/test/`,
+        ignore: [`**/data/**`],
       },
     },
     {
