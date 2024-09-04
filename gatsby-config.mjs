@@ -9,6 +9,7 @@ const config = {
     title: `ShanghaiTech 2024 iGEM Wiki`,
     siteUrl: `https://2024.igem.wiki/shanghaitech-china`,
     favicon: `https://static.igem.wiki/teams/5174/test/igem-favcion.svg`,
+    logo: `https://static.igem.wiki/teams/5174/test/igem-logo-dark.svg`,
   },
   pathPrefix: `/shanghaitech-china`,
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
