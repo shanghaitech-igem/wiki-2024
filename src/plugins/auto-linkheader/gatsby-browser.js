@@ -39,8 +39,14 @@ const onInitialClientRender = (_, pluginOptions) => {
     });
 };
 exports.onInitialClientRender = onInitialClientRender;
-const shouldUpdateScroll = ({ routerProps: { location }, }) => {
+const shouldUpdateScroll = ({ routerProps: { location }, getSavedScrollPosition, }) => {
     const offset = getTargetOffset(location.hash);
-    return offset !== null ? [0, offset] : true;
+    const currentPosition = getSavedScrollPosition(location);
+    window.scrollTo({
+        top: (currentPosition && currentPosition[1]) || 0,
+        left: (currentPosition && currentPosition[0]) || 0,
+        behavior: "instant", // Instant scrolling
+    });
+    return offset !== null ? [0, offset] : false;
 };
 exports.shouldUpdateScroll = shouldUpdateScroll;
