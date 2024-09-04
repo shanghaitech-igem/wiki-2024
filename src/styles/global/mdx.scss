@@ -5,7 +5,6 @@
 // Variables for reusable values
 $scroll-margin: 3.5rem;
 $img-max-width: 60%;
-$anchor-padding: 4px;
 
 // Smooth scrolling for the whole document
 html {
@@ -24,40 +23,5 @@ main {
     height: auto;
     display: block;
     margin: 0 auto;
-  }
-
-  // Anchor styles
-  .anchor {
-    &.before {
-      position: absolute;
-      top: 0;
-      left: 0;
-      transform: translateX(-100%);
-      padding-right: $anchor-padding;
-    }
-
-    &.after {
-      display: inline-block;
-      padding-left: $anchor-padding;
-    }
-  }
-
-  // Hide SVGs by default
-  // Define a list of heading levels
-  $heading-levels: h1, h2, h3, h4, h5, h6;
-
-  // Loop through each heading level
-  @each $heading in $heading-levels {
-    #{$heading} {
-      .anchor svg {
-        visibility: hidden;
-      }
-
-      // Show SVGs on hover and focus
-      &:hover .anchor svg,
-      .anchor:focus svg {
-        visibility: visible;
-      }
-    }
   }
 }
