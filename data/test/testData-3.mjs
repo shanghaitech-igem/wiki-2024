@@ -27,5 +27,4 @@ export default {
       showscale: false,
     },
   ],
-  style: { height: `30em` },
 }
