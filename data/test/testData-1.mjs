@@ -20,4 +20,5 @@ export default {
     name: key,
     marker: { color: colors[index] },
   })),
+  style: { height: `30em` }
 }
