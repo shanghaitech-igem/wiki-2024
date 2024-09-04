@@ -43,7 +43,7 @@ export default {
     }
 ],
 "layout": {
-    "title": "$Early stage research citations$",
+    "title": "Stage<sup>early</sup> research citations",
     "xaxis": {
         "type": "linear",
         "range": [
@@ -59,7 +59,7 @@ export default {
             0,
             300616.84210526315
         ],
-        "title": "Early stage research citations",
+        "title": "Stage<sub>early</sub> research citations",
         "autorange": true
     },
     "hovermode": "closest",
