@@ -7,7 +7,7 @@ const Plot = Loadable({
     timedOut ? (
       <blockquote>Error: Loading Plotly timed out.</blockquote>
     ) : (
-      <div>Loading... (rendered from the server)</div>
+      <div>Loading... (rendered from the client)</div>
     ),
 
   timeout: 10000,
