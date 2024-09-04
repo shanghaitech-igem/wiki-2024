@@ -1,5 +1,5 @@
 {
-  "name": "gatsby-remark-autolink-headers",
+  "name": "gatsby-remark-header-link",
   "description": "Gatsby plugin to autolink headers in markdown processed by Remark",
   "version": "6.13.1",
   "dependencies": {
