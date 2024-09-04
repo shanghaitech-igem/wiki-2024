@@ -18,7 +18,12 @@ const Favicon: React.FC<FaviconProps> = ({ pageFavicon }) => {
 
   const favicon = pageFavicon || data.site.siteMetadata.favicon;
 
-  return <link key="favicon" rel="icon" href={favicon} />;
+  return (
+    <>
+      <link key="favicon-shortcut" rel="shortcut icon" href={favicon} />
+      <link key="favicon" rel="icon" href={favicon} />;
+    </>
+  );
 };
 
 export default Favicon;
