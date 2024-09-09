@@ -9,6 +9,9 @@ stages:
 cache:
   paths:
     - node_modules/
+    - src/plugins/toc-remark/node_modules
+    - src/plugins/katex-remark/node_modules
+    - src/plugins/header-link-remark/node_modules
     - .npm
     # Enables git-lab CI caching. Both .cache and public must be cached, otherwise builds will fail.
     - .cache/
