@@ -12,7 +12,6 @@ cache:
 pages:
   stage: deploy
   script:
-    - rm package-lock.json
     - npm install
     - ./node_modules/.bin/gatsby info
     - ./node_modules/.bin/gatsby build --prefix-paths --verbose
