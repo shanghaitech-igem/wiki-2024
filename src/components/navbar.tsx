@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import { Link, useStaticQuery, graphql } from "gatsby";
 import * as styles from "../styles/modules/navbar.module.scss";
 import { generateNavItems, NavItemType } from "../utils/generate-nav-item";
@@ -12,15 +12,15 @@ const NavItem: React.FC<NavItemProps> = ({ item }) => {
     <>
       {item.children !== null ? (
         <div className={styles.navDropdown}>
-          <button key={item.id} className={styles.navDropdownBtn}>
+          <Link to={`#`} key={item.id} className={styles.subMenuRoot}>
             {item.name}
-          </button>
+          </Link>
           <div className={styles.subMenu}>
             {item.children.map((child) => (
               <Link
                 key={child.id}
                 to={`/${child.slug}`}
-                className={styles.subMenuItem}
+                className={styles.subMenuLink}
               >
                 {child.name}
               </Link>
@@ -49,7 +49,7 @@ const NavBar: React.FC = () => {
   `);
 
   return (
-    <nav>
+    <nav className={styles.navBar}>
       <Link to="/" className={styles.brand}>
         <img className={styles.logo} src={data.site.siteMetadata.logo} />
       </Link>
@@ -59,7 +59,6 @@ const NavBar: React.FC = () => {
       <label
         htmlFor="bmenub"
         className={`${styles.burger} ${styles.pseudo} ${styles.button}`}
-        style={{ color: "black" }}
       >
         &#9776;
       </label>
