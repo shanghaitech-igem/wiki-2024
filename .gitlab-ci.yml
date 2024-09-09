@@ -4,6 +4,7 @@ pages:
   stage: deploy
   script:
     - npm clean-install
+    - ./node_modules/.bin/gatsbygatsby clean
     - ./node_modules/.bin/gatsby build --prefix-paths
     - du -sh public/ # Check the size of the unzipped artifacts.
   artifacts:
