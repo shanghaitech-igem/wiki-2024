@@ -1,7 +1,6 @@
 {
   "name": "gatsby-remark-table-of-contents",
   "version": "1.0.0",
-  "packageManager": "pnpm@9.9.0",
   "main": "index.js",
   "dependencies": {
     "mdast-util-toc": "^5.1.0"
