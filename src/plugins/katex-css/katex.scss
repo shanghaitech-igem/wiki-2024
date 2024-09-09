@@ -457,6 +457,12 @@ $version: "" !default;
     fill: currentColor;
     stroke: currentColor;
 
+    // But path elements should not have an outline by default
+    // that would make them bigger than we expect.
+    path {
+      stroke: none;
+    }
+
     // And we don't want to inherit any other style properties
     // that could affect SVG rendering without affecting font
     // rendering. So we reset these properties to their default
@@ -471,12 +477,6 @@ $version: "" !default;
     stroke-dasharray: none;
     stroke-dashoffset: 0;
     stroke-opacity: 1;
-
-    // But path elements should not have an outline by default
-    // that would make them bigger than we expect.
-    path {
-      stroke: none;
-    }
   }
 
   img {
