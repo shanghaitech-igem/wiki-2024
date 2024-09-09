@@ -28,6 +28,8 @@ npm:install:
 
 pages:
   stage: deploy
+  needs:
+    - build
   script:
     - ./node_modules/.bin/gatsby info
     - ./node_modules/.bin/gatsby build --prefix-paths
