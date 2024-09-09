@@ -29,19 +29,12 @@ pnpm:install:
   only:
     - main
 
-test:gatsby:
-  stage: test
-  needs:
-    - pnpm:install
-  script:
-    - ./node_modules/.bin/gatsby info
-
 pages:
   stage: deploy
   needs:
     - pnpm:install
-    - test:gatsby
   script:
+    - ./node_modules/.bin/gatsby info
     - ./node_modules/.bin/gatsby build --prefix-paths
     - du -sh public/ # Check the size of the unzipped artifacts.
   artifacts:
