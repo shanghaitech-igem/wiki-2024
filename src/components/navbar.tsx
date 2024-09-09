@@ -42,7 +42,7 @@ const NavBar: React.FC = () => {
     query {
       site {
         siteMetadata {
-          favicon
+          logo
         }
       }
     }
@@ -51,7 +51,7 @@ const NavBar: React.FC = () => {
   return (
     <nav className={styles.navBar}>
       <Link to="/" className={styles.brand}>
-        <img className={styles.logo} src={data.site.siteMetadata.favicon} />
+        <img className={styles.logo} src={data.site.siteMetadata.logo} />
       </Link>
 
       {/* Responsive Activator */}

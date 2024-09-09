@@ -6,11 +6,14 @@ import Video from "../components/mdx/video";
 import PDF from "../components/mdx/pdf";
 import Audio from "../components/mdx/audio";
 import Image from "../components/mdx/image";
+import Plot from "../components/mdx/plot";
+
 const components = {
   Video,
   PDF,
   Audio,
   Image,
+  Plot,
   img: Image,
 };
 
@@ -18,7 +21,7 @@ import Layout from "../components/layout";
 import Seo from "../components/seo";
 import Favicon from "../components/favicon";
 
-import "prismjs/themes/prism-solarizedlight.css";
+import "prismjs/themes/prism-solarizedlight.min.css";
 import "prismjs/plugins/line-numbers/prism-line-numbers.min.css";
 import "prismjs/plugins/command-line/prism-command-line.min.css";
 
@@ -26,6 +29,7 @@ import "../styles/global/prismjs.scss";
 import "../styles/global/katex.scss";
 import "../styles/global/footnote.scss";
 import "../styles/global/copy-btn.scss";
+import "../styles/global/header-anchor.scss";
 import "../styles/global/mdx.scss";
 
 import * as styles from "../styles/modules/mdx.module.scss";

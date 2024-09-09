@@ -1,7 +1,7 @@
 ---
 title: "MDX Test"
 date: "2024-07-05"
-favicon: "https://static.igem.org/websites/common/2022/favicons/favicon.svg"
+favicon: "https://static.igem.wiki/teams/5174/test/igem-favicon.svg"
 slug: "test/mdx"
 ---
 
@@ -15,41 +15,26 @@ slug: "test/mdx"
 
 # Audio
 
-<Audio src="https://video.igem.org/download/streaming-playlists/hls/videos/10bf4510-80f3-4b76-9b27-51f7d4709054-0-fragmented.mp4" />
+<Audio src="https://ia801307.us.archive.org/20/items/file_example_mp3_700kb_202403/file_example_MP3_700KB.mp3" />
 
 # Image
 
 <Image src="https://static.igem.wiki/teams/5174/test/hula-loop-octodex-gif.webp" />
 
-import { useEffect } from 'react';
+<Image src="https://static.igem.wiki/teams/5174/icons/main-logo.svg" />
 
-export function Thing() {
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = "https://cdn.plot.ly/plotly-latest.min.js";
-    script.onload = () => {
-      Plotly.newPlot("plotly-graph", [{
-        type: "pie",
-        values: [4500, 2500, 1053, 500],
-        labels: ["Oxygen", "Hydrogen", "Carbon_Dioxide", "Nitrogen"]
-      }], {}, {
-      });
-    };
-    document.body.appendChild(script);
-    
-    return () => {
-      // Cleanup: remove the script if needed
-      document.body.removeChild(script);
-    };
-  }, []);
+# Plotly.js
 
-return (
+import data_1 from "./data/testData-1";
+import data_2 from "./data/testData-2";
+import data_3 from "./data/testData-3";
+import data_4 from "./data/testData-4";
 
-<div
-  id="plotly-graph"
-  style={{ height: "100%", width: "100%" }}
-  className="plotly-graph-div"
-></div>
-); }
 
-<Thing />
+<Plot {...data_1} />
+
+<Plot {...data_2} />
+
+<Plot {...data_3} />
+
+<Plot {...data_4} />

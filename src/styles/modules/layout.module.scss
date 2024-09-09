@@ -6,17 +6,11 @@
 $max-width: 1000px;
 $font-family: sans-serif;
 
-.layout {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.container {
-  flex: 1;
+.main {
   width: 100%;
   margin: auto;
   max-width: $max-width;
+  min-height: 80vh;
   font-family: $font-family;
   padding: 2rem;
 }

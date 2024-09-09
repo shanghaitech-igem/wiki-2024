@@ -1,6 +1,6 @@
 {
   "name": "gatsby-remark-table-of-contents",
-  "version": "2.0.0",
+  "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
     "mdast-util-toc": "^5.1.0"

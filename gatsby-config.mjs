@@ -8,7 +8,8 @@ const config = {
   siteMetadata: {
     title: `ShanghaiTech 2024 iGEM Wiki`,
     siteUrl: `https://2024.igem.wiki/shanghaitech-china`,
-    favicon: `https://static.igem.wiki/teams/5174/icons/main-logo.svg`,
+    favicon: `https://static.igem.wiki/teams/5174/test/igem-favcion.svg`,
+    logo: `https://static.igem.wiki/teams/5174/test/igem-logo-dark.svg`,
   },
   pathPrefix: `/shanghaitech-china`,
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
@@ -22,6 +23,7 @@ const config = {
       options: {
         name: `contents`,
         path: `${__dirname}/contents/`,
+        ignore: [`**/data/**`],
       },
     },
     {
@@ -29,6 +31,7 @@ const config = {
       options: {
         name: `test`,
         path: `${__dirname}/test/`,
+        ignore: [`**/data/**`],
       },
     },
     {
@@ -52,6 +55,7 @@ const config = {
         gatsbyRemarkPlugins: [
           `gatsby-remark-autolink-headers`, // Adds GitHub-style hover links to headers in your markdown files when they’re rendered.
           `gatsby-remark-smartypants`, // Replaces “dumb” punctuation marks with “smart” punctuation marks using the retext-smartypants plugin.
+          `gatsby-remark-header-link`, // Adds GitHub-style hover links to headers in markdown files when they’re rendered.
           {
             resolve: `gatsby-remark-table-of-contents`,
             options: {

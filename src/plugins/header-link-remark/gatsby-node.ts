@@ -6,10 +6,6 @@ export const pluginOptionsSchema = ({
   Joi: typeof import("joi");
 }): ObjectSchema => {
   return Joi.object({
-    offsetY: Joi.number()
-      .integer()
-      .description("Signed integer. Vertical offset value in pixels.")
-      .default(0),
     icon: Joi.alternatives()
       .try(Joi.string(), Joi.boolean())
       .description(

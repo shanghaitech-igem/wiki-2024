@@ -16,11 +16,7 @@ const Seo: React.FC<SeoProps> = ({ title }) => {
     }
   `);
 
-  return (
-    <title>
-      {title} | {data.site.siteMetadata.title}
-    </title>
-  );
+  return <title>{`${title} | ${data.site.siteMetadata.title}`}</title>;
 };
 
 export default Seo;
