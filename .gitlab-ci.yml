@@ -11,6 +11,7 @@ cache:
 
 pages:
   stage: deploy
+  timeout: 3 hours
   script:
     - npm clean-install
     - npm install
