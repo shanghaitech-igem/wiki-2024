@@ -53,7 +53,6 @@ const config = {
           ],
         },
         gatsbyRemarkPlugins: [
-          `gatsby-remark-autolink-headers`, // Adds GitHub-style hover links to headers in your markdown files when they’re rendered.
           `gatsby-remark-smartypants`, // Replaces “dumb” punctuation marks with “smart” punctuation marks using the retext-smartypants plugin.
           `gatsby-remark-header-link`, // Adds GitHub-style hover links to headers in markdown files when they’re rendered.
           {
