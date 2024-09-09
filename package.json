@@ -16,10 +16,9 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@babel/runtime": "^7.25.4",
     "@iconify/react": "^5.0.2",
     "@jpfulton/gatsby-remark-copy-button": "^1.0.10",
-    "@mdx-js/react": "^2.3.0",
+    "@mdx-js/react": "^3.0.1",
     "gatsby": "^5.13.7",
     "gatsby-plugin-catch-links": "^5.13.1",
     "gatsby-plugin-mdx": "^5.13.1",
@@ -27,28 +26,28 @@
     "gatsby-plugin-sass": "^6.13.1",
     "gatsby-remark-header-link": "file:src/plugins/header-link-remark",
     "gatsby-remark-katex": "file:src/plugins/katex-remark",
-    "gatsby-remark-prismjs": "^7.13.1",
+    "gatsby-remark-prismjs": "^7.13.2",
     "gatsby-remark-smartypants": "^6.13.1",
     "gatsby-remark-table-of-contents": "file:src/plugins/toc-remark",
     "gatsby-source-filesystem": "^5.13.1",
     "katex": "^0.16.11",
     "plotly.js": "^2.35.0",
     "prismjs": "^1.29.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-loadable": "^5.5.0",
     "react-plotly.js": "^2.6.0",
     "remark-gfm": "^3.0.1",
-    "sass": "^1.77.6"
+    "sass": "^1.78.0"
   },
   "devDependencies": {
     "@types/katex": "^0.16.7",
-    "@types/node": "^20.11.19",
+    "@types/node": "^20.16.5",
     "@types/plotly.js": "^2.33.3",
-    "@types/react": "^18.2.55",
-    "@types/react-dom": "^18.2.19",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
     "@types/react-loadable": "^5.5.11",
     "@types/react-plotly.js": "^2.6.3",
-    "typescript": "^5.3.3"
+    "typescript": "^5.5.4"
   }
 }
