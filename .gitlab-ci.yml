@@ -12,6 +12,7 @@ cache:
 pages:
   stage: deploy
   script:
+    - npm clean-install
     - npm install
     - ./node_modules/.bin/gatsby info
     - ./node_modules/.bin/gatsby build --prefix-paths --verbose
