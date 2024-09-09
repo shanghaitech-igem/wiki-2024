@@ -3,7 +3,8 @@ image: node:lts
 pages:
   stage: deploy
   script:
-    - npm clean-install
+    - rm package-lock.json
+    - npm install
     - ./node_modules/.bin/gatsby clean
     - ./node_modules/.bin/gatsby info
     - ./node_modules/.bin/gatsby build --prefix-paths
