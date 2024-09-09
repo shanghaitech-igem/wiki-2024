@@ -1,46 +1,26 @@
 image: node:lts-slim
-
-stages:
-  - build
-  - deploy
-
+  
 # This folder is cached between builds
 # https://docs.gitlab.com/ce/ci/yaml/README.html#cache
 cache:
   paths:
     - node_modules/
-    - src/plugins/toc-remark/node_modules
-    - src/plugins/katex-remark/node_modules
-    - src/plugins/header-link-remark/node_modules
-    - .npm
     # Enables git-lab CI caching. Both .cache and public must be cached, otherwise builds will fail.
     - .cache/
     - public/
-  key:
-    files:
-      - package-lock.json
-
-npm:install:
-  stage: build
-  script:
-    - npm install --cache .npm --prefer-offline
-  only:
-    - main
 
 pages:
   stage: deploy
-  needs:
-    - npm:install
   script:
-    - ./node_modules/.bin/gatsby info
+    - npm install
     - ./node_modules/.bin/gatsby build --prefix-paths
     - du -sh public/ # Check the size of the unzipped artifacts.
   artifacts:
     paths:
       - public
     exclude:
-      - public/test/**/* # Exclude test pages from the artifacts.
-      - public/**/*.js.map # Exclude source maps from the artifacts.
+      - public/test/**/* # Exclude test files from the artifacts.
+      - public/**/*.map
       - public/**/*.LICENSE.txt
   only:
     - main
