@@ -1,23 +1,5 @@
-image: node:lts
-
-# This folder is cached between builds
-# https://docs.gitlab.com/ce/ci/yaml/README.html#cache
-cache:
-  paths:
-    - node_modules/
-    # Enables git-lab CI caching. Both .cache and public must be cached, otherwise builds will fail.
-    - .cache/
-    - public/
-
 pages:
   stage: deploy
-  timeout: 3 hours
-  script:
-    - npm clean-install
-    - npm install
-    - ./node_modules/.bin/gatsby info
-    - ./node_modules/.bin/gatsby build --prefix-paths --verbose
-    - du -sh public/ # Check the size of the unzipped artifacts.
   artifacts:
     paths:
       - public
