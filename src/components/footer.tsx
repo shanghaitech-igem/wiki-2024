@@ -14,6 +14,7 @@ const {
   social,
   declaration,
 } = styles;
+const Nothing = () => null;
 
 interface NavItemProps {
   item: NavItemType;
