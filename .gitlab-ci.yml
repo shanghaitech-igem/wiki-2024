@@ -22,18 +22,10 @@ before_script:
   - corepack prepare pnpm@latest-9 --activate
   - pnpm config set store-dir .pnpm-store
 
-pnpm:install:
-  stage: build
-  script:
-    - pnpm install # install dependencies
-  only:
-    - main
-
 pages:
   stage: deploy
-  needs:
-    - pnpm:install
   script:
+    - pnpm install # install dependencies
     - ./node_modules/.bin/gatsby info
     - ./node_modules/.bin/gatsby build --prefix-paths
     - du -sh public/ # Check the size of the unzipped artifacts.
@@ -42,7 +34,7 @@ pages:
       - public
     exclude:
       - public/test/**/* # Exclude test pages from the artifacts.
-      - public/**/*.js.map # Exclude source maps from the artifacts. 
+      - public/**/*.js.map # Exclude source maps from the artifacts.
       - public/**/*.LICENSE.txt
   only:
     - main
