@@ -10,11 +10,11 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <div className={styles.layout}>
+    <>
       <NavBar />
-      <main className={styles.container}>{children}</main>
+      <main className={styles.main}>{children}</main>
       <Footer />
-    </div>
+    </>
   );
 };
 
