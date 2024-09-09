@@ -3,7 +3,7 @@ image: node:lts
 pages:
   stage: deploy
   script:
-    - npm install
+    - npm clean-install
     - ./node_modules/.bin/gatsby build --prefix-paths
     - du -sh public/ # Check the size of the unzipped artifacts.
   artifacts:
