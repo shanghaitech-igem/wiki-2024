@@ -1,74 +1,52 @@
 .footer {
-  background-color: #75818d;
-  color: #ecf0f1;
-  padding-top: 5vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+  font-size: 14px;
 
-  .nav {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    max-width: 1200px;
-    margin-bottom: 20px;
+  .footerContainer {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
 
-    .submenu {
+    .footerContent {
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      min-width: 150px; /* Ensure columns have a minimum width */
+      justify-content: space-around;
+      padding: 20px 0;
+      border-bottom: 1px solid #444;
 
-      & h3 {
-        margin-bottom: 10px;
-        font-size: 1.2em;
+      .section {
+        flex: 1;
+        padding: 0 20px;
+
+        h3 {
+          margin-bottom: 10px;
+          font-size: 16px;
+        }
+
+        ul {
+          list-style: none;
+          padding: 0;
+
+          li {
+            margin-bottom: 5px;
+          }
+        }
       }
     }
 
-    .submenu-single {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      min-width: 150px; /* Ensure columns have a minimum width */
-    }
+    .footerBottom {
+      text-align: center;
+      padding: 10px 0;
 
-    .nav-link {
-      color: #ecf0f1;
-      text-decoration: none;
-      margin-bottom: 5px;
-      &:hover {
+      a {
+        color: #fff;
         text-decoration: underline;
+
+        &:hover {
+          text-decoration: none;
+        }
       }
     }
-  }
-
-  .info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: 1200px;
-
-    .logo {
-      display: inline;
-      height: 8em;
-      opacity: 0.8;
-    }
-    
-    .social {
-      display: flex;
-      align-items: center;
-    }
-    
-    .social img {
-      height: 24px;
-      margin-right: 10px;
-      fill: white;
-    }
-  }
-
-  .declaration {
-    font-size: 0.8em;
-    margin-top: auto;
   }
 }
