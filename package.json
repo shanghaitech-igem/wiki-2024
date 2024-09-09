@@ -19,7 +19,7 @@
   "dependencies": {
     "@iconify/react": "^5.0.2",
     "@jpfulton/gatsby-remark-copy-button": "^1.0.10",
-    "@mdx-js/react": "^3.0.1",
+    "@mdx-js/react": "^2.3.0",
     "gatsby": "^5.13.7",
     "gatsby-plugin-catch-links": "^5.13.1",
     "gatsby-plugin-mdx": "^5.13.1",
