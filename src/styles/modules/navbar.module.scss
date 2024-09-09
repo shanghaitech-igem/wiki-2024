@@ -1,99 +1,213 @@
 @use "sass:math";
+@use "../themes/light";
+
 @import "/src/plugins/picnic-css/themes/default/theme";
 @import "/src/plugins/picnic-css/plugins/label/plugin";
 @import "/src/plugins/picnic-css/plugins/button/plugin";
 @import "/src/plugins/picnic-css/plugins/nav/plugin";
 
-$nav-link-text-color: black;
-$nav-submenu-min-width: 100px;
+// Key properties extracted into variables
+$nav-bar-bg-color: light.$pacify-primary;
+$nav-bar-font-family: light.$pacify-layout-font;
+$nav-bar-gradient-start-color: rgba(231, 227, 215, 0.5);
+$nav-bar-gradient-end-color: rgba(129, 127, 120, 0.5);
+$nav-bar-height: 6rem;
 
-nav {
-  color: white;
-  
+$nav-link-text-color: light.$pacify-char-layout;
+$nav-link-margin-right: 1.7rem;
+$nav-link-hover-color: light.$pacify-char-layout-dimmed;
+$nav-link-font-weight: normal;
+
+$sub-menu-item-count: 5;
+$sub-menu-min-width: 13rem;
+$sub-menu-root-font-weight: bold;
+$sub-menu-link-padding: 12px 18px;
+$sub-menu-link-border-radius: 40px 0px;
+$sub-menu-link-color: light.$pacify-char-layout;
+$sub-menu-link-bg-gradient-start: rgba(231, 227, 215, 0.6);
+$sub-menu-link-bg-gradient-end: rgba(192, 178, 166, 0.6);
+$sub-menu-link-hover-bg-gradient-start: rgb(231, 227, 215, 1);
+$sub-menu-link-hover-bg-gradient-end: rgb(255, 255, 255, 1);
+$sub-menu-link-transition-time: 0.3s;
+
+$mobile-sub-menu-dp-root-color: black;
+
+// Media query breakpoints
+$mobile-breakpoint: $picnic-breakpoint;
+
+.nav-bar {
+  @extend nav;
+  background: $nav-bar-bg-color;
+  height: $nav-bar-height;
+
+  font-family: $nav-bar-font-family;
+  font-size: larger;
+  color: light.$pacify-char-layout;
+
+  background: linear-gradient(
+    90deg,
+    $nav-bar-gradient-start-color 0%,
+    $nav-bar-gradient-end-color 100%
+  );
+  box-shadow: inset 0px 4px 6px 3px rgba(0, 0, 0, 0.25);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+
   .nav-menu {
     @extend .menu;
-    margin-right: 2.5rem;
+    margin-right: 2rem;
+
     .nav-link {
-      @extend .button;
-      @extend .pseudo;
-      color: $nav-link-text-color;
       position: relative;
+
+      margin-right: $nav-link-margin-right;
+      padding: 0%;
+
+      font-weight: $nav-link-font-weight;
+      color: $nav-link-text-color;
+      background: none;
+      cursor: default;
+
+      &:hover {
+        color: $nav-link-hover-color;
+      }
+
+      @media all and (width <= $mobile-breakpoint) {
+        color: $mobile-sub-menu-dp-root-color;
+        display: block;
+      }
     }
 
     .nav-dropdown {
       position: relative;
       display: inline-block;
+      margin: 0;
 
       // Show sub-menu on hover for desktop
-      @media (min-width: $picnic-breakpoint) {
-        &:hover .sub-menu {
-          display: block; /* Show on hover */
+      @media (min-width: $mobile-breakpoint) {
+        &:hover {
+          .sub-menu {
+            visibility: visible;
+            color: $nav-link-hover-color;
+            .sub-menu-link {
+              opacity: 1;
+              transform: translateY(0);
+
+              $base-delay: 0.1s;
+              // Apply animation delay based on item index using a loop
+              @for $i from 1 through $sub-menu-item-count {
+                &:nth-child(#{$i}) {
+                  transition: color $sub-menu-link-transition-time,
+                    background-image $sub-menu-link-transition-time,
+                    opacity $sub-menu-link-transition-time $base-delay * $i,
+                    transform $sub-menu-link-transition-time $base-delay * $i,
+                    visibility $sub-menu-link-transition-time $base-delay * $i;
+                }
+              }
+            }
+          }
+
+          .sub-menu-root {
+            color: $nav-link-hover-color;
+          }
         }
       }
 
       // Show sub-menu on click for mobile
-      @media all and (width <= $picnic-breakpoint) {
-        display: block; // Make it block in mobile
+      @media all and (width <= $mobile-breakpoint) {
+        display: block;
 
-        .nav-dropdown-btn:focus + .sub-menu,
-        .nav-dropdown-btn:active + .sub-menu {
+        .sub-menu-root:focus + .sub-menu,
+        .sub-menu-root:active + .sub-menu {
           display: block; /* Show on click */
         }
       }
 
-      .nav-dropdown-btn {
+      .sub-menu-root {
         @extend .nav-link;
         display: block;
-        padding-right: 30px;
-        &::after {
-          content: "";
-          position: absolute;
-          top: 50%;
-          right: 15px;
-          transform: translateY(-50%);
-          width: 0;
-          height: 0;
-          border-style: solid;
-          border-width: 5px 5px 0 5px;
-          border-color: #000 transparent transparent transparent;
-        }
+        box-shadow: none;
+        font-weight: $sub-menu-root-font-weight;
 
-        @media all and (width <= $picnic-breakpoint) {
-          transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0.2s;
-          border-radius: 0.2em;
+        @media all and (width <= $mobile-breakpoint) {
+          color: $mobile-sub-menu-dp-root-color;
+          border-radius: $sub-menu-link-border-radius;
           width: 100%;
           text-align: left;
+          padding: 0.3em 0.9em;
+          margin: 0.3em;
         }
       }
 
       .sub-menu {
-        display: none; /* Hide by default */
+        visibility: hidden;
         position: absolute;
-        background-color: white;
-        min-width: $nav-submenu-min-width;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-        border-radius: 8px;
+        padding-top: calc($nav-bar-height / 2 - 1rem);
+        background: none;
+        min-width: $sub-menu-min-width;
+        left: 60%;
+        translate: -60%;
 
-        @media all and (width <= $picnic-breakpoint) {
-          position: relative; // Change to relative in mobile
+        @media all and (width <= $mobile-breakpoint) {
+          padding-top: inherit;
+          position: relative;
           width: 75%;
-          left: 10%;
+
           // Keep submenu open on hover
           &:hover {
-            display: block;
+            visibility: visible;
           }
         }
 
-        .sub-menu-item {
-          color: $nav-link-text-color;
-          padding: 12px 18px;
-          text-decoration: none;
+        // Animation for sub-menu items
+        .sub-menu-link {
           display: block;
           position: relative;
-          border-radius: 8px;
+          margin-top: 0.5rem;
+          padding: $sub-menu-link-padding;
+          text-decoration: none;
+          border-radius: $sub-menu-link-border-radius;
+          text-align: center;
+
+          box-shadow: 0px 4px 8px 2px rgba(0, 0, 0, 0.15);
+          color: $sub-menu-link-color;
+          background: linear-gradient(
+            90.91deg,
+            $sub-menu-link-bg-gradient-start 21.56%,
+            $sub-menu-link-bg-gradient-end 84.94%
+          );
+          -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+
+          opacity: 0; // Initially hide the items
+          transform: translateY(-20px);
 
           &:hover {
-            background-color: #f1f1f1;
+            color: light.$pacify-secondary;
+          }
+
+          // Add pseudo-element for smooth background transition
+          &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+              90.91deg,
+              $sub-menu-link-hover-bg-gradient-start 21.56%,
+              $sub-menu-link-hover-bg-gradient-end 84.94%
+            );
+            opacity: 0;
+            transition: opacity $sub-menu-link-transition-time;
+            z-index: -1;
+            border-radius: inherit;
+          }
+
+          &:hover::after {
+            opacity: 1;
           }
         }
       }
@@ -104,8 +218,16 @@ nav {
     display: none;
   }
 
+  .brand {
+    @extend .brand;
+    font-size: larger;
+    left: 1.5em;
+  }
+
   .logo {
     @extend .logo;
     display: inline;
+    width: auto;
+    height: calc($nav-bar-height / 1.5);
   }
 }
