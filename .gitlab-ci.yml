@@ -1,48 +1,13 @@
-image: node:lts-slim
-
-stages:
-  - build
-  - deploy
-
-# This folder is cached between builds
-# https://docs.gitlab.com/ce/ci/yaml/README.html#cache
-cache:
-  paths:
-    - node_modules/
-    - .pnpm-store
-    # Enables git-lab CI caching. Both .cache and public must be cached, otherwise builds will fail.
-    - .cache/
-    - public/
-  key:
-    files:
-      - pnpm-lock.yaml
-
-before_script:
-  - corepack enable
-  - corepack prepare pnpm@latest-9 --activate
-  - pnpm config set store-dir .pnpm-store
-
-pnpm:install:
-  stage: build
-  script:
-    - pnpm install # install dependencies
-  only:
-    - main
-
 pages:
   stage: deploy
-  needs:
-    - pnpm:install
   script:
-    - ./node_modules/.bin/gatsby info
-    - ./node_modules/.bin/gatsby build --prefix-paths
-    - du -sh public/ # Check the size of the unzipped artifacts.
+    - touch worst-server-i-have-seen.txt
   artifacts:
     paths:
       - public
     exclude:
-      - public/test/**/* # Exclude test pages from the artifacts.
-      - public/**/*.js.map # Exclude source maps from the artifacts. 
+      - public/test/**/* # Exclude test files from the artifacts.
+      - public/**/*.map
       - public/**/*.LICENSE.txt
   only:
     - main

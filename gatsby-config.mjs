@@ -178,24 +178,6 @@ const config = {
         },
       },
     },
-    {
-      // !!! Run `gastby clean` after any changes to this plugin !!!
-      resolve: `gatsby-plugin-purgecss`,
-      options: {
-        printRejected: true, // Print removed selectors and processed file names
-        develop: false, // Enable while using `gatsby develop`
-        // tailwind: true, // Enable tailwindcss support
-        ignore: ["/"], // Ignore files/folders
-        purgeOnly: [], // Purge only these files/folders
-        purgeCSSOptions: {
-          content: [
-            path.join(__dirname, "src/**/!(*.d).{ts,js,mjs,jsx,tsx,md,mdx}"),
-          ],
-          safelist: [], // Don't remove these selector
-          // More options defined here https://purgecss.com/configuration.html#options
-        },
-      },
-    },
   ],
 };
 
