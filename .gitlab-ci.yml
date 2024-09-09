@@ -1,7 +1,7 @@
 pages:
   stage: deploy
   script:
-    - touch worst-server-i-have-seen.txt
+    - touch the-server-is-made-of-tomatos.txt
   artifacts:
     paths:
       - public
