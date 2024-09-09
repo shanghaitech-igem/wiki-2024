@@ -9,6 +9,7 @@ stages:
 cache:
   paths:
     - node_modules/
+    - .npm
     # Enables git-lab CI caching. Both .cache and public must be cached, otherwise builds will fail.
     - .cache/
     - public/
