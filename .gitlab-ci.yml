@@ -15,7 +15,7 @@ pages:
     - rm package-lock.json
     - npm install
     - ./node_modules/.bin/gatsby info
-    - ./node_modules/.bin/gatsby build --prefix-paths
+    - ./node_modules/.bin/gatsby build --prefix-paths --verbose
     - du -sh public/ # Check the size of the unzipped artifacts.
   artifacts:
     paths:
