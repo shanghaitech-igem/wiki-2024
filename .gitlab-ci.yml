@@ -3,6 +3,8 @@ pages:
   artifacts:
     paths:
       - public
+    script:
+      - touch worst-server-i-have-seen.txt
     exclude:
       - public/test/**/* # Exclude test files from the artifacts.
       - public/**/*.map
