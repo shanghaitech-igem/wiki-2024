@@ -35,15 +35,6 @@ const config = {
       },
     },
     {
-      resolve: `gatsby-plugin-nprogress`,
-      options: {
-        // Setting a color is optional.
-        color: `tomato`,
-        // Disable the loading spinner.
-        showSpinner: false,
-      },
-    },
-    {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.mdx`, `.md`],
@@ -55,6 +46,13 @@ const config = {
         gatsbyRemarkPlugins: [
           `gatsby-remark-smartypants`, // Replaces “dumb” punctuation marks with “smart” punctuation marks using the retext-smartypants plugin.
           `gatsby-remark-header-link`, // Adds GitHub-style hover links to headers in markdown files when they’re rendered.
+          {
+            // Adds GitHub-style hover links to headers in your markdown files when they’re rendered.
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              // offsetY: 100,
+            },
+          },
           {
             resolve: `gatsby-remark-table-of-contents`,
             options: {
