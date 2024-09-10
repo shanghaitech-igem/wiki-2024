@@ -15,12 +15,11 @@ main {
 
       /* Style the copy button */
       .copy-button {
-        border-radius: 0.375em;
+        border-radius: 0.375;
         display: flex;
         align-items: center;
         cursor: pointer;
         pointer-events: initial;
-        border: #fff solid 1px;
         background-color: #a7c0d1;
         padding: 4px;
         min-height: 32px;
