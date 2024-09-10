@@ -3,6 +3,7 @@ import * as path from "path";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 import remarkGfm from "remark-gfm";
+import remarkMath from 'remark-math';
 
 const config = {
   siteMetadata: {
@@ -41,6 +42,7 @@ const config = {
         mdxOptions: {
           remarkPlugins: [
             remarkGfm, // Add GitHub Flavored Markdown (GFM) support
+            remarkMath,
           ],
         },
         gatsbyRemarkPlugins: [

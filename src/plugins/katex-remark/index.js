@@ -1,15 +1,12 @@
 "use strict";
 
-const visit = require(`unist-util-visit`);
-const katex = require(`katex`);
-const remarkMath = require(`remark-math`);
-const unified = require(`unified`);
-const parse = require(`rehype-parse`);
-require('./extension/mhchem.js'); // Modify KaTex module
+import { visit } from "unist-util-visit";
+import katex from 'katex';
+import { unified } from 'unified';
+import parse from 'rehype-parse';
+import 'katex/contrib/mhchem'; // Modify KaTex module
 
-module.exports = ({
-  markdownAST
-}, pluginOptions = {}) => {
+export default ({ markdownAST }, pluginOptions = {}) => {
   visit(markdownAST, `inlineMath`, node => {
     node.data.hChildren = unified().use(parse, {
       fragment: true,
@@ -19,6 +16,7 @@ module.exports = ({
       ...pluginOptions
     })).children;
   });
+
   visit(markdownAST, `math`, node => {
     node.data.hChildren = unified().use(parse, {
       fragment: true,
@@ -28,5 +26,4 @@ module.exports = ({
       ...pluginOptions
     })).children;
   });
-};
-module.exports.setParserPlugins = () => [remarkMath];
+}
