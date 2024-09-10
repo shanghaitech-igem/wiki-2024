@@ -1,4 +1,4 @@
-image: node:lts
+image: node:lts-slim
 
 stages:
   - build
@@ -8,8 +8,6 @@ stages:
 # https://docs.gitlab.com/ce/ci/yaml/README.html#cache
 cache:
   paths:
-    - node_modules/
-    - src/**/node_modules/
     - .pnpm-store/
   key:
     files:
@@ -24,7 +22,7 @@ before_script:
 pnpm:install:
   stage: build
   script:
-    - pnpm install -r # install dependencies
+    - pnpm install -r # add dependencies to .pnpm-store
   only:
     - main
 
@@ -33,6 +31,7 @@ pages:
   needs:
     - pnpm:install
   script:
+    - - pnpm install -r # link dependencies from .pnpm-store
     - ./node_modules/.bin/gatsby info
     - ./node_modules/.bin/gatsby build --prefix-paths
     - du -sh public/ # Check the size of the unzipped artifacts.
