@@ -6,7 +6,7 @@ import Video from "../components/mdx/video";
 import PDF from "../components/mdx/pdf";
 import Audio from "../components/mdx/audio";
 import Image from "../components/mdx/image";
-import Plot from "../components/mdx/plot";
+import Plot from "../components/mdx/plot-loadable";
 
 const components = {
   Video,
