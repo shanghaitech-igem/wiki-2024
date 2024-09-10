@@ -9,12 +9,12 @@ stages:
 cache:
   paths:
     - node_modules/
-    - .cache/
-    - public/
+    - src/**/node_modules/
     - .pnpm-store/
   key:
     files:
       - pnpm-lock.yaml
+      - src/**/pnpm-lock.yaml
 
 before_script:
   - corepack enable
