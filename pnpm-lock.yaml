@@ -36,11 +36,11 @@ importers:
         specifier: ^6.13.1
         version: 6.13.1(gatsby@5.13.7(@types/webpack@5.28.5)(babel-eslint@10.1.0(eslint@7.32.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@4.26.1)(typescript@5.6.2))(sass@1.78.0)(webpack@5.94.0)
       gatsby-remark-header-link:
-        specifier: file:src/plugins/header-link-remark
-        version: file:src/plugins/header-link-remark(gatsby@5.13.7(@types/webpack@5.28.5)(babel-eslint@10.1.0(eslint@7.32.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@4.26.1)(typescript@5.6.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: file:src/plugins/remark-header-link
+        version: file:src/plugins/remark-header-link(gatsby@5.13.7(@types/webpack@5.28.5)(babel-eslint@10.1.0(eslint@7.32.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@4.26.1)(typescript@5.6.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       gatsby-remark-katex:
-        specifier: file:src/plugins/katex-remark
-        version: file:src/plugins/katex-remark
+        specifier: file:src/plugins/remark-katex
+        version: file:src/plugins/remark-katex
       gatsby-remark-prismjs:
         specifier: ^7.13.2
         version: 7.13.2(gatsby@5.13.7(@types/webpack@5.28.5)(babel-eslint@10.1.0(eslint@7.32.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@4.26.1)(typescript@5.6.2))(prismjs@1.29.0)
@@ -48,8 +48,8 @@ importers:
         specifier: ^6.13.1
         version: 6.13.1(gatsby@5.13.7(@types/webpack@5.28.5)(babel-eslint@10.1.0(eslint@7.32.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@4.26.1)(typescript@5.6.2))
       gatsby-remark-table-of-contents:
-        specifier: file:src/plugins/toc-remark
-        version: file:src/plugins/toc-remark
+        specifier: file:src/plugins/remark-toc
+        version: file:src/plugins/remark-toc
       gatsby-source-filesystem:
         specifier: ^5.13.1
         version: 5.13.1(gatsby@5.13.7(@types/webpack@5.28.5)(babel-eslint@10.1.0(eslint@7.32.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@4.26.1)(typescript@5.6.2))
@@ -3620,16 +3620,16 @@ packages:
       react: ^18.0.0 || ^0.0.0
       react-dom: ^18.0.0 || ^0.0.0
 
-  gatsby-remark-header-link@file:src/plugins/header-link-remark:
-    resolution: {directory: src/plugins/header-link-remark, type: directory}
+  gatsby-remark-header-link@file:src/plugins/remark-header-link:
+    resolution: {directory: src/plugins/remark-header-link, type: directory}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       gatsby: ^5.0.0-next
       react: ^18.0.0 || ^0.0.0
       react-dom: ^18.0.0 || ^0.0.0
 
-  gatsby-remark-katex@file:src/plugins/katex-remark:
-    resolution: {directory: src/plugins/katex-remark, type: directory}
+  gatsby-remark-katex@file:src/plugins/remark-katex:
+    resolution: {directory: src/plugins/remark-katex, type: directory}
 
   gatsby-remark-prismjs@7.13.2:
     resolution: {integrity: sha512-y1RKfyx9rw317HcuhWHu8YdrrkDBFtiPvlCOgTPbKQb/Z1kxA/+xhd7dIM5RYfL9/LSqPDciT1BTR14XgCZ+vA==}
@@ -3644,8 +3644,8 @@ packages:
     peerDependencies:
       gatsby: ^5.0.0-next
 
-  gatsby-remark-table-of-contents@file:src/plugins/toc-remark:
-    resolution: {directory: src/plugins/toc-remark, type: directory}
+  gatsby-remark-table-of-contents@file:src/plugins/remark-toc:
+    resolution: {directory: src/plugins/remark-toc, type: directory}
 
   gatsby-script@2.13.0:
     resolution: {integrity: sha512-TGNQGerf1NMJrgJkWxWrW6FFMAuC0L76WlyZgGXmhckPW/x7V1SxZrm0a2Q99kRHyoC59RYl2gTQWHaIwV+ZjA==}
@@ -11744,7 +11744,7 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  gatsby-remark-header-link@file:src/plugins/header-link-remark(gatsby@5.13.7(@types/webpack@5.28.5)(babel-eslint@10.1.0(eslint@7.32.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@4.26.1)(typescript@5.6.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  gatsby-remark-header-link@file:src/plugins/remark-header-link(gatsby@5.13.7(@types/webpack@5.28.5)(babel-eslint@10.1.0(eslint@7.32.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@4.26.1)(typescript@5.6.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@babel/runtime': 7.25.6
       gatsby: 5.13.7(@types/webpack@5.28.5)(babel-eslint@10.1.0(eslint@7.32.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@4.26.1)(typescript@5.6.2)
@@ -11756,7 +11756,7 @@ snapshots:
       react-dom: 18.3.1(react@18.3.1)
       unist-util-visit: 5.0.0
 
-  gatsby-remark-katex@file:src/plugins/katex-remark:
+  gatsby-remark-katex@file:src/plugins/remark-katex:
     dependencies:
       '@babel/runtime': 7.25.6
       rehype-parse: 9.0.0
@@ -11779,7 +11779,7 @@ snapshots:
       retext-smartypants: 4.0.0
       unist-util-visit: 2.0.3
 
-  gatsby-remark-table-of-contents@file:src/plugins/toc-remark:
+  gatsby-remark-table-of-contents@file:src/plugins/remark-toc:
     dependencies:
       mdast-util-toc: 7.1.0
 
