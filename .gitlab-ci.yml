@@ -25,7 +25,6 @@ before_script:
 pnpm:install:
   stage: build
   script:
-    - pnpm update # update dependencies
     - pnpm install # install dependencies
   only:
     - main

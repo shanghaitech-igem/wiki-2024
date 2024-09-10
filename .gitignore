@@ -4,3 +4,4 @@ src/gatsby-types.d.ts
 contents/*-test.mdx
 contents/*-test.md
 assets/
+public/
