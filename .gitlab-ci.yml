@@ -12,7 +12,6 @@ cache:
     - .pnpm-store
     # Enables git-lab CI caching. Both .cache and public must be cached, otherwise builds will fail.
     - .cache/
-    - public/
   key:
     files:
       - pnpm-lock.yaml
