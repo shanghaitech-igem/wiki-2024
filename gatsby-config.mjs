@@ -3,6 +3,7 @@ import * as path from "path";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 import remarkGfm from "remark-gfm";
+import remarkMath from 'remark-math';
 
 const config = {
   siteMetadata: {
@@ -17,6 +18,8 @@ const config = {
   // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: true,
   plugins: [
+    `gatsby-plugin-perf-budgets`,
+    `gatsby-plugin-webpack-bundle-analyser-v2`,
     `gatsby-plugin-catch-links`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -35,28 +38,20 @@ const config = {
       },
     },
     {
-      resolve: `gatsby-plugin-nprogress`,
-      options: {
-        // Setting a color is optional.
-        color: `tomato`,
-        // Disable the loading spinner.
-        showSpinner: false,
-      },
-    },
-    {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.mdx`, `.md`],
         mdxOptions: {
           remarkPlugins: [
             remarkGfm, // Add GitHub Flavored Markdown (GFM) support
+            remarkMath,
           ],
         },
         gatsbyRemarkPlugins: [
           `gatsby-remark-smartypants`, // Replaces “dumb” punctuation marks with “smart” punctuation marks using the retext-smartypants plugin.
           `gatsby-remark-header-link`, // Adds GitHub-style hover links to headers in markdown files when they’re rendered.
           {
-            resolve: `gatsby-remark-table-of-contents`,
+            resolve: `gatsby-remark-toc`,
             options: {
               tight: true,
               ordered: false,

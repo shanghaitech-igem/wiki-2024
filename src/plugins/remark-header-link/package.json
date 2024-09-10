@@ -2,13 +2,15 @@
   "name": "gatsby-remark-header-link",
   "description": "Gatsby plugin to autolink headers in markdown processed by Remark",
   "version": "1.0.0",
+  "packageManager": "pnpm@9.9.0",
+  "type": "module",
   "dependencies": {
-    "@babel/runtime": "^7.20.13",
-    "github-slugger": "^1.5.0",
+    "@babel/runtime": "^7.25.6",
+    "github-slugger": "^2.0.0",
     "joi": "^17.13.3",
     "lodash": "^4.17.21",
-    "mdast-util-to-string": "^2.0.0",
-    "unist-util-visit": "^2.0.3"
+    "mdast-util-to-string": "^4.0.0",
+    "unist-util-visit": "^5.0.0"
   },
   "license": "MIT",
   "main": "index.js",

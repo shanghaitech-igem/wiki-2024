@@ -1,6 +1,4 @@
-'use strict';
-
-const toc = require("mdast-util-toc"); // Import the Table of Contents utility
+import { toc } from "mdast-util-toc"; // Import the Table of Contents utility
 
 // Default preferences for TOC generation
 const defaultPrefs = {
@@ -51,9 +49,9 @@ const transformer = (markdownAST, pluginOptions) => {
   };
 
   // Insert the generated TOC into the original AST, wrapped by the div
-  markdownAST.children.unshift(tocDiv); 
+  markdownAST.children.unshift(tocDiv);
 };
 
-module.exports = async ({ markdownAST }, pluginOptions) => {
+export default ({ markdownAST }, pluginOptions) => {
   transformer(markdownAST, pluginOptions);
 };
