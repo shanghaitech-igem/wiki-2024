@@ -9,6 +9,8 @@ stages:
 cache:
   paths:
     - .pnpm-store/
+    - .cache/
+    - public/
   key:
     files:
       - pnpm-lock.yaml
