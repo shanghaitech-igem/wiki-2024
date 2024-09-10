@@ -49,7 +49,7 @@ const config = {
           `gatsby-remark-smartypants`, // Replaces “dumb” punctuation marks with “smart” punctuation marks using the retext-smartypants plugin.
           `gatsby-remark-header-link`, // Adds GitHub-style hover links to headers in markdown files when they’re rendered.
           {
-            resolve: `gatsby-remark-table-of-contents`,
+            resolve: `gatsby-remark-toc`,
             options: {
               tight: true,
               ordered: false,

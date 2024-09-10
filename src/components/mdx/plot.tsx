@@ -1,7 +1,14 @@
 import React from "react";
 import Loadable from "react-loadable";
 import { PlotParams } from "react-plotly.js";
+import createPlotlyComponent from "react-plotly.js/factory";
 import * as styles from "../../styles/modules/plot.module.scss";
+
+// Import the custom Plotly bundle
+import PlotlyCustom from "plotly-custom";
+
+// Create the Plotly component with the custom bundle
+const Plotly = createPlotlyComponent(PlotlyCustom);
 
 // LoadingSpinner Component
 const LoadingSpinner: React.FC = () => {
@@ -23,8 +30,8 @@ const TimeoutMessage: React.FC = () => {
 };
 
 // Loadable Plotly Component
-const Plotly = Loadable({
-  loader: () => import(`react-plotly.js`),
+const LoadablePlot = Loadable({
+  loader: () => Promise.resolve(Plot),
   loading: ({ timedOut }) =>
     timedOut ? <TimeoutMessage /> : <LoadingSpinner />,
   timeout: 10000,
@@ -35,7 +42,11 @@ const Plot: React.FC<PlotParams> = (params) => {
   return (
     <div className={styles.plotContainer}>
       <div className={styles.plot}>
-      <Plotly {...params}  useResizeHandler={true} style={{ width: '100%', height: '100%' }} />
+        <LoadablePlot
+          {...params}
+          useResizeHandler={true}
+          style={{ width: "100%", height: "100%" }}
+        />
       </div>
     </div>
   );
