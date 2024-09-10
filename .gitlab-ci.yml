@@ -9,7 +9,9 @@ stages:
 cache:
   paths:
     - node_modules/
-    - .pnpm-store
+    - .cache/
+    - public/
+    - .pnpm-store/
   key:
     files:
       - pnpm-lock.yaml
