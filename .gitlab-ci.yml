@@ -22,7 +22,7 @@ before_script:
 pnpm:install:
   stage: build
   script:
-    - pnpm install # install dependencies
+    - pnpm install -r # install dependencies
   only:
     - main
 
