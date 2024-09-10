@@ -7,14 +7,11 @@ stages:
 # This folder is cached between builds
 # https://docs.gitlab.com/ce/ci/yaml/README.html#cache
 cache:
-  paths:
-    - .pnpm-store/
-    - .cache/
-    - public/
   key:
     files:
       - pnpm-lock.yaml
-      - src/**/pnpm-lock.yaml
+  paths:
+    - .pnpm-store
 
 before_script:
   - corepack enable
@@ -24,7 +21,7 @@ before_script:
 pnpm:install:
   stage: build
   script:
-    - pnpm install -r # add dependencies to .pnpm-store
+    - pnpm install -r  --frozen-lockfile # add dependencies to .pnpm-store
   only:
     - main
 
@@ -33,9 +30,11 @@ pages:
   needs:
     - pnpm:install
   script:
-    - - pnpm install -r # link dependencies from .pnpm-store
+    - pnpm install --frozen-lockfile -r # link dependencies from .pnpm-store
     - ./node_modules/.bin/gatsby info
     - ./node_modules/.bin/gatsby build --prefix-paths
+    - rm public/_stats.json
+    - rm public/_report.html
     - du -sh public/ # Check the size of the unzipped artifacts.
   artifacts:
     paths:

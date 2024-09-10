@@ -18,6 +18,8 @@ const config = {
   // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: true,
   plugins: [
+    `gatsby-plugin-perf-budgets`,
+    `gatsby-plugin-webpack-bundle-analyser-v2`,
     `gatsby-plugin-catch-links`,
     {
       resolve: `gatsby-source-filesystem`,
