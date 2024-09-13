@@ -1,7 +1,7 @@
 {
   "name": "shanghaitech-igem-wiki",
   "version": "1.0.0",
-  "packageManager": "pnpm@9.9.0",
+  "packageManager": "pnpm@9.10.0",
   "private": true,
   "description": "shanghaitech-igem-wiki",
   "author": "zivmax",

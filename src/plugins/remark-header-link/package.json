@@ -2,7 +2,7 @@
   "name": "gatsby-remark-header-link",
   "description": "Gatsby plugin to autolink headers in markdown processed by Remark",
   "version": "1.0.0",
-  "packageManager": "pnpm@9.9.0",
+  "packageManager": "pnpm@9.10.0",
   "type": "module",
   "dependencies": {
     "@babel/runtime": "^7.25.6",

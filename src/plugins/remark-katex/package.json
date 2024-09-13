@@ -1,6 +1,7 @@
 {
   "name": "gatsby-remark-katex",
   "description": "Transform math nodes to html markup",
+  "packageManager": "pnpm@9.10.0",
   "version": "1.0.0",
   "type": "module",
   "dependencies": {
