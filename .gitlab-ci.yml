@@ -33,8 +33,6 @@ pages:
     - pnpm install -r --frozen-lockfile --prod --offline # link dependencies from .pnpm-store
     - ./node_modules/.bin/gatsby info
     - ./node_modules/.bin/gatsby build --prefix-paths
-    - rm public/_stats.json
-    - rm public/_report.html
     - du -sh public/ # Check the size of the unzipped artifacts.
   artifacts:
     paths:
