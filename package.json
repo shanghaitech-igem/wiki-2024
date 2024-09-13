@@ -17,6 +17,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@iconify/react": "^5.0.2",
     "@jpfulton/gatsby-remark-copy-button": "^1.0.10",
     "@mdx-js/react": "^3.0.1",
     "gatsby": "^5.13.7",
@@ -43,7 +44,6 @@
     "sass": "^1.78.0"
   },
   "devDependencies": {
-    "@iconify/react": "^5.0.2",
     "@types/katex": "^0.16.7",
     "@types/node": "^22.5.4",
     "@types/plotly.js": "^2.33.3",
