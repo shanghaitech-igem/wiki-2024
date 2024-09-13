@@ -73,7 +73,7 @@ $mobile-breakpoint: $picnic-breakpoint;
         color: $nav-link-hover-color;
       }
 
-      @media all and (width <= $mobile-breakpoint) {
+      @media all and (width <=$mobile-breakpoint) {
         color: $mobile-sub-menu-dp-root-color;
         display: block;
       }
@@ -90,11 +90,13 @@ $mobile-breakpoint: $picnic-breakpoint;
           .sub-menu {
             visibility: visible;
             color: $nav-link-hover-color;
+
             .sub-menu-link {
               opacity: 1;
               transform: translateY(0);
 
               $base-delay: 0.1s;
+
               // Apply animation delay based on item index using a loop
               @for $i from 1 through $sub-menu-item-count {
                 &:nth-child(#{$i}) {
@@ -115,12 +117,13 @@ $mobile-breakpoint: $picnic-breakpoint;
       }
 
       // Show sub-menu on click for mobile
-      @media all and (width <= $mobile-breakpoint) {
+      @media all and (width <=$mobile-breakpoint) {
         display: block;
 
         .sub-menu-root:focus + .sub-menu,
         .sub-menu-root:active + .sub-menu {
-          display: block; /* Show on click */
+          display: block;
+          /* Show on click */
         }
       }
 
@@ -130,7 +133,7 @@ $mobile-breakpoint: $picnic-breakpoint;
         box-shadow: none;
         font-weight: $sub-menu-root-font-weight;
 
-        @media all and (width <= $mobile-breakpoint) {
+        @media all and (width <=$mobile-breakpoint) {
           color: $mobile-sub-menu-dp-root-color;
           border-radius: $sub-menu-link-border-radius;
           width: 100%;
@@ -149,7 +152,7 @@ $mobile-breakpoint: $picnic-breakpoint;
         left: 60%;
         translate: -60%;
 
-        @media all and (width <= $mobile-breakpoint) {
+        @media all and (width <=$mobile-breakpoint) {
           padding-top: inherit;
           position: relative;
           width: 75%;

@@ -1,7 +1,9 @@
 import React from "react";
 import { Link, useStaticQuery, graphql } from "gatsby";
 import * as styles from "../styles/modules/footer.module.scss";
+import "../styles/global/svg.scss";
 import { generateNavItems, NavItemType } from "../utils/generate-nav-item";
+import { Icon } from "@iconify/react";
 
 const {
   footer,
@@ -10,11 +12,14 @@ const {
   navLink,
   submenuSingle,
   info,
-  logo,
-  social,
+  logos,
+  mainLogo,
+  stuLogo,
   declaration,
+  icon,
+  communication,
+  socialIcons,
 } = styles;
-const Nothing = () => null;
 
 interface NavItemProps {
   item: NavItemType;
@@ -58,37 +63,35 @@ const Footer: React.FC = () => {
         </div>
       </div>
       <div className={info}>
-        <div>
+        <div className={logos}>
           <img
-            className={logo}
-            src="https://static.igem.wiki/teams/5174/test/igem-logo-light.svg"
+            className={mainLogo}
+            src="https://static.igem.wiki/teams/5174/svgs/main-logo-bar-copy.svg"
+            alt="Logo"
+          />
+          <img
+            className={stuLogo}
+            src="https://static.igem.wiki/teams/5174/svgs/stu-logo-bar.svg"
             alt="Logo"
           />
         </div>
-        <div className={social}>
-          <a href="https://instagram.com" target="_blank" rel="noreferrer">
-            <img
-              src="https://static.igem.wiki/teams/5174/icons/footer/instagram-icon.svg"
-              alt="Instagram"
-            />
-          </a>
-          <a href="https://twitter.com" target="_blank" rel="noreferrer">
-            <img
-              src="https://static.igem.wiki/teams/5174/icons/footer/twitter-x-icon.svg"
-              alt="Twitter"
-            />
-          </a>
-          <a href="https://youtube.com" target="_blank" rel="noreferrer">
-            <img
-              src="https://static.igem.wiki/teams/5174/icons/footer/youtube-icon.svg"
-              alt="YouTube"
-            />
-          </a>
+        <div className={communication}>
+          <p>Follow Us</p>
+          <div className={socialIcons}>
+            <a href="https://instagram.com" target="_blank" rel="noreferrer">
+              <Icon icon="mdi:instagram" className={icon} />
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noreferrer">
+              <Icon icon="fa6-brands:x-twitter" className={icon} />
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noreferrer">
+              <Icon icon="ri:youtube-fill" className={icon} />
+            </a>
+          </div>
+          <p>Contact Us</p>
           <a href="mailto:igemshanghaitech@163.com">
-            <img
-              src="https://static.igem.wiki/teams/5174/icons/footer/email-icon.svg"
-              alt="Email"
-            />
+            <Icon icon="dashicons:email" className={icon} />
+            <p>igemshanghaitech@163.com</p>
           </a>
         </div>
       </div>
