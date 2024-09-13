@@ -30,7 +30,7 @@ pages:
   needs:
     - pnpm:install
   script:
-    - pnpm install -r --frozen-lockfile --offline # link dependencies from .pnpm-store
+    - pnpm install -r --frozen-lockfile --prod --offline # link dependencies from .pnpm-store
     - ./node_modules/.bin/gatsby info
     - ./node_modules/.bin/gatsby build --prefix-paths
     - rm public/_stats.json
