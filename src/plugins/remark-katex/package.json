@@ -6,6 +6,7 @@
   "type": "module",
   "dependencies": {
     "@babel/runtime": "^7.25.6",
+    "katex": "^0.16.11",
     "rehype-parse": "^9.0.0",
     "unified": "^11.0.5",
     "unist-util-visit": "^5.0.0"
