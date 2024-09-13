@@ -12,7 +12,7 @@ $nav-bar-bg-color: light.$pacify-primary;
 $nav-bar-font-family: light.$pacify-layout-font;
 $nav-bar-gradient-start-color: rgba(231, 227, 215, 0.5);
 $nav-bar-gradient-end-color: rgba(129, 127, 120, 0.5);
-$nav-bar-height: 6rem;
+$nav-bar-height: 7rem;
 
 $nav-link-text-color: light.$pacify-char-layout;
 $nav-link-margin-right: 1.7rem;
@@ -56,7 +56,7 @@ $mobile-breakpoint: $picnic-breakpoint;
 
   .nav-menu {
     @extend .menu;
-    margin-right: 2rem;
+    margin: 0 1.5rem;
 
     .nav-link {
       position: relative;
