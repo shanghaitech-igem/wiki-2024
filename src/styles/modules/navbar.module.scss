@@ -2,6 +2,7 @@
 @use "../themes/light";
 
 @import "/src/plugins/picnic-css/themes/default/theme";
+$picnic-breakpoint: light.$pacify-breakpoint;
 @import "/src/plugins/picnic-css/plugins/label/plugin";
 @import "/src/plugins/picnic-css/plugins/button/plugin";
 @import "/src/plugins/picnic-css/plugins/nav/plugin";
