@@ -6,8 +6,11 @@ interface PDFProps {
   src: string;
   [key: string]: any; // Allows for any additional props
 }
+const staticRemote = "https://static.igem.wiki/teams/5174/";
 
-const PDF: React.FC<PDFProps> = ({ src, ...props }) => (
+const PDF: React.FC<PDFProps> = ({ src, ...props }) => {
+  src = src?.startsWith("http") ? src : src?.replace("static/", staticRemote);
+  return (
     <div className={styles.pdfContainer}>
       <div className={styles.pdf}>
         <iframe
@@ -17,6 +20,6 @@ const PDF: React.FC<PDFProps> = ({ src, ...props }) => (
       </div>
     </div>
   );
-  
+};
 
 export default PDF;
