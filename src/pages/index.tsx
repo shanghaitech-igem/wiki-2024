@@ -4,13 +4,12 @@ import Seo from "../components/seo";
 import Favicon from "../components/favicon";
 import * as styles from "../styles/modules/index.module.scss";
 
+const {title} = styles;
+
 const IndexPage: React.FC = () => {
   return (
     <Layout>
-      <header className={styles.heading}>Welcome!</header>
-      <h3 style={{ textAlign: "center" }}>
-        Welcome to ShanghaiTech's 2024 iGEM wiki page!
-      </h3>
+      <header className={styles.title}>Welcome!</header>
     </Layout>
   );
 };

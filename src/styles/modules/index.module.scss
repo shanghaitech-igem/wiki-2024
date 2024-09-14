@@ -1,12 +1,10 @@
-$max-width: 1000px;
-$font-family: sans-serif;
-$site-title-color: gray;
-$nav-link-text-color: black;
+@use "../themes/light";
 
-.heading {
-  font-size: 3rem;
-  color: $site-title-color;
-  font-weight: 700;
-  margin: 3rem 0;
-  text-align: center;
+.title {
+  margin-top: 10rem;
+  color: light.$pacify-char-layout;
+  font-size: 8rem;
+  font-family: "Cinzel Decorative";
+  font-weight: normal;
+  font-style: normal;
 }
