@@ -1,4 +1,4 @@
-$anchor-padding: 4px;
+$anchor-padding: 0.5rem;
 
 main {
   // Anchor styles
@@ -6,7 +6,6 @@ main {
     &.before {
       position: absolute;
       top: 0;
-      left: 0;
       transform: translateX(-100%);
       padding-right: $anchor-padding;
     }
