@@ -48,7 +48,6 @@
         font-weight: normal;
       }
     }
-
   }
 
   .info {
@@ -66,25 +65,31 @@
       flex-wrap: wrap;
       flex-direction: row;
       align-items: center;
+      justify-content: center; // Center the logos horizontally
 
-      .main-logo {
-        margin-bottom: 13px;
+      .main-logo,
+      .stu-logo {
         margin-right: 1em;
-        height: 6em;
+        max-width: 100%; // Ensure logos don’t exceed their container
+        height: auto; // Maintain aspect ratio
         filter: invert(1) opacity(0.5);
       }
 
+      .main-logo {
+        margin-bottom: 13px;
+        width: 40%; // Adjust the percentage as needed
+      }
+
       .stu-logo {
-        height: 7.5em;
-        filter: invert(1) opacity(0.5);
+        width: 45%; // Adjust the percentage as needed
       }
     }
 
     .communication {
-      flex: 0 0 35rem; /* Grow, shrink, and set the basis to 50% */
       display: flex;
       flex-wrap: wrap; /* Allows items to wrap to the next line */
       font-family: light.$pacify-layout-font;
+      max-width: 32rem;
 
       color: rgba(245, 245, 245, 0.75);
       line-height: 0.8; /* Adjust line height */
@@ -94,13 +99,13 @@
       }
 
       p {
-        flex: 0 0 30%; /* Grow, shrink, and set the basis to 50% */
+        flex: 0 0 12rem; /* Grow, shrink, and set the basis to 50% */
         font-weight: bold;
         font-size: x-large;
       }
 
       .social-icons {
-        flex: 1 1 60%; /* Grow, shrink, and set the basis to 50% */
+        flex: 0 0 15rem; /* Grow, shrink, and set the basis to 50% */
         display: flex;
         align-items: center; /* Aligns items vertically centered */
         justify-content: flex-start; /* Aligns items to the left */
@@ -118,7 +123,6 @@
       }
 
       a:not(.social-icons a) {
-        flex: 1 1 50%; /* Grow, shrink, and set the basis to 50% */
         display: flex;
         flex-direction: row;
         align-items: center;
