@@ -2,13 +2,12 @@ import { toc } from "mdast-util-toc"; // Import the Table of Contents utility
 
 // Default preferences for TOC generation
 const defaultPrefs = {
-  tight: false,
   className: "toc",
   ordered: false,
 };
 
 // Validate class name for XSS safety
-const isValidClassName = (className) => /^[a-zA-Z0-9_-]+$/.test(className);
+const isValidClassName = (className) => /^[a-zA-Z0-9_-]+$/.test(className) && className != null;
 
 // Create a TOC from the Markdown AST
 const createTOC = (markdownAST, prefs) => {
@@ -19,7 +18,6 @@ const createTOC = (markdownAST, prefs) => {
 
   return toc(tocMarkdownAST, {
     maxDepth: 1,
-    tight: prefs.tight,
     ordered: prefs.ordered,
     skip: Array.isArray(prefs.exclude) ? prefs.exclude.join("|") : prefs.exclude,
   });
@@ -27,11 +25,6 @@ const createTOC = (markdownAST, prefs) => {
 
 // Transformer function to process the Markdown AST and insert a TOC
 const transformer = (markdownAST, pluginOptions) => {
-  const firstHeadingIndex = markdownAST.children.findIndex(node => node.type === "heading");
-
-  // If no headings are found, exit the function
-  if (firstHeadingIndex === -1) return;
-
   // Merge default preferences with user-defined options
   const prefs = {
     ...defaultPrefs,
@@ -45,7 +38,7 @@ const transformer = (markdownAST, pluginOptions) => {
     type: 'element',
     tagName: 'div',
     properties: { className: [prefs.className] },
-    children: result.map.children,
+    children: result != null && result.map != undefined ? result.map.children : [],
   };
 
   // Insert the generated TOC at the beginning
@@ -61,7 +54,8 @@ const transformer = (markdownAST, pluginOptions) => {
 
   // Replace the original children with the TOC and article node
   markdownAST.children = [tocDiv, articleNode];
-};
+}
+
 
 export default ({ markdownAST }, pluginOptions) => {
   transformer(markdownAST, pluginOptions);

@@ -54,9 +54,7 @@ const config = {
           {
             resolve: `gatsby-remark-toc`,
             options: {
-              tight: true,
               ordered: false,
-              className: "table-of-contents",
             },
           },
           {
