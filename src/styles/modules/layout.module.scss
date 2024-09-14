@@ -3,14 +3,13 @@
 @import "/src/plugins/picnic-css/plugins/generic/plugin";
 @import "/src/plugins/picnic-css/plugins/normalize/plugin";
 
-$max-width: 1000px;
 $font-family: sans-serif;
 
 .main {
   width: 100%;
   margin: auto;
-  max-width: $max-width;
   min-height: 80vh;
   font-family: $font-family;
-  padding: 2rem;
+  padding: 3rem 5rem 25rem 5rem;
+  background: linear-gradient(126deg, #bccfb8 10.33%, #c0b2a6 72.94%);
 }

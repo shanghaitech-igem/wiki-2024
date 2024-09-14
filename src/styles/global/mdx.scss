@@ -3,8 +3,7 @@
 @import "/src/plugins/picnic-css/plugins/table/plugin";
 
 // Variables for reusable values
-$scroll-margin: 3.5rem;
-$img-max-width: 60%;
+$scroll-margin: 10rem;
 
 // Smooth scrolling for the whole document
 html {
@@ -17,11 +16,28 @@ main {
     scroll-margin-top: $scroll-margin;
   }
 
-  // Image styling
-  img:not(.PhotoView-Portal img) {
-    max-width: $img-max-width;
-    height: auto;
-    display: block;
-    margin: 0 auto;
+  .toc {
+    flex: 0 0 16rem;
+    position: sticky;
+    font-family: "Cinzel";
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    min-width: 16rem;
+    margin-top: 14rem;
+    top: 8rem;
+
+
+    li {
+      margin: 2rem 0 2rem 0;
+
+      &::marker {
+        content: "";
+      }
+
+      a {
+        color: #fff;
+      }
+    }
   }
 }

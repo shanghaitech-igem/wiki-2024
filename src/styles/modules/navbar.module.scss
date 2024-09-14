@@ -233,6 +233,7 @@ $mobile-breakpoint: $picnic-breakpoint;
     @extend .logo;
     display: inline;
     width: auto;
+    filter: invert(1);
     height: calc($nav-bar-height / 1.5);
   }
 }
