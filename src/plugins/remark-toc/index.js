@@ -48,8 +48,19 @@ const transformer = (markdownAST, pluginOptions) => {
     children: result.map.children,
   };
 
-  // Insert the generated TOC into the original AST, wrapped by the div
+  // Insert the generated TOC at the beginning
   markdownAST.children.unshift(tocDiv);
+
+  // Wrap the rest of the content in an <article> element
+  const articleNode = {
+    type: 'element',
+    tagName: 'article',
+    properties: {},
+    children: markdownAST.children.slice(1), // Exclude the TOC
+  };
+
+  // Replace the original children with the TOC and article node
+  markdownAST.children = [tocDiv, articleNode];
 };
 
 export default ({ markdownAST }, pluginOptions) => {

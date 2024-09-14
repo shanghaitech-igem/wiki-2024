@@ -134,7 +134,7 @@ $mobile-breakpoint: $picnic-breakpoint;
         box-shadow: none;
         font-weight: $sub-menu-root-font-weight;
 
-        @media all and (width <=$mobile-breakpoint) {
+        @media all and (width <= $mobile-breakpoint) {
           color: $mobile-sub-menu-dp-root-color;
           border-radius: $sub-menu-link-border-radius;
           width: 100%;
