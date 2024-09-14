@@ -67,7 +67,7 @@ $mobile-breakpoint: $picnic-breakpoint;
       font-weight: $nav-link-font-weight;
       color: $nav-link-text-color;
       background: none;
-      cursor: default;
+      cursor: pointer;
 
       &:hover {
         color: $nav-link-hover-color;
@@ -129,6 +129,7 @@ $mobile-breakpoint: $picnic-breakpoint;
 
       .sub-menu-root {
         @extend .nav-link;
+        cursor: default;
         display: block;
         box-shadow: none;
         font-weight: $sub-menu-root-font-weight;
