@@ -1,4 +1,5 @@
 @use "sass:math";
+@use "../themes/light";
 @import "/src/plugins/picnic-css/themes/default/theme";
 @import "/src/plugins/picnic-css/plugins/table/plugin";
 
@@ -37,6 +38,10 @@ main {
 
       a {
         color: #fff;
+
+        &:hover {
+          color: light.$pacify-secondary;
+        }
       }
     }
   }
