@@ -21,39 +21,4 @@ $img-max-width: 60%;
     flex: 0 0 100%; /* First item takes full width */
     margin-bottom: 4rem;
   }
-
-  article {
-    width: 88rem;
-    padding: 5rem 8rem 10rem 8rem;
-    border-radius: 25rem 0;
-    background: #fff;
-    font-family: "Playfair Display";
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 40px; /* 153.846% */
-    letter-spacing: 1px;
-
-    h1 {
-      color: #000;
-      text-align: center;
-      font-family: "Cinzel Decorative";
-      font-size: 64px;
-      font-style: normal;
-      font-weight: 700;
-      line-height: normal;
-      margin-bottom: -2rem;
-    }
-
-    p {
-      margin: 3rem 0 3rem 0;
-    }
-
-    // Image styling
-    img:not(.PhotoView-Portal img) {
-      max-width: $img-max-width;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-    }
-  }
 }
