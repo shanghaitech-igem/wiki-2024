@@ -5,7 +5,7 @@ $use-ttf: true !default;
 $use-remote: false !default;
 
 @if $use-remote {
-  $font-folder: "https://static.igem.wiki/teams/5174/test/katex-fonts";
+  $font-folder: "https://static.igem.wiki/teams/5174/fonts/katex";
   $use-ttf: false;
 } @else {
   $font-folder: "../../plugins/katex-css/fonts";
