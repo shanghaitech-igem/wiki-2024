@@ -13,6 +13,7 @@ $nav-bar-font-family: light.$pacify-layout-font;
 $nav-bar-gradient-start-color: rgba(231, 227, 215, 0.5);
 $nav-bar-gradient-end-color: rgba(129, 127, 120, 0.5);
 $nav-bar-height: 7rem;
+$nav-bar-blur-px: 20px;
 
 $nav-link-text-color: light.$pacify-char-layout;
 $nav-link-margin-right: 1.7rem;
@@ -25,8 +26,8 @@ $sub-menu-root-font-weight: bold;
 $sub-menu-link-padding: 12px 18px;
 $sub-menu-link-border-radius: 40px 0px;
 $sub-menu-link-color: light.$pacify-char-layout;
-$sub-menu-link-bg-gradient-start: rgba(231, 227, 215, 0.6);
-$sub-menu-link-bg-gradient-end: rgba(192, 178, 166, 0.6);
+$sub-menu-link-bg-gradient-start: rgba(231, 227, 215, 0.8);
+$sub-menu-link-bg-gradient-end: rgba(192, 178, 166, 0.8);
 $sub-menu-link-hover-bg-gradient-start: rgb(231, 227, 215, 1);
 $sub-menu-link-hover-bg-gradient-end: rgb(255, 255, 255, 1);
 $sub-menu-link-transition-time: 0.3s;
@@ -51,8 +52,8 @@ $mobile-breakpoint: $picnic-breakpoint;
     $nav-bar-gradient-end-color 100%
   );
   box-shadow: inset 0px 4px 6px 3px rgba(0, 0, 0, 0.25);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur($nav-bar-blur-px);
+  backdrop-filter: blur($nav-bar-blur-px);
 
   .nav-menu {
     @extend .menu;
@@ -181,8 +182,8 @@ $mobile-breakpoint: $picnic-breakpoint;
             $sub-menu-link-bg-gradient-start 21.56%,
             $sub-menu-link-bg-gradient-end 84.94%
           );
-          -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur($nav-bar-blur-px);
+          backdrop-filter: blur($nav-bar-blur-px);
 
           opacity: 0; // Initially hide the items
           transform: translateY(-20px);
