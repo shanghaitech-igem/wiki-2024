@@ -4,10 +4,10 @@ import * as styles from "../../styles/modules/image.module.scss";
 
 interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {}
 
-const staticRemote = "https://static.igem.wiki/teams/5174/";
+const staticServerURL = "https://static.igem.wiki/teams/5174/";
 
 const Image: React.FC<ImageProps> = ({ src, alt, ...props }) => {
-  src = src?.startsWith("http") ? src : src?.replace("static/", staticRemote);
+  src = src?.startsWith("http") ? src : src?.replace("server/", staticServerURL);
   return (
     <PhotoProvider className={styles.toppest}>
       <PhotoView src={src}>
