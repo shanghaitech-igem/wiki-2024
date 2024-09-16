@@ -1,8 +1,10 @@
 @use "../themes/light";
+@use "sass:math";
+@import "/src/plugins/picnic-css/themes/default/theme";
 
 $img-max-width: 60%;
 
-main{
+main {
   .title {
     margin-bottom: 4rem;
     margin-top: 10rem;
@@ -80,6 +82,44 @@ main{
         height: auto;
         display: block;
         margin: 0 auto;
+      }
+
+      table {
+        text-align: left;
+        font-family: "Montserrat";
+
+        td,
+        th {
+          padding: math.div($picnic-separation, 2) 2.4em
+            math.div($picnic-separation, 2) $picnic-separation;
+        }
+
+        th {
+          text-align: left;
+          font-weight: 900;
+          color: $picnic-white;
+          background-color: $picnic-primary;
+          .success & {
+            background-color: $picnic-success;
+          }
+
+          .warning & {
+            background-color: $picnic-warning;
+          }
+
+          .error & {
+            background-color: $picnic-error;
+          }
+
+          .dull & {
+            background-color: $picnic-dull;
+          }
+        }
+
+        // Zebra stripes
+        tr:nth-child(even) {
+          background: rgba($picnic-black, 0.05);
+        }
       }
     }
   }
