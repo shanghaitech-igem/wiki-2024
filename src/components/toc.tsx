@@ -23,7 +23,7 @@ interface TocProps {
 
 const TOC: React.FC<TocProps> = ({
   tableOfContents,
-  maxDepth = 6,
+  maxDepth = 1,
   minDepth = 1,
   skip,
   ordered = false,
