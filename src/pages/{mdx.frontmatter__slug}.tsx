@@ -20,6 +20,7 @@ const components = {
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 import Favicon from "../components/favicon";
+import Tracer from "../components/tracer";
 
 import "prismjs/themes/prism-solarizedlight.min.css";
 import "prismjs/plugins/line-numbers/prism-line-numbers.min.css";
@@ -30,9 +31,9 @@ import "../styles/global/katex.scss";
 import "../styles/global/footnote.scss";
 import "../styles/global/copy-btn.scss";
 import "../styles/global/header-anchor.scss";
-import "../styles/global/mdx.scss";
 
 import * as styles from "../styles/modules/mdx.module.scss";
+import "../styles/global/mdx.scss";
 
 const { title, container, content } = styles;
 
@@ -44,6 +45,7 @@ interface MdxPageProps {
       frontmatter: {
         title: string;
         favicon: string;
+        tracer: string | null;
       };
     };
     site: {
@@ -70,6 +72,9 @@ const MDXPage: React.FC<MdxPageProps> = ({ data, children }) => {
 
   return (
     <Layout>
+      {frontmatter.tracer && (
+        <Tracer src={frontmatter.tracer} alt="Tracer Image" />
+      )}
       <div className={container}>
         <header className={title}>{frontmatter.title}</header>
         <div className={content}>
@@ -86,6 +91,7 @@ export const query = graphql`
       frontmatter {
         title
         favicon
+        tracer
       }
     }
   }

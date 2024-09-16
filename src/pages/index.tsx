@@ -9,7 +9,7 @@ const {title} = styles;
 const IndexPage: React.FC = () => {
   return (
     <Layout>
-      <header className={styles.title}>Welcome!</header>
+      <header className={title}>Welcome!</header>
     </Layout>
   );
 };
