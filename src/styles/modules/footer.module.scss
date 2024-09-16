@@ -7,6 +7,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative; /* or fixed, depending on your design */
+  z-index: 2; /* Higher z-index to ensure it's above the tracer */
   .nav {
     font-family: light.$pacify-layout-font;
     display: flex;
