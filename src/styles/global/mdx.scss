@@ -1,23 +1,8 @@
-@use "sass:math";
 @use "../themes/light";
-@import "/src/plugins/picnic-css/themes/default/theme";
-@import "/src/plugins/picnic-css/plugins/table/plugin";
 
-// Variables for reusable values
-$scroll-margin: 10rem;
 $img-max-width: 60%;
 
-// Smooth scrolling for the whole document
-html {
-  scroll-behavior: smooth;
-}
-
 main {
-  // Scroll margin for all children
-  * {
-    scroll-margin-top: $scroll-margin;
-  }
-
   .toc {
     flex: 0 0 20vw;
     position: sticky;
