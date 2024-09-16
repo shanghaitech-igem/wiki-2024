@@ -34,7 +34,7 @@ import "../styles/global/mdx.scss";
 
 import * as styles from "../styles/modules/mdx.module.scss";
 
-const { title, page } = styles;
+const { title, container, content } = styles;
 
 import handleCopyTex from "../plugins/katex-copy-tex";
 
@@ -70,9 +70,11 @@ const MDXPage: React.FC<MdxPageProps> = ({ data, children }) => {
 
   return (
     <Layout>
-      <div className={page}>
+      <div className={container}>
         <header className={title}>{frontmatter.title}</header>
-        <MDXProvider components={components}>{children}</MDXProvider>
+        <div className={content}>
+          <MDXProvider components={components}>{children}</MDXProvider>
+        </div>
       </div>
     </Layout>
   );

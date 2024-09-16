@@ -2,23 +2,21 @@
 
 $img-max-width: 60%;
 
-.title {
-  margin-top: 10rem;
-  color: light.$pacify-char-layout;
-  font-size: 8rem;
-  font-family: "Cinzel Decorative";
-  font-weight: normal;
-  font-style: normal;
-}
-
-.page {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-start; // Align items at the start (top) of the container
+.container {
+  position: relative;
 
   .title {
-    flex: 0 0 100%; /* First item takes full width */
     margin-bottom: 4rem;
+    margin-top: 10rem;
+    color: light.$pacify-char-layout;
+    font-size: 8rem;
+    font-family: "Cinzel Decorative";
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  .content {
+    display: flex;
+    justify-content: center;
   }
 }

@@ -55,6 +55,23 @@ $mobile-breakpoint: $picnic-breakpoint;
   -webkit-backdrop-filter: blur($nav-bar-blur-px);
   backdrop-filter: blur($nav-bar-blur-px);
 
+  input {
+    display: none;
+  }
+
+  .brand {
+    @extend .brand;
+    left: 2vw;
+  }
+
+  .logo {
+    @extend .logo;
+    display: inline;
+    width: auto;
+    filter: invert(1);
+    height: calc($nav-bar-height / 1.5);
+  }
+
   .nav-menu {
     @extend .menu;
     margin: 0 1.5rem;
@@ -74,7 +91,7 @@ $mobile-breakpoint: $picnic-breakpoint;
         color: $nav-link-hover-color;
       }
 
-      @media all and (width <=$mobile-breakpoint) {
+      @media screen and (width <=$mobile-breakpoint) {
         color: $mobile-sub-menu-dp-root-color;
         display: block;
       }
@@ -118,7 +135,7 @@ $mobile-breakpoint: $picnic-breakpoint;
       }
 
       // Show sub-menu on click for mobile
-      @media all and (width <=$mobile-breakpoint) {
+      @media screen and (width <=$mobile-breakpoint) {
         display: block;
 
         .sub-menu-root:focus + .sub-menu,
@@ -135,7 +152,7 @@ $mobile-breakpoint: $picnic-breakpoint;
         box-shadow: none;
         font-weight: $sub-menu-root-font-weight;
 
-        @media all and (width <= $mobile-breakpoint) {
+        @media screen and (width <= $mobile-breakpoint) {
           color: $mobile-sub-menu-dp-root-color;
           border-radius: $sub-menu-link-border-radius;
           width: 100%;
@@ -154,7 +171,7 @@ $mobile-breakpoint: $picnic-breakpoint;
         left: 60%;
         translate: -60%;
 
-        @media all and (width <=$mobile-breakpoint) {
+        @media screen and (width <=$mobile-breakpoint) {
           padding-top: inherit;
           position: relative;
           width: 75%;
@@ -218,22 +235,5 @@ $mobile-breakpoint: $picnic-breakpoint;
         }
       }
     }
-  }
-
-  input {
-    display: none;
-  }
-
-  .brand {
-    @extend .brand;
-    left: 3vw;
-  }
-
-  .logo {
-    @extend .logo;
-    display: inline;
-    width: auto;
-    filter: invert(1);
-    height: calc($nav-bar-height / 1.5);
   }
 }
