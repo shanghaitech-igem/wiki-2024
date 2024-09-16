@@ -33,7 +33,6 @@ const LoadablePlot = Loadable({
 // Plot Component
 const Plot: React.FC<PlotParams> = (params) => {
   return (
-    <div className={styles.plotContainer}>
       <div className={styles.plot}>
         <LoadablePlot
           {...params}
@@ -41,7 +40,6 @@ const Plot: React.FC<PlotParams> = (params) => {
           style={{ width: "100%", height: "100%" }}
         />
       </div>
-    </div>
   );
 };
 
