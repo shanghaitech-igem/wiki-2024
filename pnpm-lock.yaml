@@ -47,9 +47,6 @@ importers:
       gatsby-remark-smartypants:
         specifier: ^6.13.1
         version: 6.13.1(gatsby@5.13.7(@types/webpack@5.28.5)(babel-eslint@10.1.0(eslint@7.32.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@4.26.1)(typescript@5.6.2))
-      gatsby-remark-toc:
-        specifier: link:src/plugins/remark-toc
-        version: link:src/plugins/remark-toc
       gatsby-source-filesystem:
         specifier: ^5.13.1
         version: 5.13.1(gatsby@5.13.7(@types/webpack@5.28.5)(babel-eslint@10.1.0(eslint@7.32.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@4.26.1)(typescript@5.6.2))

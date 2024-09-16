@@ -21,6 +21,8 @@ import Layout from "../components/layout";
 import Seo from "../components/seo";
 import Favicon from "../components/favicon";
 import Tracer from "../components/tracer";
+import { TocItem } from "../components/toc";
+import TOC from "../components/toc";
 
 import "prismjs/themes/prism-solarizedlight.min.css";
 import "prismjs/plugins/line-numbers/prism-line-numbers.min.css";
@@ -33,9 +35,8 @@ import "../styles/global/copy-btn.scss";
 import "../styles/global/header-anchor.scss";
 
 import * as styles from "../styles/modules/mdx.module.scss";
-import "../styles/global/mdx.scss";
 
-const { title, container, content } = styles;
+const { title, content, toc } = styles;
 
 import handleCopyTex from "../plugins/katex-copy-tex";
 
@@ -47,11 +48,7 @@ interface MdxPageProps {
         favicon: string;
         tracer: string | null;
       };
-    };
-    site: {
-      siteMetadata: {
-        favicon: string;
-      };
+      tableOfContents: { items: TocItem[] };
     };
   };
   children: React.ReactNode;
@@ -75,12 +72,13 @@ const MDXPage: React.FC<MdxPageProps> = ({ data, children }) => {
       {frontmatter.tracer && (
         <Tracer src={frontmatter.tracer} alt="Tracer Image" />
       )}
-      <div className={container}>
         <header className={title}>{frontmatter.title}</header>
         <div className={content}>
-          <MDXProvider components={components}>{children}</MDXProvider>
+          <TOC className={toc} tableOfContents={data.mdx.tableOfContents} />
+          <article>
+            <MDXProvider components={components}>{children}</MDXProvider>
+          </article>
         </div>
-      </div>
     </Layout>
   );
 };
@@ -93,6 +91,7 @@ export const query = graphql`
         favicon
         tracer
       }
+      tableOfContents
     }
   }
 `;

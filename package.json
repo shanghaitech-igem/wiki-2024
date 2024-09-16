@@ -30,7 +30,6 @@
     "gatsby-remark-katex": "link:src/plugins/remark-katex",
     "gatsby-remark-prismjs": "^7.13.2",
     "gatsby-remark-smartypants": "^6.13.1",
-    "gatsby-remark-toc": "link:src/plugins/remark-toc",
     "gatsby-source-filesystem": "^5.13.1",
     "katex": "^0.16.11",
     "plotly.js-finance-dist": "^2.35.1",

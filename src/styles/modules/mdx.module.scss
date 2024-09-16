@@ -2,9 +2,7 @@
 
 $img-max-width: 60%;
 
-.container {
-  position: relative;
-
+main{
   .title {
     margin-bottom: 4rem;
     margin-top: 10rem;
@@ -18,5 +16,71 @@ $img-max-width: 60%;
   .content {
     display: flex;
     justify-content: center;
+
+    .toc {
+      flex: 0 0 20vw;
+      align-self: flex-start;
+      position: sticky;
+      font-family: "Cinzel";
+      font-size: xx-large;
+      font-style: normal;
+      font-weight: 700;
+      min-width: 16rem;
+      margin-top: 14rem;
+      top: 8rem;
+
+      li {
+        margin: 2rem 0;
+        line-height: 1em;
+
+        &::marker {
+          content: "";
+        }
+
+        a {
+          color: #fff;
+          &:hover {
+            color: light.$pacify-secondary;
+          }
+        }
+      }
+    }
+
+    article {
+      flex: 0 0 70vw;
+      max-width: 70vw;
+      min-height: 35rem;
+      padding: 10rem 8rem;
+      border-radius: 25rem 0;
+      background: #fff;
+      font-family: "Playfair Display";
+      font-size: larger;
+      font-weight: 400;
+      line-height: 1.5em;
+      letter-spacing: 0.06em;
+
+      h1 {
+        color: #000;
+        text-align: center;
+        font-family: "Cinzel Decorative";
+        font-size: 3em;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        margin-bottom: -2rem;
+      }
+
+      p {
+        margin: 3rem 0;
+      }
+
+      // Image styling
+      img:not(.PhotoView-Portal img) {
+        max-width: $img-max-width;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+      }
+    }
   }
 }
