@@ -20,7 +20,7 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      min-width: 150px; /* Ensure columns have a minimum width */
+      min-width: 150px;
 
       h3 {
         font-size: xx-large;
@@ -40,7 +40,7 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      min-width: 150px; /* Ensure columns have a minimum width */
+      min-width: 150px;
 
       h3 {
         margin-bottom: -1em;
@@ -66,53 +66,53 @@
       flex-wrap: wrap;
       flex-direction: row;
       align-items: center;
-      justify-content: center; // Center the logos horizontally
+      justify-content: center;
 
       .main-logo,
       .stu-logo {
         margin-right: 1em;
-        max-width: 100%; // Ensure logos don’t exceed their container
-        height: auto; // Maintain aspect ratio
+        max-width: 100%;
+        height: auto;
         filter: invert(1) opacity(0.5);
       }
 
       .main-logo {
         margin-bottom: 13px;
-        width: 40%; // Adjust the percentage as needed
+        width: 40%;
       }
 
       .stu-logo {
-        width: 45%; // Adjust the percentage as needed
+        width: 45%;
       }
     }
 
     .communication {
       display: flex;
-      flex-wrap: wrap; /* Allows items to wrap to the next line */
+      flex-wrap: wrap;
       font-family: light.$pacify-layout-font;
       max-width: 32rem;
 
       color: rgba(245, 245, 245, 0.75);
-      line-height: 0.8; /* Adjust line height */
+      line-height: 0.8;
 
       .icon {
         color: rgba(245, 245, 245, 0.75);
       }
 
       p {
-        flex: 0 0 12rem; /* Grow, shrink, and set the basis to 50% */
+        flex: 0 0 12rem;
         font-weight: bold;
         font-size: x-large;
       }
 
       .social-icons {
-        flex: 0 1 9rem; /* Grow, shrink, and set the basis to 50% */
+        flex: 0 1 9rem;
         display: flex;
-        align-items: center; /* Aligns items vertically centered */
-        justify-content: flex-start; /* Aligns items to the left */
+        align-items: center;
+        justify-content: flex-start;
         margin-left: -8px;
         a {
-          flex: 0 0 3rem; /* Grow, shrink, and set the basis to 50% */
+          flex: 0 0 3rem;
           display: flex;
           flex-direction: row;
           align-items: center;
@@ -157,6 +157,62 @@
     a {
       color: rgba(245, 245, 245, 0.8);
       font-weight: bold;
+    }
+  }
+
+  // Media queries for responsiveness
+  @media (max-width: 768px) {
+    .nav {
+      flex-direction: column;
+      align-items: center;
+
+      .submenu,
+      .submenu-single {
+        align-items: center;
+        min-width: auto;
+      }
+    }
+
+    .info {
+      padding: 1em;
+      gap: 1rem;
+
+      .logos {
+        .main-logo,
+        .stu-logo {
+          width: 80%;
+          margin-bottom: 10px;
+        }
+      }
+
+      .communication {
+        p {
+          flex: 0 0 100%;
+          font-size: large;
+        }
+
+        .social-icons {
+          justify-content: center;
+          margin-left: 0;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .nav {
+      .submenu h3,
+      .submenu-single h3 {
+        font-size: large;
+      }
+
+      .nav-link {
+        font-size: medium;
+      }
+    }
+
+    .info .communication p {
+      font-size: medium;
     }
   }
 }

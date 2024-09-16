@@ -19,7 +19,7 @@ main {
   }
 
   .toc {
-    flex: 0 0 16rem;
+    flex: 0 0 20vw;
     position: sticky;
     font-family: "Cinzel";
     font-size: 30px;
@@ -47,8 +47,8 @@ main {
   }
 
   article {
-    flex: 1 0 50rem;
-    width: 88rem;
+    flex: 1 0 70vw;
+    max-width: 75vw;
     min-height: 35rem;
     padding: 5rem 8rem 10rem 8rem;
     border-radius: 25rem 0;
