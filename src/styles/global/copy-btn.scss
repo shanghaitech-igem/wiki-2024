@@ -25,6 +25,7 @@ main {
         min-height: 32px;
         min-width: 32px;
         transform: translateX(1px);
+        border: none;
         z-index: 100;
 
         @keyframes fadeInFromNone {

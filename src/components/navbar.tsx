@@ -58,7 +58,7 @@ const NavBar: React.FC = () => {
       <input id="bmenub" type="checkbox" className={styles.show} />
       <label
         htmlFor="bmenub"
-        className={`${styles.burger} ${styles.pseudo} ${styles.button}`}
+        className={`${styles.burger}`}
       >
         &#9776;
       </label>
