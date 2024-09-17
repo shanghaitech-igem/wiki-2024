@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useStaticQuery, graphql } from "gatsby";
 import * as styles from "src/styles/modules/navbar.module.scss";
 import { generateNavItems, NavItemType } from "src/utils/generate-nav-item";
+import parseRemoteURL from "src/utils/remote-url-parser";
 
 interface NavItemProps {
   item: NavItemType;
@@ -51,7 +52,7 @@ const NavBar: React.FC = () => {
   return (
     <nav className={styles.navBar}>
       <Link to="/" className={styles.brand}>
-        <img className={styles.logo} src={data.site.siteMetadata.logo} />
+        <img className={styles.logo} src={parseRemoteURL(data.site.siteMetadata.logo)} />
       </Link>
 
       {/* Responsive Activator */}
