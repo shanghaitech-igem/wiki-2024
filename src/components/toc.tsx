@@ -1,10 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
 
-import * as styles from "../styles/modules/mdx.module.scss";
-
-const { toc } = styles;
-
 export interface TocItem {
   url: string;
   title: string;
