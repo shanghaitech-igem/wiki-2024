@@ -13,18 +13,28 @@
   }
 
   .article {
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
     .header {
+      position: sticky;
+      top: 0;
+      background-color: white;
+      z-index: 10;
+      padding: 1rem;
       font-family: fonts.$pacify-title;
-      
+
       .close {
         @extend .close;
+        font-size: xx-large;
         transition: all 0.3s ease;
+        top: auto;
       }
     }
-    
+
     .section {
-      line-height: 1.3rem;
-      padding: 0 4rem 4rem 4rem;
+      line-height: 1.5em;
+      padding: 1rem 4rem 4rem 4rem;
       font-family: fonts.$pacify-content-primary;
 
       h1 {
@@ -35,16 +45,20 @@
 }
 
 .modal-trigger {
+  display: inline-block; /* Ensure they are inline elements */
+  margin: 10px; /* Add margin to separate them */
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: light.$pacify-primary;
   color: #fff;
   border-radius: 5px;
   text-align: center;
   cursor: pointer;
   transition: background-color 0.3s ease;
+
   &:hover {
-    background-color: #0056b3;
+    background-color: light.$pacify-secondary;
   }
+
   &:focus {
     box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
   }
