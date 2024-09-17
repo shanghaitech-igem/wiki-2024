@@ -1,31 +1,35 @@
 import * as React from "react";
 import * as styles from "src/styles/modules/modal.module.scss";
 
-const { modalTrigger, modal, overlayer, close } = styles;
+const { modalTrigger, modal, overlayer, close, article, header, section } =
+  styles;
 
-const Modal: React.FC = () => {
+interface ModalProps {
+  title: string;
+  triggerText: string;
+  children: React.ReactNode;
+}
+
+const Modal: React.FC<ModalProps> = ({ title, triggerText, children }) => {
   return (
     <div>
       {/* Trigger Button */}
       <label htmlFor="modal_1" className={modalTrigger}>
-        Show modal
+        {triggerText}
       </label>
 
       {/* Modal Structure */}
       <div className={modal}>
         <input id="modal_1" type="checkbox" />
         <label htmlFor="modal_1" className={overlayer}></label>
-        <article>
-          <header>
-            <h3>Great offer</h3>
+        <article className={article}>
+          <header className={header}>
+            <h3>{title}</h3>
             <label htmlFor="modal_1" className={close}>
               &times;
             </label>
           </header>
-          <section>
-            We have a special offer for you. I am sure you will love it! However
-            this does look spammy...
-          </section>
+          <section className={section}>{children}</section>
         </article>
       </div>
     </div>
