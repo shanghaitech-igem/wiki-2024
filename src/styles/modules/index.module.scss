@@ -1,10 +1,11 @@
-@use "../themes/light";
+@use "src/styles/themes/light" as light;
+@use "src/styles/themes/fonts" as fonts;
 
 .title {
   margin-top: 10rem;
   color: light.$pacify-char-layout;
   font-size: 8rem;
-  font-family: light.$pacify-title-font;
+  font-family: fonts.$pacify-title;
   font-weight: normal;
   font-style: normal;
 }

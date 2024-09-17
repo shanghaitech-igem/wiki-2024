@@ -1,8 +1,9 @@
-@use "../themes/light";
+@use "src/styles/themes/light" as light;
+@use "src/styles/themes/fonts" as fonts;
 
 .footer {
-  background-color: #3c5c71;
-  color: #ffffff;
+  background-color: light.$pacify-footer;
+  color: light.$pacify-char-layout;
   padding-top: 3vh;
   display: flex;
   flex-direction: column;
@@ -10,7 +11,7 @@
   position: relative; /* or fixed, depending on your design */
   z-index: 2; /* Higher z-index to ensure it's above the tracer */
   .nav {
-    font-family: light.$pacify-layout-font;
+    font-family: fonts.$pacify-layout;
     display: flex;
     justify-content: space-around;
     width: 100%;
@@ -28,7 +29,7 @@
       }
     }
     .nav-link {
-      color: #ffffff;
+      color: light.$pacify-char-layout;
       text-decoration: none;
       font-size: large;
       &:hover {
@@ -90,7 +91,7 @@
     .communication {
       display: flex;
       flex-wrap: wrap;
-      font-family: light.$pacify-layout-font;
+      font-family: fonts.$pacify-layout;
       max-width: 32rem;
 
       color: rgba(245, 245, 245, 0.75);
@@ -129,7 +130,7 @@
         flex-direction: row;
         align-items: center;
         color: rgba(245, 245, 245, 0.75);
-        font-family: light.$pacify-content-secondary-font;
+        font-family: fonts.$pacify-content-secondary;
         .icon {
           font-size: 2rem;
           margin-right: 0.3rem;
@@ -148,11 +149,11 @@
     align-items: center;
     font-size: medium;
     margin-top: auto;
-    font-family: light.$pacify-content-secondary-font;
+    font-family: fonts.$pacify-content-secondary;
     margin-bottom: 3em;
 
     p {
-      color: #8d8d8d;
+      color: light.$pacify-char-layout-dimmed;
       margin-bottom: -1.2em;
     }
     a {

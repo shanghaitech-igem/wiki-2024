@@ -1,5 +1,6 @@
 @use "sass:math";
-@use "../themes/light" as light;
+@use "src/styles/themes/light" as light;
+@use "src/styles/themes/fonts" as fonts;
 
 @import "src/plugins/picnic-css/themes/default/theme";
 $picnic-breakpoint: light.$pacify-breakpoint;
@@ -7,7 +8,7 @@ $picnic-breakpoint: light.$pacify-breakpoint;
 
 // Key properties extracted into variables
 $nav-bar-bg-color: light.$pacify-primary;
-$nav-bar-font-family: light.$pacify-layout-font;
+$nav-bar-font-family: fonts.$pacify-layout;
 $nav-bar-gradient-start-color: rgba(231, 227, 215, 0.5);
 $nav-bar-gradient-end-color: rgba(129, 127, 120, 0.5);
 $nav-bar-height: 7rem;

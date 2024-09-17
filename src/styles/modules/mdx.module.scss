@@ -1,6 +1,6 @@
-@use "../themes/light" as light;
+@use "src/styles/themes/light" as light;
+@use "src/styles/themes/fonts" as fonts;
 @use "sass:math";
-@import "src/plugins/picnic-css/themes/default/theme";
 
 $img-max-width: 60%;
 
@@ -10,7 +10,7 @@ main {
     margin-top: 10rem;
     color: light.$pacify-char-layout;
     font-size: 8rem;
-    font-family: light.$pacify-title-font;
+    font-family: fonts.$pacify-title;
     font-weight: normal;
     font-style: normal;
   }
@@ -48,23 +48,23 @@ main {
       }
     }
 
-    article {
+    .article {
       flex: 0 0 70vw;
       max-width: 70vw;
       min-height: 35rem;
       padding: 10rem 8rem;
       border-radius: 25rem 0;
-      background: #fff;
-      font-family: light.$pacify-content-primary-font;
+      background: light.$pacify-body;
+      font-family: fonts.$pacify-content-primary;
       font-size: larger;
       font-weight: 400;
       line-height: 1.5em;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.05em;
 
       h1 {
         color: #000;
         text-align: center;
-        font-family: light.$pacify-title-font;
+        font-family: fonts.$pacify-title;
         font-size: 3em;
         font-style: normal;
         font-weight: 700;
@@ -87,39 +87,23 @@ main {
 
       table {
         text-align: left;
-        font-family: light.$pacify-content-secondary-font;
+        font-family: fonts.$pacify-content-secondary;
 
         td,
         th {
-          padding: math.div($picnic-separation, 2) 2.4em
-            math.div($picnic-separation, 2) $picnic-separation;
+          padding: math.div(0.6em, 2) 2.4em math.div(0.6em, 2) 0.6em;
         }
 
         th {
           text-align: left;
           font-weight: 900;
-          color: $picnic-white;
-          background-color: $picnic-primary;
-          .success & {
-            background-color: $picnic-success;
-          }
-
-          .warning & {
-            background-color: $picnic-warning;
-          }
-
-          .error & {
-            background-color: $picnic-error;
-          }
-
-          .dull & {
-            background-color: $picnic-dull;
-          }
+          color: light.$pacify-char-layout;
+          background-color: light.$pacify-primary;
         }
 
         // Zebra stripes
         tr:nth-child(even) {
-          background: rgba($picnic-black, 0.05);
+          background: rgba(#111, 0.05);
         }
       }
     }

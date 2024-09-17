@@ -1,6 +1,5 @@
-@import "./fonts.scss";
-
-$pacify-body: #e7e3d7 !default;
+// $pacify-body: #e7e3d7 !default;
+$pacify-body: #ffffff !default;
 $pacify-footer: #3c5c71 !default;
 
 $pacify-primary: #bccfb8 !default;
@@ -14,11 +13,6 @@ $pacify-char-content: #000000 !default;
 $pacify-char-layout: #ffffff !default;
 $pacify-char-layout-dimmed: #8d8d8d !default;
 
-$pacify-layout-font: "Cinzel", "Times New Roman";
-$pacify-title-font: "Cinzel Decorative", "Times New Roman";
-$pacify-content-primary-font: "Playfair Display", "Times New Roman";
-$pacify-content-secondary-font: "Monsterrat", "Arial";
-
 $pacify-color-variation: 10% !default;
 $pacify-transparency: 0.2 !default;
 
@@ -30,7 +24,7 @@ $pacify-breakpoint: 65em !default;
 $pacify-radius: 0.2em !default;
 $pacify-border: 1px solid $pacify-dull !default;
 $pacify-shadow: 0 0 0.2em rgba($pacify-dull, $pacify-transparency) !default;
-$pacify-overlay: rgba(#000000, $pacify-transparency);
+$pacify-overlay: rgba(#000000, $pacify-transparency) !default;
 
 // Transitions
 $pacify-transition: all 0.3s;
