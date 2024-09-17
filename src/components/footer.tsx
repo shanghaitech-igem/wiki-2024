@@ -65,7 +65,7 @@ const Footer: React.FC = () => {
         <div className={logos}>
           <img
             className={mainLogo}
-            src="https://static.igem.wiki/teams/5174/svgs/main-logo-bar-copy.svg"
+            src="https://static.igem.wiki/teams/5174/svgs/main-logo-bar.svg"
             alt="Logo"
           />
           <img
