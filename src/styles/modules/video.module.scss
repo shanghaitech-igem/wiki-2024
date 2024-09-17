@@ -15,6 +15,7 @@
   width: $video-width; // Adjust width as needed
   padding-top: calc($video-width / $aspect-ratio);
   overflow: hidden; // Hide any overflow
+  border-radius: 10px; // Add border radius here
 
   iframe {
     position: absolute;

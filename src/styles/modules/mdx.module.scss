@@ -2,8 +2,6 @@
 @use "src/styles/themes/fonts" as fonts;
 @use "sass:math";
 
-$img-max-width: 60%;
-
 main {
   .title {
     margin-bottom: 4rem;
@@ -85,16 +83,9 @@ main {
         color: light.$pacify-success;
       }
 
-      // Image styling
-      img:not(.PhotoView-Portal img) {
-        max-width: $img-max-width;
-        height: auto;
-        display: block;
-        margin: 0 auto;
-      }
-
       table {
         text-align: left;
+        margin: auto;
         font-family: fonts.$pacify-content-secondary;
 
         td,
