@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 
 import * as styles from "src/styles/modules/tracer.module.scss";
-
+import parseRemoteURL from "src/utils/remote-url-parser";
 const { tracer } = styles;
 
 interface TracerProps extends React.ImgHTMLAttributes<HTMLImageElement> {}
@@ -38,7 +38,7 @@ const Tracer: React.FC<TracerProps> = ({ src, alt, ...props }) => {
 
   return (
     <img
-      src={src}
+      src={parseRemoteURL(src)}
       alt={alt ? alt : "Failed to load the picture: " + src}
       {...props}
       className={tracer}
