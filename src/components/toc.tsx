@@ -61,9 +61,9 @@ const TOC: React.FC<TocProps> = ({
   };
 
   // If tableOfContents.items is empty, return null
-  if (!tableOfContents.items) return <div className={className} />;
+  if (!tableOfContents.items) return <section className={className} />;
 
-  return <div className={className}>{renderItems(tableOfContents.items)}</div>;
+  return <section className={className}>{renderItems(tableOfContents.items)}</section>;
 };
 
 export default TOC;
