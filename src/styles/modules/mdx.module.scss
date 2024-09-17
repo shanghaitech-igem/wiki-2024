@@ -75,6 +75,14 @@ main {
 
       p {
         margin: 3rem 0;
+
+        strong {
+          color: light.$pacify-char-strong;
+        }
+      }
+
+      a {
+        color: light.$pacify-success;
       }
 
       // Image styling
@@ -91,7 +99,8 @@ main {
 
         td,
         th {
-          padding: math.div(0.6em, 2) 2.4em math.div(0.6em, 2) 0.6em;
+          padding: math.div(light.$pacify-separation, 2) 2.4em
+            math.div(light.$pacify-separation, 2) light.$pacify-separation;
         }
 
         th {
