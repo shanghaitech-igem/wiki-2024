@@ -1,4 +1,4 @@
-@use "../themes/light";
+@use "../themes/light" as light;
 @use "sass:math";
 @import "src/plugins/picnic-css/themes/default/theme";
 
@@ -28,7 +28,7 @@ main {
       font-style: normal;
       font-weight: 700;
       min-width: 16rem;
-      margin-top: 14rem;
+      margin-top: 20rem;
       top: 8rem;
 
       li {
@@ -69,7 +69,8 @@ main {
         font-style: normal;
         font-weight: 700;
         line-height: normal;
-        margin-bottom: -2rem;
+        padding-top: 4rem;
+        padding-bottom: 0rem;
       }
 
       p {
