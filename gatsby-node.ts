@@ -1,4 +1,5 @@
 import type { GatsbyNode } from "gatsby";
+import * as path from "path";
 
 // Disable source maps when building
 export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = ({
@@ -10,4 +11,10 @@ export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = ({
       devtool: false,
     });
   }
+  
+  actions.setWebpackConfig( {
+    resolve: {
+      modules: [ path.resolve( __dirname, `./` ), `node_modules` ],
+    },
+  } )
 };

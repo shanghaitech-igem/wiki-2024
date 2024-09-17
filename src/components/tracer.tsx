@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 
-import * as styles from "../styles/modules/tracer.module.scss";
+import * as styles from "src/styles/modules/tracer.module.scss";
 
 const { tracer } = styles;
 

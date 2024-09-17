@@ -1,8 +1,8 @@
 import React from "react";
-import AudioPlayer from "../../plugins/audio-player";
+import AudioPlayer from "src/plugins/audio-player";
 
-import "../../plugins/audio-player/src/styles.scss";
-import * as styles from "../../styles/modules/audio.module.scss";
+import "src/plugins/audio-player/src/styles.scss";
+import * as styles from "src/styles/modules/audio.module.scss";
 
 interface AudioProps {
   src: string;

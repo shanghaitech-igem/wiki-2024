@@ -1,6 +1,6 @@
 import React from "react";
-import { PhotoProvider, PhotoView } from "../../plugins/image-viewer";
-import * as styles from "../../styles/modules/image.module.scss";
+import { PhotoProvider, PhotoView } from "src/plugins/image-viewer";
+import * as styles from "src/styles/modules/image.module.scss";
 
 interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {}
 

@@ -2,9 +2,9 @@ import React from "react";
 import NavBar from "./navbar";
 import Footer from "./footer";
 
-import * as styles from "../styles/modules/layout.module.scss";
+import * as styles from "src/styles/modules/layout.module.scss";
 
-import "../styles/global/layout.scss";
+import "src/styles/global/layout.scss";
 
 interface LayoutProps {
   children: React.ReactNode;

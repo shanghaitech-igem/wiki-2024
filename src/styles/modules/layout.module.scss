@@ -1,7 +1,7 @@
 @use "sass:math";
-@import "/src/plugins/picnic-css/themes/default/theme";
-@import "/src/plugins/picnic-css/plugins/generic/plugin";
-@import "/src/plugins/picnic-css/plugins/normalize/plugin";
+@import "src/plugins/picnic-css/themes/default/theme";
+@import "src/plugins/picnic-css/plugins/generic/plugin";
+@import "src/plugins/picnic-css/plugins/normalize/plugin";
 
 $font-family: sans-serif;
 

@@ -1,8 +1,8 @@
 import * as React from "react";
-import Layout from "../components/layout";
-import Seo from "../components/seo";
-import Favicon from "../components/favicon";
-import * as styles from "../styles/modules/index.module.scss";
+import Layout from "src/components/layout";
+import Seo from "src/components/seo";
+import Favicon from "src/components/favicon";
+import * as styles from "src/styles/modules/index.module.scss";
 
 const {title} = styles;
 

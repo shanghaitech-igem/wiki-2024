@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useStaticQuery, graphql } from "gatsby";
-import * as styles from "../styles/modules/footer.module.scss";
-import { generateNavItems, NavItemType } from "../utils/generate-nav-item";
+import * as styles from "src/styles/modules/footer.module.scss";
+import { generateNavItems, NavItemType } from "src/utils/generate-nav-item";
 import { Icon } from "@iconify/react";
 
 const {

@@ -1,7 +1,7 @@
 import React from "react";
 import Loadable from "react-loadable";
 import { PlotParams } from "react-plotly.js";
-import * as styles from "../../styles/modules/plot.module.scss";
+import * as styles from "src/styles/modules/plot.module.scss";
 
 // LoadingSpinner Component
 const LoadingSpinner: React.FC = () => {
