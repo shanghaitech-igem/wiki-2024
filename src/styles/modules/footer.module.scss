@@ -129,7 +129,7 @@
         flex-direction: row;
         align-items: center;
         color: rgba(245, 245, 245, 0.75);
-        font-family: "Monsterrat";
+        font-family: light.$pacify-content-secondary-font;
         .icon {
           font-size: 2rem;
           margin-right: 0.3rem;
@@ -148,7 +148,7 @@
     align-items: center;
     font-size: medium;
     margin-top: auto;
-    font-family: "Monsterrat";
+    font-family: light.$pacify-content-secondary-font;
     margin-bottom: 3em;
 
     p {

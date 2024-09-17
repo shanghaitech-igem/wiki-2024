@@ -14,7 +14,10 @@ $pacify-char-content: #000000 !default;
 $pacify-char-layout: #ffffff !default;
 $pacify-char-layout-dimmed: #8d8d8d !default;
 
-$pacify-layout-font: "Cinzel";
+$pacify-layout-font: "Cinzel", "Times New Roman";
+$pacify-title-font: "Cinzel Decorative", "Times New Roman";
+$pacify-content-primary-font: "Playfair Display", "Times New Roman";
+$pacify-content-secondary-font: "Monsterrat", "Arial";
 
 $pacify-color-variation: 10% !default;
 $pacify-transparency: 0.2 !default;

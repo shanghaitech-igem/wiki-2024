@@ -10,7 +10,7 @@ main {
     margin-top: 10rem;
     color: light.$pacify-char-layout;
     font-size: 8rem;
-    font-family: "Cinzel Decorative";
+    font-family: light.$pacify-title-font;
     font-weight: normal;
     font-style: normal;
   }
@@ -55,7 +55,7 @@ main {
       padding: 10rem 8rem;
       border-radius: 25rem 0;
       background: #fff;
-      font-family: "Playfair Display";
+      font-family: light.$pacify-content-primary-font;
       font-size: larger;
       font-weight: 400;
       line-height: 1.5em;
@@ -64,7 +64,7 @@ main {
       h1 {
         color: #000;
         text-align: center;
-        font-family: "Cinzel Decorative";
+        font-family: light.$pacify-title-font;
         font-size: 3em;
         font-style: normal;
         font-weight: 700;
@@ -86,7 +86,7 @@ main {
 
       table {
         text-align: left;
-        font-family: "Montserrat";
+        font-family: light.$pacify-content-secondary-font;
 
         td,
         th {
