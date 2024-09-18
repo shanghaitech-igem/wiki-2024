@@ -9,11 +9,12 @@ interface PDFProps {
 }
 
 const PDF: React.FC<PDFProps> = ({ src, ...props }) => {
+  src = parseRemoteURL(src);
   return (
     <div className={styles.pdfContainer}>
       <div className={styles.pdf}>
         <iframe
-          src={parseRemoteURL(src)}
+          src={src}
           {...props} // Spread any additional props onto the iframe
         />
       </div>

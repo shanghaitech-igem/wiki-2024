@@ -6,13 +6,13 @@ import parseRemoteURL from "src/utils/remote-url-parser";
 interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {}
 
 const Image: React.FC<ImageProps> = ({ src, alt, ...props }) => {
+  src = parseRemoteURL(src);
   return (
     <PhotoProvider className={styles.container}>
       <PhotoView src={src}>
         <img
-          src={parseRemoteURL(src)}
+          src={src}
           alt={alt ? alt : "Failed to load the picture: " + src}
-          className={styles.img}
           {...props}
         />
       </PhotoView>

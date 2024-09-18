@@ -1,11 +1,9 @@
-$img-max-width: 60%;
-
 .container {
   z-index: 1500000;
 }
 
-.img:not(.PhotoView-Portal .img) {
-  max-width: $img-max-width;
+.img {
+  max-width: 60%;
   height: auto;
   display: block;
   margin: 0 auto;
