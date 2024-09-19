@@ -1,7 +1,7 @@
 ---
 title: "Writing Tutorial"
 favicon: "server/test/igem-favicon.svg"
-slug: "tutorial"
+slug: "docs/writing"
 ---
 
 # Introduction
@@ -202,45 +202,61 @@ This tutorial is meant to help you get started with writing your own MDX page fo
 ### Code Blocks
 
 - **Syntax:**
-    ```markdown
+    ````markdown 
     ```
-    Code block
+    Sample text here...
     ```
-    ```
+    ````
+
 
 - **Example:**
     - **Code:**
-        ```markdown
+        ````markdown 
         ```
-        Sample text here...
-        ```
-        ```
-    - **Result:**
+        var foo = function (bar) {
+        return bar++;
+        };
 
+        console.log(foo(5));
         ```
-        Sample text here...
+        ````
+    - **Result:**
+        ```
+        var foo = function (bar) {
+        return bar++;
+        };
+
+        console.log(foo(5));
         ```
 
 ### Syntax Highlighting
 
 - **Syntax:**
-    ```markdown
+    ````markdown
     ```language
     Code with syntax highlighting
     ```
-    ```
+    ````
 
 - **Example:**
     - **Code:**
-        ```markdown
+        ````markdown
         ```js
-        console.log('Hello, world!');
+        var foo = function (bar) {
+        return bar++;
+        };
+
+        console.log(foo(5));
         ```
-        ```
+        ````
     - **Result:**
 
         ```js
-        console.log('Hello, world!');
+        var foo = function (bar) {
+        return bar++;
+        };
+
+        console.log(foo(5));
         ```
 
 ## Math and Chemical Equations
@@ -287,11 +303,11 @@ This tutorial is meant to help you get started with writing your own MDX page fo
 - **Example:**
     - **Code:**
         ```markdown
-        ![Alt Text](image-url)
+        ![Minion](server/test/hula-loop-octodex-gif.webp)
         ```
     - **Result:**
 
-        ![Alt Text](image-url)
+        ![Minion](server/test/hula-loop-octodex-gif.webp)
 
 ## GitHub Flavored Markdown (GFM)
 
@@ -361,15 +377,22 @@ This tutorial is meant to help you get started with writing your own MDX page fo
 - **Example:**
     - **Code:**
         ```markdown
-        | Header1 | Header2 |
-        | ------- | ------- |
-        | Row1Col1| Row1Col2|
+        | AAA | BBB | CCC | DDD |
+        | :-: | :-: | :-: | :-: |
+        |  1  |  2  |  3  |  4  |
+        |  5  |  6  |  7  |  8  |
+        |  9  | 10  | 11  | 12  |
+        | 13  | 14  | 15  | 16  |
+        | 17  | 18  | 19  | 20  |
         ```
     - **Result:**
-
-        | Header1 | Header2 |
-        | ------- | ------- |
-        | Row1Col1| Row1Col2|
+        | AAA | BBB | CCC | DDD |
+        | :-: | :-: | :-: | :-: |
+        |  1  |  2  |  3  |  4  |
+        |  5  |  6  |  7  |  8  |
+        |  9  | 10  | 11  | 12  |
+        | 13  | 14  | 15  | 16  |
+        | 17  | 18  | 19  | 20  |
 
 ## References
 

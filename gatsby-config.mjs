@@ -40,6 +40,14 @@ const config = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `test`,
+        path: `${__dirname}/docs/`,
+        ignore: [`**/data/**`],
+      },
+    },
+    {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.mdx`, `.md`],
