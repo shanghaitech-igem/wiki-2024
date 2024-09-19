@@ -167,19 +167,23 @@ This tutorial is meant to help you get started with writing your own MDX page fo
 - **Syntax:**
     ```markdown
     1. First item
-    2. Second item
+    1. Second item
     ```
 
 - **Example:**
     - **Code:**
         ```markdown
         1. First item
-        2. Second item
+        1. Second item
+            1. Sub-item
+            1. Sub-item 
         ```
     - **Result:**
 
         1. First item
-        2. Second item
+        1. Second item
+            1. Sub-item
+            1. Sub-item 
 
 ## Code
 
@@ -211,6 +215,7 @@ This tutorial is meant to help you get started with writing your own MDX page fo
 
 - **Example:**
     - **Code:**
+    
         ````markdown 
         ```
         var foo = function (bar) {
@@ -232,6 +237,7 @@ This tutorial is meant to help you get started with writing your own MDX page fo
 ### Syntax Highlighting
 
 - **Syntax:**
+
     ````markdown
     ```language
     Code with syntax highlighting
@@ -240,6 +246,7 @@ This tutorial is meant to help you get started with writing your own MDX page fo
 
 - **Example:**
     - **Code:**
+
         ````markdown
         ```js
         var foo = function (bar) {
@@ -264,6 +271,7 @@ This tutorial is meant to help you get started with writing your own MDX page fo
 ### Math Equations
 
 - **Syntax:**
+
     ```markdown
     $equation$
     ```
@@ -280,6 +288,7 @@ This tutorial is meant to help you get started with writing your own MDX page fo
 ### Chemical Equations
 
 - **Syntax:**
+
     ```markdown
     $\ce{equation}$
     ```
@@ -296,15 +305,18 @@ This tutorial is meant to help you get started with writing your own MDX page fo
 ## Images
 
 - **Syntax:**
+
     ```markdown
     ![Alt Text](image-url)
     ```
 
 - **Example:**
     - **Code:**
+
         ```markdown
         ![Minion](server/test/hula-loop-octodex-gif.webp)
         ```
+
     - **Result:**
 
         ![Minion](server/test/hula-loop-octodex-gif.webp)
