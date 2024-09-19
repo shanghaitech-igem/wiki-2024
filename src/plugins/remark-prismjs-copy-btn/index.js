@@ -19,12 +19,8 @@ export default (
   }
 ) => {
   const text = buttonText || "";
-  const copyIcon =
-    copySvg ||
-    `<svg class="copy-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path fill="#fff" d="M16 1H2v16h2V3h12V1zm-1 4l6 6v12H6V5h9zm-1 7h5.5L14 6.5V12z"/></svg>`;
-  const successIcon =
-    successSvg ||
-    `<svg class="success-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path fill="#fff" d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>`;
+  const copyIcon = copySvg || "";
+  const successIcon = successSvg || "";
   const containerClass =
     customButtonContainerClass || "gatsby-remark-copy-button-container";
   const buttonClass = customButtonClass || "gatsby-remark-copy-button";
@@ -34,7 +30,6 @@ export default (
 
     const clipboardButton = parseOptions(language);
 
-    // Change logic: Add button by default unless clipboardButton is explicitly set to false
     if (clipboardButton === true) {
       let code = parent.children[index].value;
       code = convertContentsToJavaScriptString(code);
@@ -53,9 +48,14 @@ export default (
         `.trim(),
       };
 
-      parent.children.splice(index, 0, buttonNode);
+      const wrapperNode = {
+        type: "element",
+        tagName: "div",
+        children: [buttonNode, node],
+      };
 
-      return [CONTINUE, index + 2];
+      // Replace the original code node with the wrapper node
+      parent.children.splice(index, 1, wrapperNode);
     }
   });
 
