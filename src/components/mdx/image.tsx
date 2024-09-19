@@ -13,6 +13,7 @@ const Image: React.FC<ImageProps> = ({ src, alt, ...props }) => {
         <img
           src={src}
           alt={alt ? alt : "Failed to load the picture: " + src}
+          className={styles.img}
           {...props}
         />
       </PhotoView>
