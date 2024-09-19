@@ -1,0 +1,394 @@
+---
+title: "Writing Tutorial"
+favicon: "server/test/igem-favicon.svg"
+slug: "tutorial"
+---
+
+# Introduction
+
+This tutorial is meant to help you get started with writing your own MDX page for the our iGEM wiki.
+
+[MDX](https://mdxjs.com/) is just a superset of [Markdown](https://www.markdownguide.org/), which means beyond the basic markdown syntax, you can also include "JSX Component" in your MDX file.
+
+# Markdown Support
+
+## Links
+
+### Creating Links
+
+- Syntax:
+    ```markdown
+    [In Page Jump Test](#section-id)
+
+    [In Site Jump Test](/path)
+    ```
+
+
+- Example:
+    - Code:
+        ```markdown
+        [Go to Chapter 2](#github-flavored-markdown-gfm)
+
+        [Go to Description Page](/description)
+        ```
+    - Result:
+
+        [Go to GFM Section](#github-flavored-markdown-gfm)
+
+        [Go to Description Page](/description)
+
+- Notes:
+    *You can hover your cursor over the headings to see the its URL, where its `section-id` is in it.*
+
+## Headings
+
+- **Syntax:**
+    ```markdown
+    # H1 Heading
+    ## H2 Heading
+    ### H3 Heading
+    #### H4 Heading
+    ##### H5 Heading
+    ###### H6 Heading
+    ```
+
+- **Example:**
+    - **Code:**
+        ```markdown
+        # H1 Heading
+        
+        ## H2 Heading
+        
+        ### H3 Heading
+        
+        #### H4 Heading
+        
+        ##### H5 Heading
+        
+        ###### H6 Heading
+        ```
+    - **Result:**
+
+        # H1 Heading
+        
+        ## H2 Heading
+        
+        ### H3 Heading
+        
+        #### H4 Heading
+        
+        ##### H5 Heading
+        
+        ###### H6 Heading
+
+## Horizontal Rules
+
+- **Syntax:**
+    ```markdown
+    ---
+    ```
+
+- **Example:**
+    - **Code:**
+        ```markdown
+        ---
+        ```
+    - **Result:**
+
+        ---
+
+## Emphasis
+
+- **Syntax:**
+    ```markdown
+    **Bold Text**
+
+    _Italic Text_
+    ```
+
+- **Example:**
+    - **Code:**
+        ```markdown
+        **This is bold text**
+
+        _This is italic text_
+        ```
+    - **Result:**
+
+        **This is bold text**
+
+        _This is italic text_
+
+## Blockquotes
+
+- **Syntax:**
+    ```markdown
+    > Blockquote
+    ```
+
+- **Example:**
+    - **Code:**
+        ```markdown
+        > This is a blockquote.
+        >
+        > > Nested blockquote.
+        ```
+    - **Result:**
+
+        > This is a blockquote.
+        >
+        > > Nested blockquote.
+
+## Lists
+
+### Unordered Lists
+
+- **Syntax:**
+    ```markdown
+    - Item 1
+      - Sub-item
+    ```
+
+- **Example:**
+    - **Code:**
+        ```markdown
+        - Item 1
+        - Item 2
+          - Sub-item
+        ```
+    - **Result:**
+
+        - Item 1
+        - Item 2
+          - Sub-item
+
+### Ordered Lists
+
+- **Syntax:**
+    ```markdown
+    1. First item
+    2. Second item
+    ```
+
+- **Example:**
+    - **Code:**
+        ```markdown
+        1. First item
+        2. Second item
+        ```
+    - **Result:**
+
+        1. First item
+        2. Second item
+
+## Code
+
+### Inline Code
+
+- **Syntax:**
+    ```markdown
+    `code`
+    ```
+
+- **Example:**
+    - **Code:**
+        ```markdown
+        Inline `code`
+        ```
+    - **Result:**
+
+        Inline `code`
+
+### Code Blocks
+
+- **Syntax:**
+    ```markdown
+    ```
+    Code block
+    ```
+    ```
+
+- **Example:**
+    - **Code:**
+        ```markdown
+        ```
+        Sample text here...
+        ```
+        ```
+    - **Result:**
+
+        ```
+        Sample text here...
+        ```
+
+### Syntax Highlighting
+
+- **Syntax:**
+    ```markdown
+    ```language
+    Code with syntax highlighting
+    ```
+    ```
+
+- **Example:**
+    - **Code:**
+        ```markdown
+        ```js
+        console.log('Hello, world!');
+        ```
+        ```
+    - **Result:**
+
+        ```js
+        console.log('Hello, world!');
+        ```
+
+## Math and Chemical Equations
+
+### Math Equations
+
+- **Syntax:**
+    ```markdown
+    $equation$
+    ```
+
+- **Example:**
+    - **Code:**
+        ```markdown
+        $a^2 + b^2 = c^2$
+        ```
+    - **Result:**
+
+        $a^2 + b^2 = c^2$
+
+### Chemical Equations
+
+- **Syntax:**
+    ```markdown
+    $\ce{equation}$
+    ```
+
+- **Example:**
+    - **Code:**
+        ```markdown
+        $\ce{H2O -> H2 + O2}$
+        ```
+    - **Result:**
+
+        $\ce{H2O -> H2 + O2}$
+
+## Images
+
+- **Syntax:**
+    ```markdown
+    ![Alt Text](image-url)
+    ```
+
+- **Example:**
+    - **Code:**
+        ```markdown
+        ![Alt Text](image-url)
+        ```
+    - **Result:**
+
+        ![Alt Text](image-url)
+
+## GitHub Flavored Markdown (GFM)
+
+### Footnotes
+
+- **Syntax:**
+    ```markdown
+    A note[^1]
+
+    [^1]: Footnote text.
+    ```
+
+- **Example:**
+    - **Code:**
+        ```markdown
+        A note[^1]
+
+        [^1]: Footnote text.
+        ```
+    - **Result:**
+
+        A note[^1]
+
+        [^1]: Footnote text.
+
+### Autolinks
+
+- **Syntax:**
+    ```markdown
+    www.example.com, https://example.com, contact@example.com
+    ```
+
+- **Example:**
+    - **Code:**
+        ```markdown
+        www.example.com, https://example.com, contact@example.com
+        ```
+    - **Result:**
+
+        www.example.com, https://example.com, contact@example.com
+
+### Strikethrough
+
+- **Syntax:**
+    ```markdown
+    ~~Strikethrough~~
+    ```
+
+- **Example:**
+    - **Code:**
+        ```markdown
+        ~~Strikethrough~~
+        ```
+    - **Result:**
+
+        ~~Strikethrough~~
+
+### Tables
+
+- **Syntax:**
+    ```markdown
+    | Header1 | Header2 |
+    | ------- | ------- |
+    | Row1Col1| Row1Col2|
+    ```
+
+- **Example:**
+    - **Code:**
+        ```markdown
+        | Header1 | Header2 |
+        | ------- | ------- |
+        | Row1Col1| Row1Col2|
+        ```
+    - **Result:**
+
+        | Header1 | Header2 |
+        | ------- | ------- |
+        | Row1Col1| Row1Col2|
+
+## References
+
+- **Syntax:**
+    ```markdown
+    I get more traffic from [Google][].
+
+    [google]: http://google.com/ "Google"
+    ```
+
+- **Example:**
+    - **Code:**
+        ```markdown
+        I get more traffic from [Google][].
+
+        [google]: http://google.com/ "Google"
+        ```
+    - **Result:**
+
+        I get more traffic from [Google][].
+
+        [google]: http://google.com/ "Google"
