@@ -3,13 +3,99 @@
 @import "src/plugins/picnic-css/plugins/generic/plugin";
 @import "src/plugins/picnic-css/plugins/normalize/plugin";
 
-$font-family: sans-serif;
 
 .main {
+  position: relative;
   width: 100%;
   margin: auto;
   min-height: 80vh;
-  font-family: $font-family;
   padding: 3rem 5rem 15rem 5rem;
-  background: linear-gradient(110deg, #bccfb8 10.33%, #c0b2a6 72.94%);
+  z-index: 1;
+}
+
+$background-colors: (
+  #BBDBAB,
+  #D5DDA9,
+  #E4CACA,
+  #c0b2a6,
+  #cc885b
+);
+
+$background-sizes: (
+  130vmax 130vmax,
+  80vmax 80vmax,
+  90vmax 90vmax,
+  110vmax 110vmax,
+  90vmax 90vmax
+);
+$background-positions: (
+  -80vmax -80vmax,
+  60vmax -30vmax,
+  10vmax 10vmax,
+  -30vmax -10vmax,
+  50vmax 50vmax
+);
+
+@mixin radial-background($colors, $sizes, $positions) {
+  background-color: #bccfb8;
+  background-image: #{generate-radial-gradients($colors)};
+  background-size: $sizes;
+  background-position: $positions;
+  background-repeat: repeat;
+}
+
+@function generate-radial-gradients($colors) {
+  $gradients: (
+  );
+
+@each $color in $colors {
+  $gradient: radial-gradient(closest-side, $color, rgba(0, 0, 0, 0));
+  $gradients: append($gradients, $gradient, comma);
+}
+
+@return $gradients;
+}
+
+@mixin generate-keyframes($name, $steps) {
+  @keyframes #{$name} {
+    @each $step, $values in $steps {
+      #{$step} {
+        background-size: map-get($values, size);
+        background-position: map-get($values, position);
+      }
+    }
+  }
+}
+
+$animation-steps: (
+  0%: (size: $background-sizes,
+    position: $background-positions),
+  25%: (size: (100vmax 100vmax, 90vmax 90vmax, 100vmax 100vmax, 90vmax 90vmax, 60vmax 60vmax),
+    position: (-60vmax -90vmax, 50vmax -40vmax, 0vmax -20vmax, -40vmax -20vmax, 40vmax 60vmax)),
+  50%: (size: (80vmax 80vmax, 110vmax 110vmax, 80vmax 80vmax, 60vmax 60vmax, 80vmax 80vmax),
+    position: (-50vmax -70vmax, 40vmax -30vmax, 10vmax 0vmax, 20vmax 10vmax, 30vmax 70vmax)),
+  75%: (size: (90vmax 90vmax, 90vmax 90vmax, 100vmax 100vmax, 90vmax 90vmax, 70vmax 70vmax),
+    position: (-50vmax -40vmax, 50vmax -30vmax, 20vmax 0vmax, -10vmax 10vmax, 40vmax 60vmax)),
+  100%: (size: $background-sizes,
+    position: $background-positions)
+);
+
+@include generate-keyframes(movement, $animation-steps);
+
+
+body {
+  @include radial-background($background-colors, $background-sizes, $background-positions);
+  animation: 10s movement linear infinite;
+
+  &::after {
+    content: '';
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
 }
