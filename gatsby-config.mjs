@@ -40,6 +40,14 @@ const config = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `test`,
+        path: `${__dirname}/docs/`,
+        ignore: [`**/data/**`],
+      },
+    },
+    {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.mdx`, `.md`],
@@ -54,7 +62,7 @@ const config = {
           `gatsby-remark-header-link`, // Adds GitHub-style hover links to headers in markdown files when they’re rendered.
           {
             // !!! Run `gastby clean` after any changes to this plugin !!!
-            resolve: `@jpfulton/gatsby-remark-copy-button`,
+            resolve: `gatsby-remark-prismjs-copy-btn`,
             options: {
               // Provide a text label for the copy button.
               // Default: null

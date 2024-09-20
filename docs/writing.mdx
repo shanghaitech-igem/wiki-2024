@@ -1,7 +1,7 @@
 ---
 title: "Writing Tutorial"
 favicon: "server/test/igem-favicon.svg"
-slug: "tutorial"
+slug: "docs/writing"
 ---
 
 # Introduction
@@ -167,19 +167,23 @@ This tutorial is meant to help you get started with writing your own MDX page fo
 - **Syntax:**
     ```markdown
     1. First item
-    2. Second item
+    1. Second item
     ```
 
 - **Example:**
     - **Code:**
         ```markdown
         1. First item
-        2. Second item
+        1. Second item
+            1. Sub-item
+            1. Sub-item 
         ```
     - **Result:**
 
         1. First item
-        2. Second item
+        1. Second item
+            1. Sub-item
+            1. Sub-item 
 
 ## Code
 
@@ -202,45 +206,63 @@ This tutorial is meant to help you get started with writing your own MDX page fo
 ### Code Blocks
 
 - **Syntax:**
-    ```markdown
+    ````markdown 
     ```
-    Code block
+    Sample text here...
     ```
-    ```
+    ````
+
 
 - **Example:**
     - **Code:**
-        ```markdown
+        ````markdown 
         ```
-        Sample text here...
-        ```
-        ```
-    - **Result:**
+        var foo = function (bar) {
+        return bar++;
+        };
 
+        console.log(foo(5));
         ```
-        Sample text here...
+        ````
+    - **Result:**
+        ```
+        var foo = function (bar) {
+        return bar++;
+        };
+
+        console.log(foo(5));
         ```
 
 ### Syntax Highlighting
 
 - **Syntax:**
-    ```markdown
+
+    ````markdown
     ```language
     Code with syntax highlighting
     ```
-    ```
+    ````
 
 - **Example:**
     - **Code:**
-        ```markdown
+
+        ````markdown
         ```js
-        console.log('Hello, world!');
+        var foo = function (bar) {
+        return bar++;
+        };
+
+        console.log(foo(5));
         ```
-        ```
+        ````
     - **Result:**
 
         ```js
-        console.log('Hello, world!');
+        var foo = function (bar) {
+        return bar++;
+        };
+
+        console.log(foo(5));
         ```
 
 ## Math and Chemical Equations
@@ -248,6 +270,7 @@ This tutorial is meant to help you get started with writing your own MDX page fo
 ### Math Equations
 
 - **Syntax:**
+
     ```markdown
     $equation$
     ```
@@ -287,11 +310,13 @@ This tutorial is meant to help you get started with writing your own MDX page fo
 - **Example:**
     - **Code:**
         ```markdown
-        ![Alt Text](image-url)
+        ![Minion](server/test/hula-loop-octodex-gif.webp)
         ```
     - **Result:**
+        ![Minion](server/test/hula-loop-octodex-gif.webp)
 
-        ![Alt Text](image-url)
+- **Notes:**
+    _Notice that the image URL could be the local path if you are using `igem-cdn`._
 
 ## GitHub Flavored Markdown (GFM)
 
@@ -361,15 +386,22 @@ This tutorial is meant to help you get started with writing your own MDX page fo
 - **Example:**
     - **Code:**
         ```markdown
-        | Header1 | Header2 |
-        | ------- | ------- |
-        | Row1Col1| Row1Col2|
+        | AAA | BBB | CCC | DDD |
+        | :-: | :-: | :-: | :-: |
+        |  1  |  2  |  3  |  4  |
+        |  5  |  6  |  7  |  8  |
+        |  9  | 10  | 11  | 12  |
+        | 13  | 14  | 15  | 16  |
+        | 17  | 18  | 19  | 20  |
         ```
     - **Result:**
-
-        | Header1 | Header2 |
-        | ------- | ------- |
-        | Row1Col1| Row1Col2|
+        | AAA | BBB | CCC | DDD |
+        | :-: | :-: | :-: | :-: |
+        |  1  |  2  |  3  |  4  |
+        |  5  |  6  |  7  |  8  |
+        |  9  | 10  | 11  | 12  |
+        | 13  | 14  | 15  | 16  |
+        | 17  | 18  | 19  | 20  |
 
 ## References
 
@@ -392,3 +424,49 @@ This tutorial is meant to help you get started with writing your own MDX page fo
         I get more traffic from [Google][].
 
         [google]: http://google.com/ "Google"
+
+# MDX Support
+
+Currently, following components are supported in our Wiki MDX pages:
+- `Image`: Showing images and GIF with optional caption.
+
+- `Plot`: Use Plotly to create interactive plots.
+
+- `Modal`: Create a modal with a button, once the button is clicked, the modal will pop up.
+
+- `PDF`: Embed PDF files with native browser reader.
+
+- `Video`: Embed videos with a player.
+
+- `Audio`: Embed audio files with a player.
+
+
+## An jsx Component Example
+
+JSX component are components that could take props. 
+
+- **Syntax:**
+    ```jsx
+    <ComponentName prop1="value1" prop2="value2" />
+    ```
+
+## Image Component
+
+Actually, simply using [standard markdown image syntax](http://localhost:8000/docs/writing/#images) is already calling the `Image` component.
+
+If you want to directly use the `Image` component (**which is not recommended**), here is the syntax:
+- **Syntax:**
+    ```jsx
+    <Image src="image-url" alt="Alt Text (optional)" title="Caption Text (optional)" />
+    ```
+
+## Plot Component
+
+Plot component use `plotly.js` to create interactive plots, **the data need to be store externally and imported**.
+
+- **Syntax:**
+    ```jsx
+    import data from "path/to/data";
+
+    <Plot {...data} />
+    ```

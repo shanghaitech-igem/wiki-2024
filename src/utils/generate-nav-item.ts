@@ -69,8 +69,12 @@ export function generateNavItems(): NavItemType[] {
   data.allMdx.edges.forEach(({ node }, index) => {
     const { parent, frontmatter } = node;
 
-    // Skip items from the "test" source
-    if (parent.sourceInstanceName === "test") return;
+    // Skip items from the specific folders
+    if (
+      parent.sourceInstanceName === "test" ||
+      parent.sourceInstanceName === "docs"
+    )
+      return;
 
     const { slug } = frontmatter;
     const { id, name, relativeDirectory } = parent;
@@ -82,7 +86,7 @@ export function generateNavItems(): NavItemType[] {
           id: id,
           index: index,
           name: relativeDirectory,
-          slug: '',
+          slug: "",
           children: [],
         };
       }
@@ -113,7 +117,6 @@ export function generateNavItems(): NavItemType[] {
   // Process names for display
   navItemsArray.forEach((item) => {
     item.name = formatName(item.name);
-    
     item.children?.forEach((child) => {
       child.name = formatName(child.name);
     });
