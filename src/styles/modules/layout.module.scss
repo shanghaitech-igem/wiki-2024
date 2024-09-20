@@ -14,11 +14,11 @@
 }
 
 $background-colors: (
-  #BBDBAB,
-  #D5DDA9,
-  #E4CACA,
-  #c0b2a6,
-  #cc885b
+  #e4caca,
+  #dcd4b9,
+  #d5dda9,
+  #c7dcaa,
+  #bbdbab,
 );
 
 $background-sizes: (
@@ -35,6 +35,20 @@ $background-positions: (
   -30vmax -10vmax,
   50vmax 50vmax
 );
+
+$animation-steps: (
+  0%: (size: $background-sizes,
+    position: $background-positions),
+  25%: (size: (100vmax 100vmax, 90vmax 90vmax, 100vmax 100vmax, 90vmax 90vmax, 60vmax 60vmax),
+    position: (-60vmax -90vmax, 50vmax -40vmax, 0vmax -20vmax, -40vmax -20vmax, 40vmax 60vmax)),
+  50%: (size: (80vmax 80vmax, 110vmax 110vmax, 80vmax 80vmax, 60vmax 60vmax, 80vmax 80vmax),
+    position: (-50vmax -70vmax, 40vmax -30vmax, 10vmax 0vmax, 20vmax 10vmax, 30vmax 70vmax)),
+  75%: (size: (90vmax 90vmax, 90vmax 90vmax, 100vmax 100vmax, 90vmax 90vmax, 70vmax 70vmax),
+    position: (-50vmax -40vmax, 50vmax -30vmax, 20vmax 0vmax, -10vmax 10vmax, 40vmax 60vmax)),
+  100%: (size: $background-sizes,
+    position: $background-positions)
+);
+
 
 @mixin radial-background($colors, $sizes, $positions) {
   background-color: #bccfb8;
@@ -67,18 +81,6 @@ $background-positions: (
   }
 }
 
-$animation-steps: (
-  0%: (size: $background-sizes,
-    position: $background-positions),
-  25%: (size: (100vmax 100vmax, 90vmax 90vmax, 100vmax 100vmax, 90vmax 90vmax, 60vmax 60vmax),
-    position: (-60vmax -90vmax, 50vmax -40vmax, 0vmax -20vmax, -40vmax -20vmax, 40vmax 60vmax)),
-  50%: (size: (80vmax 80vmax, 110vmax 110vmax, 80vmax 80vmax, 60vmax 60vmax, 80vmax 80vmax),
-    position: (-50vmax -70vmax, 40vmax -30vmax, 10vmax 0vmax, 20vmax 10vmax, 30vmax 70vmax)),
-  75%: (size: (90vmax 90vmax, 90vmax 90vmax, 100vmax 100vmax, 90vmax 90vmax, 70vmax 70vmax),
-    position: (-50vmax -40vmax, 50vmax -30vmax, 20vmax 0vmax, -10vmax 10vmax, 40vmax 60vmax)),
-  100%: (size: $background-sizes,
-    position: $background-positions)
-);
 
 @include generate-keyframes(movement, $animation-steps);
 

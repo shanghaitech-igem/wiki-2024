@@ -9,12 +9,12 @@ $picnic-breakpoint: light.$pacify-breakpoint;
 // Key properties extracted into variables
 $nav-bar-bg-color: light.$pacify-primary;
 $nav-bar-font-family: fonts.$pacify-layout;
-$nav-bar-gradient-start-color: rgba(231, 227, 215, 0.5);
-$nav-bar-gradient-end-color: rgba(129, 127, 120, 0.5);
+$nav-bar-gradient-start-color: rgba(231, 227, 215, 0.0);
+$nav-bar-gradient-end-color: rgba(129, 127, 120, 0.0);
 $nav-bar-height: 7rem;
-$nav-bar-blur-px: 20px;
+$nav-bar-blur-px: 10px;
 
-$nav-link-text-color: light.$pacify-char-layout;
+$nav-link-color: light.$pacify-secondary;
 $nav-link-margin-right: 1.7rem;
 $nav-link-hover-color: light.$pacify-char-layout-dimmed;
 $nav-link-font-weight: normal;
@@ -24,9 +24,9 @@ $sub-menu-min-width: 13rem;
 $sub-menu-root-font-weight: bold;
 $sub-menu-link-padding: 12px 18px;
 $sub-menu-link-border-radius: 40px 0px;
-$sub-menu-link-color: light.$pacify-char-layout;
-$sub-menu-link-bg-gradient-start: rgba(231, 227, 215, 0.8);
-$sub-menu-link-bg-gradient-end: rgba(192, 178, 166, 0.8);
+$sub-menu-link-color: light.$pacify-secondary;
+$sub-menu-link-bg-gradient-start: rgba(231, 227, 215, 0.0);
+$sub-menu-link-bg-gradient-end: rgba(192, 178, 166, 0.0);
 $sub-menu-link-hover-bg-gradient-start: rgb(231, 227, 215, 1);
 $sub-menu-link-hover-bg-gradient-end: rgb(255, 255, 255, 1);
 $sub-menu-link-transition-time: 0.3s;
@@ -82,7 +82,7 @@ $mobile-breakpoint: $picnic-breakpoint;
       padding: 0%;
 
       font-weight: $nav-link-font-weight;
-      color: $nav-link-text-color;
+      color: $nav-link-color;
       background: none;
       cursor: pointer;
 
@@ -205,7 +205,7 @@ $mobile-breakpoint: $picnic-breakpoint;
           transform: translateY(-20px);
 
           &:hover {
-            color: light.$pacify-secondary;
+            color: light.$pacify-char-layout-dimmed;
           }
 
           // Add pseudo-element for smooth background transition
