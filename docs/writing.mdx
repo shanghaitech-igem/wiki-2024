@@ -546,6 +546,24 @@ If you want to directly use the `Image` component (**which is not recommended**)
   />
   ```
 
+- **Example:**
+  - Code:
+
+    ```jsx
+    <Image
+      src="server/test/hula-loop-octodex-gif.webp"
+      alt="Minion"
+      title="Minion"
+    />
+    ```
+  - Result:
+
+    <Image
+      src="server/test/hula-loop-octodex-gif.webp"
+      alt="Minion"
+      title="Minion"
+    />
+
 ### Plot Component
 
 Plot component use `plotly.js` to create interactive plots, **the data need to be store externally and imported**.
@@ -558,4 +576,122 @@ Plot component use `plotly.js` to create interactive plots, **the data need to b
   <Plot {...data} />;
   ```
 
-More details about this component are [here](/docs/plot) and need to read you want to use it.
+import data_1 from "/test/data/testData-1";
+
+- **Example:**
+  - Code:
+    ```jsx
+    import data_1 from "/test/data/testData-1";
+
+    <Plot {...data_1} />
+    ```
+
+  - Result:
+
+    <Plot {...data_1} />
+
+More details about this component are [here](/docs/plot) and **need to be read if you want to actually use it**.
+
+### Modal Component
+
+Modal is a component that could create a modal with a button, once the button is clicked, the modal will pop up.
+
+- **Syntax:**
+
+  ```jsx
+  <Modal id="modal_1" title="Markdown Test" triggerText="Click Me">
+
+    # Modal Content
+
+    Content inside is a new container that could contain any markdown syntax.
+
+  </Modal>
+  ```
+
+- **Example:**
+
+  - **Code:**
+
+    ```jsx
+    <Modal id="modal_1" title="Markdown Test" triggerText="Click Me">
+
+      # Modal Content
+
+      Content inside is a new container that could contain any markdown syntax.
+
+    </Modal>
+    ```
+
+  - **Result:**
+
+    <Modal id="modal_1" title="Modal Test" triggerText="Click Me">
+
+      # Modal Content
+
+      Content inside is a new container that could contain any markdown syntax.
+
+    </Modal>
+
+### PDF Component
+
+- **Syntax:**
+  ```jsx
+  <PDF src="path/to/pdf" />
+  ```
+
+- **Example:**
+
+  - **Code:**
+    ```jsx
+    <PDF src="server/test/test.pdf" />
+    ```
+  - **Result:**
+    <PDF src="server/test/test.pdf" />
+
+
+### Video Component
+
+Important: Videos could not be uploaded by `igem-cdn`, you should go to [iGEM Video Universe](video.igem.org), and **it requires full embed URL of the video**.
+
+- **Syntax:**
+
+  ```jsx
+  <PDF src="full-path/to/embed-video" />
+  ```
+  Your URL should look like this:
+  ```url
+  https://video.igem.org/videos/embed/<some-random-number>
+  ```
+  
+- **Example:**
+
+  - **Code:**
+    ```jsx
+    <Video src="https://video.igem.org/videos/embed/426c83d7-d298-400e-b534-bddecd176aab" />
+    ```
+  - **Result:**
+    <Video src="https://video.igem.org/videos/embed/426c83d7-d298-400e-b534-bddecd176aab" />
+
+### Aduios Component
+
+Important: Aduios could not be uploaded by `igem-cdn`, you should go to [iGEM Video Universe](video.igem.org), and **it requires full embed URL of the audio**.
+
+- **Syntax:**
+
+  ```jsx
+  <PDF src="full-path/to/audio" />
+  ```
+  Your URL should look like this:
+  ```url
+  https://video.igem.org/download/videos/<some-random-number>.mp3
+  ```
+  
+- **Example:**
+
+  - **Code:**
+    ```jsx
+    <Audio src="https://video.igem.org/download/videos/a4251534-26e7-44eb-9906-0864ec6e016c-0.mp3" />
+    ```
+  - **Result:**
+    <Audio src="https://video.igem.org/download/videos/a4251534-26e7-44eb-9906-0864ec6e016c-0.mp3" />
+
