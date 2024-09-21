@@ -30,6 +30,7 @@ pages:
   needs:
     - pnpm:install
   script:
+    - npx playwright install --with-deps chromium # Install Chromium for Playwright
     - pnpm install -r --frozen-lockfile --prod --offline # link dependencies from .pnpm-store
     - ./node_modules/.bin/gatsby info
     - ./node_modules/.bin/gatsby build --prefix-paths
