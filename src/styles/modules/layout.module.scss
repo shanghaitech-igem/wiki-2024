@@ -82,7 +82,7 @@ $animation-steps: (
   padding: 3rem 5rem 15rem 5rem;
 
   @include radial-background($background-colors, $background-sizes, $background-positions);
-  animation: 10s movement linear infinite;
+  animation: 20s movement linear infinite;
 
   &::after {
     content: '';
