@@ -27,6 +27,7 @@
     "gatsby-plugin-sass": "^6.13.1",
     "gatsby-remark-header-link": "link:src/plugins/remark-header-link",
     "gatsby-remark-katex": "link:src/plugins/remark-katex",
+    "gatsby-remark-mermaid": "^4.0.0",
     "gatsby-remark-prismjs": "^7.13.2",
     "gatsby-remark-prismjs-copy-btn": "link:src/plugins/remark-prismjs-copy-btn",
     "gatsby-remark-smartypants": "^6.13.1",

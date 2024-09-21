@@ -35,6 +35,7 @@ import "src/styles/global/katex.scss";
 import "src/styles/global/footnote.scss";
 import "src/styles/global/copy-btn.scss";
 import "src/styles/global/header-anchor.scss";
+import "src/styles/global/mermaid.scss";
 
 import * as styles from "src/styles/modules/mdx.module.scss";
 

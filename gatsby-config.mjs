@@ -3,7 +3,7 @@ import * as path from "path";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 import remarkGfm from "remark-gfm";
-import remarkMath from 'remark-math';
+import remarkMath from "remark-math";
 
 const config = {
   siteMetadata: {
@@ -60,6 +60,15 @@ const config = {
         gatsbyRemarkPlugins: [
           `gatsby-remark-smartypants`, // Replaces “dumb” punctuation marks with “smart” punctuation marks using the retext-smartypants plugin.
           `gatsby-remark-header-link`, // Adds GitHub-style hover links to headers in markdown files when they’re rendered.
+          {
+            resolve: `gatsby-remark-mermaid`,
+            options: /** @type {import('gatsby-remark-mermaid').Options} */ ({
+              mermaidConfig: {
+                theme: "neutral",
+                themeCSS: ".node rect { fill: #fff; }",
+              },
+            }),
+          },
           {
             // !!! Run `gastby clean` after any changes to this plugin !!!
             resolve: `gatsby-remark-prismjs-copy-btn`,

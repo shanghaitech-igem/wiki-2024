@@ -1,0 +1,11 @@
+main {
+  p:has(svg[id^="mermaid-"]) {
+    text-align: center;
+
+    svg {
+      height: auto;
+      display: inline-block;
+      line-height: normal;
+    }
+  }
+}
