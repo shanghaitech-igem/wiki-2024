@@ -8,262 +8,290 @@ slug: "docs/writing"
 
 This tutorial is meant to help you get started with writing your own MDX page for the our iGEM wiki.
 
-[MDX](https://mdxjs.com/) is just a superset of [Markdown](https://www.markdownguide.org/), which means beyond the basic markdown syntax, you can also include "JSX Component" in your MDX file.
+[MDX](https://mdxjs.com/) is just a superset of [Markdown](https://www.markdownguide.org/), which means beyond the basic markdown syntax, you can also include "JSX Component" and "frontmatter" in your MDX file.
 
-# Markdown Support
+# MD Support
 
 ## Links
 
 ### Creating Links
 
 - Syntax:
-    ```markdown
-    [In Page Jump Test](#section-id)
 
-    [In Site Jump Test](/path)
-    ```
+  ```markdown
+  [In Page Jump Test](#section-id)
 
+  [In Site Jump Test](/path)
+  ```
 
 - Example:
-    - Code:
-        ```markdown
-        [Go to Chapter 2](#github-flavored-markdown-gfm)
 
-        [Go to Description Page](/description)
-        ```
-    - Result:
+  - Code:
 
-        [Go to GFM Section](#github-flavored-markdown-gfm)
+    ```markdown
+    [Go to Chapter 2](#github-flavored-markdown-gfm)
 
-        [Go to Description Page](/description)
+    [Go to Description Page](/description)
+    ```
+
+  - Result:
+
+    [Go to GFM Section](#github-flavored-markdown-gfm)
+
+    [Go to Description Page](/description)
 
 - Notes:
-    *You can hover your cursor over the headings to see the its URL, where its `section-id` is in it.*
+  _You can hover your cursor over the headings to see the its URL, where its `section-id` is in it._
 
 ## Headings
 
 - **Syntax:**
+
+  ```markdown
+  # H1 Heading
+
+  ## H2 Heading
+
+  ### H3 Heading
+
+  #### H4 Heading
+
+  ##### H5 Heading
+
+  ###### H6 Heading
+  ```
+
+- **Example:**
+
+  - **Code:**
+
     ```markdown
-    # H1 Heading
     ## H2 Heading
+
     ### H3 Heading
+
     #### H4 Heading
+
     ##### H5 Heading
+
     ###### H6 Heading
     ```
 
-- **Example:**
-    - **Code:**
-        ```markdown
-        # H1 Heading
-        
-        ## H2 Heading
-        
-        ### H3 Heading
-        
-        #### H4 Heading
-        
-        ##### H5 Heading
-        
-        ###### H6 Heading
-        ```
-    - **Result:**
+  - **Result:**
 
-        # H1 Heading
-        
-        ## H2 Heading
-        
-        ### H3 Heading
-        
-        #### H4 Heading
-        
-        ##### H5 Heading
-        
-        ###### H6 Heading
+    ## H2 Heading
+
+    ### H3 Heading
+
+    #### H4 Heading
+
+    ##### H5 Heading
+
+    ###### H6 Heading
 
 ## Horizontal Rules
 
 - **Syntax:**
+
+  ```markdown
+  ---
+  ```
+
+- **Example:**
+
+  - **Code:**
     ```markdown
     ---
     ```
+  - **Result:**
 
-- **Example:**
-    - **Code:**
-        ```markdown
-        ---
-        ```
-    - **Result:**
-
-        ---
+    ***
 
 ## Emphasis
 
 - **Syntax:**
-    ```markdown
-    **Bold Text**
 
-    _Italic Text_
-    ```
+  ```markdown
+  **Bold Text**
+
+  _Italic Text_
+  ```
 
 - **Example:**
-    - **Code:**
-        ```markdown
-        **This is bold text**
 
-        _This is italic text_
-        ```
-    - **Result:**
+  - **Code:**
 
-        **This is bold text**
+    ```markdown
+    **This is bold text**
 
-        _This is italic text_
+    _This is italic text_
+    ```
+
+  - **Result:**
+
+    **This is bold text**
+
+    _This is italic text_
 
 ## Blockquotes
 
 - **Syntax:**
-    ```markdown
-    > Blockquote
-    ```
+
+  ```markdown
+  > Blockquote
+  ```
 
 - **Example:**
-    - **Code:**
-        ```markdown
-        > This is a blockquote.
-        >
-        > > Nested blockquote.
-        ```
-    - **Result:**
 
-        > This is a blockquote.
-        >
-        > > Nested blockquote.
+  - **Code:**
+    ```markdown
+    > This is a blockquote.
+    >
+    > > Nested blockquote.
+    ```
+  - **Result:**
+
+    > This is a blockquote.
+    >
+    > > Nested blockquote.
 
 ## Lists
 
 ### Unordered Lists
 
 - **Syntax:**
-    ```markdown
-    - Item 1
-      - Sub-item
-    ```
+
+  ```markdown
+  - Item 1
+    - Sub-item
+  ```
 
 - **Example:**
-    - **Code:**
-        ```markdown
-        - Item 1
-        - Item 2
-          - Sub-item
-        ```
-    - **Result:**
 
-        - Item 1
-        - Item 2
-          - Sub-item
+  - **Code:**
+    ```markdown
+    - Item 1
+    - Item 2
+      - Sub-item
+    ```
+  - **Result:**
+
+    - Item 1
+    - Item 2
+      - Sub-item
 
 ### Ordered Lists
 
 - **Syntax:**
+
+  ```markdown
+  1. First item
+  1. Second item
+  ```
+
+- **Example:**
+
+  - **Code:**
     ```markdown
     1. First item
     1. Second item
+       1. Sub-item
+       1. Sub-item
     ```
+  - **Result:**
 
-- **Example:**
-    - **Code:**
-        ```markdown
-        1. First item
-        1. Second item
-            1. Sub-item
-            1. Sub-item 
-        ```
-    - **Result:**
-
-        1. First item
-        1. Second item
-            1. Sub-item
-            1. Sub-item 
+    1. First item
+    1. Second item
+       1. Sub-item
+       1. Sub-item
 
 ## Code
 
 ### Inline Code
 
 - **Syntax:**
-    ```markdown
-    `code`
-    ```
+
+  ```markdown
+  `code`
+  ```
 
 - **Example:**
-    - **Code:**
-        ```markdown
-        Inline `code`
-        ```
-    - **Result:**
 
-        Inline `code`
+  - **Code:**
+    ```markdown
+    Inline `code`
+    ```
+  - **Result:**
+
+    Inline `code`
 
 ### Code Blocks
 
 - **Syntax:**
-    ````markdown 
+
+  ````markdown
+  ```
+  Sample text here...
+  ```
+  ````
+
+- **Example:**
+
+  - **Code:**
+
+    ````markdown
     ```
-    Sample text here...
+    var foo = function (bar) {
+    return bar++;
+    };
+
+    console.log(foo(5));
     ```
     ````
 
+  - **Result:**
 
-- **Example:**
-    - **Code:**
-        ````markdown 
-        ```
-        var foo = function (bar) {
-        return bar++;
-        };
+    ```
+    var foo = function (bar) {
+    return bar++;
+    };
 
-        console.log(foo(5));
-        ```
-        ````
-    - **Result:**
-        ```
-        var foo = function (bar) {
-        return bar++;
-        };
-
-        console.log(foo(5));
-        ```
+    console.log(foo(5));
+    ```
 
 ### Syntax Highlighting
 
 - **Syntax:**
 
+  ````markdown
+  ```language
+  Code with syntax highlighting
+  ```
+  ````
+
+- **Example:**
+
+  - **Code:**
+
     ````markdown
-    ```language
-    Code with syntax highlighting
+    ```js
+    var foo = function (bar) {
+      return bar++;
+    };
+
+    console.log(foo(5));
     ```
     ````
 
-- **Example:**
-    - **Code:**
+  - **Result:**
 
-        ````markdown
-        ```js
-        var foo = function (bar) {
-        return bar++;
-        };
+    ```js
+    var foo = function (bar) {
+      return bar++;
+    };
 
-        console.log(foo(5));
-        ```
-        ````
-    - **Result:**
-
-        ```js
-        var foo = function (bar) {
-        return bar++;
-        };
-
-        console.log(foo(5));
-        ```
+    console.log(foo(5));
+    ```
 
 ## Math and Chemical Equations
 
@@ -271,163 +299,217 @@ This tutorial is meant to help you get started with writing your own MDX page fo
 
 - **Syntax:**
 
-    ```markdown
-    $equation$
-    ```
+  ```markdown
+  $inline equation$
+  ```
+
+  ```markdown
+  $$
+  display equation
+  $$
+  ```
 
 - **Example:**
-    - **Code:**
-        ```markdown
-        $a^2 + b^2 = c^2$
-        ```
-    - **Result:**
 
-        $a^2 + b^2 = c^2$
+  - **Code:**
+
+    ```markdown
+    $a^2 + b^2 = c^2$
+
+    $$
+    a^2 + b^2 = c^2
+    $$
+    ```
+
+  - **Result:**
+
+    $a^2 + b^2 = c^2$
+
+    $$
+    a^2 + b^2 = c^2
+    $$
 
 ### Chemical Equations
 
 - **Syntax:**
-    ```markdown
-    $\ce{equation}$
-    ```
+
+  ```markdown
+  $\ce{equation}$
+  ```
 
 - **Example:**
-    - **Code:**
-        ```markdown
-        $\ce{H2O -> H2 + O2}$
-        ```
-    - **Result:**
 
-        $\ce{H2O -> H2 + O2}$
+  - **Code:**
+    ```markdown
+    $\ce{H2O -> H2 + O2}$
+    ```
+  - **Result:**
+
+    $\ce{H2O -> H2 + O2}$
 
 ## Images
 
 - **Syntax:**
-    ```markdown
-    ![Alt Text](image-url)
-    ```
+
+  ```markdown
+  ![Alt Text](image-url)
+  ```
 
 - **Example:**
-    - **Code:**
-        ```markdown
-        ![Minion](server/test/hula-loop-octodex-gif.webp)
-        ```
-    - **Result:**
-        ![Minion](server/test/hula-loop-octodex-gif.webp)
+
+  - **Code:**
+    ```markdown
+    ![Minion](server/test/hula-loop-octodex-gif.webp)
+    ```
+  - **Result:**
+    ![Minion](server/test/hula-loop-octodex-gif.webp)
 
 - **Notes:**
-    _Notice that the image URL could be the local path if you are using `igem-cdn`._
+  _Notice that the image URL could be the local path if you are using `igem-cdn`._
 
 ## GitHub Flavored Markdown (GFM)
 
 ### Footnotes
 
 - **Syntax:**
+
+  ```markdown
+  A note[^1]
+
+  [^1]: Footnote text.
+  ```
+
+- **Example:**
+
+  - **Code:**
+
     ```markdown
     A note[^1]
 
     [^1]: Footnote text.
     ```
 
-- **Example:**
-    - **Code:**
-        ```markdown
-        A note[^1]
+  - **Result:**
 
-        [^1]: Footnote text.
-        ```
-    - **Result:**
+    A note[^1]
 
-        A note[^1]
-
-        [^1]: Footnote text.
+    [^1]: Footnote text.
 
 ### Autolinks
 
 - **Syntax:**
+
+  ```markdown
+  www.example.com, https://example.com, contact@example.com
+  ```
+
+- **Example:**
+
+  - **Code:**
     ```markdown
     www.example.com, https://example.com, contact@example.com
     ```
+  - **Result:**
 
-- **Example:**
-    - **Code:**
-        ```markdown
-        www.example.com, https://example.com, contact@example.com
-        ```
-    - **Result:**
-
-        www.example.com, https://example.com, contact@example.com
+    www.example.com, https://example.com, contact@example.com
 
 ### Strikethrough
 
 - **Syntax:**
+
+  ```markdown
+  ~~Strikethrough~~
+  ```
+
+- **Example:**
+
+  - **Code:**
     ```markdown
     ~~Strikethrough~~
     ```
+  - **Result:**
 
-- **Example:**
-    - **Code:**
-        ```markdown
-        ~~Strikethrough~~
-        ```
-    - **Result:**
-
-        ~~Strikethrough~~
+    ~~Strikethrough~~
 
 ### Tables
 
 - **Syntax:**
-    ```markdown
-    | Header1 | Header2 |
-    | ------- | ------- |
-    | Row1Col1| Row1Col2|
-    ```
+
+  ```markdown
+  | Header1  | Header2  |
+  | :------: | :------: |
+  | Row1Col1 | Row1Col2 |
+  | Row2Col1 | Row2Col2 |
+  ```
 
 - **Example:**
-    - **Code:**
-        ```markdown
-        | AAA | BBB | CCC | DDD |
-        | :-: | :-: | :-: | :-: |
-        |  1  |  2  |  3  |  4  |
-        |  5  |  6  |  7  |  8  |
-        |  9  | 10  | 11  | 12  |
-        | 13  | 14  | 15  | 16  |
-        | 17  | 18  | 19  | 20  |
-        ```
-    - **Result:**
-        | AAA | BBB | CCC | DDD |
-        | :-: | :-: | :-: | :-: |
-        |  1  |  2  |  3  |  4  |
-        |  5  |  6  |  7  |  8  |
-        |  9  | 10  | 11  | 12  |
-        | 13  | 14  | 15  | 16  |
-        | 17  | 18  | 19  | 20  |
 
-## References
-
-- **Syntax:**
+  - **Code:**
     ```markdown
-    I get more traffic from [Google][].
-
-    [google]: http://google.com/ "Google"
+    | AAA | BBB | CCC | DDD |
+    | :-: | :-: | :-: | :-: |
+    |  1  |  2  |  3  |  4  |
+    |  5  |  6  |  7  |  8  |
+    |  9  | 10  | 11  | 12  |
+    | 13  | 14  | 15  | 16  |
+    | 17  | 18  | 19  | 20  |
     ```
+  - **Result:**
 
-- **Example:**
-    - **Code:**
-        ```markdown
-        I get more traffic from [Google][].
-
-        [google]: http://google.com/ "Google"
-        ```
-    - **Result:**
-
-        I get more traffic from [Google][].
-
-        [google]: http://google.com/ "Google"
+    | AAA | BBB | CCC | DDD |
+    | :-: | :-: | :-: | :-: |
+    |  1  |  2  |  3  |  4  |
+    |  5  |  6  |  7  |  8  |
+    |  9  | 10  | 11  | 12  |
+    | 13  | 14  | 15  | 16  |
+    | 17  | 18  | 19  | 20  |
 
 # MDX Support
 
+## Frontmatter
+
+### Overview
+
+Frontmatter is pretty much just a configuration block for the page, at the beginning of your MDX file.
+
+Like this:
+
+```yaml
+---
+title: "Title"
+favicon: "path/to/favicon"
+slug: "path/to/page"
+---
+```
+
+Currently, the following frontmatter fields are supported:
+
+- `title`: The big title on the top of the page.
+
+- `slug`: The URL path of the page.
+
+- `favicon` (optional) : The favicon of the page, which will be shown in the browser tab.
+
+- `tracer` (optional) : The cursor tracer of the page, which will following user's cursor.
+
+### An Example of Frontmatter
+
+The frontmatter of the current page is:
+
+```yaml
+---
+title: "Writing Tutorial"
+favicon: "server/test/igem-favicon.svg"
+slug: "docs/writing"
+---
+```
+
+## JSX Components
+
+### Overview
+
 Currently, following components are supported in our Wiki MDX pages:
+
 - `Image`: Showing images and GIF with optional caption.
 
 - `Plot`: Use Plotly to create interactive plots.
@@ -440,33 +522,40 @@ Currently, following components are supported in our Wiki MDX pages:
 
 - `Audio`: Embed audio files with a player.
 
+### An Example of JSX Component
 
-## An jsx Component Example
-
-JSX component are components that could take props. 
+JSX component are components that could take props.
 
 - **Syntax:**
-    ```jsx
-    <ComponentName prop1="value1" prop2="value2" />
-    ```
+  ```jsx
+  <ComponentName prop1="value1" prop2="value2" />
+  ```
 
-## Image Component
+### Image Component
 
 Actually, simply using [standard markdown image syntax](http://localhost:8000/docs/writing/#images) is already calling the `Image` component.
 
 If you want to directly use the `Image` component (**which is not recommended**), here is the syntax:
-- **Syntax:**
-    ```jsx
-    <Image src="image-url" alt="Alt Text (optional)" title="Caption Text (optional)" />
-    ```
 
-## Plot Component
+- **Syntax:**
+  ```jsx
+  <Image
+    src="image-url"
+    alt="Alt Text (optional)"
+    title="Caption Text (optional)"
+  />
+  ```
+
+### Plot Component
 
 Plot component use `plotly.js` to create interactive plots, **the data need to be store externally and imported**.
 
 - **Syntax:**
-    ```jsx
-    import data from "path/to/data";
 
-    <Plot {...data} />
-    ```
+  ```jsx
+  import data from "path/to/data";
+
+  <Plot {...data} />;
+  ```
+
+More details about this component are [here](/docs/plot) and need to read you want to use it.
