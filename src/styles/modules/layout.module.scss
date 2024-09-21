@@ -4,15 +4,6 @@
 @import "src/plugins/picnic-css/plugins/normalize/plugin";
 
 
-.main {
-  position: relative;
-  width: 100%;
-  margin: auto;
-  min-height: 80vh;
-  padding: 3rem 5rem 15rem 5rem;
-  z-index: 1;
-}
-
 $background-colors: (
   #e4caca,
   #dcd4b9,
@@ -81,11 +72,15 @@ $animation-steps: (
   }
 }
 
-
 @include generate-keyframes(movement, $animation-steps);
 
+.main {
+  position: relative;
+  width: 100%;
+  margin: auto;
+  min-height: 80vh;
+  padding: 3rem 5rem 15rem 5rem;
 
-body {
   @include radial-background($background-colors, $background-sizes, $background-positions);
   animation: 10s movement linear infinite;
 
@@ -99,5 +94,6 @@ body {
     left: 0;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    z-index: -1;
   }
 }
