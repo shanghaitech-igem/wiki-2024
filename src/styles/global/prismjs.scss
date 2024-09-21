@@ -1,6 +1,6 @@
 $background-color: #f8f8f8;
 $border-radius: 0.375em;
-$margin: 0.5em 0;
+$margin: 0.5em 2em;
 $padding: 1em;
 $line-number-padding: 2.8em;
 $prompt-color: #999;
@@ -9,6 +9,7 @@ main {
   :not(pre) > code[class*="language-"],
   pre[class*="language-"] {
     background-color: $background-color;
+    font-size: large;
   }
 
   /**
