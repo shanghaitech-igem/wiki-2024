@@ -7,6 +7,10 @@ interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {}
 
 const Image: React.FC<ImageProps> = ({ src, alt, ...props }) => {
   src = parseRemoteURL(src);
+
+  // If props.title is null or undefined, use alt as the caption
+  const caption = props.title ?? alt;
+
   return (
     <div className={styles.container}>
       <PhotoProvider className={styles.viewer}>
@@ -15,11 +19,12 @@ const Image: React.FC<ImageProps> = ({ src, alt, ...props }) => {
             src={src}
             alt={alt ? alt : "Failed to load the picture: " + src}
             className={styles.img}
+            title={caption}
             {...props}
           />
         </PhotoView>
       </PhotoProvider>
-      <div className={styles.caption}>{props.title}</div>
+      <div className={styles.caption}>{caption}</div>
     </div>
   );
 };
