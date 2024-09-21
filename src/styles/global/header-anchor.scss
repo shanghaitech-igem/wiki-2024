@@ -34,4 +34,11 @@ main {
       }
     }
   }
+  
+  // Hide anchors in elements with class names starting with 'modal'
+  [class^="modal"] {
+    .anchor {
+      display: none;
+    }
+  }
 }
