@@ -1,4 +1,4 @@
-image: node:lts-slim
+image: node:lts
 
 stages:
   - build
@@ -11,7 +11,7 @@ cache:
     files:
       - pnpm-lock.yaml
   paths:
-    - .pnpm-store
+    - .pnpm-store/
     - .cache/
 
 before_script:
@@ -32,6 +32,7 @@ pages:
   needs:
     - deps:install
   script:
+    - npx playwright install --with-deps chromium # Install Chromium for Playwright
     - pnpm install -r --frozen-lockfile --prod --offline # link dependencies from .pnpm-store
     - ./node_modules/.bin/gatsby info
     - ./node_modules/.bin/gatsby build --prefix-paths
