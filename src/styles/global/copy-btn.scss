@@ -10,8 +10,8 @@ main {
       justify-content: flex-end;
       pointer-events: none;
       position: absolute;
-      top: 10px; /* Adjust this value to position the button vertically */
-      right: 10px; /* Adjust this value to position the button horizontally */
+      top: 15px; /* Adjust this value to position the button vertically */
+      right: 50px; /* Adjust this value to position the button horizontally */
 
       /* Style the copy button */
       .copy-button {
@@ -21,7 +21,6 @@ main {
         cursor: pointer;
         pointer-events: initial;
         background-color: #a7c0d1;
-        margin-right: 2em;
         padding: 4px;
         min-height: 30px;
         min-width: 30px;

@@ -39,6 +39,7 @@ main {
 
         a {
           color: #fff;
+
           &:hover {
             color: light.$pacify-char-layout-dimmed;
           }
@@ -79,6 +80,12 @@ main {
         }
       }
 
+      li {
+        p {
+          margin: 0;
+        }
+      }
+
       a {
         color: light.$pacify-success;
       }
@@ -90,8 +97,7 @@ main {
 
         td,
         th {
-          padding: math.div(light.$pacify-separation, 2) 2.4em
-            math.div(light.$pacify-separation, 2) light.$pacify-separation;
+          padding: math.div(light.$pacify-separation, 2) 2.4em math.div(light.$pacify-separation, 2) light.$pacify-separation;
         }
 
         th {
