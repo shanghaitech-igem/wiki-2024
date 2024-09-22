@@ -212,7 +212,7 @@ You can now view shanghaitech-igem-wiki in the browser.
 
   http://localhost:8000/
 
-View GraphiQL, an in-browser IDE, to explore your site's data and schema
+View GraphQL, an in-browser IDE, to explore your site's data and schema
 
   http://localhost:8000/___graphql
 ```
@@ -239,5 +239,93 @@ Run the following command in the terminal:
 curl -o- https://gitlab.igem.org/zivmax/vscode-ext/-/raw/main/install-ext.sh | bash
 ```
 
+## Open the project
+Run this in the terminal:
+
+```shell
+code <project-folder-name>
+```
+
+Then VSCode should pop up and you could see the project in the sidebar.
+![Side Bar of VSCode](server/docs/vscode-sidebar.png)
+
 # Step 6: CDN Tool
 ## Create Config File
+Run the following command in the terminal:
+
+```shell
+curl -o- https://raw.githubusercontent.com/zivmax/igem-cdn/refs/heads/main/config-remote.sh | bash
+```
+
+Then VSCode should pop up for you to fill a template:
+```
+{
+    "username": {
+        "data": "your_username"
+    },
+    "password": {
+        "data": "your_password"
+    },
+    "local_root": {
+        "data": "/path/to/your/local/server"
+    }
+}
+```
+
+- Username: Your iGEM account username
+- Password: Your iGEM account password
+- Local Root: 
+  1. First, Create a folder named `server` in the root of the project.
+    ![Create Server Folder](server/docs/vscode-folder-create.png)
+  1. Then, right-click the folder and select `Copy Path`.
+    ![Copy Path](server/docs/vscode-copy-path.png)
+  1. Use the path you just copied as the value of `local_root` in `data` field.
+
+Save the file by `Ctrl+S`or `Cmd+S`.
+
+## Install CDN Tool
+
+Run the following command in the terminal:
+
+- For X86:
+```shell
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/zivmax/igem-cdn/refs/heads/main/setup-remote.sh)" -- install X86
+```
+
+- For ARM (Apple Silicon):
+```shell
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/zivmax/igem-cdn/refs/heads/main/setup-remote.sh)" -- install ARM
+```
+
+Restart the terminal after the installation, if you are using VSCode integrated terminal, restart VSCode.
+
+## Test CDN Tool
+
+Run the following command in the terminal:
+
+```shell
+igem-cdn
+```
+
+And you should see the help message of the tool.
+```
+usage: igem-cdn [-h] [-rp REMOTE_PATH] [--config CONFIG]
+                {delete,sync,download,upload,query} local_path
+igem-cdn: error: the following arguments are required: action, local_path
+```
+
+# Congrats!
+
+You are now set up to edit the wiki!
+
+For more on how to edit the wiki, please refer these:
+
+- [Use the System](system)
+
+- [Use iGEM CDN Tool](igem-cdn)
+
+- [Actual Writing Stuff](writing)
+
+- [Plot Graphs with `plogly.js`](plot)
+
+- [Plot Graphs with `mermaid`](mermaid)
