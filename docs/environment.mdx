@@ -170,7 +170,7 @@ In the terminal, run:
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
 ```
 
-then run:
+then, restart the terminal, in the new terminal run:
 
 ```shell
 nvm install --lts
@@ -198,10 +198,16 @@ You may notice some terrifying output, but don't worry, just input `y` and hit `
 Then run this command:
 
 ```shell
-npm install
+curl -fsSL https://get.pnpm.io/install.sh | sh -
 ```
 
-After that, the core dependencies to run the project are all set.
+After that, run:
+
+```shell
+pnpm install -r
+```
+
+the core dependencies to run the project are all set.
 
 ## Test Run
 
@@ -298,6 +304,11 @@ Save the file by `Ctrl+S`or `Cmd+S`.
 
 ## Install CDN Tool
 
+First, ensure you can `unzip` things:
+```shell
+sudo apt install zip
+```
+
 Run the following command in the terminal:
 
 - For X86:
@@ -333,11 +344,11 @@ You are now set up to edit the wiki!
 
 For more on how to edit the wiki, please refer these:
 
-- [Use the System](system)
+- [Use the System](/docs/system)
 
-- [Use iGEM CDN Tool](igem-cdn)
+- [Use iGEM CDN Tool](/docs/igem-cdn)
 
-- [Actual Writing Stuff](writing)
+- [Actual Writing Stuff](/docs/writing)
 
 - [Plot Graphs with `plogly.js`](plot)
 
