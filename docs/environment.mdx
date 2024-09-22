@@ -8,24 +8,26 @@ slug: docs/environment
 Before you actually editing anything on the real wiki, there are many pre-setup need to be done, for the sake of "seeing what you are writing".
 
 ## Software Tools
+
 Our main software tool will be:
 
 - Visual Studio Code
+
   - With Extensions:
     - `MDX` (Customized by ShanghaiTech's iGEM Team)
     - `Code Spell Checker`
-    - `Prettier - Code formatter`        
+    - `Prettier - Code formatter`
 
 - iGEM CDN Tool
 
 ## OS Support
 
-WSL > Linux > MacOS > Windows 
+WSL > Linux > MacOS > Windows
 
-So for users of windows, [WSL](https://learn.microsoft.com/en-us/windows/wsl/install) is highly recommended.
+So for users of windows, [WSL](https://learn.microsoft.com/en-us/windows/wsl/install) is highly recommended, and all the commands should run in WSL.
 **If you can't install or use WSL, please contact Linzheng Tang for direct Windows Support.**
 
-Although MacOS are not tested at all, MacOS user could still follow the tutorial, please contact Linzheng Tang for any issue. 
+Although MacOS are not tested at all, MacOS user could still follow the tutorial, please contact Linzheng Tang for any issue.
 
 # Step 1: GitLab
 
@@ -34,37 +36,44 @@ For setting up GitLab and `git` so you could download the project and upload you
 ## Install Git
 
 You can first check if `git` installed by:
+
 ```shell
 git -v
 ```
 
 if it says `Command 'git' not found...`, you could install it by this command:
+
 ```shell
 sudo apt install git
 ```
 
 and remember to set up your name and email for `git` by:
+
 ```shell
 git config --global user.name "Your Name"
 ```
+
 ```shell
 git config --global user.email "your_email@example.com"
 ```
 
-## Generate SSH Key 
+## Generate SSH Key
 
 Run this command in terminal:
+
 ```shell
 ssh-keygen -t rsa -b 1024
 ```
 
 Then you should see:
+
 ```
 Generating public/private rsa key pair.
-Enter file in which to save the key (/home/name/.ssh/id_rsa): 
+Enter file in which to save the key (/home/name/.ssh/id_rsa):
 ```
 
 Just continually hit `Enter↵` until you see this like stuff:
+
 ```
 +---[RSA 1024]----+
 |.oooo=**.        |
@@ -80,11 +89,13 @@ Just continually hit `Enter↵` until you see this like stuff:
 ```
 
 Then run this command:
+
 ```shell
 cat ~/.ssh/id_rsa.pub
 ```
 
 You'll then see your "public key", multiple lines of seemingly random text like this:
+
 ```
 ssh-rsa AAAAB3Nzaahsdjkflkasjhdfkljdashlkfjhasdkljf
 ...
@@ -94,6 +105,7 @@ ssh-rsa AAAAB3Nzaahsdjkflkasjhdfkljdashlkfjhasdkljf
 Copy these output text to your clipboard.
 
 ## Add your key to your GitLab account
+
 Go to [iGEM's GitLab](https://gitlab.igem.org/2024/shanghaitech-china/) and login by your iGEM account.
 
 ![Login the GitLab](server/docs/gitlab-login.png)
@@ -106,45 +118,126 @@ Click the `Add new key` to add the key we just generate, just paste in and confi
 
 ![Add New Key](server/docs/gitlab-ssh-confirm.png)
 
-
 ## Test if it works
 
 Finally, test the configuration by run this in your terminal:
+
 ```shell
 ssh -T git@gitlab.igem.org
 ```
 
 it should outputs and you are set:
+
 ```
 Welcome to GitLab, @yourname!
 ```
 
-
 If you see this and your could open https://gitlab.igem.org/ in the browser:
+
 ```
 Connection closed by 198.18.0.20 port 22
 ```
 
 This is because the port 22 is blocked. three solutions are found:
+
 - Don't use network provided by ShanghaiTech
 - Use a proxy with clash's tun mode on.
 - **Contact Linzheng Tang.**
+
+## Clone the project
+
+Finally, clone the project by:
+
+```shell
+git clone git@gitlab.igem.org:2024/shanghaitech-china.git
+```
+
+Then you should see a folder named `shanghaitech-china` appears, which contains the code.
+
+_Feel free to rename that folder._
 
 
 # Step 2: Node.js
 
 In the terminal, run:
+
 ```shell
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
 ```
 
 then run:
+
 ```shell
 nvm install --lts
 ```
 
 Finally, check if the node.js installed by:
+
 ```shell
 node -v
 ```
+
 It should output `v20.17.0`.
+
+# Step 3: Deps
+
+In the terminal, run:
+
+```shell
+npx playwright install --with-deps chromium
+```
+
+You may notice some terrifying output, but don't worry, just input `y` and hit `Enter↵` or type in your password to continue.
+
+Then run this command:
+
+```shell
+npm install
+```
+
+After that, the core dependencies to run the project are all set.
+
+# Step 4: Test
+
+To run the project, just run:
+
+```shell
+npm run develop
+```
+
+After you see this:
+
+```
+You can now view shanghaitech-igem-wiki in the browser.
+
+  http://localhost:8000/
+
+View GraphiQL, an in-browser IDE, to explore your site's data and schema
+
+  http://localhost:8000/___graphql
+```
+
+you can open your browser and go to `http://localhost:8000/` to see the wiki.
+
+
+# Step 5: VSCode
+
+## Install VSCode
+
+Download the installer from [here](https://code.visualstudio.com/Download).
+
+### For WSL
+If you are using WSL, you should install VSCode in Windows first, then install the `WSL` extension.
+
+And finally run `code` in the WSL terminal to install VSCode Server inside WSL.
+
+## Install Extensions
+
+Run the following command in the terminal:
+
+```shell
+curl -o- https://gitlab.igem.org/zivmax/vscode-ext/-/raw/main/install-ext.sh | bash
+```
+
+# Step 6: CDN Tool
+## Create Config File
