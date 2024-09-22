@@ -23,6 +23,7 @@ const config = {
     // `gatsby-plugin-perf-budgets`,
     // `gatsby-plugin-webpack-bundle-analyser-v2`,
     `gatsby-plugin-catch-links`,
+    `gatsby-plugin-sass`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -174,14 +175,6 @@ const config = {
             },
           },
         ],
-      },
-    },
-    {
-      resolve: `gatsby-plugin-sass`,
-      options: {
-        sassOptions: {
-          outputStyle: "expanded",
-        },
       },
     },
   ],
