@@ -12,6 +12,7 @@ cache:
       - pnpm-lock.yaml
   paths:
     - .pnpm-store
+    - .cache/
 
 before_script:
   - corepack enable
