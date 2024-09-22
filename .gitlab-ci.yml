@@ -19,19 +19,19 @@ before_script:
   - corepack prepare pnpm@latest-9 --activate
   - pnpm config set store-dir .pnpm-store
 
-pnpm:install:
+deps:install:
   stage: build
   script:
     - pnpm install -r --frozen-lockfile --prod # add dependencies to .pnpm-store
+    - npx playwright install --with-deps chromium # Install Chromium for Playwright
   only:
     - main
 
 pages:
   stage: deploy
   needs:
-    - pnpm:install
+    - deps:install
   script:
-    - npx playwright install --with-deps chromium # Install Chromium for Playwright
     - pnpm install -r --frozen-lockfile --prod --offline # link dependencies from .pnpm-store
     - ./node_modules/.bin/gatsby info
     - ./node_modules/.bin/gatsby build --prefix-paths
