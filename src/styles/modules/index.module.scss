@@ -1,11 +1,129 @@
 @use "src/styles/themes/light" as light;
 @use "src/styles/themes/fonts" as fonts;
 
-.title {
-  margin-top: 10rem;
-  color: light.$pacify-char-layout;
-  font-size: 8rem;
-  font-family: fonts.$pacify-title;
-  font-weight: normal;
-  font-style: normal;
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-15px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes grow {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+main {
+  .title-container {
+    line-height: 1;
+    position: absolute;
+    left: 5rem;
+    top: 20rem;
+    .title-banner {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      p {
+        font-family: fonts.$pacify-layout;
+        font-weight: bold;
+        margin-left: 1em;
+        padding: 0;
+        color: #c0b2a6;
+      }
+    }
+
+    .title {
+      color: light.$pacify-char-layout;
+      font-size: 5rem;
+      font-family: fonts.$pacify-layout;
+      font-weight: normal;
+      font-style: normal;
+      line-height: 1;
+      width: 1.5em;
+      overflow-wrap: break-word;
+      padding: 0;
+      margin: 0;
+    }
+
+    .title-prompt {
+      color: light.$pacify-char-layout;
+      font-size: 1.5rem;
+      font-family: fonts.$pacify-layout;
+      font-weight: bold;
+      font-style: normal;
+
+      // Anime bouncing
+      animation: bounce 2s ease infinite;
+    }
+  }
+
+  .container {
+    padding-bottom: 15rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center; // Vertically center items
+
+    .leaf-main {
+      margin-left: auto; // Pushes the SVG to the right
+    }
+
+    .stem-1 {
+      margin-top: -215px;
+    }
+
+    .stem-1-leaf-1 {
+      position: absolute;
+      top: 1600px;
+      right: 190px;
+    }
+
+    .stem-1-leaf-2 {
+      position: absolute;
+      top: 1700px;
+      right: 620px;
+    }
+
+    .stem-1-leaf-3 {
+      position: absolute;
+      top: 1900px;
+      right: 810px;
+    }
+
+    .stem-1-leaf-4 {
+      position: absolute;
+      top: 2120px;
+      right: 620px;
+    }
+
+    .stem-1-leaf-5 {
+      position: absolute;
+      top: 2640px;
+      left: 80px;
+    }
+
+    .stem-1-leaf-6 {
+      position: absolute;
+      top: 2750px;
+      left: 580px;
+    }
+
+    .stem-2 {
+      margin-top: -1000px;
+      margin-right: auto;
+    }
+  }
 }

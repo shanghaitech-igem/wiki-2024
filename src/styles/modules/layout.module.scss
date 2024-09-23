@@ -75,7 +75,7 @@ $animation-steps: (
 @include generate-keyframes(movement, $animation-steps);
 
 .main {
-
+  display: block;
   @include radial-background($background-colors, $background-sizes, $background-positions);
   animation: 15s movement linear infinite;
 

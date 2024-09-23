@@ -5,6 +5,12 @@ $img-max-width: 60%;
 // Smooth scrolling for the whole document
 html {
   scroll-behavior: smooth;
+
+  &.sr {
+    .load-hidden {
+      visibility: hidden;
+    }
+  }
 }
 
 main {
