@@ -25,7 +25,8 @@ Our main software tool will be:
 WSL > Linux > MacOS > Windows
 
 So for users of windows, [WSL](https://learn.microsoft.com/en-us/windows/wsl/install) is highly recommended, **and all the commands should run in WSL**.
-**If you can't install or use WSL, please contact Linzheng Tang for direct Windows Support.**
+If you can't install or use WSL, please contact Linzheng Tang for direct support, **and do not follow other tutorials online**, especially when you actually know nothing about this.
+
 
 Although MacOS are not tested at all, MacOS user could still follow the tutorial, please contact Linzheng Tang for any issue.
 
@@ -198,10 +199,16 @@ You may notice some terrifying output, but don't worry, just input `y` and hit `
 Then run this command:
 
 ```shell
-npm install
+curl -fsSL https://get.pnpm.io/install.sh | sh -
 ```
 
-After that, the core dependencies to run the project are all set.
+After that, run:
+
+```shell
+pnpm install -r
+```
+
+the core dependencies to run the project are all set.
 
 ## Test Run
 
@@ -240,7 +247,7 @@ you can open your browser and go to `http://localhost:8000/` to see the wiki.
 Download the installer from [here](https://code.visualstudio.com/Download).
 
 ### For WSL
-If you are using WSL, you should install VSCode in Windows first, then install the `WSL` extension.
+If you are using WSL, before going on, you should install VSCode in Windows first, **then install the `WSL` extension**.
 
 And finally run `code` in the WSL terminal to install VSCode Server inside WSL.
 
@@ -298,6 +305,11 @@ Save the file by `Ctrl+S`or `Cmd+S`.
 
 ## Install CDN Tool
 
+First, ensure you can `unzip` things:
+```shell
+sudo apt install zip
+```
+
 Run the following command in the terminal:
 
 - For X86:
@@ -333,11 +345,11 @@ You are now set up to edit the wiki!
 
 For more on how to edit the wiki, please refer these:
 
-- [Use the System](system)
+- [Use the System](/docs/system)
 
-- [Use iGEM CDN Tool](igem-cdn)
+- [Use iGEM CDN Tool](/docs/igem-cdn)
 
-- [Actual Writing Stuff](writing)
+- [Actual Writing Stuff](/docs/writing)
 
 - [Plot Graphs with `plogly.js`](plot)
 
