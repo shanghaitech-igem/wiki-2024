@@ -24,9 +24,8 @@ Our main software tool will be:
 
 WSL > Linux > MacOS > Windows
 
-So for users of windows, [WSL](https://learn.microsoft.com/en-us/windows/wsl/install) is highly recommended, and all the commands should run in WSL.
+So for users of windows, [WSL](https://learn.microsoft.com/en-us/windows/wsl/install) is highly recommended, **and all the commands should run in WSL**.
 If you can't install or use WSL, please contact Linzheng Tang for direct support, **and do not follow other tutorials online**, especially when you actually know nothing about this.
-
 
 Although MacOS are not tested at all, MacOS user could still follow the tutorial, please contact Linzheng Tang for any issue.
 
@@ -45,10 +44,13 @@ git -v
 if it says `Command 'git' not found...`, you could install it by this command:
 
 - For WSL / Linux
+
 ```shell
 sudo apt install git
 ```
+
 - For MacOS
+
 ```shell
 brew install git
 ```
@@ -162,6 +164,13 @@ Then you should see a folder named `shanghaitech-china` appears, which contains 
 
 _Feel free to rename that folder._
 
+after that, please:
+
+```shell
+cd <project-folder-name>
+```
+
+all the remaining commands should run in this folder.
 
 # Step 2: Node.js
 
@@ -171,7 +180,7 @@ In the terminal, run:
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
 ```
 
-then, restart the terminal, in the new terminal run:
+after `nvm` installed, restart your terminal, then run:
 
 ```shell
 nvm install --lts
@@ -188,6 +197,7 @@ It should output `v20.17.0`.
 # Step 3: Deps
 
 ## Install dependencies
+
 In the terminal, run:
 
 ```shell
@@ -219,11 +229,12 @@ npm run develop
 ```
 
 If you see this:
+
 ```
 Deprecation Warning: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
 ```
 
-Take it ease, it tells us something will be messed up in the future, but that's future😇. 
+Take it ease, it tells us something will be messed up in the future, but that's future😇.
 
 After you see this:
 
@@ -239,7 +250,6 @@ View GraphQL, an in-browser IDE, to explore your site's data and schema
 
 you can open your browser and go to `http://localhost:8000/` to see the wiki.
 
-
 # Step 4: VSCode
 
 ## Install VSCode
@@ -247,19 +257,21 @@ you can open your browser and go to `http://localhost:8000/` to see the wiki.
 Download the installer from [here](https://code.visualstudio.com/Download).
 
 ### For WSL
+
 If you are using WSL, before going on, you should install VSCode in Windows first, **then install the `WSL` extension**.
 
 And finally run `code` in the WSL terminal to install VSCode Server inside WSL.
 
 ## Install Extensions
 
-Run the following command in the terminal:
+Start a new terminal, run the following command in the terminal:
 
 ```shell
 curl -o- https://gitlab.igem.org/zivmax/vscode-ext/-/raw/main/install-ext.sh | bash
 ```
 
 ## Open the project
+
 Run this in the terminal:
 
 ```shell
@@ -270,7 +282,9 @@ Then VSCode should pop up and you could see the project in the sidebar.
 ![Side Bar of VSCode](server/docs/vscode-sidebar.png)
 
 # Step 5: CDN Tool
+
 ## Create Config File
+
 Run the following command in the terminal:
 
 ```shell
@@ -278,6 +292,7 @@ curl -o- https://raw.githubusercontent.com/zivmax/igem-cdn/refs/heads/main/confi
 ```
 
 Then VSCode should pop up for you to fill a template:
+
 ```
 {
     "username": {
@@ -294,11 +309,11 @@ Then VSCode should pop up for you to fill a template:
 
 - Username: Your iGEM account username
 - Password: Your iGEM account password
-- Local Root: 
+- Local Root:
   1. First, Create a folder named `server` in the root of the project.
-    ![Create Server Folder](server/docs/vscode-folder-create.png)
+     ![Create Server Folder](server/docs/vscode-folder-create.png)
   1. Then, right-click the folder and select `Copy Path`.
-    ![Copy Path](server/docs/vscode-copy-path.png)
+     ![Copy Path](server/docs/vscode-copy-path.png)
   1. Use the path you just copied as the value of `local_root` in `data` field.
 
 Save the file by `Ctrl+S`or `Cmd+S`.
@@ -306,6 +321,7 @@ Save the file by `Ctrl+S`or `Cmd+S`.
 ## Install CDN Tool
 
 First, ensure you can `unzip` things:
+
 ```shell
 sudo apt install zip
 ```
@@ -313,11 +329,13 @@ sudo apt install zip
 Run the following command in the terminal:
 
 - For X86:
+
 ```shell
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/zivmax/igem-cdn/refs/heads/main/setup-remote.sh)" -- install X86
 ```
 
 - For ARM (Apple Silicon):
+
 ```shell
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/zivmax/igem-cdn/refs/heads/main/setup-remote.sh)" -- install ARM
 ```
@@ -333,6 +351,7 @@ igem-cdn
 ```
 
 And you should see the help message of the tool.
+
 ```
 usage: igem-cdn [-h] [-rp REMOTE_PATH] [--config CONFIG]
                 {delete,sync,download,upload,query} local_path
