@@ -39,7 +39,7 @@ import "src/styles/global/mermaid.scss";
 
 import * as styles from "src/styles/modules/mdx.module.scss";
 
-const { title, content, toc, article } = styles;
+const { title, content, toc, article, page } = styles;
 
 import handleCopyTex from "src/plugins/katex-copy-tex";
 
@@ -75,12 +75,14 @@ const MDXPage: React.FC<MdxPageProps> = ({ data, children }) => {
       {frontmatter.tracer && (
         <Tracer src={frontmatter.tracer} alt="Tracer Image" />
       )}
-      <header className={title}>{frontmatter.title}</header>
-      <div className={content}>
-        <TOC className={toc} tableOfContents={data.mdx.tableOfContents} />
-        <article className={article}>
-          <MDXProvider components={components}>{children}</MDXProvider>
-        </article>
+      <div className={page}>
+        <header className={title}>{frontmatter.title}</header>
+        <div className={content}>
+          <TOC className={toc} tableOfContents={data.mdx.tableOfContents} />
+          <article className={article}>
+            <MDXProvider components={components}>{children}</MDXProvider>
+          </article>
+        </div>
       </div>
     </Layout>
   );

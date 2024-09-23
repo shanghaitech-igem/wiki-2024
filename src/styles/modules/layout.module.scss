@@ -75,11 +75,6 @@ $animation-steps: (
 @include generate-keyframes(movement, $animation-steps);
 
 .main {
-  position: relative;
-  width: 100%;
-  margin: auto;
-  min-height: 80vh;
-  padding: 3rem 5rem 15rem 5rem;
 
   @include radial-background($background-colors, $background-sizes, $background-positions);
   animation: 15s movement linear infinite;
