@@ -13,7 +13,7 @@ interface Object {
 const Draw: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  const scaleFactor = 0.95; // Adjust this value to scale the scene
+  const scaleFactor = 0.95;
 
   const main = {
     src: "server/home/leaf-main.svg",
@@ -78,7 +78,6 @@ const Draw: React.FC = () => {
     },
   ];
 
-  // Parse the urls to use the correct path
   main.src = parseRemoteURL(main.src);
   stems.forEach((stem) => {
     stem.src = parseRemoteURL(stem.src);
@@ -100,7 +99,8 @@ const Draw: React.FC = () => {
     img: HTMLImageElement,
     leaf: Object,
     canvasWidth: number,
-    canvasHeight: number
+    canvasHeight: number,
+    revealProgress: number = 1
   ) => {
     const aspectRatio = img.width / img.height;
     let width, height;
@@ -124,7 +124,16 @@ const Draw: React.FC = () => {
       y = canvasHeight - y - height;
     }
 
-    ctx.drawImage(img, x, y, width, height);
+    // Apply reveal effect and opacity
+    if (revealProgress < 1) {
+      ctx.save();
+      ctx.rect(x, y, width, height * revealProgress);
+      ctx.clip();
+      ctx.drawImage(img, x, y, width, height);
+      ctx.restore();
+    } else {
+      ctx.drawImage(img, x, y, width, height);
+    }
   };
 
   const resizeCanvas = useCallback(() => {
@@ -134,9 +143,7 @@ const Draw: React.FC = () => {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const drawAll = async () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
+    const drawAll = async (revealProgress: number) => {
       const mainImage = await loadImage(main.src);
       draw(ctx, mainImage, main, canvas.width, canvas.height);
 
@@ -149,7 +156,14 @@ const Draw: React.FC = () => {
       );
 
       stemsImg.forEach((img, index) => {
-        draw(ctx, img, stems[index], canvas.width, canvas.height);
+        draw(
+          ctx,
+          img,
+          stems[index],
+          canvas.width,
+          canvas.height,
+          revealProgress
+        );
       });
 
       leavesImg.forEach((img, index) => {
@@ -157,7 +171,6 @@ const Draw: React.FC = () => {
       });
     };
 
-    // Calculate the required canvas height
     const maxLeafY = Math.max(...leaves.map((leaf) => leaf.y + leaf.size));
     const maxStemY = Math.max(...stems.map((stem) => stem.y + stem.size));
     const requiredHeight = Math.max(maxLeafY, maxStemY);
@@ -165,7 +178,29 @@ const Draw: React.FC = () => {
     canvas.width = window.innerWidth;
     canvas.height = requiredHeight * scaleFactor;
 
-    drawAll();
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.body.scrollHeight;
+
+      // Assuming you know the footer's height
+      const footerHeight = document.querySelector("footer")?.offsetHeight || 0;
+      const initialScreenHeight = windowHeight; // 100vh
+
+      const adjustedDocumentHeight =
+        documentHeight - footerHeight - initialScreenHeight;
+
+      const revealProgress = Math.min(scrollTop / adjustedDocumentHeight, 1);
+
+      drawAll(revealProgress);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, [leaves, stems]);
 
   useEffect(() => {
