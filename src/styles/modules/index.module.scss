@@ -84,49 +84,58 @@ main {
 
     .leaf-main {
       margin-left: auto; // Pushes the SVG to the right
+      visibility: hidden;
     }
 
     .stem-1 {
+      visibility: hidden;
       margin-top: -215px;
     }
 
     .stem-1-leaf-1 {
+      visibility: hidden;
       position: absolute;
       top: 1600px;
       right: 190px;
     }
 
     .stem-1-leaf-2 {
+      visibility: hidden;
       position: absolute;
       top: 1700px;
       right: 620px;
     }
 
     .stem-1-leaf-3 {
+      visibility: hidden;
       position: absolute;
       top: 1900px;
       right: 810px;
     }
 
     .stem-1-leaf-4 {
+      visibility: hidden;
       position: absolute;
       top: 2120px;
       right: 620px;
     }
 
     .stem-1-leaf-5 {
+      visibility: hidden;
       position: absolute;
       top: 2640px;
       left: 80px;
     }
 
     .stem-1-leaf-6 {
+      visibility: hidden;
       position: absolute;
       top: 2750px;
       left: 580px;
     }
 
     .stem-2 {
+      visibility: hidden;
       margin-top: -1000px;
       margin-right: auto;
     }

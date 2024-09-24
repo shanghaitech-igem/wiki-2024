@@ -5,6 +5,7 @@ import Favicon from "src/components/favicon";
 import * as styles from "src/styles/modules/index.module.scss";
 import ScrollReveal from "scrollreveal";
 import parseRemoteURL from "src/utils/remote-url-parser";
+import Draw from "src/components/draw";
 
 const { title, container, titlePrompt, loadHidden } = styles;
 
@@ -28,6 +29,7 @@ const IndexPage: React.FC = () => {
           <p className={`${title} load-hidden`}>PACIFY</p>
           <p className={titlePrompt}>scroll down ↓</p>
         </div>
+        <Draw />
         <svg
           className={styles.leafMain}
           xmlns="http://www.w3.org/2000/svg"
