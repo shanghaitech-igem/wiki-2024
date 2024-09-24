@@ -1,9 +1,131 @@
 import React, { useRef, useEffect, useCallback } from "react";
+import parseRemoteURL from "src/utils/remote-url-parser";
 
+interface Object {
+  src: string;
+  x: number;
+  y: number;
+  size: number;
+  reverseX?: boolean;
+  reverseY?: boolean;
+}
 
-const SvgCanvas: React.FC = () => {
+const Draw: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  let svgUrl = "home/leaf-main.svg";
+
+  const scaleFactor = 0.95; // Adjust this value to scale the scene
+
+  const main = {
+    src: "server/home/leaf-main.svg",
+    x: 0,
+    y: 0,
+    size: 1200,
+    reverseX: true,
+  };
+
+  const stems: Object[] = [
+    {
+      src: "server/home/stem-1.svg",
+      x: 250,
+      y: 930,
+      size: 2800,
+      reverseX: true,
+    },
+  ];
+
+  const leaves: Object[] = [
+    {
+      src: "server/home/stem-1-leaf-1.svg",
+      x: 30,
+      y: 1500,
+      size: 230,
+      reverseX: true,
+    },
+    {
+      src: "server/home/stem-1-leaf-2.svg",
+      x: 490,
+      y: 1500,
+      size: 230,
+      reverseX: true,
+    },
+    {
+      src: "server/home/stem-1-leaf-3.svg",
+      x: 1050,
+      y: 2000,
+      size: 230,
+      reverseX: true,
+    },
+    {
+      src: "server/home/stem-1-leaf-4.svg",
+      x: 800,
+      y: 2250,
+      size: 230,
+      reverseX: true,
+    },
+    {
+      src: "server/home/stem-1-leaf-5.svg",
+      x: 1550,
+      y: 2600,
+      size: 230,
+      reverseX: true,
+    },
+    {
+      src: "server/home/stem-1-leaf-6.svg",
+      x: 1130,
+      y: 2700,
+      size: 230,
+      reverseX: true,
+    },
+  ];
+
+  // Parse the urls to use the correct path
+  main.src = parseRemoteURL(main.src);
+  stems.forEach((stem) => {
+    stem.src = parseRemoteURL(stem.src);
+  });
+  leaves.forEach((leaf) => {
+    leaf.src = parseRemoteURL(leaf.src);
+  });
+
+  const loadImage = (src: string): Promise<HTMLImageElement> => {
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.src = src;
+      img.onload = () => resolve(img);
+    });
+  };
+
+  const draw = (
+    ctx: CanvasRenderingContext2D,
+    img: HTMLImageElement,
+    leaf: Object,
+    canvasWidth: number,
+    canvasHeight: number
+  ) => {
+    const aspectRatio = img.width / img.height;
+    let width, height;
+
+    if (aspectRatio > 1) {
+      width = leaf.size * scaleFactor;
+      height = (leaf.size / aspectRatio) * scaleFactor;
+    } else {
+      height = leaf.size * scaleFactor;
+      width = leaf.size * aspectRatio * scaleFactor;
+    }
+
+    let x = leaf.x * scaleFactor;
+    let y = leaf.y * scaleFactor;
+
+    if (leaf.reverseX) {
+      x = canvasWidth - x - width;
+    }
+
+    if (leaf.reverseY) {
+      y = canvasHeight - y - height;
+    }
+
+    ctx.drawImage(img, x, y, width, height);
+  };
 
   const resizeCanvas = useCallback(() => {
     const canvas = canvasRef.current;
@@ -12,21 +134,39 @@ const SvgCanvas: React.FC = () => {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const img = new Image();
-    img.src = svgUrl;
-
-    img.onload = () => {
-      // Calculate aspect ratio
-      const aspectRatio = img.height / img.width;
-
-      // Set canvas width to window width and height according to aspect ratio
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerWidth * aspectRatio;
-
+    const drawAll = async () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+      const mainImage = await loadImage(main.src);
+      draw(ctx, mainImage, main, canvas.width, canvas.height);
+
+      const leavesImg = await Promise.all(
+        leaves.map((leaf) => loadImage(leaf.src))
+      );
+
+      const stemsImg = await Promise.all(
+        stems.map((stem) => loadImage(stem.src))
+      );
+
+      stemsImg.forEach((img, index) => {
+        draw(ctx, img, stems[index], canvas.width, canvas.height);
+      });
+
+      leavesImg.forEach((img, index) => {
+        draw(ctx, img, leaves[index], canvas.width, canvas.height);
+      });
     };
-  }, [svgUrl]);
+
+    // Calculate the required canvas height
+    const maxLeafY = Math.max(...leaves.map((leaf) => leaf.y + leaf.size));
+    const maxStemY = Math.max(...stems.map((stem) => stem.y + stem.size));
+    const requiredHeight = Math.max(maxLeafY, maxStemY);
+
+    canvas.width = window.innerWidth;
+    canvas.height = requiredHeight * scaleFactor;
+
+    drawAll();
+  }, [leaves, stems]);
 
   useEffect(() => {
     resizeCanvas();
@@ -41,4 +181,4 @@ const SvgCanvas: React.FC = () => {
   return <canvas ref={canvasRef} />;
 };
 
-export default SvgCanvas;
+export default Draw;
