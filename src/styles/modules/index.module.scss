@@ -86,27 +86,8 @@ main {
       margin-left: auto; // Pushes the SVG to the right
     }
 
-
-    @property --wipe-position {
-      syntax: "<percentage>";
-      inherits: false;
-      initial-value: 100%;
-    }
-
     .stem-1 {
       margin-top: -215px;
-      --wipe-position: 100%;
-      --gradient-length: 20%;
-      mask-image: linear-gradient(to bottom right,
-          black var(--wipe-position),
-          transparent calc(var(--wipe-position) + var(--gradient-length)),
-          transparent);
-
-      transition: --wipe-position 6s cubic-bezier(0, 0.55, 0.45, 1);
-    }
-
-    .stem-1.reveal {
-      --wipe-position: calc(-1 * var(--gradient-length));
     }
 
     .stem-1-leaf-1 {
