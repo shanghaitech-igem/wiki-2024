@@ -155,7 +155,7 @@ const config = {
               // Customize the prompt used in shell output
               // Values below are default
               prompt: {
-                user: "root",
+                user: "user",
                 host: "localhost",
                 global: true,
               },

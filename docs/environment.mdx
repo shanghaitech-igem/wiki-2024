@@ -198,25 +198,25 @@ It should output `v20.17.0`.
 
 ## Install dependencies
 
-In the terminal, run:
+In the terminal, run:to install `pnpm`:
+
+```shell
+curl -fsSL https://get.pnpm.io/install.sh | sh -
+```
+
+Then run this command to install the dependencies:
+
+```shell
+pnpm install -r
+```
+
+After that, run:
 
 ```shell
 npx playwright install --with-deps chromium
 ```
 
 You may notice some terrifying output, but don't worry, just input `y` and hit `Enter↵` or type in your password to continue.
-
-Then run this command:
-
-```shell
-curl -fsSL https://get.pnpm.io/install.sh | sh -
-```
-
-After that, run:
-
-```shell
-pnpm install -r
-```
 
 the core dependencies to run the project are all set.
 
