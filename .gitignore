@@ -6,4 +6,5 @@ contents/*-test.md
 assets/
 public/
 server/
+static/
 .venv/
