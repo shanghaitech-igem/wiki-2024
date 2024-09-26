@@ -2,17 +2,19 @@ import * as React from "react";
 import Layout from "src/components/layout";
 import Seo from "src/components/seo";
 import Favicon from "src/components/favicon";
+import SvgImg from "src/components/index/svg-img";
+import { main, stems, leaves } from "src/components/index/objects";
+
 import * as styles from "src/styles/modules/index.module.scss";
+
 import ScrollReveal from "scrollreveal";
 
-import Draw from "src/components/draw";
-
-const { title, container, titlePrompt, loadHidden } = styles;
+const { title, container, titlePrompt } = styles;
 
 const IndexPage: React.FC = () => {
   return (
     <Layout>
-      <div className={container}>
+      <div className={container} style={{ position: "relative" }}>
         <div className={styles.titleContainer}>
           <div className={styles.titleBanner}>
             <svg
@@ -29,7 +31,13 @@ const IndexPage: React.FC = () => {
           <p className={`${title} load-hidden`}>PACIFY</p>
           <p className={titlePrompt}>scroll down ↓</p>
         </div>
-        <Draw />
+        <SvgImg key={`leaf-main`} {...main} />
+        {stems.map((stem, index) => (
+          <SvgImg key={`stem-${index}`} {...stem} />
+        ))}
+        {leaves.map((leaf, index) => (
+          <SvgImg key={`leaf-${index}`} {...leaf} />
+        ))}
       </div>
     </Layout>
   );
