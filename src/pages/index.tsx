@@ -4,14 +4,22 @@ import Seo from "src/components/seo";
 import Favicon from "src/components/favicon";
 import SvgImg from "src/components/index/svg-img";
 import { main, stems, leaves } from "src/components/index/objects";
-
 import * as styles from "src/styles/modules/index.module.scss";
-
 import ScrollReveal from "scrollreveal";
 
 const { title, container, titlePrompt } = styles;
 
 const IndexPage: React.FC = () => {
+  React.useEffect(() => {
+    ScrollReveal().reveal('.leaf-reveal', {
+      scale: 0.5,
+      delay: 100,
+      opacity: 0,
+      duration: 1200,
+      reset: false, // Ensures the animation happens only one time.
+    });
+  }, []);
+
   return (
     <Layout>
       <div className={container} style={{ position: "relative" }}>
@@ -36,7 +44,7 @@ const IndexPage: React.FC = () => {
           <SvgImg key={`stem-${index}`} {...stem} />
         ))}
         {leaves.map((leaf, index) => (
-          <SvgImg key={`leaf-${index}`} {...leaf} />
+          <SvgImg key={`leaf-${index}`} {...leaf} className="leaf-reveal" />
         ))}
       </div>
     </Layout>

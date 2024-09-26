@@ -7,6 +7,7 @@ interface SvgProps {
   size?: number;
   rotate?: number;
   reverseX?: boolean;
+  className?: string;
 }
 
 const SvgImage: React.FC<SvgProps> = ({
@@ -16,10 +17,11 @@ const SvgImage: React.FC<SvgProps> = ({
   size,
   rotate,
   reverseX,
+  className,
 }) => {
   return (
     <>
-      <img
+      <img className={className}
         src={src}
         alt=""
         style={{
