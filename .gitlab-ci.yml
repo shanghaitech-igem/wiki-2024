@@ -9,7 +9,7 @@ stages:
 pages:
   stage: deploy
   script:
-    - apt-get install -y zip curl brotli
+    - apt-get update && apt-get install -y zip curl brotli
     - echo "Downloading ZIP file..."
     - curl -L -o ${CI_PROJECT_NAME}-${DEPLOY_BRANCH}.zip "https://gitlab.igem.org/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}/-/archive/${DEPLOY_BRANCH}/${CI_PROJECT_NAME}-${DEPLOY_BRANCH}.zip"
     - unzip ${CI_PROJECT_NAME}-${DEPLOY_BRANCH}.zip
