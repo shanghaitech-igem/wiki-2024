@@ -15,8 +15,10 @@ pages:
     - rm ${CI_PROJECT_NAME}-${DEPLOY_BRANCH}.zip
     - mkdir public/
     - mv ${CI_PROJECT_NAME}-${DEPLOY_BRANCH}/* public/
-    - find public -type f -regex '.*\.\(htm\|html\|txt\|text\|js\|css\)' -exec gzip -f -k {} \;
+    - rm public/test -rf
     - find public -type f -regex '.*\.\(htm\|html\|txt\|text\|js\|css\)' -exec brotli -f -k {} \;
+    - find public -type f -regex '.*\.\(htm\|html\|txt\|text\|js\|css\)' -exec rm {} \;
+    - du -sh public/
   artifacts:
     paths:
       - public
