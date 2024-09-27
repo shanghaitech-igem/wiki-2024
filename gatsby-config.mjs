@@ -24,6 +24,15 @@ const config = {
     // `gatsby-plugin-webpack-bundle-analyser-v2`,
     `gatsby-plugin-catch-links`,
     `gatsby-plugin-sass`,
+    `gatsby-plugin-postcss`,
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /server/, // See below to configure properly
+        },
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
