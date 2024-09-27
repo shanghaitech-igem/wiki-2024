@@ -14,7 +14,8 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "deploy": "gatsby clean && gatsby build --prefix-paths && gh-pages -d public -b pages"
   },
   "dependencies": {
     "@iconify/react": "^5.0.2",
@@ -35,6 +36,7 @@
     "gatsby-remark-prismjs-copy-btn": "link:src/plugins/remark-prismjs-copy-btn",
     "gatsby-remark-smartypants": "^6.13.1",
     "gatsby-source-filesystem": "^5.13.1",
+    "gh-pages": "^6.1.1",
     "katex": "^0.16.11",
     "plotly.js-finance-dist": "^2.35.2",
     "postcss": "^8.4.47",
