@@ -25,6 +25,14 @@ const config = {
     `gatsby-plugin-catch-links`,
     `gatsby-plugin-sass`,
     {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /server/ // See below to configure properly
+        }
+      }
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `contents`,

@@ -1,7 +1,7 @@
 import React from "react";
 
 interface SvgProps {
-  src: string;
+  Component: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
   x: number;
   y: number;
   size?: number;
@@ -10,8 +10,8 @@ interface SvgProps {
   className?: string;
 }
 
-const SvgImage: React.FC<SvgProps> = ({
-  src,
+const SvgStatic: React.FC<SvgProps> = ({
+  Component,
   x,
   y,
   size,
@@ -21,10 +21,8 @@ const SvgImage: React.FC<SvgProps> = ({
 }) => {
   return (
     <>
-      <img
+      <Component
         className={className}
-        src={src}
-        alt=""
         style={{
           width: size ? `${size}px` : "auto",
           position: "absolute",
@@ -33,9 +31,8 @@ const SvgImage: React.FC<SvgProps> = ({
           top: y,
         }}
       />
-      <img
-        src={src}
-        alt=""
+      <Component
+        className={className}
         style={{
           width: size ? `${size}px` : "auto",
           position: "relative",
@@ -46,4 +43,4 @@ const SvgImage: React.FC<SvgProps> = ({
   );
 };
 
-export default SvgImage;
+export default SvgStatic;

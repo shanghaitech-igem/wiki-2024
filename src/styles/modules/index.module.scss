@@ -78,6 +78,7 @@ main {
 
   .container {
     overflow: hidden;
+    min-height: 150vh;
 
     .leaf-main {
       margin-left: auto; // Pushes the SVG to the right

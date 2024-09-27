@@ -2,8 +2,10 @@ import * as React from "react";
 import Layout from "src/components/layout";
 import Seo from "src/components/seo";
 import Favicon from "src/components/favicon";
+import SvgStatic from "src/components/index/svg-static";
 import SvgImg from "src/components/index/svg-img";
-import { main, stems, leaves } from "src/components/index/objects";
+import { main } from "src/components/index/objects-static";
+import { stems, leaves } from "src/components/index/objects-img";
 import * as styles from "src/styles/modules/index.module.scss";
 import ScrollReveal from "scrollreveal";
 
@@ -16,7 +18,7 @@ const IndexPage: React.FC = () => {
       opacity: 0,
       duration: 1200,
       viewOffset: {
-        bottom: 230,
+        bottom: 130,
       },
       reset: false, // Ensures the animation happens only one time.
     });
@@ -30,11 +32,13 @@ const IndexPage: React.FC = () => {
       easing: "ease-out",
       reset: false, // Ensures the animation happens only one time.
     });
+
     ScrollReveal().reveal(`.${title}`, {
       delay: startDelay + interval * 1,
       distance: "100px",
       reset: false,
     });
+
     ScrollReveal().reveal(`.${titlePrompt}`, {
       delay: startDelay + interval * 2,
       reset: false,
@@ -60,7 +64,7 @@ const IndexPage: React.FC = () => {
           <p className={`${title} load-hidden`}>PACIFY</p>
           <p className={`${titlePrompt} load-hidden`}>scroll down ↓</p>
         </div>
-        <SvgImg key={`leaf-main`} {...main} />
+        <SvgStatic key={`leaf-main`} {...main} />
         {stems.map((stem, index) => (
           <SvgImg key={`stem-${index}`} {...stem} />
         ))}

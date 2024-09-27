@@ -1,4 +1,3 @@
-
 export const main = {
   src: "server/home/leaf-main.svg",
   x: -100,
@@ -68,4 +67,3 @@ export const leaves = [
     reverseX: true,
   },
 ];
-

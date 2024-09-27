@@ -24,6 +24,7 @@
     "gatsby-plugin-mdx": "^5.13.1",
     "gatsby-plugin-nprogress": "^5.13.1",
     "gatsby-plugin-purgecss": "^6.2.1",
+    "gatsby-plugin-react-svg": "^3.3.0",
     "gatsby-plugin-sass": "^6.13.1",
     "gatsby-remark-header-link": "link:src/plugins/remark-header-link",
     "gatsby-remark-katex": "link:src/plugins/remark-katex",
@@ -44,11 +45,12 @@
     "remark-gfm": "^3.0.1",
     "remark-math": "5.1.1",
     "sass": "^1.79.3",
-    "scrollreveal": "^4.0.9"
+    "scrollreveal": "^4.0.9",
+    "svg-react-loader": "^0.4.6"
   },
   "devDependencies": {
     "@types/katex": "^0.16.7",
-    "@types/node": "^22.7.2",
+    "@types/node": "^22.7.3",
     "@types/react": "^18.3.9",
     "@types/react-dom": "^18.3.0",
     "@types/react-loadable": "^5.5.11",
