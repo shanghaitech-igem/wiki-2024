@@ -37,11 +37,13 @@
     "prismjs": "^1.29.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-intersection-observer": "^9.13.1",
     "react-loadable": "^5.5.0",
     "react-plotly.js": "^2.6.0",
     "remark-gfm": "^3.0.1",
     "remark-math": "5.1.1",
-    "sass": "^1.79.3"
+    "sass": "^1.79.3",
+    "scrollreveal": "^4.0.9"
   },
   "devDependencies": {
     "@types/katex": "^0.16.7",
@@ -50,6 +52,7 @@
     "@types/react-dom": "^18.3.0",
     "@types/react-loadable": "^5.5.11",
     "@types/react-plotly.js": "^2.6.3",
+    "@types/scrollreveal": "^0.0.11",
     "gatsby-plugin-perf-budgets": "^0.0.18",
     "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.32",
     "typescript": "^5.6.2"

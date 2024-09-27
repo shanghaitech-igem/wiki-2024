@@ -3,113 +3,117 @@
 @use "sass:math";
 
 main {
-  .title {
-    margin-bottom: 4rem;
-    margin-top: 10rem;
-    color: light.$pacify-char-layout;
-    font-size: 8rem;
-    font-family: fonts.$pacify-title;
-    font-weight: normal;
-    font-style: normal;
-  }
+  .page {
+    padding: 10rem 8rem;
 
-  .content {
-    display: flex;
-    justify-content: center;
-
-    .toc {
-      flex: 0 0 22vw;
-      align-self: flex-start;
-      position: sticky;
-      font-family: "Cinzel";
-      font-size: xx-large;
+    .title {
+      margin-bottom: 4rem;
+      color: light.$pacify-char-layout;
+      font-size: 8rem;
+      font-family: fonts.$pacify-title;
+      font-weight: normal;
       font-style: normal;
-      font-weight: 700;
-      min-width: 16rem;
-      margin-top: 20rem;
-      top: 8rem;
+    }
 
-      li {
-        margin: 2rem 0;
-        line-height: 1em;
+    .content {
+      display: flex;
+      justify-content: center;
 
-        &::marker {
-          content: "";
-        }
+      .toc {
+        flex: 0 0 20vw;
+        align-self: flex-start;
+        position: sticky;
+        font-family: "Cinzel";
+        font-size: xx-large;
+        font-style: normal;
+        font-weight: 700;
+        min-width: 16rem;
+        margin-top: 10rem;
+        top: 8rem;
 
-        a {
-          color: #fff;
+        li {
+          margin: 2rem 0;
+          line-height: 1em;
 
-          &:hover {
-            color: light.$pacify-char-layout-dimmed;
+          &::marker {
+            content: "";
+          }
+
+          a {
+            color: #fff;
+
+            &:hover {
+              color: light.$pacify-char-layout-dimmed;
+            }
           }
         }
       }
-    }
 
-    .article {
-      flex: 0 0 68vw;
-      max-width: 70vw;
-      min-height: 35rem;
-      padding: 10rem 8rem;
-      border-radius: 25rem 0;
-      background: light.$pacify-body;
-      font-family: fonts.$pacify-content-primary;
-      font-size: larger;
-      font-weight: 400;
-      line-height: 1.5em;
-      letter-spacing: 0.05em;
+      .article {
+        flex: 0 0 75vw;
+        max-width: 70vw;
+        min-height: 35rem;
+        padding: 0rem 8rem 10rem 8rem;
+        border-radius: 25rem 0;
+        background: light.$pacify-body;
+        font-family: fonts.$pacify-content-primary;
+        font-size: larger;
+        font-weight: 400;
+        line-height: 1.5em;
+        letter-spacing: 0.05em;
 
-      h1 {
-        color: #000;
-        text-align: center;
-        font-family: fonts.$pacify-title;
-        font-size: 3em;
-        font-style: normal;
-        font-weight: 700;
-        line-height: normal;
-        padding-top: 4rem;
-        padding-bottom: 0rem;
-      }
-
-      p {
-        margin: 0 0.5rem 1.5rem 0.5rem;
-
-        strong {
-          color: light.$pacify-char-strong;
+        h1 {
+          color: #000;
+          text-align: center;
+          font-family: fonts.$pacify-title;
+          font-size: 3em;
+          font-style: normal;
+          font-weight: 700;
+          line-height: normal;
+          padding-top: 3rem;
+          padding-bottom: 0rem;
         }
-      }
 
-      li {
         p {
-          margin: 0;
-        }
-      }
+          margin: 0 0.5rem 1.5rem 0.5rem;
 
-      a {
-        color: light.$pacify-success;
-      }
-
-      table {
-        text-align: left;
-        margin: auto;
-        font-family: fonts.$pacify-content-secondary;
-
-        td,
-        th {
-          padding: math.div(light.$pacify-separation, 2) 2.4em math.div(light.$pacify-separation, 2) light.$pacify-separation;
+          strong {
+            color: light.$pacify-char-strong;
+          }
         }
 
-        th {
+        li {
+          p {
+            margin: 0;
+          }
+        }
+
+        a {
+          color: light.$pacify-success;
+        }
+
+        table {
           text-align: left;
-          font-weight: 900;
-          color: light.$pacify-char-layout;
-          background-color: light.$pacify-primary;
-        }
+          margin: auto;
+          font-family: fonts.$pacify-content-secondary;
 
-        // Zebra stripes
-        tr:nth-child(even) {
-          background: rgba(#111, 0.05);
+          td,
+          th {
+            padding: math.div(light.$pacify-separation, 2) 2.4em
+              math.div(light.$pacify-separation, 2) light.$pacify-separation;
+          }
+
+          th {
+            text-align: left;
+            font-weight: 900;
+            color: light.$pacify-char-layout;
+            background-color: light.$pacify-primary;
+          }
+
+          // Zebra stripes
+          tr:nth-child(even) {
+            background: rgba(#111, 0.05);
+          }
         }
       }
     }

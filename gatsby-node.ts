@@ -5,16 +5,30 @@ import * as path from "path";
 export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = ({
   stage,
   actions,
+  loaders,
 }) => {
   if (stage === `build-javascript`) {
     actions.setWebpackConfig({
       devtool: false,
     });
   }
-  
-  actions.setWebpackConfig( {
+
+  actions.setWebpackConfig({
     resolve: {
-      modules: [ path.resolve( __dirname, `./` ), `node_modules` ],
+      modules: [path.resolve(__dirname, `./`), `node_modules`],
     },
-  } )
+  });
+
+  if (stage === "build-html" || stage === "develop-html") {
+    actions.setWebpackConfig({
+      module: {
+        rules: [
+          {
+            test: /scrollreveal/,
+            use: loaders.null(),
+          },
+        ],
+      },
+    });
+  }
 };
