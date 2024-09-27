@@ -38,19 +38,25 @@ const LoadableModel = Loadable<StlViewerProps, any>({
 // Model Component
 interface ModelProps {
   src: string;
+  title: string;
 }
 
-const Model: React.FC<ModelProps> = ({ src }) => {
-  src = parseRemoteURL(src)
+const Model: React.FC<ModelProps> = ({ src, title }) => {
+  const caption = title;
+  src = parseRemoteURL(src);
   return (
-    <div className={styles.model}>
-      <LoadableModel
-        orbitControls
-        shadows
-        url={src}
-        style={{ width: "100%", height: "100%" }}
-      />
-    </div>
+    <>
+      <div className={styles.container}>
+        <div className={styles.model}>
+          <LoadableModel
+            orbitControls
+            shadows
+            url={src}
+          />
+        </div>
+        <div className={styles.caption}>{caption}</div>
+      </div>
+    </>
   );
 };
 
