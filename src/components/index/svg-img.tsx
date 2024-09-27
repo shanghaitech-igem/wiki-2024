@@ -1,4 +1,5 @@
 import React from "react";
+import parseRemoteURL from "src/utils/remote-url-parser";
 
 interface SvgProps {
   src: string;
@@ -19,6 +20,7 @@ const SvgImage: React.FC<SvgProps> = ({
   reverseX,
   className,
 }) => {
+  src = parseRemoteURL(src);
   return (
     <>
       <img

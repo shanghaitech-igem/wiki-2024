@@ -1,0 +1,58 @@
+main {
+  .model {
+    background-color: #f9f9f9; /* Light background for better contrast */
+    border: 1px solid #ddd; /* Light border for better definition */
+    border-radius: 8px; /* Rounded corners for a modern look */
+    padding: 5px; /* Padding for spacing around the plot */
+    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+    width: 100%; /* Full width of the parent container */
+    height: 100%; /* Full height of the parent container */
+    max-width: 800px;
+    max-height: 500px;
+    margin: 2rem auto; /* Center the plot horizontally */
+  }
+
+  .loading-spinner {
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #555; /* Subtle text color */
+
+    .spinner {
+      border: 4px solid rgba(0, 0, 0, 0.1);
+      border-left-color: #007bff; /* Primary color for the spinner */
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      animation: spin 1s linear infinite;
+    }
+
+    p {
+      margin-top: 10px;
+      font-size: 14px; /* Slightly smaller font size */
+      color: #333; /* Darker text color for better readability */
+    }
+  }
+
+  .timeout-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #d9534f; /* Bootstrap's danger color */
+    font-style: italic;
+    font-size: 16px; /* Slightly larger font size */
+    background-color: #f8d7da; /* Light red background */
+    border: 1px solid #f5c6cb; /* Matching border */
+    border-radius: 4px; /* Rounded corners */
+    padding: 10px 15px; /* Padding for spacing */
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}

@@ -1,9 +1,9 @@
-import MainLeaf from "server/home/leaf-main.svg";
+import LeafMain from "server/home/leaf-main.svg";
 import Stem1 from "server/home/stem-1.svg";
 import LeafStem from "server/home/leaf-stem.svg";
 
 export const main = {
-  Component: MainLeaf,
+  Component: LeafMain,
   x: -100,
   y: -100,
   size: 1200,

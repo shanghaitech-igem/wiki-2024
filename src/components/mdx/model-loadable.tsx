@@ -1,7 +1,8 @@
 import React from "react";
 import Loadable from "react-loadable";
-import * as styles from "src/styles/modules/plot.module.scss";
+import * as styles from "src/styles/modules/model.module.scss";
 import { StlViewerProps } from "react-stl-viewer";
+import parseRemoteURL from "src/utils/remote-url-parser";
 
 // LoadingSpinner Component
 const LoadingSpinner: React.FC = () => {
@@ -35,13 +36,18 @@ const LoadableModel = Loadable<StlViewerProps, any>({
 });
 
 // Model Component
-const Model: React.FC = () => {
+interface ModelProps {
+  src: string;
+}
+
+const Model: React.FC<ModelProps> = ({ src }) => {
+  src = parseRemoteURL(src)
   return (
-    <div className={styles.plot}>
+    <div className={styles.model}>
       <LoadableModel
         orbitControls
         shadows
-        url="https://static.igem.wiki/teams/5174/test/test-stl-model.stl"
+        url={src}
         style={{ width: "100%", height: "100%" }}
       />
     </div>
