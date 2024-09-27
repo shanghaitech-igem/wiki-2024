@@ -6,7 +6,25 @@ slug: "model"
 
 # Overview
 
-Modeling is a pivotal tool for understanding complex biological systems. In iGEM projects, modeling serves not only as a means to predict or interpret experimental data but also as a bridge for designing experiments and comprehending biological processes. A well-crafted model can reveal the intrinsic laws of a biological system, predict its behavior under various conditions, and guide experimental design. In our project, we have deepened our understanding of the v8 protease mechanism and optimized our experimental design by constructing and analyzing models. 
+Modeling is a pivotal tool for _understanding complex biological systems_, it serves not only as a means to predict or interpret experimental data but also as a bridge for designing experiments and comprehending biological processes. In our project, we have deepened our understanding of the **v8 protease mechanism** and **optimized our experimental design** by constructing and analyzing models. Modeling also **enhances the discovery of effective therapeutic agents** and **accelerates our experimental approach**.
+
+
+### **Model 1: Ordinary Differential Equations (ODE)**
+
+Our [first model](#ode) employs **Ordinary Differential Equations (ODEs)** to _simulate the expression levels of the v8 protease and key components within the flip-GFP system_. This model is crucial for understanding the dynamics of protein expression and its impact on receptor cleavage. By using ODEs, we can predict the behavior of these proteins in E.coli , which aids in the design of our therapeutic interventions.
+
+### **Model 2: Molecular Simulation**
+For our [second model](#molecular-simulation), we utilized **Homology Modeling** and **Molecular Dynamics** techniques. Initially, we performed homology modeling to obtain the structure of β10-E5-β11-K5, and then used **AlphaFold 2** to predict the structure of β1-β9. This step was followed by protein preparation (using **Schrodinger**) and molecular dynamics simulation (using **GROMACS**), which provided insights into the protein's behavior at the atomic level. This model is instrumental in _understanding the flip-GFP system_.
+
+### **Model 3: Relative Fluorescence Model**
+
+The [third model](#relative-fluorescence-model), which is the **Relative Fluorescence Model**, was developed to quantify the relationship between relative fluorescence and time, for relative fluorescence intensity is a function of the concentration of flipCherrysf while the concentration of flipCherrysf is also a function of time. By implying this model, we are able to _predict the change of fluorescence intensity with time and examine if the self-packing ODE model is correct._
+
+### **Model 4: Virtual Screening**
+
+Our [final model](#virtual-screening) involves **Virtual Screening**, where we searched the ChemDiv library for small molecules that can inhibit the v8 protease. This in silico approach allows us to _narrow down potential candidates without the need for laborious and costly experimental trials._ The model's output guides our experimental design by predicting which compounds are most likely to be effective inhibitors.
+
+
 
 # ODE
 
@@ -14,8 +32,9 @@ Modeling is a pivotal tool for understanding complex biological systems. In iGEM
 # Molecular Simulation
 **Molecular simulation**
 
-## 
+## T
 
+<Model title="Protein.4 cleaved flip GFP" src="server/contents/model/md-cleaved.stl" />
 
 # Relative Fluorescence Model
 
