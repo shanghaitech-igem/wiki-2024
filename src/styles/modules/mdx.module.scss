@@ -53,7 +53,7 @@ main {
         flex: 0 0 75vw;
         max-width: 70vw;
         min-height: 35rem;
-        padding: 10rem 8rem 10rem 8rem;
+        padding: 0 8rem 10rem 8rem;
         border-radius: 25rem 0;
         background: light.$pacify-body;
         font-family: fonts.$pacify-content-primary;
@@ -61,6 +61,11 @@ main {
         font-weight: 400;
         line-height: 1.5em;
         letter-spacing: 0.05em;
+
+        &> :first-child:not(h1) {
+          padding-top: 10rem;
+        }
+
 
         h1 {
           color: #000;
@@ -72,6 +77,10 @@ main {
           line-height: normal;
           padding-top: 3rem;
           padding-bottom: 0rem;
+        }
+
+        h2 {
+          padding-top: 1.5rem;
         }
 
         p {
@@ -99,8 +108,7 @@ main {
 
           td,
           th {
-            padding: math.div(light.$pacify-separation, 2) 2.4em
-              math.div(light.$pacify-separation, 2) light.$pacify-separation;
+            padding: math.div(light.$pacify-separation, 2) 2.4em math.div(light.$pacify-separation, 2) light.$pacify-separation;
           }
 
           th {

@@ -80,10 +80,7 @@ const MDXPage: React.FC<MdxPageProps> = ({ data, children }) => {
         <header className={title}>{frontmatter.title}</header>
         <div className={content}>
           <TOC className={toc} tableOfContents={data.mdx.tableOfContents} />
-          <article
-            className={article}
-            style={data.mdx.tableOfContents.items ? { paddingTop: "0rem" } : {}}
-          >
+          <article className={article}>
             <MDXProvider components={components}>{children}</MDXProvider>
           </article>
         </div>
