@@ -1,7 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Link } from "gatsby";
 
-import * as styles from "src/styles/modules/mdx.module.scss";
+import * as modalStyles from "src/styles/modules/modal.module.scss";
+
+import * as mdxStyles from "src/styles/modules/mdx.module.scss";
 
 export interface TocItem {
   url: string;
@@ -57,7 +59,9 @@ const TOC: React.FC<TocProps> = ({
       rootMargin: "0px 0px 0px 0px",
     });
 
-    const headingElements = document.querySelectorAll("article h1");
+    const headingElements = Array.from(document.querySelectorAll("article h1")).filter(
+      (element) => !element.closest(`.${modalStyles.modal}`)
+    );
     headingElements.forEach((element) => observer.observe(element));
 
     return () => observer.disconnect();
@@ -80,7 +84,7 @@ const TOC: React.FC<TocProps> = ({
       .map((item) => (
         <li key={item.url}>
           <Link
-            className={activeId === item.url.slice(1) ? styles.active : ""}
+            className={activeId === item.url.slice(1) ? mdxStyles.active : ""}
             to={`${prefix}${item.url}`}
           >
             {item.title}
