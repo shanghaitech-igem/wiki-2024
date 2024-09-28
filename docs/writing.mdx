@@ -89,6 +89,10 @@ This tutorial is meant to help you get started with writing your own MDX page fo
 
     ###### H6 Heading
 
+- Notes:
+  _The H1 Headings are used to generate the TOC._
+
+
 ## Horizontal Rules
 
 - **Syntax:**
@@ -106,6 +110,34 @@ This tutorial is meant to help you get started with writing your own MDX page fo
   - **Result:**
 
     ***
+
+## Section Split
+
+- **Syntax:**
+
+  ```markdown
+  ------
+  ```
+
+- **Example:**
+  - **Code:**
+    ```markdown
+    # Section 1
+
+    This is the first section.
+
+    references[^1] are in a separate section.
+
+    [^1]: This is the references section, 
+
+    ------
+
+    # Section 2
+
+    This is the second section.
+    ```
+  - **Result:**
+    [Take a look at this page](/docs/split)
 
 ## Emphasis
 
@@ -518,6 +550,10 @@ Currently, following components are supported in our Wiki MDX pages:
 - `Video`: Embed videos with a player.
 
 - `Audio`: Embed audio files with a player.
+
+- `Model`: Embed 3D models with a interactive viewer.
+
+- `Collapse`: Create a collapsible container.
 
 ### An Example of JSX Component
 
