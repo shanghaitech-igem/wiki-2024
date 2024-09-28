@@ -1,0 +1,13 @@
+{
+  "name": "gatsby-remark-section-split",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "dependencies": {
+    "unist-util-visit": "^5.0.0"
+  }
+}

@@ -9,6 +9,7 @@ import Image from "src/components/mdx/image";
 import Modal from "src/components/mdx/modal";
 import Plot from "src/components/mdx/plot-loadable";
 import Model from "src/components/mdx/model-loadable";
+import Collapse from "src/components/mdx/collapse";
 const components = {
   Video,
   PDF,
@@ -17,6 +18,7 @@ const components = {
   Modal,
   Plot,
   Model,
+  Collapse,
   img: Image,
 };
 
@@ -27,9 +29,7 @@ import Tracer from "src/components/tracer";
 import { TocItem } from "src/components/toc";
 import TOC from "src/components/toc";
 
-import "prismjs/themes/prism-solarizedlight.min.css";
-import "prismjs/plugins/line-numbers/prism-line-numbers.min.css";
-import "prismjs/plugins/command-line/prism-command-line.min.css";
+import * as styles from "src/styles/modules/mdx.module.scss";
 
 import "src/styles/global/prismjs.scss";
 import "src/styles/global/katex.scss";
@@ -38,7 +38,9 @@ import "src/styles/global/copy-btn.scss";
 import "src/styles/global/header-anchor.scss";
 import "src/styles/global/mermaid.scss";
 
-import * as styles from "src/styles/modules/mdx.module.scss";
+import "prismjs/themes/prism-solarizedlight.min.css";
+import "prismjs/plugins/line-numbers/prism-line-numbers.min.css";
+import "prismjs/plugins/command-line/prism-command-line.min.css";
 
 const { title, content, toc, article, page } = styles;
 
@@ -60,6 +62,11 @@ interface MdxPageProps {
 
 const MDXPage: React.FC<MdxPageProps> = ({ data, children }) => {
   React.useEffect(() => {
+    const footnoteLabel = document.querySelector("#footnote-label");
+    if (footnoteLabel) {
+      footnoteLabel.textContent = "References";
+    }
+
     // Attach the copy event listener
     document.addEventListener("copy", handleCopyTex);
 

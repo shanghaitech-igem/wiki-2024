@@ -183,6 +183,7 @@ const config = {
               output: "htmlAndMathml",
             },
           },
+          `gatsby-remark-section-split`,
         ],
       },
     },
