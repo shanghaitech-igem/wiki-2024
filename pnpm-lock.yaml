@@ -56,6 +56,9 @@ importers:
       gatsby-remark-prismjs-copy-btn:
         specifier: link:src/plugins/remark-prismjs-copy-btn
         version: link:src/plugins/remark-prismjs-copy-btn
+      gatsby-remark-section-split:
+        specifier: link:src/plugins/remark-section-split
+        version: link:src/plugins/remark-section-split
       gatsby-remark-smartypants:
         specifier: ^6.13.1
         version: 6.13.1(gatsby@5.13.7(@types/webpack@4.41.39)(babel-eslint@10.1.0(eslint@7.32.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.6.2))
