@@ -54,10 +54,11 @@ main {
 
       .article {
         flex: 0 0 75vw;
+
         section {
           max-width: 70vw;
           min-height: 35rem;
-          padding: 0 8rem 10rem 8rem;
+          padding: 1rem 8rem 10rem 8rem;
           border-radius: 25rem 0;
           margin: 10rem 0;
           background: light.$pacify-body;
@@ -66,6 +67,10 @@ main {
           font-weight: 400;
           line-height: 1.5em;
           letter-spacing: 0.05em;
+
+          &:first-of-type {
+            margin-top: 0; // Adjust the value as needed
+          }
 
           & > :first-child:not(h1) {
             padding-top: 10rem;
@@ -79,12 +84,12 @@ main {
             font-style: normal;
             font-weight: 700;
             line-height: normal;
-            padding-top: 5rem;
+            margin-top: 5rem;
             padding-bottom: 0rem;
           }
 
           h2 {
-            padding-top: 1.5rem;
+            margin-top: 1.5rem;
           }
 
           p {
