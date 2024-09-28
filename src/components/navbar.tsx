@@ -50,27 +50,29 @@ const NavBar: React.FC = () => {
   `);
 
   return (
-    <nav className={styles.navBar}>
-      <Link to="/" className={styles.brand}>
-        <img className={styles.logo} src={parseRemoteURL(data.site.siteMetadata.logo)} />
-      </Link>
+    <>
+      <nav className={styles.navBarGlass}></nav>
+      <nav className={styles.navBar}>
+        <Link to="/" className={styles.brand}>
+          <img
+            className={styles.logo}
+            src={parseRemoteURL(data.site.siteMetadata.logo)}
+          />
+        </Link>
 
-      {/* Responsive Activator */}
-      <input id="bmenub" type="checkbox" className={styles.show} />
-      <label
-        htmlFor="bmenub"
-        className={`${styles.burger}`}
-      >
-        &#9776;
-      </label>
-      {/* Responsive Activator */}
-
-      <div className={styles.navMenu}>
-        {navItems.map((item) => (
-          <NavItem key={item.id} item={item} />
-        ))}
-      </div>
-    </nav>
+        {/* Responsive Activator */}
+        <input id="bmenub" type="checkbox" className={styles.show} />
+        <label htmlFor="bmenub" className={`${styles.burger}`}>
+          &#9776;
+        </label>
+        {/* Responsive Activator */}
+        <div className={styles.navMenu}>
+          {navItems.map((item) => (
+            <NavItem key={item.id} item={item} />
+          ))}
+        </div>
+      </nav>
+    </>
   );
 };
 

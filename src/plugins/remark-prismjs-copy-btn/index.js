@@ -1,4 +1,4 @@
-import { CONTINUE, visit } from "unist-util-visit";
+import { visit } from "unist-util-visit";
 import parseOptions from "./parse-options.js";
 
 function convertContentsToJavaScriptString(code) {

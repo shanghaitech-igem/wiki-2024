@@ -38,9 +38,12 @@ main {
           &::marker {
             content: "";
           }
-
           a {
             color: #fff;
+
+            &.active {
+              color: light.$pacify-char-layout-dimmed;
+            }
 
             &:hover {
               color: light.$pacify-char-layout-dimmed;
@@ -51,76 +54,98 @@ main {
 
       .article {
         flex: 0 0 75vw;
-        max-width: 70vw;
-        min-height: 35rem;
-        padding: 0 8rem 10rem 8rem;
-        border-radius: 25rem 0;
-        background: light.$pacify-body;
-        font-family: fonts.$pacify-content-primary;
-        font-size: larger;
-        font-weight: 400;
-        line-height: 1.5em;
-        letter-spacing: 0.05em;
 
-        &> :first-child:not(h1) {
-          padding-top: 10rem;
-        }
+        section {
+          max-width: 70vw;
+          min-height: 35rem;
+          padding: 1rem 8rem 10rem 8rem;
+          border-radius: 25rem 0;
+          margin: 10rem 0;
+          background: light.$pacify-body;
+          font-family: fonts.$pacify-content-primary;
+          font-size: larger;
+          font-weight: 400;
+          line-height: 1.5em;
+          letter-spacing: 0.05em;
 
-
-        h1 {
-          color: #000;
-          text-align: center;
-          font-family: fonts.$pacify-title;
-          font-size: 3em;
-          font-style: normal;
-          font-weight: 700;
-          line-height: normal;
-          padding-top: 3rem;
-          padding-bottom: 0rem;
-        }
-
-        h2 {
-          padding-top: 1.5rem;
-        }
-
-        p {
-          margin: 0 0.5rem 1.5rem 0.5rem;
-
-          strong {
-            color: light.$pacify-char-strong;
+          &:first-of-type {
+            margin-top: 0; // Adjust the value as needed
           }
-        }
 
-        li {
+          & > :first-child:not(h1) {
+            padding-top: 10rem;
+          }
+
+          h1 {
+            color: #000;
+            text-align: center;
+            font-family: fonts.$pacify-title;
+            font-size: 3em;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            margin-top: 5rem;
+            padding-bottom: 0rem;
+          }
+
+          h2 {
+            margin-top: 1.5rem;
+          }
+
           p {
-            margin: 0;
-          }
-        }
+            margin: 0 0.5rem 1.5rem 0.5rem;
 
-        a {
-          color: light.$pacify-success;
-        }
-
-        table {
-          text-align: left;
-          margin: auto;
-          font-family: fonts.$pacify-content-secondary;
-
-          td,
-          th {
-            padding: math.div(light.$pacify-separation, 2) 2.4em math.div(light.$pacify-separation, 2) light.$pacify-separation;
+            strong {
+              color: light.$pacify-char-strong;
+            }
           }
 
-          th {
-            text-align: left;
-            font-weight: 900;
-            color: light.$pacify-char-layout;
-            background-color: light.$pacify-primary;
+          li {
+            p {
+              margin: 0;
+            }
           }
 
-          // Zebra stripes
-          tr:nth-child(even) {
-            background: rgba(#111, 0.05);
+          a {
+            color: light.$pacify-success;
+          }
+
+          table {
+            margin: 2em auto;
+            font-family: fonts.$pacify-content-secondary;
+            border-collapse: collapse;
+            overflow: hidden;
+
+            td,
+            th {
+              padding: math.div(light.$pacify-separation, 2) 2.4em;
+              transition: background-color 0.3s ease, transform 0.3s ease;
+            }
+
+            th {
+              font-weight: 900;
+              color: light.$pacify-char-layout;
+              background-color: light.$pacify-primary;
+            }
+
+            // Zebra stripes
+            tr:nth-child(even) {
+              background: rgba(#111, 0.05);
+            }
+
+            // Hover effect for cells
+            td:hover,
+            th:hover {
+              background-color: rgba(#111, 0.1);
+              transform: scale(1.05);
+            }
+
+            // Active effect for cells
+            td:active,
+            th:active {
+              background-color: rgba(#111, 0.15);
+              transform: scale(1);
+            }
           }
         }
       }
