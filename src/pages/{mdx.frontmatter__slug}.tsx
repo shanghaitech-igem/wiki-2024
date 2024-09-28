@@ -9,6 +9,7 @@ import Image from "src/components/mdx/image";
 import Modal from "src/components/mdx/modal";
 import Plot from "src/components/mdx/plot-loadable";
 import Model from "src/components/mdx/model-loadable";
+import Collapse from "src/components/mdx/collapse";
 const components = {
   Video,
   PDF,
@@ -17,6 +18,7 @@ const components = {
   Modal,
   Plot,
   Model,
+  Collapse,
   img: Image,
 };
 
@@ -64,7 +66,7 @@ const MDXPage: React.FC<MdxPageProps> = ({ data, children }) => {
     if (footnoteLabel) {
       footnoteLabel.textContent = "References";
     }
-    
+
     // Attach the copy event listener
     document.addEventListener("copy", handleCopyTex);
 
