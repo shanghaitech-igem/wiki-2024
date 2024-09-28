@@ -1,4 +1,4 @@
-image: curlimages/curl:latest
+image: ubuntu:latest
 
 variables:
   DEPLOY_BRANCH: "pages"  # The branch name is fixed as 'pages'
@@ -9,16 +9,21 @@ stages:
 pages:
   stage: deploy
   script:
+    - apt-get update && apt-get install -y zip curl brotli gzip
     - echo "Downloading ZIP file..."
     - curl -L -o ${CI_PROJECT_NAME}-${DEPLOY_BRANCH}.zip "https://gitlab.igem.org/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}/-/archive/${DEPLOY_BRANCH}/${CI_PROJECT_NAME}-${DEPLOY_BRANCH}.zip"
     - unzip ${CI_PROJECT_NAME}-${DEPLOY_BRANCH}.zip
     - rm ${CI_PROJECT_NAME}-${DEPLOY_BRANCH}.zip
     - mkdir public/
     - mv ${CI_PROJECT_NAME}-${DEPLOY_BRANCH}/* public/
-    - rm public/test -rf
+    - rm public/test/ -rf
+    - rm public/~partytown/debug/ -rf
+    - rm public/*.LICENSE.txt
     - find public -type f -regex '.*\.\(htm\|html\|txt\|text\|js\|css\)' -exec brotli -f -k {} \;
-    - find public -type f -regex '.*\.\(htm\|html\|txt\|text\|js\|css\)' -exec rm {} \;
+    - find public -type f -regex '.*\.\(htm\|html\|txt\|text\|js\|css\)' -exec gzip -f -k {} \;
     - du -sh public/
+    - zip -r public.test.zip public/
+    - ls -lh public.test.zip
   artifacts:
     paths:
       - public
