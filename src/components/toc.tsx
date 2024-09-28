@@ -26,6 +26,9 @@ const TOC: React.FC<TocProps> = ({
   prefix = "",
   className
 }) => {
+  // If tableOfContents is null, return null
+  if (!tableOfContents) return null;
+
   const renderItems = (
     items: TocItem[],
     depth: number = 1
