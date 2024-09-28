@@ -60,13 +60,13 @@ interface MdxPageProps {
 
 const MDXPage: React.FC<MdxPageProps> = ({ data, children }) => {
   React.useEffect(() => {
+    const footnoteLabel = document.querySelector("#footnote-label");
+    if (footnoteLabel) {
+      footnoteLabel.textContent = "References";
+    }
+    
     // Attach the copy event listener
     document.addEventListener("copy", handleCopyTex);
-    const footnoteLabel = document.querySelector('#footnote-label');
-    if (footnoteLabel) {
-      footnoteLabel.textContent = 'References';
-    }
-
 
     // Cleanup event listener on component unmount
     return () => {

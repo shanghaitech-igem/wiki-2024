@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Link } from "gatsby";
+
+import * as styles from "src/styles/modules/mdx.module.scss";
 
 export interface TocItem {
   url: string;
@@ -24,10 +26,42 @@ const TOC: React.FC<TocProps> = ({
   skip,
   ordered = false,
   prefix = "",
-  className
+  className,
 }) => {
-  // If tableOfContents is null, return null
-  if (!tableOfContents) return null;
+  const [activeId, setActiveId] = useState<string>("");
+
+  const headingElementsRef = useRef<{
+    [key: string]: IntersectionObserverEntry;
+  }>({});
+
+  useEffect(() => {
+    const callback: IntersectionObserverCallback = (entries) => {
+      headingElementsRef.current = entries.reduce((map, entry) => {
+        map[entry.target.id] = entry;
+        return map;
+      }, headingElementsRef.current);
+
+      const visibleHeadings: IntersectionObserverEntry[] = [];
+      Object.keys(headingElementsRef.current).forEach((key) => {
+        const entry = headingElementsRef.current[key];
+        if (entry.isIntersecting) visibleHeadings.push(entry);
+      });
+
+      if (visibleHeadings.length > 0) {
+        setActiveId(visibleHeadings[0].target.id);
+        console.log(visibleHeadings[0].target.id);
+      }
+    };
+
+    const observer = new IntersectionObserver(callback, {
+      rootMargin: "0px 0px 0px 0px",
+    });
+
+    const headingElements = document.querySelectorAll("article h1");
+    headingElements.forEach((element) => observer.observe(element));
+
+    return () => observer.disconnect();
+  }, []);
 
   const renderItems = (
     items: TocItem[],
@@ -45,7 +79,12 @@ const TOC: React.FC<TocProps> = ({
       })
       .map((item) => (
         <li key={item.url}>
-          <Link to={`${prefix}${item.url}`}>{item.title}</Link>
+          <Link
+            className={activeId === item.url.slice(1) ? styles.active : ""}
+            to={`${prefix}${item.url}`}
+          >
+            {item.title}
+          </Link>
           {item.items && renderItems(item.items, depth + 1)}
         </li>
       ));
@@ -59,10 +98,13 @@ const TOC: React.FC<TocProps> = ({
     ) : null;
   };
 
-  // If tableOfContents.items is empty, return null
   if (!tableOfContents.items) return <section className={className} />;
 
-  return <section className={className}>{renderItems(tableOfContents.items)}</section>;
+  return (
+    <section className={className}>
+      {renderItems(tableOfContents.items)}
+    </section>
+  );
 };
 
 export default TOC;

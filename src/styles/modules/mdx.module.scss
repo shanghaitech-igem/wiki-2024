@@ -38,9 +38,12 @@ main {
           &::marker {
             content: "";
           }
-
           a {
             color: #fff;
+
+            &.active {
+              color: light.$pacify-char-layout-dimmed;
+            }
 
             &:hover {
               color: light.$pacify-char-layout-dimmed;
@@ -103,18 +106,18 @@ main {
           }
 
           table {
-            text-align: left;
-            margin: auto;
+            margin: 2em auto;
             font-family: fonts.$pacify-content-secondary;
+            border-collapse: collapse;
+            overflow: hidden;
 
             td,
             th {
-              padding: math.div(light.$pacify-separation, 2) 2.4em
-                math.div(light.$pacify-separation, 2) light.$pacify-separation;
+              padding: math.div(light.$pacify-separation, 2) 2.4em;
+              transition: background-color 0.3s ease, transform 0.3s ease;
             }
 
             th {
-              text-align: left;
               font-weight: 900;
               color: light.$pacify-char-layout;
               background-color: light.$pacify-primary;
@@ -123,6 +126,20 @@ main {
             // Zebra stripes
             tr:nth-child(even) {
               background: rgba(#111, 0.05);
+            }
+
+            // Hover effect for cells
+            td:hover,
+            th:hover {
+              background-color: rgba(#111, 0.1);
+              transform: scale(1.05);
+            }
+
+            // Active effect for cells
+            td:active,
+            th:active {
+              background-color: rgba(#111, 0.15);
+              transform: scale(1);
             }
           }
         }
