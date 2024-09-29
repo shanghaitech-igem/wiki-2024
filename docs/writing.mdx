@@ -734,3 +734,68 @@ Important: Audios could not be uploaded by `igem-cdn`, you should go to [iGEM Vi
   - **Result:**
     <Audio src="https://video.igem.org/download/videos/a4251534-26e7-44eb-9906-0864ec6e016c-0.mp3" />
 
+
+### Model Component
+
+Model component renders 3D models in real time, **the data need to be store externally on the iGEM CDN Server**.
+
+- **Syntax:**
+
+  ```jsx
+  <Model src="path/to/model" />
+  ```
+
+- **Example:**
+
+  - **Code:**
+    ```jsx
+    <Model title="A Protein" src="server/test/test-protein.stl" />
+    ```
+  
+  - **Result:**
+    <Model title="A Protein" src="server/test/test-protein.stl" />
+
+
+### Collapse Component
+
+Collapse component creates a collapsible container, which could be used to hide any MDX content.
+
+- **Syntax:**
+
+  ```jsx
+  <Collapse title="Title">
+
+    # Content
+
+    Content inside is a new container that could contain any markdown syntax.
+
+  </Collapse>
+  ```
+
+- **Example:**
+
+  - **Code:**
+
+    ```jsx
+    <Collapse title="Collapse Test">
+
+      # Content
+
+      Content inside is a new container that could contain any markdown syntax.
+
+      <Model title="A Protein" src="server/test/test-protein.stl" />
+
+    </Collapse>
+    ```
+
+  - **Result:**
+
+    <Collapse title="Collapse Test">
+
+      # Content
+
+      Content inside is a new container that could contain any markdown syntax.
+
+      <Model title="A Protein" src="server/test/test-protein.stl" />
+      
+    </Collapse>
