@@ -10,7 +10,7 @@ Modeling is a pivotal tool for _understanding complex biological systems_, it se
 
 ### **Model 1: Ordinary Differential Equations (ODE)**
 
-Our [first model](#ode) employs **Ordinary Differential Equations (ODEs)** to _simulate the expression levels of the v8 protease and key components within the flip-GFP system_. This model is crucial for understanding the dynamics of protein expression and its impact on receptor cleavage. By using ODEs, we can predict the behavior of these proteins in E.coli , which aids in the design of our therapeutic interventions.
+Our [first model](#ode) employs **Ordinary Differential Equations (ODEs)** to _simulate the expression levels of the v8 protease and key components within the flipGFP system_, specifically focusing on β1-9, β10-E5-β11-K5. This model is _crucial for understanding the dynamics of protein expression and its impact on receptor cleavage_. By using ODEs, we can _predict the behavior of these proteins in E.coli_ , which aids in the design of our therapeutic interventions.
 
 ### **Model 2: Molecular Simulation**
 
@@ -28,9 +28,9 @@ Our [final model](#virtual-screening) involves **Virtual Screening**, where we s
 
 ## 1. Description of the system
 
-In our experiment, we express three proteins in E.coli, namely V8 protease, beta1-9, and beta10-11. When the bacteria started protein expression, V8 protease cleaved beta10-11 into bata10-11cleavaged, and then bata1-9 and beta10-11 self-assembled into Flipcherry. Among them, the analysis of metabolism of these three proteins and their interaction is of great importance. Therefore, we use ordinary differential equation model to simulate and analyze the metabolism and interaction of these three proteins.The metabolic equations of these three proteins is a function of the concentration of the protein itself and the mRNA, which is a little bit complicated.
+In our experiment, we express three proteins in E.coli, namely V8 protease, beta1-9, and beta10-11. When the bacteria started protein expression, V8 protease cleaved beta10-11 into bata10-11cleavaged, and then bata1-9 and beta10-11cleavaged self-assembled into Flipcherry. Among them, __the analysis of metabolism of these three proteins and their interaction is of great importance__. Therefore, we __use ordinary differential equation model to simulate and analyze the metabolism and interaction of these three proteins.__ The metabolic equations of these three proteins is a function of the concentration of the protein itself and the mRNA, which is a little bit complicated.
 
-An alternative model can be obtained by assuming that the mRNA dynamics are extremely fast when compared to the protein dynamics and hence reach their equilibrium instantly. Therefore, the dynamics can be described in just 1 variables, namely the concentration of protein.
+An alternative model can be obtained by assuming that the mRNA dynamics are extremely fast when compared to the protein dynamics and hence reach their equilibrium instantly. Therefore, __the dynamics can be described in just 1 variables__, namely the concentration of protein.
 
 The interactions among these proteins can be described as the following chemical formulas.
 
@@ -101,9 +101,9 @@ As the figure revealed, inhibitor can decrease the concentration of Flipcherry a
 
 ## 3. Model limitation
 
-Although this model have verified the feasibility of our project, we did not conduct experiments to compare our theoretical prediction with the exact expression process.
+Although this model have verified the feasibility of our project, __we did not conduct experiments to compare our theoretical prediction with the exact expression process.__
 
-Moreover, if the degradation of mRNA is sufficiently faster (say, at least 10 times) than the degradation of the corresponding protein, then the stationarity approximation is biologically justified. Note that, under certain conditions, it can be assumed that the stationarity approximation is only valid for some genes of the network. In that case, only those genes for which the assumption is valid can be modelled by a single equation for the protein concentration, while the rest will be associated to two equations, one for the mRNA and one for protein concentration.
+Moreover, if the degradation of mRNA is sufficiently faster (say, at least 10 times) than the degradation of the corresponding protein, then the stationarity approximation is biologically justified. Note that, __under certain conditions, it can be assumed that the stationarity approximation is only valid for some genes of the network.__ In that case, __only those genes for which the assumption is valid can be modelled by a single equation for the protein concentration,__ while the rest will be associated to two equations, one for the mRNA and one for protein concentration.
 
 # Molecular Simulation
 
@@ -439,9 +439,22 @@ This figure illustrates that **our relative fluorescence intensity model matches
 
 # Virtual Screening
 
-## 1. Description of the model
-
 In wetlab part, we have chosen several compound libraries for drug screening `Natural Compound Library`, `Bioactive Compound Library`, `Clinical Compound Library`, and `Approved Drug Library` applying high-throughput screening technology. The experiment screened approximately 3,600 small molecules, and the process of mixing enzymes and substrates took about six hours, not to mention the preliminary preparation such as protein purification. In contrast, virtual screening can **accomplish the screening of millions of compounds within just a few days**, significantly expanding the scope of screening, increasing the likelihood of identifying inhibitors with high inhibition rates, and uncovering novel patterns. Therefore, we engaged in virtual screening modeling.
+
+This model is described in three parts:
+> [1. Description of the model](#1-description-of-the-model-1)
+>
+> > [a. Regular part](#a-regular-part): This section provides a detailed description of our virtual screening process.
+> > 
+> > [b. New on screening through observation](#b-new-on-screening-through-observation): This part focuses on sharing the strategies we observed during the screening.
+> 
+> [2. Results](#2-results): This section mainly covers the visualization and interpretation of our results.
+>
+> [3. Discussion](#3-discussion)
+>
+
+
+## 1. Description of the model
 
 ### a. Regular part
 
@@ -462,22 +475,87 @@ The following flow chart shows the general steps we take to do virtual screening
   width="900"
 />
 
-Firstly, we 
+First, we downloaded the PDB file of the v8 protease enzyme (PDB code: 2O8L) from the [RCSB](https://www.rcsb.org/structure/2O8L), and prepared the protein using Schrodinger(removing water molecules, etc.). 
 
 <Model
   title="Protein 4.1 Prepared V8 Protease"
   src="server/contents/model/vs-2o8l-prepared.stl"
 />
 
-流程图，GVSrun 命令 ChemDiv
+Then, based on the functional region displayed in [UniProt](https://www.uniprot.org/uniprotkb/Q99V45) (UniProt Code: Q99V45), which is a catalytic triad composed of a histidine (HIS), an aspartic acid (ASP), and a serine (SER), we designed the grid box, with the **ligand centroid's radius of action** being **10 Å** and the **ligand's overall radius of action** being **12 Å**. 
+
+![Figure 4.2 Functional Region (HIS 51, ASP 93, SER 169)](server/contents/model/vs-else/vs-figure-actice-sites.png)
+
+<PDF src="server/contents/model/vs-else/vs-uniprot.pdf" />
+
+
+The prepared protein pocket file and the 3D small molecule library ChemDiv were used as inputs to perform preliminary virtual screening on a Linux cluster using the GVSrun[^4] command (which internally calls Glide's molecular docking method and its files are open-source on [Wang Lin's Github](https://github.com/Wang-Lin-boop/CADD-Scripts)). The GVS command is as follows:
+
+[^4]: "Schrodinger Script Library: Easily Run Computational Biology Tasks on Linux Clusters." (2021, July). Zhihu Column. Retrieved from https://zhuanlan.zhihu.com/p/370850885
+
+```bash
+GVSrun -i "*.zip" -D ChemDiv -m Normal
+```
+Here is a brief Description of the meaning of mode `Normal`:
+
+> **Normal mode**: 
+> 
+> > First, a simple set of physicochemical rules is applied to filter the compound database (molecular weight ≤ 600, rotatable bonds ≤ 10, number of aromatic rings ≤ 6), followed by HTVS docking.
+>
+> > Then, according to the proportion or quantity specified by the **-a parameter**, the top-ranked molecules are extracted and subjected to physicochemical property calculations using the QIKPROP program and a simple 5-rule filter (molecular weight ≤ 650, lipophilicity ≤ 7, hydrogen bond donors ≤ 6, hydrogen bond acceptors ≤ 20). `
+>
+> > Finally, an optimized SP docking is performed (rewarding internal hydrogen bonds of the ligand molecule, allowing halogens to act as hydrogen bond acceptors), and ultimately, the number of molecules specified by **-b parameter** is output.
+>
+
+
+The **-a parameter** and the **-b parameter** means `The number of Output compounds per Screening Task` and `The number of Output compounds after Standard docking Task` respectively, and we use the default ones.
+
+
+After several days of screening (less than one week), we obtained the promising molecules and started to screen by observing the structures and calculating relevant metrics.
+
+Subsequently, we utilized `Schrodinger` software to observe bond formation and assess the degree of electrostatic negativity matching for the top 1000 ranked small molecules. _(The following figures show the view in Schrodinger and he correlation between different colors and different bonds.)_
+
+![Figure 4.3-1 One Of The Results As Illustrative Examples](server/contents/model/vs-figure-1.png)
+![Figure 4.3-2 Different Bonds With Corresponding Colors](server/contents/model/vs-else/vs-figure-bonds.png)
+
+We scored them `(see method in` [part b](#b-new-on-screening-through-observation)`)`and calculated their [MMGBSA ΔG bind](#mmgbsa-δg-bind) to further eliminate false positive small molecules, resulting in 200 small molecules with favorable properties. Finally, based on the new protein and small molecule conformations obtained from the calculation of mmgbsa ΔG bind, we calculated the [ligand strain energy](#ligand-strain-energy) for these 200 small molecules. Based on the results, and in conjunction with the previous indicators, we arrived at the final 60 small molecules. (All steps were executed within the Schrodinger software.)
+
+Here are basic explanation of _MMGBSA ΔG Bind_ and _Ligand Strain Energy_. [Click here to skip.](#b-new-on-screening-through-observation)
+
+> #### MMGBSA ΔG Bind
+> 
+> > MMGBSA _(Molecular Mechanics-Generalized Born Surface Area)_ is a method used to estimate the binding free energy (ΔG bind) of a ligand to a receptor, such as a protein in our context.
+> >
+> > In brief, the equation of ΔG bind can be represented as:
+> > 
+> > $ ΔG_{\text{bind}} = (ΔE_{\text{MM}} + ΔG_{\text{solvation}})_{\text{complex}} - [(ΔE_{\text{MM}} + ΔG_{\text{solvation}})_{\text{ligand}} + (ΔE_{\text{MM}} + ΔG_{\text{solvation}})_{\text{receptor}}$
+> >
+> > Where:
+> > - $(ΔE_{\text{MM}})$ is the change in molecular mechanics energy.
+> > - $(ΔG_{\text{solvation}})$ is the change in solvation free energy, which includes both Generalized Born and Surface Area terms.
+> >
+> > Normally, **MMGBSA dG Bind** values are generally more favorable when they are lower. `It's better be under -50`
+>
+> #### Ligand Strain Energy
+>
+> > In molecular docking and drug design, the native state of a ligand is typically its lowest energy conformation, which is stable in isolation. However, upon binding to a receptor, the ligand often undergoes conformational changes to fit into the receptor's binding site. These changes can lead to a higher energy state for the ligand, as it is no longer in its most stable form.
+> >
+> > *The energy difference between the bound conformation of the ligand and its lowest energy*, unbound conformation is termed the Ligand Strain Energy. This strain energy represents the penalty or cost in terms of free energy that the system must pay to deform the ligand to fit it into the receptor's binding pocket.
+> >
+> > Normally, **Ligand Strain Energy** values are generally more favorable when they are lower. `It's better be under 5`
+> >
+
+
 
 ### b. New on screening through observation
 
+In the current virtual screening process, visual inspection remains a crucial part. When done well, it can effectively eliminate false positive results and refine useful molecules and structures. However, for beginners, the first encounter with visual inspection can be daunting, and standards vary, making it difficult to unify the results obtained by two people with different criteria. This is also a problem we encountered. To address this issue, we consulted professors in the field of computational biology and asked them and doctoral students to guide our visual inspection process. Based on..., we established the following evaluation table:
+
+
 ## 2. Results
 
-After
+Ultimately, we identified the 60 most promising small molecules from ChemDiv. The following table displays detailed information about these small molecules, sequentially showing their identification numbers from the observational screening, their SMILES properties, their MM-GBSA ΔG bind, and ligand strain energy. To view the entire table, please click the "Expand: Rest of the Table" button. 
 
-![Figure 4.2 One Of The Results As Illustrative Examples](server/contents/model/vs-figure-1.png)
 
 | Title  |                                Smile                                 | MMGBSA dG Bind | Lig Strain Energy |
 | :----: | :------------------------------------------------------------------: | :------------: | :---------------: |
@@ -491,6 +569,7 @@ After
 | y-4520 |       CN(c(sc(C(NCC1CCN(Cc(cc2)ccc2F)CC1)=O)c1)c1C(N1C)=O)C1=O       |     -73.88     |     1.383667      |
 | y-4525 |               CC(C1C(N2c3ccccc3)=O)(C2=O)NN=C1C(OC)=O                |     -47.18     |     1.033788      |
 | y-4530 |                         CN1c(cccc2)c2OCC1=O                          |     -31.55     |     1.302034      |
+
 
 <Collapse title="Rest of the Table">
 
@@ -521,6 +600,23 @@ After
   | y-4598 |              Cc1cccc(CNC(CC(CCC2)CN2C(C=NN2CCOC)=CC2=O)=O)c1              |     -67.07     |     2.758263      |
 
 </Collapse>
+
+Right behind the table, the structures of these small molecules are presented; due to space limitations, only one 3D structure and its corresponding docking results are shown directly. Click the "Expand: Final 60 Molecules" button to view the structures of all small molecules, which are of various sizes. Regrettably, hydrogen bonds and other interactions (as shown in Figure 4.4-1 and Figure 4.4-2) cannot be displayed in the wiki; these results will be included in our files, and interested parties can download them for viewing with software such as Schrodinger.
+
+![Figure 4.4-1 z-4650 Docking Result With Surface Shown As Example](server/contents/model/vs-else/vs-z-4650-pic-1.png)
+![Figure 4.4-2 z-4650 Docking Result Without Surface Shown As Example](server/contents/model/vs-else/vs-z-4650-pic-2.png)
+
+
+Spinning 180° to see how ligand intercat with the protein.
+<Model
+    title="Protein 4.2-0-1 z-4650 docking result shown as example (Compressed)"
+    src="server/contents/model/vs-else/vs-z-4650-docking-decimated.stl"
+/>
+
+<Model
+    title="Protein 4.2-0-2 z-4650 3D structure shown as example"
+    src="server/contents/model/vs-z/vs-z-4650.stl"
+/>
 
 <Collapse title="Final 60 Molecules">
   <Collapse title="Protein 4.2-1 y-4501">
