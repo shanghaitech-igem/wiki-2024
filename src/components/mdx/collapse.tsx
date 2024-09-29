@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useCollapse } from "react-collapsed";
 import * as styles from "src/styles/modules/collapse.module.scss";
 
@@ -10,6 +10,14 @@ interface CollapseProps {
 const Collapse: React.FC<CollapseProps> = ({ children, title }) => {
   const [isExpanded, setExpanded] = React.useState(false);
   const { getCollapseProps, getToggleProps } = useCollapse({ isExpanded });
+  const expandButtonRef = useRef<HTMLButtonElement | null>(null);
+
+  const handleCollapseClick = () => {
+    setExpanded(false);
+    if (expandButtonRef.current) {
+      expandButtonRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <div className={styles.collapse}>
@@ -17,6 +25,7 @@ const Collapse: React.FC<CollapseProps> = ({ children, title }) => {
         className={styles.mainButton}
         {...getToggleProps({
           onClick: () => setExpanded((prevExpanded) => !prevExpanded),
+          ref: expandButtonRef,
         })}
       >
         {title
@@ -34,7 +43,7 @@ const Collapse: React.FC<CollapseProps> = ({ children, title }) => {
           {isExpanded && (
             <button
               className={styles.collapseButton}
-              onClick={() => setExpanded(false)}
+              onClick={handleCollapseClick}
             >
               Collapse
             </button>
