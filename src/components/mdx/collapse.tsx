@@ -2,9 +2,11 @@ import React from "react";
 import { useCollapse } from "react-collapsed";
 import * as styles from "src/styles/modules/collapse.module.scss";
 
-interface CollapseProps {}
+interface CollapseProps {
+  children: React.ReactNode;
+}
 
-const Collapse: React.FC<CollapseProps> = () => {
+const Collapse: React.FC<CollapseProps> = ({ children }) => {
   const [isExpanded, setExpanded] = React.useState(false);
   const { getCollapseProps, getToggleProps } = useCollapse({ isExpanded });
 
@@ -17,7 +19,7 @@ const Collapse: React.FC<CollapseProps> = () => {
       >
         {isExpanded ? "Collapse" : "Expand"}
       </button>
-      <div {...getCollapseProps()}>Collapsed content 🙈</div>
+      <div {...getCollapseProps()}>{children}</div>
     </div>
   );
 };

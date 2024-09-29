@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { Link } from "gatsby";
 
 import * as modalStyles from "src/styles/modules/modal.module.scss";
+import * as collapseStyles from "src/styles/modules/collapse.module.scss";
 
 import * as mdxStyles from "src/styles/modules/mdx.module.scss";
 
@@ -59,9 +60,12 @@ const TOC: React.FC<TocProps> = ({
       rootMargin: "0px 0px 0px 0px",
     });
 
+    const excludedClasses = [modalStyles.modal, collapseStyles.collapse, 'yetAnotherClass'];
+
     const headingElements = Array.from(document.querySelectorAll("article h1")).filter(
-      (element) => !element.closest(`.${modalStyles.modal}`)
+      (element) => !excludedClasses.some((className) => element.closest(`.${className}`))
     );
+    
     headingElements.forEach((element) => observer.observe(element));
 
     return () => observer.disconnect();
