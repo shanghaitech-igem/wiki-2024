@@ -617,10 +617,16 @@ More details about this component are [here](/docs/plot) and **need to be read i
 
 Modal is a component that could create a modal with a button, once the button is clicked, the modal will pop up.
 
+- **Props:**
+
+  - `title` (optional): A string to customize the modal title. Defaults to "Modal" if not specified.
+
+  - `triggerText` (optional): A string to customize the button text. Defaults to "Open Modal" if not specified.
+
 - **Syntax:**
 
   ```jsx
-  <Modal id="modal_1" title="Markdown Test" triggerText="Click Me">
+  <Modal title="Markdown Test" triggerText="Click Me">
 
     # Modal Content
 
@@ -634,7 +640,7 @@ Modal is a component that could create a modal with a button, once the button is
   - **Code:**
 
     ```jsx
-    <Modal id="modal_1" title="Markdown Test" triggerText="Click Me">
+    <Modal title="Markdown Test" triggerText="Click Me">
 
       # Modal Content
 
@@ -645,7 +651,7 @@ Modal is a component that could create a modal with a button, once the button is
 
   - **Result:**
 
-    <Modal id="modal_1" title="Modal Test" triggerText="Click Me">
+    <Modal title="Modal Test" triggerText="Click Me">
 
       # Modal Content
 
@@ -738,19 +744,22 @@ Model component renders 3D models in real time, **the data need to be store exte
     <Model title="A Protein" src="server/test/test-protein.stl" />
 
 
+```markdown
 ### Collapse Component
 
-Collapse component creates a collapsible container, which could be used to hide any MDX content.
+The Collapse component creates a collapsible container, which can be used to hide any MDX content.
+
+- **Props:**
+
+  - `title` (optional): A string to customize the button text. If provided, the button will display "Expand [title]" or "Collapse [title]". Defaults to "Expand" and "Collapse" if not specified.
 
 - **Syntax:**
 
   ```jsx
-  <Collapse>
-
+  <Collapse title="Your Title">
     # Content
 
     Content inside is a new container that could contain any markdown syntax.
-
   </Collapse>
   ```
 
@@ -759,25 +768,22 @@ Collapse component creates a collapsible container, which could be used to hide 
   - **Code:**
 
     ```jsx
-    <Collapse>
-
+    <Collapse title="Section">
       # Content
 
       Content inside is a new container that could contain any markdown syntax.
 
       <Model title="A Protein" src="server/test/test-protein.stl" />
-
     </Collapse>
     ```
 
   - **Result:**
 
-    <Collapse>
-
+    <Collapse title="Section">
       # Content
 
       Content inside is a new container that could contain any markdown syntax.
 
       <Model title="A Protein" src="server/test/test-protein.stl" />
-      
     </Collapse>
+```
