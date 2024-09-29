@@ -7,11 +7,16 @@ const { modalTrigger, modal, overlayer, close, article, header, section } =
 interface ModalProps {
   id?: string; // Make id optional
   title: string;
-  triggerText: string;
+  triggerText?: string; // Make triggerText optional
   children: React.ReactNode;
 }
 
-const Modal: React.FC<ModalProps> = ({ id, title, triggerText, children }) => {
+const Modal: React.FC<ModalProps> = ({
+  id,
+  title,
+  triggerText = "Open Modal",
+  children,
+}) => {
   const [generatedId, setGeneratedId] = React.useState<string>("");
 
   React.useEffect(() => {
