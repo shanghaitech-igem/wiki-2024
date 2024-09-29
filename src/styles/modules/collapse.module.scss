@@ -1,4 +1,31 @@
+@use "src/styles/themes/light" as light;
+@use "src/styles/themes/fonts" as fonts;
+
 main {
   .collapse {
+    h1 {
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    button {
+      width: 100%; // Make the button take the full width of its container
+      background-color: light.$pacify-primary; // Change to your desired color
+      color: white; // Text color
+      font-size: larger;
+      padding: 10px 0; // Vertical padding for a bar-like appearance
+      border: none; // Remove default border
+      border-radius: 5px; // Rounded corners
+      cursor: pointer;
+      transition: background-color 0.3s ease; // Smooth transition for hover effect
+      font-family: fonts.$pacify-content-secondary;
+      &:hover {
+        background-color: light.$pacify-secondary; // Darken on hover
+      }
+    }
+
+    div {
+      transition: max-height 0.3s ease; // Smooth transition for expand/collapse
+    }
   }
 }
