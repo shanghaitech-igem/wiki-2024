@@ -19,6 +19,7 @@ $background-sizes: (
   110vmax 110vmax,
   90vmax 90vmax
 );
+
 $background-positions: (
   -80vmax -80vmax,
   60vmax -30vmax,
@@ -47,6 +48,7 @@ $animation-steps: (
   background-size: $sizes;
   background-position: $positions;
   background-repeat: repeat;
+  background-attachment: fixed; // Add this line
 }
 
 @function generate-radial-gradients($colors) {
