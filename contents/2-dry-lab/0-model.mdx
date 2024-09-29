@@ -111,6 +111,8 @@ Moreover, if the degradation of mRNA is sufficiently faster (say, at least 10 ti
 
 [^1]: Zhang, Schepis, A., Huang, H., Yang, J., Ma, W., Torra, J., Zhang, S.-Q., Yang, L., Wu, H., Nonell, S., Dong, Z., Kornberg, T. B., Coughlin, S. R., & Shu, X. (2019). Designing a Green Fluorogenic Protease Reporter by Flipping a Beta Strand of GFP for Imaging Apoptosis in Animals. Journal of the American Chemical Society, 141(11), 4526–4530. https://doi.org/10.1021/jacs.8b13042
 
+![Figure 2.1 The Description From The Essay (Too General)](server/contents/model/md-figure-3.png)
+
 ## 1. Getting β10-E5-β11-K5 part: Homology Modeling
 
 Homology modeling is a technique to predict the three-dimensional structure of a protein based on its amino acid sequence and a known structure of a homologous protein.
@@ -123,65 +125,278 @@ The structures of β10-E5-β11-K5 (both uncleaved and cleaved) were modeled by t
   MDLPDDHYLSTQTILSKDLNMEVSALEKEVSALEKEVSALEKEVSALEKEVSALEKEKRDHMVLLEYVTAAGITDASKVSALKEKVSALKEKVSALKEKVSALKEKVSALKE
   ```
 
-<Model
-  title="Protein.2 a heterodimeric coiled coil structure (PDB code: 1KD8)"
-  src="server/contents/model/md-1kd8.stl"
+<Model 
+  title="Protein 2.1 a heterodimeric coiled coil structure (PDB code: 1KD8)" 
+  src="server/contents/model/md-1kd8.stl" 
 />
 
-<Model
-  title="Protein.3 β10-E5-β11-K5"
-  src="server/contents/model/md-beta10-e5-beta11-k5-3.stl"
-/>
+<Model title="Protein 2.2 β10-E5-β11-K5" src="server/contents/model/md-beta10-e5-beta11-k5-3.stl" />
 
 ## 2. Getting β1-β9 part: Using AlphaFold2
 
-We use **AlphaFold2** to get β1-β9, instead of deleting the β10-β11 part, as the msa mode "_mmseqs2_uniref_env_" not only ensures a similar architecture to flipGFP but also takes into account more dynamic factors compared to directly deleting the β part, which may more accurately reflect the real situation.
+We use **AlphaFold2** to get β1-β9 instead of deleting the β10-β11 part in the whole protein, as the msa mode "_mmseqs2_uniref_env_" not only ensures a similar architecture to flipGFP but also takes into account more dynamic factors compared to directly deleting the β part, which may more accurately reflect the real situation.
 
 - **Sequence of β1-β9:**
   ```markdown
   RKGEELFTGVVPILIELDGDVNGHKFFVRGEGEGDATIGKLSLKFIATTGKLPVPWPTLVTTLXXXVQAFSRYPDHMKRHDFFKSAMPEGYVQERTIYFKDDGTYKTRAEVKFHGDHLVNRIELKGIDFKEDGNILGHKLEYNFNSHKVYITADKQNNGIKANFTIRHNVEDGSVQLADHYQQNTPIGDGPV
   ```
+By inputing the sequence into the platform, we acquire the following results.
 
-![Figure 2.1 Sequence Coverage Graph From AlphaFold2](server/contents/model/md-figure-1.png)
-![Figure 2.2 Confidence Figure From AlphaFold2](server/contents/model/md-figure-2.png)
+![Figure 2.2 Sequence Coverage Graph From AlphaFold2](server/contents/model/md-figure-1.png)
+![Figure 2.3 Confidence Figure From AlphaFold2](server/contents/model/md-figure-2.png)
 
-<Model
-  title="Protein.4 β1-β9 Structure From AlphaFold2"
-  src="server/contents/model/md-beta1-beta9.stl"
-/>
+Which shows that the generated structure is countable.
+
+<Model title="Protein 2.3 β1-β9 Structure From AlphaFold2" src="server/contents/model/md-beta1-beta9.stl" />
+
+
 
 ## 3. Protein preparation: Using Schrodinger
 
-The structures of β10-E5-β11-K5 were inserted into β1-9 based on the GFP structure (PDB code: 4W6T) [^3].
-The modeled systems were **solvated in water with 150 mM NaCl**.
+The structures of β10-E5-β11-K5 were inserted into β1-9 based on the GFP structure (PDB code: 4W6T, shown below) [^3]. 
+The modeled systems were **solvated in water with 150 mM NaCl**. 
 
 [^3]: Huang PS, Ban Y, Richter F, Andre I, Vernon R, Schief WR, Baker D. (2011) RosettaRemodel: A Generalized Framework for Flexible Backbone Protein Design. PLoS One 6(8):e24109.
 
-The flowing are the original proteins and the prepared proteins for both uncleaved and Cleaved system. (The prepared ones are compressed due to the limitation of file size. Therefore, the structures of the prepared ones **serve merely as illustrative examples**.)
+<Model title="Protein 2.4 4W6T" src="server/contents/model/md-4w6t-compressed.stl" />
 
-We simply separate the β10-E5-β11-K5 into β10-E5-β11 and K5 to obtain the cleaved ones to imitate the cleavage.
+The following are the prepared proteins for both uncleaved and Cleaved system. 
 
-<Model
-  title="Protein.5 Uncleaved flip-GFP"
-  src="server/contents/model/md-system-uncleaved.stl"
-/>
+We simply split the β10-E5-β11-K5 into β10-E5-β11 and K5 to obtain the cleaved ones to imitate the cleavage.
 
-<Model
-  title="Protein.6 Compressed prepared uncleaved flip-GFP"
-  src="server/contents/model/md-prepared-uncleaved-compressed.stl"
-/>
+<Model title="Protein 2.5 Uncleaved flip-GFP" src="server/contents/model/md-system-uncleaved.stl" />
 
-<Model
-  title="Protein.7 Cleaved flip-GFP"
-  src="server/contents/model/md-cleaved.stl"
-/>
+<Model title="Protein 2.6 Cleaved flip-GFP" src="server/contents/model/md-cleaved.stl" />
 
-<Model
-  title="Protein.8 Compressed prepared cleaved flip-GFP"
-  src="server/contents/model/md-prepared-cleaved-compressed.stl"
-/>
 
 ## 4. Molecular dynamics: Using GROMACS
+
+### a. Protein preparation
+
+（相关bash操作）
+- 
+
+The modeled systems were **solvated in water with 150 mM NaCl**. (The files are compressed due to the limitation of file size. Therefore, the structures of the prepared ones **serve merely as illustrative examples**.)
+
+<Model title="Protein 2.7 Compressed prepared uncleaved flip-GFP" src="server/contents/model/md-prepared-uncleaved-compressed.stl" />
+
+<Model title="Protein 2.8 Compressed prepared cleaved flip-GFP" src="server/contents/model/md-prepared-cleaved-compressed.stl" />
+
+
+### b. em stage
+
+em 文件 命令行和相关参数图
+```mdp
+; ions.mdp - used as input into grompp to generate ions.tpr
+; Parameters describing what to do, when to stop and what to save
+integrator  = steep         ; Algorithm (steep = steepest descent minimization)
+emtol       = 1000.0        ; Stop minimization when the maximum force < 1000.0 kJ/mol/nm
+emstep      = 0.01          ; Minimization step size
+nsteps      = 6000         ; Maximum number of (minimization) steps to perform
+
+; Parameters describing how to find the neighbors of each atom and how to calculate the interactions
+nstlist         = 1         ; Frequency to update the neighbor list and long range forces
+cutoff-scheme	= Verlet    ; Buffered neighbor searching 
+ns_type         = grid      ; Method to determine neighbor list (simple, grid)
+rlist           = 1.0       ; Cut-off for making neighbor list (short range forces)
+coulombtype     = cutoff    ; Treatment of long range electrostatic interactions
+rcoulomb        = 1.0       ; Short-range electrostatic cut-off
+rvdw            = 1.0       ; Short-range Van der Waals cut-off
+pbc             = xyz       ; Periodic Boundary Conditions in all 3 dimensions
+```
+
+
+### c. nvt stage
+
+中间要更改itp文件
+
+nvt 文件 命令行和相关参数图
+
+```mdp
+title       = NVT equilibration
+define      = -DPOSRES -DSTEP0 ; position restrain the protein
+; Run parameters
+integrator  = md        ; leap-frog integrator
+nsteps      = 10000     ; 2 * 10000 = 20 ps
+dt          = 0.002     ; 2 fs
+; Output control
+nstxout     = 1000       ; save coordinates every 0.2 ps
+nstvout     = 1000       ; save velocities every 0.2 ps
+nstenergy   = 1000       ; save energies every 0.2 ps
+nstlog      = 1000       ; update log file every 0.2 ps
+; Bond parameters
+continuation            = no            ; first dynamics run
+constraint_algorithm    = lincs         ; holonomic constraints 
+constraints             = h-bonds     ; all bonds (even heavy atom-H bonds) constrained
+lincs_iter              = 1             ; accuracy of LINCS
+lincs_order             = 4             ; also related to accuracy
+; Neighborsearching
+ns_type     = grid      ; search neighboring grid cels
+nstlist     = 5         ; 10 fs
+rlist       = 1.0       ; short-range neighborlist cutoff (in nm)
+rcoulomb    = 1.0       ; short-range electrostatic cutoff (in nm)
+rvdw        = 1.0       ; short-range van der Waals cutoff (in nm)
+; Electrostatics
+coulombtype     = PME       ; Particle Mesh Ewald for long-range electrostatics
+pme_order       = 4         ; cubic interpolation
+fourierspacing  = 0.16      ; grid spacing for FFT
+; Temperature coupling is on
+tcoupl      = V-rescale                         ; modified Berendsen thermostat
+tc-grps     = Protein Water_and_ions      ; two coupling groups - more accurate
+tau_t       = 0.1      0.1                 ; time constant, in ps
+ref_t       = 310      310                 ; reZference temperature, one for each group, in K
+
+
+;;annel
+;annealing = single single
+;annealing_npoints = 2 2
+;annealing_time = 0 20 0 20
+;annealing_temp = 0 310 0 310
+
+; Pressure coupling is off
+pcoupl      = no        ; no pressure coupling in NVT
+; Periodic boundary conditions
+pbc         = xyz       ; 3-D PBC
+; Dispersion correction
+DispCorr    = EnerPres  ; account for cut-off vdW scheme
+; Velocity generation
+gen_vel     = yes       ; assign velocities from Maxwell distribution
+gen_temp    = 100       ; temperature for Maxwell distribution
+gen_seed    = -1        ; generate a random seed
+; COM motion removal
+; These options remove motion of the protein/bilayer relative to the solvent/ions
+nstcomm     = 100
+comm-mode   = Linear
+comm-grps   = Protein Water_and_ions
+```
+
+### d. npt stage
+
+npt 文件 命令行和相关参数图
+
+```mdp
+title       = NPT Equilibration  
+define      = -DPOSRES  ; position restrain the protein
+; Run parameters
+integrator  = md        ; leap-frog integrator
+nsteps      = 125000000    ; 2 * 125000000 = 250000 ps (250 ns)
+dt          = 0.002     ; 2 fs
+; Output control
+nstxout     = 1000       ; save coordinates every 0.2 ps
+nstvout     = 1000       ; save velocities every 0.2 ps
+nstenergy   = 1000       ; save energies every 0.2 ps
+nstlog      = 1000       ; update log file every 0.2 ps
+; Bond parameters
+continuation            = yes       ; Restarting after NVT 
+constraint_algorithm    = lincs     ; holonomic constraints 
+constraints             = h-bonds ; all bonds (even heavy atom-H bonds) constrained
+lincs_iter              = 1         ; accuracy of LINCS
+lincs_order             = 4         ; also related to accuracy
+; Neighborsearching
+ns_type     = grid      ; search neighboring grid cels
+nstlist     = 5         ; 10 fs
+rlist       = 1.0       ; short-range neighborlist cutoff (in nm)
+rcoulomb    = 1.0       ; short-range electrostatic cutoff (in nm)
+rvdw        = 1.0       ; short-range van der Waals cutoff (in nm)
+; Electrostatics
+coulombtype     = PME       ; Particle Mesh Ewald for long-range electrostatics
+pme_order       = 4         ; cubic interpolation
+fourierspacing  = 0.16      ; grid spacing for FFT
+; Temperature coupling is on
+tcoupl      = V-rescale;Nose-Hoover                       ; More accurate thermostat
+tc-grps     = Protein  Water_and_ions      ; two coupling groups - more accurate
+tau_t       = 0.1     0.1                 ; time constant, in ps
+ref_t       = 330     330                 ; reference temperature, one for each group, in K
+; Pressure coupling is on
+pcoupl      = Berendsen;Parrinello-Rahman     ; Pressure coupling on in NPT
+pcoupltype  = semiisotropic         ; uniform scaling of x-y box vectors, independent z
+tau_p       = 5.0                   ; time constant, in ps
+ref_p       = 1.0   1.0             ; reference pressure, x-y, z (in bar)
+compressibility = 4.5e-5    4.5e-5  ; isothermal compressibility, bar^1
+; Periodic boundary conditions
+pbc         = xyz       ; 3-D PBC
+; Dispersion correction
+DispCorr    = EnerPres  ; account for cut-off vdW scheme
+; Velocity generation
+gen_vel     = no        ; Velocity generation is off
+; COM motion removal
+; These options remove motion of the protein/bilayer relative to the solvent/ions
+nstcomm         = 100
+comm-mode       = Linear
+comm-grps       = Protein Water_and_ions
+; Scale COM of reference coordinates
+refcoord_scaling = com
+```
+
+### e. md stage
+
+md 文件 命令行和相关参数图
+
+```mdp
+title       = Production MD 
+; Run parameters
+integrator  = md        ; leap-frog integrator
+nsteps      = 50000000    ; 2 * 500000 = 1000 ps (1 ns)
+dt          = 0.002     ; 2 fs
+; Output control
+nstxout     = 100000     ; save coordinates every 2 ps
+nstvout     = 100000      ; save velocities every 2 ps
+nstxtcout   = 100000      ; xtc compressed trajectory output every 2 ps
+nstenergy   = 100000      ; save energies every 2 ps
+nstlog      = 10000000      ; update log file every 2 ps
+; Bond parameters
+continuation            = yes       ; Restarting after NPT 
+constraint_algorithm    = lincs     ; holonomic constraints 
+constraints             = h-bonds ; all bonds (even heavy atom-H bonds) constrained
+lincs_iter              = 1         ; accuracy of LINCS
+lincs_order             = 4         ; also related to accuracy
+; Neighborsearching
+ns_type     = grid      ; search neighboring grid cels
+nstlist     = 5         ; 10 fs
+rlist       = 1.0       ; short-range neighborlist cutoff (in nm)
+rcoulomb    = 1.0       ; short-range electrostatic cutoff (in nm)
+rvdw        = 1.0       ; short-range van der Waals cutoff (in nm)
+; Electrostatics
+coulombtype     = PME   ; Particle Mesh Ewald for long-range electrostatics
+pme_order       = 4     ; cubic interpolation
+fourierspacing  = 0.16  ; grid spacing for FFT
+; Temperature coupling is on
+tcoupl      = V-rescale;Nose-Hoover                   ; More accurate thermostat
+tc-grps     = Protein Water_and_ions  ; two coupling groups - more accurate
+tau_t       = 0.1    0.1             ; time constant, in ps
+ref_t       = 310    310             ; reference temperature, one for each group, in K
+; Pressure coupling is on
+pcoupl      = Parrinello-Rahman     ; Pressure coupling on in NPT
+pcoupltype  = semiisotropic         ; uniform scaling of x-y box vectors, independent z
+tau_p       = 2.0                   ; time constant, in ps
+ref_p       = 1.0   1.0             ; reference pressure, x-y, z (in bar)
+compressibility = 4.5e-5    4.5e-5  ; isothermal compressibility, bar^-1
+; Periodic boundary conditions
+pbc         = xyz       ; 3-D PBC
+; Dispersion correction
+DispCorr    = EnerPres  ; account for cut-off vdW scheme
+; Velocity generation
+gen_vel     = no        ; Velocity generation is off
+; COM motion removal
+; These options remove motion of the protein/bilayer relative to the solvent/ions
+nstcomm         = 100
+comm-mode       = angular
+comm-grps       = Protein Water_and_ions 
+```
+
+
+## 5. Result
+
+uncleaved：证明无法自组装 且未切割部分稳定没什么变化
+cleaved：没有完全自组装，但是beta10 11有所恢复
+
+相关图
+
+## 6. Discussion
+
+1. 限制没有完全对应（因为时间限制无法再次模拟） 欢迎大家提意见
+
+2. 好处：薛定谔+gromacs软件优势（优于NAMD）
 
 # Relative Fluorescence Model
 
@@ -216,3 +431,72 @@ we import the above 2 ODEs and the physical equation into Matlab and utilize the
 This figure illustrates that **our relative fluorescence intensity model matches the experimental results well**.
 
 # Virtual Screening
+
+## 1. Description of the model
+
+In wetlab part, we have chosen several compound libraries for drug screening `Natural Compound Library`, `Bioactive Compound Library`, `Clinical Compound Library`, and `Approved Drug Library` applying high-throughput screening technology. The experiment screened approximately 3,600 small molecules, and the process of mixing enzymes and substrates took about six hours, not to mention the preliminary preparation such as protein purification. In contrast, virtual screening can **accomplish the screening of millions of compounds within just a few days**, significantly expanding the scope of screening, increasing the likelihood of identifying inhibitors with high inhibition rates, and uncovering novel patterns. Therefore, we engaged in virtual screening modeling.
+
+
+
+
+### a. Regular part
+
+<Image
+  src="server/contents/model/vs-figure-workflow.png"
+  alt="Figure 4.1 Flow Chart Of Virtual Screening"
+  title="Figure 4.1 Flow Chart Of Virtual Screening"
+  height="150"
+  width="1200"
+/>
+
+
+
+流程图，GVSrun命令 ChemDiv
+
+<Model title="Protein 4.1 Prepared V8 Protease" src="server/contents/model/vs-2o8l-prepared.stl" />
+
+### b. New on screening through observations
+
+
+## 2. Results
+
+After 
+
+![Figure 4.2 One Of The Results As Illustrative Examples](server/contents/model/vs-figure-1.png)
+
+
+<Model title="Protein 4.2-34 z-4602" src="server/contents/model/vs-z/vs-z-4602.stl" />
+<Model title="Protein 4.2-35 z-4604" src="server/contents/model/vs-z/vs-z-4604.stl" />
+<Model title="Protein 4.2-36 z-4605" src="server/contents/model/vs-z/vs-z-4605.stl" />
+<Model title="Protein 4.2-37 z-4606" src="server/contents/model/vs-z/vs-z-4606.stl" />
+<Model title="Protein 4.2-38 z-4611" src="server/contents/model/vs-z/vs-z-4611.stl" />
+<Model title="Protein 4.2-39 z-4617" src="server/contents/model/vs-z/vs-z-4617.stl" />
+<Model title="Protein 4.2-40 z-4619" src="server/contents/model/vs-z/vs-z-4619.stl" />
+<Model title="Protein 4.2-41 z-4622" src="server/contents/model/vs-z/vs-z-4622.stl" />
+<Model title="Protein 4.2-42 z-4623" src="server/contents/model/vs-z/vs-z-4623.stl" />
+<Model title="Protein 4.2-43 z-4626" src="server/contents/model/vs-z/vs-z-4626.stl" />
+<Model title="Protein 4.2-44 z-4628" src="server/contents/model/vs-z/vs-z-4628.stl" />
+<Model title="Protein 4.2-45 z-4635" src="server/contents/model/vs-z/vs-z-4635.stl" />
+<Model title="Protein 4.2-46 z-4636" src="server/contents/model/vs-z/vs-z-4636.stl" />
+<Model title="Protein 4.2-47 z-4639" src="server/contents/model/vs-z/vs-z-4639.stl" />
+<Model title="Protein 4.2-48 z-4640" src="server/contents/model/vs-z/vs-z-4640.stl" />
+<Model title="Protein 4.2-49 z-4644" src="server/contents/model/vs-z/vs-z-4644.stl" />
+<Model title="Protein 4.2-50 z-4648" src="server/contents/model/vs-z/vs-z-4648.stl" />
+<Model title="Protein 4.2-51 z-4649" src="server/contents/model/vs-z/vs-z-4649.stl" />
+<Model title="Protein 4.2-52 z-4650" src="server/contents/model/vs-z/vs-z-4650.stl" />
+<Model title="Protein 4.2-53 z-4651" src="server/contents/model/vs-z/vs-z-4651.stl" />
+<Model title="Protein 4.2-54 z-4652" src="server/contents/model/vs-z/vs-z-4652.stl" />
+<Model title="Protein 4.2-55 z-4659" src="server/contents/model/vs-z/vs-z-4659.stl" />
+<Model title="Protein 4.2-56 z-4664" src="server/contents/model/vs-z-4664-o.stl" />
+<Model title="Protein 4.2-57 z-4666" src="server/contents/model/vs-z/vs-z-4666.stl" />
+<Model title="Protein 4.2-58 z-4674" src="server/contents/model/vs-z/vs-z-4674.stl" />
+<Model title="Protein 4.2-59 z-4678" src="server/contents/model/vs-z/vs-z-4678.stl" />
+<Model title="Protein 4.2-60 z-4680" src="server/contents/model/vs-z/vs-z-4680.stl" />
+<Model title="Protein 4.2-61 z-4682" src="server/contents/model/vs-z/vs-z-4682.stl" />
+<Model title="Protein 4.2-62 z-4684" src="server/contents/model/vs-z/vs-z-4684.stl" />
+<Model title="Protein 4.2-63 z-4685" src="server/contents/model/vs-z/vs-z-4685.stl" />
+
+## 3. Discussion
+
+1. 在采用目筛的同时，有计算资源可以把mmgbsa都算出来
+
