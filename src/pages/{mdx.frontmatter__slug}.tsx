@@ -8,8 +8,8 @@ import Audio from "src/components/mdx/audio";
 import Image from "src/components/mdx/image";
 import Gallery from "src/components/mdx/gallery";
 import Modal from "src/components/mdx/modal";
-import Plot from "src/components/mdx/plot-loadable";
-import Model from "src/components/mdx/model-loadable";
+import Plot from "src/components/mdx/plot-lazy";
+import Model from "src/components/mdx/model-lazy";
 import Collapse from "src/components/mdx/collapse";
 const components = {
   Video,

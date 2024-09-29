@@ -30,11 +30,7 @@ export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = ({
           {
             test: /plotly.js-finance-dist/,
             use: loaders.null(),
-          },
-          {
-            test: /react-stl-viewer/,
-            use: loaders.null(),
-          },
+          }
         ],
       },
     });
