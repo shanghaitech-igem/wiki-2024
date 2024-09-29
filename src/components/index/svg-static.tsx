@@ -29,6 +29,7 @@ const SvgStatic: React.FC<SvgProps> = ({
           rotate: rotate ? `${rotate}deg` : "0deg",
           left: reverseX ? `calc(100% - ${x}px - ${size}px)` : `${x}px`,
           top: y,
+          overflow: "visible",
         }}
       />
       <Component
