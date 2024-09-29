@@ -21,8 +21,8 @@ const Collapse: React.FC<CollapseProps> = ({ children, title }) => {
       >
         {title
           ? isExpanded
-            ? `Collapse ${title}`
-            : `Expand ${title}`
+            ? `Collapse: ${title}`
+            : `Expand: ${title}`
           : isExpanded
           ? "Collapse"
           : "Expand"}
