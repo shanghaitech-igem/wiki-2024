@@ -402,7 +402,7 @@ export default function PhotoSlider(props: IPhotoSliderProps) {
         }`}
         style={{
           background: currentOpacity
-            ? `rgba(15, 15, 15, ${currentOpacity})`
+            ? `rgba(0, 0, 0, ${currentOpacity})`
             : undefined,
           transitionTimingFunction: currentEasing,
           transitionDuration: `${touched ? 0 : currentSpeed}ms`,

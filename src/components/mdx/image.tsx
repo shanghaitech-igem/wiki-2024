@@ -17,7 +17,7 @@ const Image: React.FC<React.ImgHTMLAttributes<HTMLImageElement>> = ({
 
   return (
     <div className={styles.container}>
-      <PhotoProvider className={styles.viewer}>
+      <PhotoProvider className={styles.viewer} maskOpacity={0.8} >
         <PhotoView src={src}>
           <img
             src={src}
