@@ -17,10 +17,17 @@ const Gallery: React.FC<GalleryProps> = ({ srcList, title, width, height }) => {
 
   return (
     <PhotoProvider>
-      <Tabs>
+      <Tabs forceRenderTabPanel>
+        <TabList className={styles.tabList}>
+          {parsedUrls.map((url, index) => (
+            <Tab className={styles.tab} key={`tab-${url}`}>{`Image ${
+              index + 1
+            }`}</Tab>
+          ))}
+        </TabList>
         {parsedUrls.map((url, index) => (
           <TabPanel
-            key={index}
+            key={`tabpanel-${index}`}
             style={{ width: `${width}px`, height: `${height}px` }}
             className={styles.tabPanel}
           >
@@ -38,11 +45,6 @@ const Gallery: React.FC<GalleryProps> = ({ srcList, title, width, height }) => {
             </PhotoView>
           </TabPanel>
         ))}
-        <TabList className={styles.tabList}>
-          {parsedUrls.map((url, index) => (
-            <Tab className={styles.tab} key={index}>{`Image ${index + 1}`}</Tab>
-          ))}
-        </TabList>
       </Tabs>
     </PhotoProvider>
   );
