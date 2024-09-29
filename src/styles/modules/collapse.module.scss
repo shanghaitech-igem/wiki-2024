@@ -8,24 +8,51 @@ main {
       padding: 0 !important;
     }
 
-    button {
-      width: 100%; // Make the button take the full width of its container
-      background-color: light.$pacify-primary; // Change to your desired color
-      color: white; // Text color
+    .main-button {
+      width: 100%;
+      background-color: light.$pacify-primary;
+      color: light.$pacify-char-layout;
       font-size: larger;
-      padding: 10px 0; // Vertical padding for a bar-like appearance
-      border: none; // Remove default border
-      border-radius: 5px; // Rounded corners
+      padding: 10px 0;
+      border: none;
+      border-radius: 5px;
       cursor: pointer;
-      transition: background-color 0.3s ease; // Smooth transition for hover effect
+      transition: background-color 0.3s ease;
       font-family: fonts.$pacify-content-secondary;
+      margin: 2rem 0;
+
       &:hover {
-        background-color: light.$pacify-secondary; // Darken on hover
+        background-color: light.$pacify-secondary;
+      }
+    }
+
+    .ending {
+      opacity: 0.5;
+
+      .collapse-button {
+        width: auto; // Make the button width auto
+        font-size: smaller; // Reduce the font size
+        padding: 5px 10px; // Adjust padding for a smaller button
+        margin-top: -1rem; // Adjust margin
+        float: right; // Align the button to the right
+        background: none;
+        color: light.$pacify-char-content;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        font-family: fonts.$pacify-content-secondary;
+        
+        &::before {
+          content: "▲";
+          font-size: larger;
+          margin-right: 5px;
+        }
       }
     }
 
     div {
-      transition: max-height 0.3s ease; // Smooth transition for expand/collapse
+      transition: max-height 0.3s ease;
     }
   }
 }

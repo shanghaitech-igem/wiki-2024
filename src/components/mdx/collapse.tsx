@@ -13,13 +13,27 @@ const Collapse: React.FC<CollapseProps> = ({ children }) => {
   return (
     <div className={styles.collapse}>
       <button
+        className={styles.mainButton}
         {...getToggleProps({
           onClick: () => setExpanded((prevExpanded) => !prevExpanded),
         })}
       >
         {isExpanded ? "Collapse" : "Expand"}
       </button>
-      <div {...getCollapseProps()}>{children}</div>
+      <div {...getCollapseProps()}>
+        {children}
+        <div className={styles.ending}>
+          <hr></hr>
+          {isExpanded && (
+            <button
+              className={styles.collapseButton}
+              onClick={() => setExpanded(false)}
+            >
+              Collapse
+            </button>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
