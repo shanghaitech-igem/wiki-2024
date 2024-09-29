@@ -31,15 +31,16 @@ const LoadablePlot = Loadable({
 });
 
 // Plot Component
-const Plot: React.FC<PlotParams> = (params) => {
+const Plot: React.FC<PlotParams> = ({ data, layout }) => {
   return (
-      <div className={styles.plot}>
-        <LoadablePlot
-          {...params}
-          useResizeHandler={true}
-          style={{ width: "100%", height: "100%" }}
-        />
-      </div>
+    <div className={styles.plot}>
+      <LoadablePlot
+        data={data}
+        layout={layout}
+        useResizeHandler={true}
+        style={{ width: "100%", height: "100%" }}
+      />
+    </div>
   );
 };
 
