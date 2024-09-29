@@ -101,6 +101,9 @@ importers:
       react-stl-viewer:
         specifier: ^2.5.0
         version: 2.5.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.168.0)
+      react-tabs:
+        specifier: ^6.0.2
+        version: 6.0.2(react@18.3.1)
       remark-gfm:
         specifier: ^3.0.1
         version: 3.0.1
@@ -2600,6 +2603,10 @@ packages:
   clone@2.1.2:
     resolution: {integrity: sha512-3Pe/CF1Nn94hyhIYpjtiLhdCoEoz0DqQ+988E9gmeEdQZlojxnOb74wctFyuwWQHzqyf9X7C7MG8juUpqBJT8w==}
     engines: {node: '>=0.8'}
+
+  clsx@2.1.1:
+    resolution: {integrity: sha512-eYm0QWBtUrBWZWG0d386OGAw16Z995PiOVo2B7bjWSbHedGl5e0ZWaq65kOGgUSNesEIDkB9ISbTg/JK9dhCZA==}
+    engines: {node: '>=6'}
 
   color-alpha@1.0.4:
     resolution: {integrity: sha512-lr8/t5NPozTSqli+duAN+x+no/2WaKTeWvxhHGN+aXT6AJ8vPlzLa7UriyjWak0pSC2jHol9JgjBYnnHsGha9A==}
@@ -6418,6 +6425,11 @@ packages:
       react: '>=18.0'
       react-dom: '>=18.0'
       three: '>=0.154'
+
+  react-tabs@6.0.2:
+    resolution: {integrity: sha512-aQXTKolnM28k3KguGDBSAbJvcowOQr23A+CUJdzJtOSDOtTwzEaJA+1U4KwhNL9+Obe+jFS7geuvA7ICQPXOnQ==}
+    peerDependencies:
+      react: ^18.0.0
 
   react@18.3.1:
     resolution: {integrity: sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==}
@@ -10975,6 +10987,8 @@ snapshots:
       mimic-response: 1.0.1
 
   clone@2.1.2: {}
+
+  clsx@2.1.1: {}
 
   color-alpha@1.0.4:
     dependencies:
@@ -15945,6 +15959,12 @@ snapshots:
       - expo-file-system
       - expo-gl
       - react-native
+
+  react-tabs@6.0.2(react@18.3.1):
+    dependencies:
+      clsx: 2.1.1
+      prop-types: 15.8.1
+      react: 18.3.1
 
   react@18.3.1:
     dependencies:
