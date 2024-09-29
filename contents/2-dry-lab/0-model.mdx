@@ -441,14 +441,14 @@ This figure illustrates that **our relative fluorescence intensity model matches
 
 In wetlab part, we have chosen several compound libraries for drug screening `Natural Compound Library`, `Bioactive Compound Library`, `Clinical Compound Library`, and `Approved Drug Library` applying high-throughput screening technology. The experiment screened approximately 3,600 small molecules, and the process of mixing enzymes and substrates took about six hours, not to mention the preliminary preparation such as protein purification. In contrast, virtual screening can **accomplish the screening of millions of compounds within just a few days**, significantly expanding the scope of screening, increasing the likelihood of identifying inhibitors with high inhibition rates, and uncovering novel patterns. Therefore, we engaged in virtual screening modeling.
 
-This model is described in three part:
+This model is described in three parts:
 > [1. Description of the model](#1-description-of-the-model-1)
 >
-> > [a. Regular part](#a-regular-part)
+> > [a. Regular part](#a-regular-part): This section provides a detailed description of our virtual screening process.
 > > 
-> > [b. New on screening through observation](#b-new-on-screening-through-observation)
+> > [b. New on screening through observation](#b-new-on-screening-through-observation): This part focuses on sharing the strategies we observed during the screening.
 > 
-> [2. Results](#2-results)
+> [2. Results](#2-results): This section mainly covers the visualization and interpretation of our results.
 >
 > [3. Discussion](#3-discussion)
 >
@@ -475,17 +475,19 @@ The following flow chart shows the general steps we take to do virtual screening
   width="900"
 />
 
-First, we downloaded the PDB file of the v8 protease enzyme (PDB code: 2O8L) from the RCSB, and prepared the protein using Schrodinger(removing water molecules, etc.). 
+First, we downloaded the PDB file of the v8 protease enzyme (PDB code: 2O8L) from the [RCSB](https://www.rcsb.org/structure/2O8L), and prepared the protein using Schrodinger(removing water molecules, etc.). 
 
 <Model
   title="Protein 4.1 Prepared V8 Protease"
   src="server/contents/model/vs-2o8l-prepared.stl"
 />
 
-Then, based on the functional region displayed in UniProt (UniProt Code: Q99V45), which is a catalytic triad composed of a histidine (His), an aspartic acid (Asp), and a serine (Ser), we designed the grid box, with the **ligand centroid's radius of action** being **10 Å** and the **ligand's overall radius of action** being **12 Å**. 
+Then, based on the functional region displayed in [UniProt](https://www.uniprot.org/uniprotkb/Q99V45) (UniProt Code: Q99V45), which is a catalytic triad composed of a histidine (HIS), an aspartic acid (ASP), and a serine (SER), we designed the grid box, with the **ligand centroid's radius of action** being **10 Å** and the **ligand's overall radius of action** being **12 Å**. 
 
-插入功能区图片，插入uniprot截图（Figure 4.2）
-可以在uniprot上面加链接（?）
+![Figure 4.2 Functional Region (HIS 51, ASP 93, SER 169)](server/contents/model/vs-else/vs-figure-actice-sites.png)
+
+<PDF src="server/contents/model/vs-else/vs-uniprot.pdf" />
+
 
 The prepared protein pocket file and the 3D small molecule library ChemDiv were used as inputs to perform preliminary virtual screening on a Linux cluster using the GVSrun[^4] command (which internally calls Glide's molecular docking method and its files are open-source on [Wang Lin's Github](https://github.com/Wang-Lin-boop/CADD-Scripts)). The GVS command is as follows:
 
@@ -506,7 +508,7 @@ Here is a brief Description of the meaning of mode `Normal`:
 >
 
 
-The **-a** and the **-b parameter** means `The number of Output compounds per Screening Task` and `The number of Output compounds after Standard docking Task` respectively, and we use the default ones.
+The **-a parameter** and the **-b parameter** means `The number of Output compounds per Screening Task` and `The number of Output compounds after Standard docking Task` respectively, and we use the default ones.
 
 
 After several days of screening (less than one week), we obtained the promising molecules and started to screen by observing the structures and calculating relevant metrics.
@@ -516,7 +518,9 @@ Subsequently, we utilized `Schrodinger` software to observe bond formation and a
 ![Figure 4.3-1 One Of The Results As Illustrative Examples](server/contents/model/vs-figure-1.png)
 ![Figure 4.3-2 Different Bonds With Corresponding Colors](server/contents/model/vs-else/vs-figure-bonds.png)
 
-We scored them and calculated their [MMGBSA ΔG bind](#mmgbsa-δg-bind) to further eliminate false positive small molecules, resulting in 200 small molecules with favorable properties. Finally, based on the new protein and small molecule conformations obtained from the calculation of mmgbsa ΔG bind, we calculated the [ligand strain energy](#ligand-strain-energy) for these 200 small molecules. Based on the results, and in conjunction with the previous indicators, we arrived at the final 60 small molecules. (All steps were executed within the Schrodinger software.)
+We scored them `(see method in` [part b](#b-new-on-screening-through-observation)`)`and calculated their [MMGBSA ΔG bind](#mmgbsa-δg-bind) to further eliminate false positive small molecules, resulting in 200 small molecules with favorable properties. Finally, based on the new protein and small molecule conformations obtained from the calculation of mmgbsa ΔG bind, we calculated the [ligand strain energy](#ligand-strain-energy) for these 200 small molecules. Based on the results, and in conjunction with the previous indicators, we arrived at the final 60 small molecules. (All steps were executed within the Schrodinger software.)
+
+Here are basic explanation of _MMGBSA ΔG Bind_ and _Ligand Strain Energy_. [Click here to skip.](#b-new-on-screening-through-observation)
 
 > #### MMGBSA ΔG Bind
 > 
@@ -537,12 +541,16 @@ We scored them and calculated their [MMGBSA ΔG bind](#mmgbsa-δg-bind) to furth
 > > In molecular docking and drug design, the native state of a ligand is typically its lowest energy conformation, which is stable in isolation. However, upon binding to a receptor, the ligand often undergoes conformational changes to fit into the receptor's binding site. These changes can lead to a higher energy state for the ligand, as it is no longer in its most stable form.
 > >
 > > *The energy difference between the bound conformation of the ligand and its lowest energy*, unbound conformation is termed the Ligand Strain Energy. This strain energy represents the penalty or cost in terms of free energy that the system must pay to deform the ligand to fit it into the receptor's binding pocket.
+> >
 > > Normally, **Ligand Strain Energy** values are generally more favorable when they are lower. `It's better be under 5`
->
+> >
 
 
 
 ### b. New on screening through observation
+
+In the current virtual screening process, visual inspection remains a crucial part. When done well, it can effectively eliminate false positive results and refine useful molecules and structures. However, for beginners, the first encounter with visual inspection can be daunting, and standards vary, making it difficult to unify the results obtained by two people with different criteria. This is also a problem we encountered. To address this issue, we consulted professors in the field of computational biology and asked them and doctoral students to guide our visual inspection process. Based on..., we established the following evaluation table:
+
 
 ## 2. Results
 
@@ -601,7 +609,7 @@ Right behind the table, the structures of these small molecules are presented; d
 
 Spinning 180° to see how ligand intercat with the protein.
 <Model
-    title="Protein 4.2-0-1 z-4650 docking result shown as example"
+    title="Protein 4.2-0-1 z-4650 docking result shown as example (Compressed)"
     src="server/contents/model/vs-else/vs-z-4650-docking-decimated.stl"
 />
 
