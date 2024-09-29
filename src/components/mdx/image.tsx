@@ -3,12 +3,13 @@ import { PhotoProvider, PhotoView } from "src/plugins/image-viewer";
 import * as styles from "src/styles/modules/image.module.scss";
 import parseRemoteURL from "src/utils/remote-url-parser";
 
-interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
-  width?: string;
-  height?: string;
-}
-
-const Image: React.FC<ImageProps> = ({ src, alt, width, height, ...props }) => {
+const Image: React.FC<React.ImgHTMLAttributes<HTMLImageElement>> = ({
+  src,
+  alt,
+  width,
+  height,
+  ...props
+}) => {
   src = parseRemoteURL(src);
 
   // If props.title is null or undefined, use alt as the caption
