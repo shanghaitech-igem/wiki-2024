@@ -18,7 +18,7 @@ const {
   declaration,
   icon,
   communication,
-  socialIcons,
+  icons,
   snapgeneLogo,
 } = styles;
 
@@ -65,40 +65,78 @@ const Footer: React.FC = () => {
       </div>
       <div className={info}>
         <div className={logos}>
-          <img
+          <a
+            href="https://gitlab.igem.org/2024/shanghaitech-china#shanghaitech---igem-2024-wiki-repository"
+            target="_blank"
+            rel="noreferrer"
             className={mainLogo}
-            src={parseRemoteURL("server/svgs/main-logo-bar.svg")}
-            alt="Logo"
-          />
-          <img
+          >
+            <img
+              src={parseRemoteURL("server/svgs/main-logo-bar.svg")}
+              alt="Logo"
+            />
+          </a>
+          <a
+            href="https://www.shanghaitech.edu.cn/"
+            target="_blank"
+            rel="noreferrer"
             className={stuLogo}
-            src={parseRemoteURL("server/svgs/stu-logo-bar.svg")}
-            alt="Logo"
-          />
-          <img
+          >
+            <img
+              src={parseRemoteURL("server/svgs/stu-logo-bar.svg")}
+              alt="Logo"
+            />
+          </a>
+          <a
+            href="https://www.snapgene.com/"
+            target="_blank"
+            rel="noreferrer"
             className={snapgeneLogo}
-            src={parseRemoteURL("server/svgs/snapgene-logo-bar.svg")}
-            alt="Logo"
-          />
+          >
+            <img
+              src={parseRemoteURL("server/svgs/snapgene-logo-bar.svg")}
+              alt="Logo"
+            />
+          </a>
         </div>
         <div className={communication}>
           <p>Follow Us</p>
-          <div className={socialIcons}>
+          <div className={icons}>
             <a href="https://instagram.com" target="_blank" rel="noreferrer">
               <Icon icon="mdi:instagram" className={icon} />
             </a>
-            <a href="https://twitter.com" target="_blank" rel="noreferrer">
-              <Icon icon="fa6-brands:x-twitter" className={icon} />
+            <a
+              href="https://weibo.com/u/7932645830"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Icon icon="simple-icons:sinaweibo" className={icon} />
             </a>
-            <a href="https://youtube.com" target="_blank" rel="noreferrer">
+            <a
+              href="https://mp.weixin.qq.com/s/rOb0rhOsL5qHEfm75Gac3w"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Icon icon="ic:baseline-wechat" className={icon} />
+            </a>
+
+            <a
+              href="https://www.youtube.com/@iGEM-ShanghaiTech2024"
+              target="_blank"
+              rel="noreferrer"
+            >
               <Icon icon="ri:youtube-fill" className={icon} />
             </a>
           </div>
           <p>Contact Us</p>
-          <a href="mailto:igemshanghaitech@163.com">
-            <Icon icon="dashicons:email" className={icon} />
-            <p>igemshanghaitech@163.com</p>
-          </a>
+          <div className={icons}>
+            <a href="mailto:igemshanghaitech@163.com">
+              <Icon icon="arcticons:netease-mail" className={icon} />
+            </a>
+            <a href="mailto:igem.shanghaitech.china@gmail.com">
+              <Icon icon="mdi:gmail" className={icon} />
+            </a>
+          </div>
         </div>
       </div>
 
