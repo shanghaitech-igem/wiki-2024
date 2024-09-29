@@ -8,12 +8,12 @@ slug: "model"
 
 Modeling is a pivotal tool for _understanding complex biological systems_, it serves not only as a means to predict or interpret experimental data but also as a bridge for designing experiments and comprehending biological processes. In our project, we have deepened our understanding of the **v8 protease mechanism** and **optimized our experimental design** by constructing and analyzing models. Modeling also **enhances the discovery of effective therapeutic agents** and **accelerates our experimental approach**.
 
-
 ### **Model 1: Ordinary Differential Equations (ODE)**
 
 Our [first model](#ode) employs **Ordinary Differential Equations (ODEs)** to _simulate the expression levels of the v8 protease and key components within the flip-GFP system_. This model is crucial for understanding the dynamics of protein expression and its impact on receptor cleavage. By using ODEs, we can predict the behavior of these proteins in E.coli , which aids in the design of our therapeutic interventions.
 
 ### **Model 2: Molecular Simulation**
+
 For our [second model](#molecular-simulation), we utilized **Homology Modeling** and **Molecular Dynamics** techniques. Initially, we performed homology modeling to obtain the structure of β10-E5-β11-K5, and then used **AlphaFold 2** to predict the structure of β1-β9. This step was followed by protein preparation (using **Schrodinger**) and molecular dynamics simulation (using **GROMACS**), which provided insights into the protein's behavior at the atomic level. This model is instrumental in _understanding the flip-GFP system_.
 
 ### **Model 3: Relative Fluorescence Model**
@@ -24,11 +24,10 @@ The [third model](#relative-fluorescence-model), which is the **Relative Fluores
 
 Our [final model](#virtual-screening) involves **Virtual Screening**, where we searched the ChemDiv library for small molecules that can inhibit the v8 protease. This in silico approach allows us to _narrow down potential candidates without the need for laborious and costly experimental trials._ The model's output guides our experimental design by predicting which compounds are most likely to be effective inhibitors.
 
-
-
 # ODE
 
 ## 1. Description of the system
+
 In our experiment, we express three proteins in E.coli, namely V8 protease, beta1-9, and beta10-11. When the bacteria started protein expression, V8 protease cleaved beta10-11 into bata10-11cleavaged, and then bata1-9 and beta10-11 self-assembled into Flipcherry. Among them, the analysis of metabolism of these three proteins and their interaction is of great importance. Therefore, we use ordinary differential equation model to simulate and analyze the metabolism and interaction of these three proteins.The metabolic equations of these three proteins is a function of the concentration of the protein itself and the mRNA, which is a little bit complicated.
 
 An alternative model can be obtained by assuming that the mRNA dynamics are extremely fast when compared to the protein dynamics and hence reach their equilibrium instantly. Therefore, the dynamics can be described in just 1 variables, namely the concentration of protein.
@@ -45,89 +44,55 @@ $$
 
 After V8 protease can cut beta1-9 into beta1-9cut, the structure of beta1-9cut would alter. This process can be described by Hill function mathematically. After this, beta1-9cut combines with beta10-11 to form Flipcherry by self-assembling, which can be considered as a reversible chemical reaction.
 
-__We also make some assumptions to build ODE model.__
+**We also make some assumptions to build ODE model.**
 
-> 1. __The dynamics of mRNA is extremely fast.__
-> 
-> 2. __The degradation of b10-11-tev-cleavaged is slow__
-> 
-> 3. __The self-packing of Flipcherry can be considered as a standard reversible reaction.__
-> 
-> 4. __Neglect special effect and the concentration of each component is equal everywhere.__
+> 1. **The dynamics of mRNA is extremely fast.**
+>
+> 2. **The degradation of b10-11-tev-cleavaged is slow**
+>
+> 3. **The self-packing of Flipcherry can be considered as a standard reversible reaction.**
+>
+> 4. **Neglect special effect and the concentration of each component is equal everywhere.**
 
 Therefore, we have the ODE models as following.
+
 $$
-\frac{\mathrm{d} c_{v8 protease} }{\mathrm{d} t}= \frac{\frac{k_{cat1} }{k_{m1} }c_{v8 protease}}{c_{v8 protease}+k_{m1}}-k_{a1}c_{v8 protease}-\frac{k_{cat3}c_{v8 protease}c_{beta10-11} }{c_{beta10-11}+k_{m3} }
-$$
-$$
-\frac{\mathrm{d} c_{beta1-9} }{\mathrm{d} t} = \frac{\frac{k_{cat4} }{k_{m4} }c_{beta1-9}}{c_{beta1-9}+k_{m4}}-k_{a4}c_{beta1-9}-k_{cat5}c_{beta1-9}c_{beta10-11cleavaged }+k_{cat6}c_{Flipcherry}
-$$
-$$
-\frac{\mathrm{d} c_{beta10-11} }{\mathrm{d} t}= \frac{\frac{k_{cat2} }{k_{m2} }c_{beta10-11}}{c_{beta10-11}+k_{m2}}-k_{a2}c_{beta10-11}-\frac{k_{cat3}c_{v8 protease}c_{beta10-11} }{c_{beta10-11}+k_{m3} }
-$$
-$$
-\frac{\mathrm{d} c_{beta10-11cleavaged} }{\mathrm{d} t} =\frac{k_{cat3}c_{v8 protease}c_{beta10-11} }{c_{beta10-11}}-k_{cat5}c_{beta1-9}c_{beta10-11cleavaged }+k_{cat6}c_{Flipcherry}
-$$
-$$
-\frac{\mathrm{d} c_{Flipcherry} }{\mathrm{d} t} =k_{cat5}c_{beta1-9}c_{beta10-11cleavaged }-k_{cat6}c_{Flipcherry}
+\begin{align*}
+\frac{\mathrm{d} c_{v8 \, \text{protease}} }{\mathrm{d} t} &= \frac{\frac{k_{\text{cat1}} }{k_{\text{m1}} }c_{v8 \, \text{protease}}}{c_{v8 \, \text{protease}}+k_{\text{m1}}} - k_{\text{a1}}c_{v8 \, \text{protease}} - \frac{k_{\text{cat3}}c_{v8 \, \text{protease}}c_{\beta10-11} }{c_{\beta10-11}+k_{\text{m3}} } \\
+\frac{\mathrm{d} c_{\beta1-9} }{\mathrm{d} t} &= \frac{\frac{k_{\text{cat4}} }{k_{\text{m4}} }c_{\beta1-9}}{c_{\beta1-9}+k_{\text{m4}}} - k_{\text{a4}}c_{\beta1-9} - k_{\text{cat5}}c_{\beta1-9}c_{\beta10-11\, \text{cleavaged} } + k_{\text{cat6}}c_{\text{Flipcherry}} \\
+\frac{\mathrm{d} c_{\beta10-11} }{\mathrm{d} t} &= \frac{\frac{k_{\text{cat2}} }{k_{\text{m2}} }c_{\beta10-11}}{c_{\beta10-11}+k_{\text{m2}}} - k_{\text{a2}}c_{\beta10-11} - \frac{k_{\text{cat3}}c_{v8 \, \text{protease}}c_{\beta10-11} }{c_{\beta10-11}+k_{\text{m3}} } \\
+\frac{\mathrm{d} c_{\beta10-11\, \text{cleavaged}} }{\mathrm{d} t} &= \frac{k_{\text{cat3}}c_{v8 \, \text{protease}}c_{\beta10-11} }{c_{\beta10-11}} - k_{\text{cat5}}c_{\beta1-9}c_{\beta10-11\, \text{cleavaged} } + k_{\text{cat6}}c_{\text{Flipcherry}} \\
+\frac{\mathrm{d} c_{\text{Flipcherry}} }{\mathrm{d} t} &= k_{\text{cat5}}c_{\beta1-9}c_{\beta10-11\, \text{cleavaged} } - k_{\text{cat6}}c_{\text{Flipcherry}}
+\end{align*}
 $$
 
 ## 2. Conclusion
+
 If we only concern about the concentration of components at steady state, then from the perspective of physics and mathematics, we have the following results.
-$$
-\frac{\frac{k_{cat1} }{k_{m1} }c_{v8 protease}}{c_{v8 protease}+k_{m1}}-k_{a1}c_{v8 protease}-\frac{k_{cat3}c_{v8 protease}c_{beta10-11} }{c_{beta10-11}+k_{m3} }
-$$
 
 $$
-=\frac{\mathrm{d} c_{v8 protease} }{\mathrm{d} t}=0
+\begin{align*}
+\frac{\frac{k_{\text{cat1}} }{k_{\text{m1}} }c_{v8 \, \text{protease}}}{c_{v8 \, \text{protease}}+k_{\text{m1}}} - k_{\text{a1}}c_{v8 \, \text{protease}} - \frac{k_{\text{cat3}}c_{v8 \, \text{protease}}c_{\beta10-11} }{c_{\beta10-11}+k_{\text{m3}} } &= \frac{\mathrm{d} c_{v8 \, \text{protease}} }{\mathrm{d} t} = 0 \\
+\frac{\frac{k_{\text{cat4}} }{k_{\text{m4}} }c_{\beta1-9}}{c_{\beta1-9}+k_{\text{m4}}} - k_{\text{a4}}c_{\beta1-9} - k_{\text{cat5}}c_{\beta1-9}c_{\beta10-11\, \text{cleavaged} } + k_{\text{cat6}}c_{\text{Flipcherry}} &= \frac{\mathrm{d} c_{\beta1-9} }{\mathrm{d} t} = 0 \\
+\frac{\frac{k_{\text{cat2}} }{k_{\text{m2}} }c_{\beta10-11}}{c_{\beta10-11}+k_{\text{m2}}} - k_{\text{a2}}c_{\beta10-11} - \frac{k_{\text{cat3}}c_{v8 \, \text{protease}}c_{\beta10-11} }{c_{\beta10-11}+k_{\text{m3}} } &= \frac{\mathrm{d} c_{\beta10-11} }{\mathrm{d} t} = 0 \\
+\frac{k_{\text{cat3}}c_{v8 \, \text{protease}}c_{\beta10-11} }{c_{\beta10-11}} - k_{\text{cat5}}c_{\beta1-9}c_{\beta10-11\, \text{cleavaged} } + k_{\text{cat6}}c_{\text{Flipcherry}} &= \frac{\mathrm{d} c_{\beta10-11\, \text{cleavaged}} }{\mathrm{d} t} = 0 \\
+k_{\text{cat5}}c_{\beta1-9}c_{\beta10-11\, \text{cleavaged} } - k_{\text{cat6}}c_{\text{Flipcherry}} &= \frac{\mathrm{d} c_{\text{Flipcherry}} }{\mathrm{d} t} = 0
+\end{align*}
 $$
 
-$$
-\frac{\frac{k_{cat4} }{k_{m4} }c_{beta1-9}}{c_{beta1-9}+k_{m4}}-k_{a4}c_{beta1-9}-k_{cat5}c_{beta1-9}c_{beta10-11cleavaged }+k_{cat6}c_{Flipcherry}
-$$
-
-$$
-=\frac{\mathrm{d} c_{beta1-9} }{\mathrm{d} t}=0
-$$
-
-$$
-\frac{\frac{k_{cat2} }{k_{m2} }c_{beta10-11}}{c_{beta10-11}+k_{m2}}-k_{a2}c_{beta10-11}-\frac{k_{cat3}c_{v8 protease}c_{beta10-11} }{c_{beta10-11}+k_{m3} }
-$$
-
-$$
-=\frac{\mathrm{d} c_{beta10-11} }{\mathrm{d} t}=0
-$$
-
-$$
-\frac{k_{cat3}c_{v8 protease}c_{beta10-11} }{c_{beta10-11}}-k_{cat5}c_{beta1-9}c_{beta10-11cleavaged }+k_{cat6}c_{Flipcherry}
-$$
-
-$$
-=\frac{\mathrm{d} c_{beta10-11cleavaged} }{\mathrm{d} t}=0
-$$
-
-$$
-k_{cat5}c_{beta1-9}c_{beta10-11cleavaged }-k_{cat6}c_{Flipcherry}
-$$
-
-$$
-=\frac{\mathrm{d} c_{Flipcherry} }{\mathrm{d} t}=0
-$$
-
-Therefore, we notice that **$c_{v8 protease}$, $c_{beta1-9}$ and $c_{beta10-11 }$ at steady state do not dependent on the concentration of other components and are only relevant to the parameters of the ODEs. Moreover, $c_{beta10-11cleavaged }$  at steady state is relevant to the exact process of their interactions, and $c_{Flipcherry}$ at steady state is $\frac{ k_{cat5}c_{beta1-9}}{ k_{cat6}}$ times bigger than $c_{beta10-11cleavaged }$**.
+Therefore, we notice that **$c_{v8 protease}$, $c_{beta1-9}$ and $c_{beta10-11 }$ at steady state do not dependent on the concentration of other components and are only relevant to the parameters of the ODEs. Moreover, $c_{beta10-11cleavaged }$ at steady state is relevant to the exact process of their interactions, and $c_{Flipcherry}$ at steady state is $\frac{ k_{cat5}c_{beta1-9}}{ k_{cat6}}$ times bigger than $c_{beta10-11cleavaged }$**.
 
 To take a deeper insight into the change of each component with time, we import the above 5 ODEs into Matlab and utilize the ODE45 numerical method to simulate the entire process.
 
 ![Figure 1.1 The Change In The Concentration Of The Components With Time](server/contents/model/ode-figure-1.png)
 
-Then to examine the impact of V8 protease competitive inhibitor, we modify the following ODEs, for _competitive inhibitor can increase the $k_{m}$ of enzymatic reactions_.
+Then to examine the impact of V8 protease competitive inhibitor, we modify the following ODEs, for _competitive inhibitor can increase the $k_{m}$ of enzymatic reactions\_.
 
 $$
-\frac{\mathrm{d} c_{v8 protease} }{\mathrm{d} t}= \frac{\frac{k_{cat1} }{k_{m1} }c_{v8 protease}}{c_{v8 protease}+k_{m1}}-k_{a1}c_{v8 protease}-\frac{k_{cat3}c_{v8 protease}c_{beta10-11} }{c_{beta10-11}+k_{m3} }
-$$
-
-$$
-\frac{\mathrm{d} c_{beta10-11} }{\mathrm{d} t}= \frac{\frac{k_{cat2} }{k_{m2} }c_{beta10-11}}{c_{beta10-11}+k_{m2}}-k_{a2}c_{beta10-11}-\frac{k_{cat3}c_{v8 protease}c_{beta10-11} }{c_{beta10-11}+k_{m3} }
+\begin{align*}
+\frac{\mathrm{d} c_{v8 \, \text{protease}} }{\mathrm{d} t} &= \frac{\frac{k_{\text{cat1}} }{k_{\text{m1}} }c_{v8 \, \text{protease}}}{c_{v8 \, \text{protease}}+k_{\text{m1}}} - k_{\text{a1}}c_{v8 \, \text{protease}} - \frac{k_{\text{cat3}}c_{v8 \, \text{protease}}c_{\beta10-11} }{c_{\beta10-11}+k_{\text{m3}} } \\
+\frac{\mathrm{d} c_{\beta10-11} }{\mathrm{d} t} &= \frac{\frac{k_{\text{cat2}} }{k_{\text{m2}} }c_{\beta10-11}}{c_{\beta10-11}+k_{\text{m2}}} - k_{\text{a2}}c_{\beta10-11} - \frac{k_{\text{cat3}}c_{v8 \, \text{protease}}c_{\beta10-11} }{c_{\beta10-11}+k_{\text{m3}} }
+\end{align*}
 $$
 
 ![Figure 1.2 The Change Of Flipcherry Concentration With Time](server/contents/model/ode-figure-2.png)
@@ -135,11 +100,13 @@ $$
 As the figure revealed, inhibitor can decrease the concentration of Flipcherry at steady state, demonstrating that **the purpose of our project is practical**.
 
 ## 3. Model limitation
+
 Although this model have verified the feasibility of our project, we did not conduct experiments to compare our theoretical prediction with the exact expression process.
 
 Moreover, if the degradation of mRNA is sufficiently faster (say, at least 10 times) than the degradation of the corresponding protein, then the stationarity approximation is biologically justified. Note that, under certain conditions, it can be assumed that the stationarity approximation is only valid for some genes of the network. In that case, only those genes for which the assumption is valid can be modelled by a single equation for the protein concentration, while the rest will be associated to two equations, one for the mRNA and one for protein concentration.
 
 # Molecular Simulation
+
 **Molecular simulation** aims to help us better understand the mechanism of flipGFP system. As the inventor of flipGFP has done similar jobs before, we adopt some parameters directly from the essay[^1] and change some of the tools they use. For example, using Schrodinger together with GROMACS instead of NAMD, which are more convenient.
 
 [^1]: Zhang, Schepis, A., Huang, H., Yang, J., Ma, W., Torra, J., Zhang, S.-Q., Yang, L., Wu, H., Nonell, S., Dong, Z., Kornberg, T. B., Coughlin, S. R., & Shu, X. (2019). Designing a Green Fluorogenic Protease Reporter by Flipping a Beta Strand of GFP for Imaging Apoptosis in Animals. Journal of the American Chemical Society, 141(11), 4526–4530. https://doi.org/10.1021/jacs.8b13042
@@ -154,12 +121,14 @@ The structures of β10-E5-β11-K5 (both uncleaved and cleaved) were modeled by t
 [^2]: Kuhlman B and Baker D. (2000) Native protein sequences are close to optimal for their structures. Proc Natl Acad Sci USA 97(19):10383-8.
 
 - **Sequence of β10-E5-β11-K5:**
-  ````markdown
+  ```markdown
   MDLPDDHYLSTQTILSKDLNMEVSALEKEVSALEKEVSALEKEVSALEKEVSALEKEKRDHMVLLEYVTAAGITDASKVSALKEKVSALKEKVSALKEKVSALKEKVSALKE
-  ````
+  ```
 
-
-<Model title="Protein 2.1 a heterodimeric coiled coil structure (PDB code: 1KD8)" src="server/contents/model/md-1kd8.stl" />
+<Model 
+  title="Protein 2.1 a heterodimeric coiled coil structure (PDB code: 1KD8)" 
+  src="server/contents/model/md-1kd8.stl" 
+/>
 
 <Model title="Protein 2.2 β10-E5-β11-K5" src="server/contents/model/md-beta10-e5-beta11-k5-3.stl" />
 
@@ -168,9 +137,9 @@ The structures of β10-E5-β11-K5 (both uncleaved and cleaved) were modeled by t
 We use **AlphaFold2** to get β1-β9 instead of deleting the β10-β11 part in the whole protein, as the msa mode "_mmseqs2_uniref_env_" not only ensures a similar architecture to flipGFP but also takes into account more dynamic factors compared to directly deleting the β part, which may more accurately reflect the real situation.
 
 - **Sequence of β1-β9:**
-  ````markdown
+  ```markdown
   RKGEELFTGVVPILIELDGDVNGHKFFVRGEGEGDATIGKLSLKFIATTGKLPVPWPTLVTTLXXXVQAFSRYPDHMKRHDFFKSAMPEGYVQERTIYFKDDGTYKTRAEVKFHGDHLVNRIELKGIDFKEDGNILGHKLEYNFNSHKVYITADKQNNGIKANFTIRHNVEDGSVQLADHYQQNTPIGDGPV
-  ````
+  ```
 By inputing the sequence into the platform, we acquire the following results.
 
 ![Figure 2.2 Sequence Coverage Graph From AlphaFold2](server/contents/model/md-figure-1.png)
@@ -432,35 +401,29 @@ cleaved：没有完全自组装，但是beta10 11有所恢复
 # Relative Fluorescence Model
 
 ## 1. Description of the model
+
 In physics, the fluorescence intensity can be described by the following equation.
+
 $$
 I=\frac{\varphi I_{0} (1-e^{\varepsilon lc} ) }{d^{2} }
 $$
-Where $\varphi$ is the quantum fluorescence intensity of the material, $I_{0}$ is the received light intensity l is the thickness of the material and $c$ is the concentration of the material. 
+
+Where $\varphi$ is the quantum fluorescence intensity of the material, $I_{0}$ is the received light intensity l is the thickness of the material and $c$ is the concentration of the material.
 
 **In practical applications, what usually matters is relative fluorescence intensity, namely**
 
 $$
-\frac{I}{I_{max} } =1-e^{\varepsilon lc}
+\begin{align*}
+\frac{\mathrm{d} c_{\beta1-9} }{\mathrm{d} t} &= -k_{\text{cat5}}c_{\beta1-9}c_{\beta10-11\, \text{cleavaged} } + k_{\text{cat6}}c_{\text{Flipcherry}} \\
+\frac{\mathrm{d} c_{\beta10-11\, \text{cleavaged}} }{\mathrm{d} t} &= -k_{\text{cat5}}c_{\beta1-9}c_{\beta10-11\, \text{cleavaged} } + k_{\text{cat6}}c_{\text{Flipcherry}} \\
+\frac{\mathrm{d} c_{\text{Flipcherry}} }{\mathrm{d} t} &= k_{\text{cat5}}c_{\beta1-9}c_{\beta10-11\, \text{cleavaged} } - k_{\text{cat6}}c_{\text{Flipcherry}}
+\end{align*}
 $$
 
-In our experiment, we self-assemble beta1-9 and beta10-11cleavaged in vitro. Therefore, we combine this equation with ODEs below
-
-$$
-\frac{\mathrm{d} c_{beta1-9} }{\mathrm{d} t} = -k_{cat5}c_{beta1-9}c_{beta10-11cleavaged }+k_{cat6}c_{Flipcherry}
-$$
-
-$$
-\frac{\mathrm{d} c_{beta10-11cleavaged} }{\mathrm{d} t} =-k_{cat5}c_{beta1-9}c_{beta10-11cleavaged }+k_{cat6}c_{Flipcherry}
-$$
-
-$$
-\frac{\mathrm{d} c_{Flipcherry} }{\mathrm{d} t} =k_{cat5}c_{beta1-9}c_{beta10-11cleavaged }-k_{cat6}c_{Flipcherry}
-$$
-
-to predict the change of relative fluorescence intensity with time. 
+to predict the change of relative fluorescence intensity with time.
 
 ## 2. Conclusion
+
 we import the above 2 ODEs and the physical equation into Matlab and utilize the ODE45 numerical method to simulate the change of relative fluorescence intensity with time.
 
 ![Figure 3.1 The Change Of Relative Fluorescence Intensity  With Time During In Vitro Self-Assembly](server/contents/model/fluorescence-figure-1.png)
