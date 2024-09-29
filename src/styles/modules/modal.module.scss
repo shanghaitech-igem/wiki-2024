@@ -48,6 +48,8 @@
   display: inline-block; /* Ensure they are inline elements */
   margin: 10px; /* Add margin to separate them */
   padding: 10px 20px;
+  font-family: fonts.$pacify-content-secondary;
+  font-size: larger;
   background-color: light.$pacify-primary;
   color: #fff;
   border-radius: 5px;
@@ -57,9 +59,5 @@
 
   &:hover {
     background-color: light.$pacify-secondary;
-  }
-
-  &:focus {
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
   }
 }
