@@ -73,7 +73,7 @@ main {
             margin-top: 0; // Adjust the value as needed
           }
 
-          &> :first-child:not(h1) {
+          & > :first-child:not(h1) {
             padding-top: 10rem;
           }
 
@@ -99,6 +99,10 @@ main {
             strong {
               color: light.$pacify-char-strong;
             }
+          }
+
+          blockquote {
+            margin-left: 2em;
           }
 
           li {
