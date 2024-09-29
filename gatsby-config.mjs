@@ -187,7 +187,13 @@ const config = {
               output: "htmlAndMathml",
             },
           },
-          `gatsby-remark-section-split`,
+          {
+            resolve: `gatsby-plugin-nprogress`,
+            options: {
+              // Disable the loading spinner.
+              showSpinner: false,
+            },
+          },
         ],
       },
     },
