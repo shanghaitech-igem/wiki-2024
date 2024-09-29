@@ -6,6 +6,7 @@ import Video from "src/components/mdx/video";
 import PDF from "src/components/mdx/pdf";
 import Audio from "src/components/mdx/audio";
 import Image from "src/components/mdx/image";
+import Gallery from "src/components/mdx/gallery";
 import Modal from "src/components/mdx/modal";
 import Plot from "src/components/mdx/plot-loadable";
 import Model from "src/components/mdx/model-loadable";
@@ -15,6 +16,7 @@ const components = {
   PDF,
   Audio,
   Image,
+  Gallery,
   Modal,
   Plot,
   Model,
