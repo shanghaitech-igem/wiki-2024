@@ -3,6 +3,7 @@ import { Link, useStaticQuery, graphql } from "gatsby";
 import * as styles from "src/styles/modules/footer.module.scss";
 import { generateNavItems, NavItemType } from "src/utils/generate-nav-item";
 import { Icon } from "@iconify/react";
+import parseRemoteURL from "src/utils/remote-url-parser";
 
 const {
   footer,
@@ -18,6 +19,7 @@ const {
   icon,
   communication,
   socialIcons,
+  snapgeneLogo,
 } = styles;
 
 interface NavItemProps {
@@ -65,12 +67,17 @@ const Footer: React.FC = () => {
         <div className={logos}>
           <img
             className={mainLogo}
-            src="https://static.igem.wiki/teams/5174/svgs/main-logo-bar.svg"
+            src={parseRemoteURL("server/svgs/main-logo-bar.svg")}
             alt="Logo"
           />
           <img
             className={stuLogo}
-            src="https://static.igem.wiki/teams/5174/svgs/stu-logo-bar.svg"
+            src={parseRemoteURL("server/svgs/stu-logo-bar.svg")}
+            alt="Logo"
+          />
+          <img
+            className={snapgeneLogo}
+            src={parseRemoteURL("server/svgs/snapgene-logo-bar.svg")}
             alt="Logo"
           />
         </div>
