@@ -11,7 +11,10 @@
         "md"
     ],
     "cSpell.words": [
-        "brotli"
+        "brotli",
+        "Frontmatter",
+        "igem",
+        "webp"
     ],
     "editor.minimap.enabled": true,
     "editor.minimap.autohide": false

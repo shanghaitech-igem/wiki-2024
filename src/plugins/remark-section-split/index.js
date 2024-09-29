@@ -13,10 +13,7 @@ export default ({ markdownAST }) => {
 
   // Iterate over the top-level children of the markdownAST
   markdownAST.children.forEach((node) => {
-    if (
-      node.type === "thematicBreak" &&
-      node.position.end.offset - node.position.start.offset === 6
-    ) {
+    if (node.type === "mdxJsxFlowElement" && node.name === "split") {
       // Push the current section if it has children
       if (currentSection.children.length > 0) {
         sections.push(currentSection);
