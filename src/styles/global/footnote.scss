@@ -4,7 +4,7 @@
 main {
   /* Style the footnotes section. */
   .footnotes {
-    font-family: "Monsterrat", "Arial";
+    font-family: fonts.$pacify-content-secondary, "Arial" !important;
     font-size: smaller;
     color: #8b949e;
     padding-top: 8rem;
@@ -15,7 +15,8 @@ main {
     }
 
     li {
-      line-height: normal;
+      line-height: 1.2em;
+      margin: 1rem;
       word-wrap: break-word;
       word-break: break-all;
     }
@@ -23,7 +24,7 @@ main {
 
   /* Place `[` and `]` around footnote references. */
   [data-footnote-ref] {
-    font-family: "Monsterrat", "Arial";
+    font-family: fonts.$pacify-content-secondary, "Arial" !important;
 
     &::before {
       content: "[";

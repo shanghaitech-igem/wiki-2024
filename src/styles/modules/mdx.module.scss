@@ -111,7 +111,9 @@ main {
             }
           }
 
-          a:not([data-footnote-ref]):not([data-footnote-backref]) {
+          a:not([data-footnote-ref]):not([data-footnote-backref]):not(
+              [aria-label*="permalink"]
+            ) {
             position: relative;
             color: light.$pacify-success;
             text-decoration: none;
