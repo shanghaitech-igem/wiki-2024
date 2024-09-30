@@ -18,7 +18,7 @@ const config = {
   // If you use VSCode you can also use the GraphQL plugin
   // Learn more at: https://gatsby.dev/graphql-typegen
   flags: {
-    DEV_SSR: true,
+    DEV_SSR: false,
   },
   graphqlTypegen: true,
   plugins: [
@@ -28,14 +28,6 @@ const config = {
     `gatsby-plugin-catch-links`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-postcss`,
-    {
-      resolve: "gatsby-plugin-react-svg",
-      options: {
-        rule: {
-          include: /server/, // See below to configure properly
-        },
-      },
-    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {

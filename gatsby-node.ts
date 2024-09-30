@@ -27,10 +27,10 @@ export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = ({
             test: /scrollreveal/,
             use: loaders.null(),
           },
-          {
-            test: /plotly.js-finance-dist/,
-            use: loaders.null(),
-          }
+          // {
+          //   test: /plotly.js-finance-dist/,
+          //   use: loaders.null(),
+          // }
         ],
       },
     });
