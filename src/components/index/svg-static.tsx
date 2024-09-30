@@ -41,7 +41,6 @@ const SvgStatic: React.FC<SvgProps> = ({
           position: "relative",
           visibility: "hidden",
         }}
-        className={className}
       >
         <SVG src={raw} />
       </div>
