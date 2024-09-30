@@ -584,7 +584,7 @@ Then, based on the functional region displayed in [UniProt (UniProt Code: Q99V45
 
 ![Figure 4.2 Functional Region (HIS 51, ASP 93, SER 169)](server/contents/model/vs-else/vs-figure-actice-sites.png)
 
-The prepared protein pocket file and the 3D small molecule library ChemDiv were used as inputs to perform preliminary virtual screening on a Linux cluster using the GVSrun[^7] command (which internally calls Glide's molecular docking method and its files are open-source on [Wang Lin's Github](https://github.com/Wang-Lin-boop/CADD-Scripts)). The GVS command is as follows:
+The prepared protein pocket file and the 3D small `molecule library ChemDiv (1,000,000 + molecules)` were used as inputs to perform preliminary virtual screening on a Linux cluster using the GVSrun[^7] command (which internally calls Glide's molecular docking method and its files are open-source on [Wang Lin's Github](https://github.com/Wang-Lin-boop/CADD-Scripts)). The GVS command is as follows:
 
 [^7]: "Schrodinger Script Library: Easily Run Computational Biology Tasks on Linux Clusters." (2021, July). Zhihu Column. Retrieved from https://zhuanlan.zhihu.com/p/370850885
 
@@ -644,7 +644,7 @@ In the current virtual screening process, **visual inspection** remains a crucia
 
 However, for _beginners_, the first encounter with visual inspection can be daunting, and standards vary, making it **difficult to unify** the results obtained by two or more people with different criteria. This is also **a problem we encountered**. To address this issue, we _consulted professors_ in the field of computational biology and asked them and doctoral students to give us suggestions on our visual inspection process.
 
-During visual inspection, there are four important evaluation points:
+During visual inspection, there are __three important evaluation points__:
 
 > - the geometric fit between the protein and ligand
 >
@@ -656,17 +656,21 @@ During visual inspection, there are four important evaluation points:
 
 Based on the factors above, we established the following evaluation table:
 
-| Scoring Criteria |                                Smile                                 | MMGBSA dG Bind | Lig Strain Energy |
-| :--------------: | :------------------------------------------------------------------: | :------------: | :---------------: |
-|      y-4501      |   O=C(c1ccc(Cn2ncc(Br)c2)o1)Nc(cc1)ccc1S(Nc(cc1)cc(Cl)c1Cl)(=O)=O    |     -67.12     |      4.1934       |
-|      y-4502      |           O=C(CCN(CC1)CCN1c1cccc(Cl)c1)Nc1ccc(Cn2ncnc2)cc1           |     -65.49     |     4.613332      |
-|      y-4503      | O=C(c(cccc1)c1Cl)Nc(cc1)ccc1SC(C(N(C1=O)c2ccccc2)=O)=C1Nc(cc1)ccc1Br |     -64.34     |     4.861185      |
-|      y-4508      |  Nc1ccc(Cc2nc(cc(Cc(cc3)cc4c3[nH]c(Cc(cc3)ccc3N)n4)cc3)c3[nH]2)cc1   |     -58.91     |     1.797029      |
-|      y-4513      |  [O-][N+] (c1nn(Cc(cc2)ccc2C(Nc2nn(Cc(ccc(F)c3)c3Cl)cc2)=O)cc1Cl)=O  |     -68.42     |     2.869457      |
+| Scoring Aspects |                                Description                                 | Scoring criteria |
+| :--------------: | :------------------------------------------------------------------: | :------------: |
+|      1. Number of good bonds      |   Including the aforementioned hydrogen bonds, halogen bonds, pi-pi stacking, ect.    |     0-2 bonds: 0 points, 3-4 bonds: 1 point, 5-6 bonds: 2 points, 7-8 bonds: 3 points, and so on     |
+|      2. Hydrogen bonds within the pocket      |           The deeper and denser, the better           |     0-2 points, default is 0 points, each instance adds one point     |
+|      3. Concentrated orange/red bonds      | These are bad/ugly bonds often result in clashes that cannot be resolved even after optimization by the MMGBSA method, representing unreasonable structures. |  0-2 points, default is 2 points, one point deducted for each additional concentrated area of excessive contact   |
+|      4. Morphological fit      |  i.e. conformational matching   |     0-1 point, 0 points are given only if there are significant gaps     |
+|      5. Electronegativity      |    |     0-1 point, 1 point is given if there are no obvious conflicts overall     |
+
+ 
+In practice, the highest possible score is 11 points, and the lowest is 2 points.
+
 
 ## 2. Results
 
-Ultimately, we identified the 60 most promising small molecules from ChemDiv. The following table displays detailed information about these small molecules, sequentially showing their identification numbers from the observational screening, their SMILES properties, their MM-GBSA ΔG bind, and ligand strain energy. To view the entire table, please click the "Expand: Rest of the Table" button.
+Ultimately, we identified the __63 most promising small molecules__ from ChemDiv. The following table displays detailed information about these small molecules, sequentially showing their identification numbers from the observational screening, their SMILES properties, their MM-GBSA ΔG bind, and ligand strain energy. To view the entire table, please click the "Expand: Rest of the Table" button.
 
 | Number | Title  |                                Smile                                 | MMGBSA dG Bind | Lig Strain Energy |
 | :----: | :----: | :------------------------------------------------------------------: | :------------: | :---------------: |
@@ -769,12 +773,14 @@ Ultimately, we identified the 60 most promising small molecules from ChemDiv. Th
 
 </Collapse>
 
-Right behind the table, the structures of these small molecules are presented; due to space limitations, only one 3D structure and its corresponding docking results are shown directly. Click the "Expand: Final 60 Molecules" button to view the structures of all small molecules, which are of various sizes. Regrettably, hydrogen bonds and other interactions (as shown in Figure 4.4-1 and Figure 4.4-2) cannot be displayed in the wiki; these results will be included in our files, and interested parties can download them for viewing with software such as Schrodinger.
+Right behind the table, the __structures of these small molecules__ are presented. Due to space limitations, only one 3D structure and its corresponding docking results are shown directly. Click the "Expand: Final 60 Molecules" button to view the structures of all small molecules, which are of various sizes. 
+
+Regrettably, hydrogen bonds and other interactions (as shown in Figure 4.4-1 and Figure 4.4-2) cannot be displayed in the wiki. Relevant results will be included in our files, and interested parties can download them for viewing with software such as Schrodinger.
 
 ![Figure 4.4-1 z-4650 Docking Result With Surface Shown As Example](server/contents/model/vs-else/vs-z-4650-pic-1.png)
 ![Figure 4.4-2 z-4650 Docking Result Without Surface Shown As Example](server/contents/model/vs-else/vs-z-4650-pic-2.png)
 
-Spinning 180° to see how ligand intercat with the protein.
+__`Spinning 180°`__ to see how ligand intercat with the protein.
 
 <Model
   title="Protein 4.2-0-1 z-4650 docking result shown as example (Compressed)"
