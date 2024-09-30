@@ -49,9 +49,19 @@
   animation: slide 1s ease 3.5s forwards;
   margin: auto;
   border-radius: 10px;
-  cursor: zoom-in;
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
+
+  img {
+    margin: auto;
+    max-width: 80%;
+    height: auto;
+    width: auto;
+    display: block;
+    border-radius: 10px; // Add border radius here
+    cursor: zoom-in;
+  }
+  
 
   &[class*="--selected"] {
     padding: 1rem;
