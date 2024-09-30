@@ -16,6 +16,8 @@ main {
 
     li {
       line-height: normal;
+      word-wrap: break-word;
+      word-break: break-all;
     }
   }
 
