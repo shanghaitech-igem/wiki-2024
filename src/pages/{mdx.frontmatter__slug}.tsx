@@ -55,6 +55,7 @@ interface MdxPageProps {
         title: string;
         favicon: string;
         tracer: string | null;
+        cursor: string | null;
       };
       tableOfContents: { items: TocItem[] };
     };
@@ -81,7 +82,7 @@ const MDXPage: React.FC<MdxPageProps> = ({ data, children }) => {
   const { frontmatter } = data.mdx;
 
   return (
-    <Layout>
+    <Layout cursor={frontmatter.cursor}>
       {frontmatter.tracer && (
         <Tracer src={frontmatter.tracer} alt="Tracer Image" />
       )}
@@ -105,6 +106,7 @@ export const query = graphql`
         title
         favicon
         tracer
+        cursor
       }
       tableOfContents
     }

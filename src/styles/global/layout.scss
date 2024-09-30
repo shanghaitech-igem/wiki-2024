@@ -11,11 +11,11 @@ html {
       visibility: hidden;
     }
   }
-}
-
-main {
-  // Scroll margin for all children
-  * {
-    scroll-margin-top: $scroll-margin;
+  
+  main {
+    // Scroll margin for all children
+    * {
+      scroll-margin-top: $scroll-margin;
+    }
   }
 }

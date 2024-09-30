@@ -4,5 +4,48 @@ favicon: "server/test/igem-favicon.svg"
 slug: "design"
 ---
 
-This page contains Design of the project.
+# Overview
 
+To advance our understanding and develop practical applications for the V8 protease cleavage system, we conducted several innovative design steps. This included the addition of propeptide sequences to aid in proper folding, using Glutamyl endopeptidase as a substitute to overcome degradation issues, and the construction of a fluorescence-based reporting system to simulate the itching sensation caused by *Staphylococcus aureus*. Through this system, we aim to not only characterize V8 protease cleavage activity in *E. coli* but also to identify potential inhibitors of the itch-inducing process.
+
+By employing both in vitro and in vivo experiments, along with computational modeling, we designed a co-expression system for V8 protease and thermolysin in *E. coli* using compatible plasmids. This platform allows us to evaluate the system’s performance under controlled conditions and explore broader applications, including the screening of small molecules that can alleviate persistent itching. The full design has demonstrated great potential for application in personal care products aimed at reducing skin irritation and itching caused by *Staphylococcus aureus*.
+
+# V8 purification
+
+The V8 protease expression plasmid has been modified to remove the signal peptide and introduce a four-amino-acid mutation in the propeptide to inhibit the self-degradation of V8 protease in the Escherichia coli system. The C-terminal His tag facilitates the interaction between the protein and the Ni medium, making protein purification easier. Using this plasmid, we obtained the V8 protease precursor and subsequently generated active V8 protease through enzyme cleavage.
+
+# Drug Screening
+
+We aim to find a green and safe inhibitor of V8 protease. With this consideration, we have chosen several compound libraries for drug screening: the Natural Compound Library, Bioactive Compound Library, Clinical Compound Library, and Approved Drug Library. High-throughput screening technology uses microplates as experimental tools, allowing for convenient and rapid automatic liquid addition to quickly screen potential inhibitors of V8 protease. We have successfully purified active V8 protease, and we will further use a fluorescence system and a plate reader to measure fluorescence intensity as an indicator of V8 protease activity, combining this with high-throughput screening to identify potential inhibitors from the aforementioned compound libraries.
+
+# In vitro Fluorescent Reporting System
+
+Based on previous research from a lab at the University of California, San Francisco, a protease-activated fluorescent reporter system was developed. This system divides the fluorescent protein structure into two parts: beta sheets 1-9 and beta sheets 10-11. Initially, one of the beta strands in the beta10-11 region is flipped. These two beta sheets are connected by a linker containing the protease target cleavage sequence. Upon activation by the protease, the linker is cleaved, allowing the flipped beta strand to return to its correct orientation, where it assembles with beta sheets 1-9 to form a complete fluorescent protein, emitting light. This mechanism inspired us to use a similar system to characterize V8 protease cleavage activity, simulating the human itch sensation.
+
+To validate the feasibility of this Flip system, we conducted in vitro experiments using the well-known TEV protease. After purifying the proteins, we verified sequence accuracy through mass spectrometry and tested cleavage efficiency by incubating TEV protease with beta10-11. This ensured the complete cleavage of the target sequence before allowing beta1-9 to assemble with the cleaved beta10-11 to form the superfold GFP fluorescent protein.
+
+For expression and purification, both parts of the fluorescent system were tagged with a 6x His-tag. We used the FlipGFP sequence and TEV protease target cleavage sequence ENLYFQS, which were synthesized and cloned into pET-28a plasmids for expression in *E. coli*. The proteins were purified, and the assembly process was monitored by measuring fluorescence at 535 nm with excitation at 488 nm over 12 hours.
+
+In the initial experiments, no significant fluorescence was observed, which led us to hypothesize that the issue was related to high cleavage efficiency and extended incubation times. This may have caused incorrect cleavage, preventing successful self-assembly of the fluorescent protein. Therefore, we adjusted the experimental conditions, shortening the cleavage time and increasing the concentration of the beta10-11 fragment during assembly.
+
+In subsequent experiments, we successfully validated the FlipGFP system. The results highlighted the importance of the concentration ratio between the two protein segments for optimal self-assembly. This insight will guide future in vivo experiments, where careful control of induction time and protein concentrations will be crucial to ensure the successful assembly and functionality of the system.
+
+# Pruritus Reporting System
+
+Through a detailed literature review, we identified that *Staphylococcus aureus* causes itching in humans by secreting V8 protease, which cleaves the extracellular sequence of the PAR1 receptor on the skin. To simulate this process, we designed a fluorescent reporter system by replacing the TEV protease cleavage sequence in the Flip system with the target sequence of V8 protease. Additionally, to better reflect the conditions of skin itching, we replaced FlipGFP with FlipCherry, a fluorescent protein derived from the directed evolution of superfold Cherry, known for its enhanced brightness.
+
+Initially, we tested the FlipCherry system using TEV protease to validate its functionality. After confirming that the system worked with TEV, we advanced to experiments with V8 protease. However, expressing V8 protease in *E. coli* presented challenges due to its tendency to misfold and self-degrade. To address this, we substituted V8 protease with its homologous enzyme, Glutamyl endopeptidase (gseA), which shares the same cleavage site specificity but offers greater stability when expressed in *E. coli*. This substitution allowed us to test the system without the complications associated with V8 protease misfolding, ensuring a more accurate analysis of cleavage activity.
+
+In the final design, we used the pRSFDuet-1 plasmid, which contains two T7 promoters. The first promoter drives the expression of FlipCherry beta1-9, FlipCherry beta10-11 (containing the protease cleavage site), and EGFP as an internal reference, linked by T2A sequences to ensure the production of separate proteins. The second promoter was used to express the protease gene (either TEV or Glutamyl endopeptidase), optimized for *E. coli* expression. These plasmids were constructed using Gibson Assembly.
+
+For testing, the plasmids were transformed into *E. coli* BL21 (DE3) cells. Upon reaching the desired OD600, we induced protein expression using IPTG at concentrations ranging from 0.1 mM to 1 mM. After 12 hours of induction, fluorescence was measured using a fluorescence microscope and a microplate reader. The green fluorescence (EGFP) in both the control and experimental groups confirmed successful expression, while red fluorescence, triggered by self-assembly after protease cleavage, was observed only in the experimental group, confirming the system’s functionality.
+
+To further optimize the system and address V8 protease’s misfolding issue, we introduced a signal peptide to assist in its proper folding. After folding, thermolysin was used to remove the signal peptide, activating the protease. A co-transformation strategy was employed using both pETDuet-1 and pRSFDuet-1 plasmids, enabling successful co-expression of the FlipCherry system and proteases in *E. coli*.
+
+These experiments demonstrated the feasibility of using the FlipCherry fluorescence reporting system to characterize V8 protease activity. Furthermore, by employing Glutamyl endopeptidase as a substitute, we were able to assess cleavage activity under conditions that simulate the itching sensation caused by *Staphylococcus aureus*, providing a reliable platform for further investigation in *E. coli*.
+
+# Application
+
+Currently, public awareness of Staphylococcus aureus is relatively shallow. Through this effort, we also aim to raise public understanding of Staphylococcus aureus and the relationship between itching symptoms and skin care. 
+
+Ultimately, we hope to design a safe product specifically targeting the persistent itching caused by Staphylococcus aureus. By combining the effective compounds we screen with existing skincare products, we aim to create specialized cosmeceuticals that can inhibit itching in its early stages, thereby reducing the damage caused by scratching.
