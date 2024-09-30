@@ -17,7 +17,7 @@ const Gallery: React.FC<GalleryProps> = ({ srcList, title, width, height }) => {
 
   return (
     <PhotoProvider maskOpacity={0.8}>
-      <Tabs forceRenderTabPanel>
+      <Tabs className={styles.tabs} forceRenderTabPanel>
         {parsedUrls.map((url, index) => (
           <TabPanel
             key={`tabpanel-${index}`}
@@ -40,7 +40,7 @@ const Gallery: React.FC<GalleryProps> = ({ srcList, title, width, height }) => {
         ))}
         <TabList className={styles.tabList}>
           {parsedUrls.map((url, index) => (
-            <Tab className={styles.tab} key={`tab-${url}`}>
+            <Tab className={styles.tab} key={`tab-${url}-${index}`}>
               <img src={url} alt={`Thumbnail ${index + 1}`} />
             </Tab>
           ))}

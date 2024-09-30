@@ -2,71 +2,72 @@
 @use "src/styles/themes/light" as light;
 @use "src/styles/themes/fonts" as fonts;
 
-.tab-list {
-  display: flex;
-  justify-content: center;
-  padding: 0;
-  margin: 0 0 10px;
-  list-style: none;
-}
-
-.tab {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 5px; // Adjust padding for thumbnail
-  cursor: pointer;
-  border: 1px solid #ccc;
-  margin: 0 0.5vw;
-  transition: background-color 0.3s, color 0.3s;
-  border-radius: 5px;
-
-  &[class*="--selected"] {
-    background-color: light.$pacify-primary;
-    color: white;
+.tabs {
+  .tab-list {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0 0 10px;
+    list-style: none;
   }
 
-  &:hover {
-    background-color: light.$pacify-secondary;
-    color: white;
-  }
-
-  img {
-    width: 5vw; // Thumbnail width
-    height: 5vw; // Thumbnail height
-    object-fit: contain;
-    margin: auto auto;
+  .tab {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px; // Adjust padding for thumbnail
+    cursor: pointer;
+    border: 1px solid #ccc;
+    margin: 0 0.5vw;
+    transition: background-color 0.3s, color 0.3s;
     border-radius: 5px;
+
+    &[class*="--selected"] {
+      background-color: light.$pacify-primary;
+      color: white;
+    }
+
+    &:hover {
+      background-color: light.$pacify-secondary;
+      color: white;
+    }
+
+    img {
+      width: 5vw; // Thumbnail width
+      height: 5vw; // Thumbnail height
+      object-fit: contain;
+      margin: auto auto;
+      border-radius: 5px;
+    }
   }
-}
 
-.tab-panel {
-  width: 1px;
-  height: 1px;
-  padding: auto;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  animation: slide 1s ease 3.5s forwards;
-  margin: auto;
-  border-radius: 10px;
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-
-  img {
+  .tab-panel {
+    width: 1px;
+    height: 1px;
+    padding: auto;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    animation: slide 1s ease 3.5s forwards;
     margin: auto;
-    max-width: 80%;
-    height: auto;
-    width: auto;
-    display: block;
-    border-radius: 10px; // Add border radius here
-    cursor: zoom-in;
-  }
-  
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
 
-  &[class*="--selected"] {
-    padding: 1rem;
-    width: 60vh;
-    height: 60vh;
-    opacity: 1;
+    img {
+      margin: auto;
+      max-width: 80%;
+      height: auto;
+      width: auto;
+      display: block;
+      border-radius: 10px; // Add border radius here
+      cursor: zoom-in;
+    }
+
+    &[class*="--selected"] {
+      padding: 1rem;
+      width: 60vh;
+      height: 60vh;
+      opacity: 1;
+    }
   }
 }
