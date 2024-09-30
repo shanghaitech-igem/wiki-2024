@@ -28,7 +28,9 @@ Our [final model](#virtual-screening) involves **Virtual Screening**, where we s
 
 ## 1. Description of the system
 
-In our experiment, we express three proteins in E.coli, namely V8 protease, beta1-9, and beta10-11. When the bacteria started protein expression, V8 protease cleaved beta10-11 into bata10-11cleavaged, and then bata1-9 and beta10-11cleavaged self-assembled into Flipcherry. Among them, __the analysis of metabolism of these three proteins and their interaction is of great importance__. Therefore, we __use ordinary differential equation model to simulate and analyze the metabolism and interaction of these three proteins.__ The metabolic equations of these three proteins is a function of the concentration of the protein itself and the mRNA, which is a little bit complicated.
+In our experiment, we express three proteins in E.coli, namely V8 protease, beta1-9, and beta10-11. When the bacteria started protein expression, V8 protease cleaved beta10-11 into bata10-11cleavaged, and then bata1-9 and beta10-11cleavaged self-assembled into Flipcherry. Among them, __the analysis of metabolism of these three proteins and their interaction is of great importance__. Therefore, we __use ordinary differential equation model to simulate and analyze the metabolism and interaction of these three proteins.__ The metabolic equations of these three proteins is a function of the concentration of the protein itself and the mRNA, which is a little bit complicated.[^1]
+
+[^1]: Polynikis A, Hogan SJ, di Bernardo M. Comparing different ODE modelling approaches for gene regulatory networks. J Theor Biol. 2009 Dec 21;261(4):511-30. doi: 10.1016/j.jtbi.2009.07.040. Epub 2009 Aug 6. PMID: 19665034.
 
 An alternative model can be obtained by assuming that the mRNA dynamics are extremely fast when compared to the protein dynamics and hence reach their equilibrium instantly. Therefore, __the dynamics can be described in just 1 variables__, namely the concentration of protein.
 
@@ -89,7 +91,9 @@ import {data1, layout1} from "data/model/data-1"
 <Plot data={data1} layout={layout1} />
 
 
-Then to examine the impact of V8 protease competitive inhibitor, we modify the following ODEs, for _competitive inhibitor can increase the $k_{m}$ of enzymatic reactions\_.
+Then to examine the impact of V8 protease competitive inhibitor, we modify the following ODEs, for _competitive inhibitor can increase the $k_{m}$ of enzymatic reactions_.[^2]
+
+[^2]: Robin T, Reuveni S, Urbakh M. Single-molecule theory of enzymatic inhibition. Nat Commun. 2018 Feb 22;9(1):779. doi: 10.1038/s41467-018-02995-6. PMID: 29472579; PMCID: PMC5823943.
 
 $$
 \begin{align*}
@@ -112,9 +116,9 @@ Moreover, if the degradation of mRNA is sufficiently faster (say, at least 10 ti
 
 # Molecular Simulation
 
-**Molecular simulation** aims to help us better understand the mechanism of flipGFP system. As the inventor of flipGFP has done similar jobs before, we adopt some parameters directly from the essay[^1] and change some of the tools they use. For example, using Schrodinger together with GROMACS instead of NAMD, which are more convenient.
+**Molecular simulation** aims to help us better understand the mechanism of flipGFP system. As the inventor of flipGFP has done similar jobs before, we adopt some parameters directly from the essay[^3] and change some of the tools they use. For example, using Schrodinger together with GROMACS instead of NAMD, which are more convenient.
 
-[^1]: Zhang, Schepis, A., Huang, H., Yang, J., Ma, W., Torra, J., Zhang, S.-Q., Yang, L., Wu, H., Nonell, S., Dong, Z., Kornberg, T. B., Coughlin, S. R., & Shu, X. (2019). Designing a Green Fluorogenic Protease Reporter by Flipping a Beta Strand of GFP for Imaging Apoptosis in Animals. Journal of the American Chemical Society, 141(11), 4526–4530. https://doi.org/10.1021/jacs.8b13042
+[^3]: Zhang, Schepis, A., Huang, H., Yang, J., Ma, W., Torra, J., Zhang, S.-Q., Yang, L., Wu, H., Nonell, S., Dong, Z., Kornberg, T. B., Coughlin, S. R., & Shu, X. (2019). Designing a Green Fluorogenic Protease Reporter by Flipping a Beta Strand of GFP for Imaging Apoptosis in Animals. Journal of the American Chemical Society, 141(11), 4526–4530. https://doi.org/10.1021/jacs.8b13042
 
 ![Figure 2.1 The Description From The Essay (Too General)](server/contents/model/md-figure-3.png)
 
@@ -147,9 +151,9 @@ This model is described in six parts:
 ## 1. Getting β10-E5-β11-K5 part: Homology Modeling
 
 Homology modeling is a technique to predict the three-dimensional structure of a protein based on its amino acid sequence and a known structure of a homologous protein.
-The structures of β10-E5-β11-K5 (both uncleaved and cleaved) were modeled by the **Modeller**[^2] with a heterodimeric coiled coil structure (PDB code: 1KD8)
+The structures of β10-E5-β11-K5 (both uncleaved and cleaved) were modeled by the **Modeller**[^4] with a heterodimeric coiled coil structure (PDB code: 1KD8)
 
-[^2]: Kuhlman B and Baker D. (2000) Native protein sequences are close to optimal for their structures. Proc Natl Acad Sci USA 97(19):10383-8.
+[^4]: Kuhlman B and Baker D. (2000) Native protein sequences are close to optimal for their structures. Proc Natl Acad Sci USA 97(19):10383-8.
 
 - **Sequence of β10-E5-β11-K5:**
   ```markdown
@@ -188,10 +192,10 @@ Which shows that the generated structure is countable.
 
 ## 3. Protein Preparation: Using Schrodinger
 
-The structures of β10-E5-β11-K5 were inserted into β1-9 based on the GFP structure (PDB code: 4W6T, shown below) [^3].
+The structures of β10-E5-β11-K5 were inserted into β1-9 based on the GFP structure (PDB code: 4W6T, shown below) [^5].
 The modeled systems were **solvated in water with 150 mM NaCl**.
 
-[^3]: Huang PS, Ban Y, Richter F, Andre I, Vernon R, Schief WR, Baker D. (2011) RosettaRemodel: A Generalized Framework for Flexible Backbone Protein Design. PLoS One 6(8):e24109.
+[^5]: Huang PS, Ban Y, Richter F, Andre I, Vernon R, Schief WR, Baker D. (2011) RosettaRemodel: A Generalized Framework for Flexible Backbone Protein Design. PLoS One 6(8):e24109.
 
 <Model
   title="Protein 2.4 4W6T"
@@ -500,7 +504,9 @@ cleaved：没有完全自组装，但是 beta10 11 有所恢复
 
 ## 1. Description of the model
 
-In physics, the fluorescence intensity can be described by the following equation.
+In physics, the fluorescence intensity can be described by the following equation.[^6]
+
+[^6]: Itagaki, H. Chapter 3 - Fluorescence Spectroscopy. In Experimental Methods in Polymer Science; Tanaka, T., Ed.; Academic Press: Boston, 2000; pp 155–260. https://doi.org/10.1016/B978-0-08-050612-8.50009-X.
 
 $$
 I=\frac{\varphi I_{0} (1-e^{\varepsilon lc} ) }{d^{2} }
@@ -529,6 +535,8 @@ import {data3, layout3} from "data/model/data-3"
 <Plot data={data3} layout={layout3} />
 
 This figure illustrates that **our relative fluorescence intensity model matches the experimental results well**.
+
+Moreover, inhibitor can decrease the amount of beta10-11cleavaged. By applying this model, we can __predict the change of relative fluorescence intensity with time in proper accuracy range without experiment__. This approach can __facilitate to find efficient V8 protease inhibitor in our project__.
 
 # Virtual Screening
 
@@ -583,9 +591,9 @@ Then, based on the functional region displayed in [UniProt (UniProt Code: Q99V45
 
 ![Figure 4.2 Functional Region (HIS 51, ASP 93, SER 169)](server/contents/model/vs-else/vs-figure-actice-sites.png)
 
-The prepared protein pocket file and the 3D small molecule library ChemDiv were used as inputs to perform preliminary virtual screening on a Linux cluster using the GVSrun[^4] command (which internally calls Glide's molecular docking method and its files are open-source on [Wang Lin's Github](https://github.com/Wang-Lin-boop/CADD-Scripts)). The GVS command is as follows:
+The prepared protein pocket file and the 3D small molecule library ChemDiv were used as inputs to perform preliminary virtual screening on a Linux cluster using the GVSrun[^7] command (which internally calls Glide's molecular docking method and its files are open-source on [Wang Lin's Github](https://github.com/Wang-Lin-boop/CADD-Scripts)). The GVS command is as follows:
 
-[^4]: "Schrodinger Script Library: Easily Run Computational Biology Tasks on Linux Clusters." (2021, July). Zhihu Column. Retrieved from https://zhuanlan.zhihu.com/p/370850885
+[^7]: "Schrodinger Script Library: Easily Run Computational Biology Tasks on Linux Clusters." (2021, July). Zhihu Column. Retrieved from https://zhuanlan.zhihu.com/p/370850885
 
 ```bash
 GVSrun -i "*.zip" -D ChemDiv -m Normal
