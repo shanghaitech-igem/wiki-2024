@@ -104,12 +104,13 @@
     cursor: pointer;
     user-select: none;
     transition: opacity 0.2s linear;
-
+    
     &:hover {
       opacity: 1;
     }
-
+    
     svg {
+      border-radius: 10px;
       box-sizing: content-box;
       padding: 10px;
       width: 24px;
