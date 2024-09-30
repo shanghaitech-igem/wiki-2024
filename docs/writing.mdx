@@ -521,23 +521,25 @@ slug: "docs/writing"
 
 Currently, following components are supported in our Wiki MDX pages:
 
-- `Image`: Showing images and GIF with optional caption.
+- [`Image`](#image-component): Showing images and GIF with optional caption.
 
-- `Gallery`: Create a gallery with multiple images.
+- [`Plot`](#plot-component): Use Plotly to create interactive plots.
 
-- `Plot`: Use Plotly to create interactive plots.
+- [`Modal`](#modal-component): Create a modal with a button, once the button is clicked, the modal will pop up.
 
-- `Modal`: Create a modal with a button, once the button is clicked, the modal will pop up.
+- [`PDF`](#pdf-component): Embed PDF files with native browser reader.
 
-- `PDF`: Embed PDF files with native browser reader.
+- [`Video`](#video-component): Embed videos with a player.
 
-- `Video`: Embed videos with a player.
+- [`Audio`](#audio-component): Embed audio files with a player.
 
-- `Audio`: Embed audio files with a player.
+- [`Model`](#model-component): Embed 3D models with a interactive viewer.
 
-- `Model`: Embed 3D models with a interactive viewer.
+- [`Collapse`](#collapse-component): Create a collapsible container.
 
-- `Collapse`: Create a collapsible container.
+- [`Gallery`](#gallery-component): Create a gallery with multiple images.
+
+- [`Tabs`](#tabs-component): Create a tabbed container.
 
 ### An Example of JSX Component
 
@@ -547,52 +549,6 @@ JSX component are components that could take props.
   ```jsx
   <ComponentName prop1="value1" prop2="value2" />
   ```
-
-### Gallery Component
-
-Gallery component is a component that could create a gallery with multiple images.
-
-- **Syntax:**
-
-  ```jsx
-  <Gallery srcList={
-      [
-        "path/to/image1", 
-        "path/to/image2", 
-        "path/to/image3", 
-        "path/to/image4", 
-        "path/to/image5", 
-        "path/to/image6", 
-      ]
-    } 
-  />
-  ```
-
-- **Example:**
-
-  - **Code:**
-
-    ```jsx
-    <Gallery srcList={
-      [
-        "server/svgs/main-logo.svg", 
-        "server/test/hula-loop-octodex-gif.webp", 
-        "server/test/labtocat.webp",
-        "server/test/nux-octodex-gif.webp",
-      ]} 
-    />
-    ```
-
-  - **Result:**
-
-    <Gallery srcList={
-      [
-        "server/svgs/main-logo.svg", 
-        "server/test/hula-loop-octodex-gif.webp", 
-        "server/test/labtocat.webp",
-        "server/test/nux-octodex-gif.webp",
-      ]} 
-    />
 
 ### Image Component
 
@@ -839,3 +795,141 @@ The Collapse component creates a collapsible container, which can be used to hid
 
 - Notes:
   _Please keep to indent the contents in the `<Modal>`, the indentation is essential_
+
+
+### Gallery Component
+
+Gallery component is a component that could create a gallery with multiple images.
+
+- **Syntax:**
+
+  ```jsx
+  <Gallery srcList={
+      [
+        "path/to/image1", 
+        "path/to/image2", 
+        "path/to/image3", 
+        "path/to/image4", 
+        "path/to/image5", 
+        "path/to/image6", 
+      ]
+    } 
+  />
+  ```
+
+- **Example:**
+
+  - **Code:**
+
+    ```jsx
+    <Gallery srcList={
+      [
+        "server/svgs/main-logo.svg", 
+        "server/test/hula-loop-octodex-gif.webp", 
+        "server/test/labtocat.webp",
+        "server/test/nux-octodex-gif.webp",
+      ]} 
+    />
+    ```
+
+  - **Result:**
+
+    <Gallery srcList={
+      [
+        "server/svgs/main-logo.svg", 
+        "server/test/hula-loop-octodex-gif.webp", 
+        "server/test/labtocat.webp",
+        "server/test/nux-octodex-gif.webp",
+      ]} 
+    />
+
+### Tabs Component
+
+Tabs component is a component that could create a tabbed container.
+
+- **Props:**
+  - `title` (optional): A string to customize the button text. 
+
+- **Syntax:**
+
+  ```jsx
+  <Tabs>
+    <Tab title="Tab 1">
+      # Tab 1 Content
+
+      Content inside is a new container that could contain any markdown syntax.
+    </Tab>
+    <Tab title="Tab 2">
+      # Tab 2 Content
+
+      Content inside is a new container that could contain any markdown syntax.
+    </Tab>
+  </Tabs>
+  ```
+
+- **Example:**
+  - **With Title:**
+    - **Code:**
+
+      ```jsx
+      <Tabs>
+        <Tab title="Tab 1">
+          # Tab 1 Content
+
+          Content inside is a new container that could contain any markdown syntax.
+        </Tab>
+        <Tab title="Tab 2">
+          # Tab 2 Content
+
+          Content inside is a new container that could contain any markdown syntax.
+        </Tab>
+      </Tabs>
+      ```
+
+    - **Result:**
+
+      <Tabs>
+        <Tab title="Tab 1">
+          # Tab 1 Content
+
+          Content inside is a new container that could contain any markdown syntax.
+        </Tab>
+        <Tab title="Tab 2">
+          # Tab 2 Content
+
+          Content inside is a new container that could contain any markdown syntax.
+        </Tab>
+      </Tabs>
+
+  - **Without Title:**
+    - **Code:**
+
+      ```jsx
+      <Tabs>
+        <Tab>
+          # Tab 1 Content
+
+          Content inside is a new container that could contain any markdown syntax.
+        </Tab>
+        <Tab>
+          # Tab 2 Content
+
+          Content inside is a new container that could contain any markdown syntax.
+        </Tab>
+      </Tabs>
+      ```
+
+    - **Result:**
+
+      <Tabs>
+        <Tab>
+          # Tab 1 Content
+
+          Content inside is a new container that could contain any markdown syntax.
+        </Tab>
+        <Tab>
+          # Tab 2 Content
+
+          Content inside is a new container that could contain any markdown syntax.
+        </Tab>
+      </Tabs>
