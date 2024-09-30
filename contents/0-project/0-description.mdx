@@ -4,13 +4,57 @@ favicon: "server/test/igem-favicon.svg"
 slug: "description"
 ---
 
-# Overview
+# Background
 
-This project leverages the sensory mechanisms of itch perception to engineer a specific sequence expression in *Escherichia coli* (E. coli). 
-By integrating red fluorescent protein as a reporter, we can monitor the levels of itchiness. 
-Our ultimate goal is to use these genetically modified *E. coli* to identify and isolate natural compounds that can effectively inhibit itch without causing harm.
+Itchiness, or pruritus, is a common discomfort we all face in our daily lives. Normally, it tends to subside naturally over time. But when itching is driven by specific causes and keeps lingering, it becomes a stubborn challenge that’s tough to manage and relieve. In today’s world of mounting health challenges, we deeply recognize the urgency and importance of developing an effective solution to tackle itching caused by Staphylococcus aureus. This pesky pathogen is everywhere—both in the environment and on our skin. When it strikes, it not only causes inflammation and redness but also brings along relentless and unbearable itching, severely impacting the quality of life for those affected.
 
-The transformative potential of this project lies in its application to the fashion and cosmetics industry. 
-By developing new, safe, and effective anti-itch treatments derived from natural sources, we can create innovative skincare products that address itchiness—a common concern for many consumers. 
-This aligns perfectly with the industry's move towards sustainability and cruelty-free solutions.
+The itch not only disrupts daily activities, work, and sleep but also triggers emotional turmoil, leading to anxiety and depression. Continuous scratching in the desperate attempt to find relief can further compromise the skin barrier, worsen infections, and even leave scars, affecting both appearance and self-confidence. Despite the variety of anti-itch products available on the market, most focus on using antibiotics and other medications to directly target the pathogens. While this is a valid curative approach, the sensation of itching often doesn’t diminish quickly or significantly during treatment, leaving patients to continue suffering. Some products that claim to relieve itching may contain hormones, which, with prolonged use, can cause side effects such as skin thinning and pigmentation, and their effectiveness remains limited.
 
+In light of the persistent nature of itching, we are committed to leveraging Escherichia coli, a simple and cost-efficient biological model, to mimic the itching sensation caused by Staphylococcus aureus in humans and identify substances that can effectively alleviate persistent itchiness. Our aim is to create a safe and user-friendly product that not only soothes itching but also aids in treatment without interfering with conventional therapeutic methods, offering people a more comfortable and pleasant experience.
+
+# PACIFY
+
+## Identifying substances that can effectively alleviate itching
+
+Our first step involves identifying potential substances that can effectively alleviate itching. To achieve this, we will focus on purifying the key enzyme responsible for the itching caused by Staphylococcus aureus, known as V8 protease. Direct expression of V8 protease in *Escherichia coli* (BL21) results in self-degradation, so we will add the leader peptide of a homologous protein to inhibit its activity. During the purification process, we will use thermolysin to cleave the leader peptide, thereby activating the V8 protease.
+
+<img src="assets/image-20240928134956912.png" alt="image-20240928134956912" style="zoom:24%;" />
+
+By employing this meticulous method, we aim to successfully purify an active V8 protease. Once we confirm its activity, we will proceed with screening specific substances. We plan to screen 3,600 different small molecule compounds, observing the changes in enzyme activity upon the addition of each compound. This approach will help us to preliminarily identify potential substances that can inhibit itching effectively, bringing us one step closer to a solution that can provide lasting relief for those suffering from persistent itchiness.
+
+Besides drug screening in the lab, we also did virtual screening to find further possibilities. You can find more details in the Modeling section.  
+
+![image-20241001001524131](assets/image-20241001001524131.png)
+
+## Constructing a fluorescent reporting system based on *Escherichia coli*
+
+To more accurately simulate real-world conditions and evaluate the effectiveness of the small molecules we screened, we conducted both dry and wet experiments.
+Firstly, we performed virtual drug screening to identify potent candidates.
+For the in vivo experiments, we used an E. coli chassis to mimic the process by which human skin receptors sense persistent itching induced by Staphylococcus aureus. In humans, the V8 protease secreted by Staphylococcus aureus cleaves the extracellular sequence of the PAR1 receptor on the skin surface. This cleavage triggers a cascade of downstream signaling events, resulting in nerve impulses that are transmitted to the central nervous system, where the sensation of itching is perceived in the cerebral cortex.
+
+![image-20240927134001212](assets/image-20240927134001212.png)
+
+To detect this process, we designed a Flip fluorescence reporting system, which consists of two parts: the main beta barrel structure formed by the beta1-9 sequence and the beta10-11 sequence containing the V8 protease target cleavage site. When the target sequence is intact, beta10-11 orientation disrupts the correct assembly of the entire fluorescent protein, preventing it from emitting fluorescence. Once the target sequence is cleaved, beta10-11 is freed from its constraints and can eventually interact with beta1-9 to form a fully fluorescent protein structure, thereby mimicking the neural signal transmission in the human PAR1 receptor.
+
+![image-20240927142557424](assets/image-20240927142557424.png)
+
+To ensure the feasibility of this fluorescence system, we first purified the two protein parts of the fluorescence reporting system, each tagged with a His-tag at the C-terminal. We incubated the purified beta10-11 with the protease, followed by adding beta1-9 to complete the assembly and measure fluorescence. Given the complexity of the V8 protease cleavage site, we initially conducted experiments using the more specific TEV protease and its corresponding target cleavage site.
+In the E. coli-based Flip fluorescence reporting system, we planned to introduce the necessary protein fragments and the corresponding proteases for Flip. Due to the toxicity of V8 protease in E. coli, we will experiment with different forms of V8 protease, including versions with various signal peptides and a homologous protein, Glutamyl endopeptidase.
+
+Moreover, we introduced a model to prodict the intensity of the fluorescence.
+
+Finally, we will introduce the potential effective small molecules identified in vitro into the E. coli culture system to verify their impact on the fluorescence results. This will provide a deeper understanding of their potential efficacy in alleviating persistent itching in human applications.
+
+![image-20241001001546965](assets/image-20241001001546965.png)
+
+# Application
+
+Currently, public awareness of Staphylococcus aureus is relatively shallow. Through this effort, we also aim to raise public understanding of Staphylococcus aureus and the relationship between itching symptoms and skin care. 
+
+Ultimately, we hope to design a safe product specifically targeting the persistent itching caused by Staphylococcus aureus. By combining the effective compounds we screen with existing skincare products, we aim to create specialized cosmeceuticals that can inhibit itching in its early stages, thereby reducing the damage caused by scratching.
+
+![image-20241001001629064](assets/image-20241001001629064.png)
+
+![image-20241001001638071](assets/image-20241001001638071.png)
+
+![image-20241001001649114](assets/image-20241001001649114.png)
