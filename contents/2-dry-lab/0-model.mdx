@@ -539,7 +539,7 @@ This model is described in three parts:
 >
 > > [a. Regular part](#a-regular-part): This section provides a detailed description of our virtual screening process.
 > > 
-> > [b. New on screening through observation](#b-new-on-screening-through-observation): This part focuses on sharing the strategies we observed during the screening.
+> > [b. Rating method used when screening through visual inspection](#b-rating-method-used-when-screening-through-visual-inspection): This part focuses on sharing the strategies we observed during the screening.
 > 
 > [2. Results](#2-results): This section mainly covers the visualization and interpretation of our results.
 >
@@ -568,19 +568,20 @@ The following flow chart shows the general steps we take to do virtual screening
   width="900"
 />
 
-First, we downloaded the PDB file of the v8 protease enzyme (PDB code: 2O8L) from the [RCSB](https://www.rcsb.org/structure/2O8L), and prepared the protein using Schrodinger(removing water molecules, etc.). 
+First, we downloaded the PDB file of the v8 protease enzyme [(PDB code: 2O8L) from the RCSB](https://www.rcsb.org/structure/2O8L), and prepared the protein using Schrodinger(removing water molecules, etc.). 
 
 <Model
   title="Protein 4.1 Prepared V8 Protease"
   src="server/contents/model/vs-2o8l-prepared.stl"
 />
 
-Then, based on the functional region displayed in [UniProt](https://www.uniprot.org/uniprotkb/Q99V45) (UniProt Code: Q99V45), which is a catalytic triad composed of a histidine (HIS), an aspartic acid (ASP), and a serine (SER), we designed the grid box, with the **ligand centroid's radius of action** being **10 Å** and the **ligand's overall radius of action** being **12 Å**. 
+Then, based on the functional region displayed in [UniProt (UniProt Code: Q99V45)](https://www.uniprot.org/uniprotkb/Q99V45), which is a catalytic triad composed of a histidine (HIS), an aspartic acid (ASP), and a serine (SER), we designed the grid box, with the **ligand centroid's radius of action** being **10 Å** and the **ligand's overall radius of action** being **12 Å**. 
 
-![Figure 4.2 Functional Region (HIS 51, ASP 93, SER 169)](server/contents/model/vs-else/vs-figure-actice-sites.png)
+> _In the PDF, the positions of the active sites are 119, 161 and 237. Whereas, this is under the condition that 68-69 is the cleavage site. So, we shall shift 68 units to obtain the sites in the protein obtained in RCSB, i.e. subtracting 68 respectively, which means that the active sites are 51, 93 and 169. This result is shown below._
 
 <PDF src="server/contents/model/vs-else/vs-uniprot.pdf" />
 
+![Figure 4.2 Functional Region (HIS 51, ASP 93, SER 169)](server/contents/model/vs-else/vs-figure-actice-sites.png)
 
 The prepared protein pocket file and the 3D small molecule library ChemDiv were used as inputs to perform preliminary virtual screening on a Linux cluster using the GVSrun[^4] command (which internally calls Glide's molecular docking method and its files are open-source on [Wang Lin's Github](https://github.com/Wang-Lin-boop/CADD-Scripts)). The GVS command is as follows:
 
@@ -611,9 +612,9 @@ Subsequently, we utilized `Schrodinger` software to observe bond formation and a
 ![Figure 4.3-1 One Of The Results As Illustrative Examples](server/contents/model/vs-figure-1.png)
 ![Figure 4.3-2 Different Bonds With Corresponding Colors](server/contents/model/vs-else/vs-figure-bonds.png)
 
-We scored them `(see method in` [part b](#b-new-on-screening-through-observation)`)`and calculated their [MMGBSA ΔG bind](#mmgbsa-δg-bind) to further eliminate false positive small molecules, resulting in 200 small molecules with favorable properties. Finally, based on the new protein and small molecule conformations obtained from the calculation of mmgbsa ΔG bind, we calculated the [ligand strain energy](#ligand-strain-energy) for these 200 small molecules. Based on the results, and in conjunction with the previous indicators, we arrived at the final 60 small molecules. (All steps were executed within the Schrodinger software.)
+We scored them `(see method in` [part b](#b-rating-method-used-when-screening-through-visual-inspection)`)`and calculated their [MMGBSA ΔG bind](#mmgbsa-δg-bind) to further eliminate false positive small molecules, resulting in 200 small molecules with favorable properties. Finally, based on the new protein and small molecule conformations obtained from the calculation of mmgbsa ΔG bind, we calculated the [ligand strain energy](#ligand-strain-energy) for these 200 small molecules. Based on the results, and in conjunction with the previous indicators, we arrived at the final 60 small molecules. (All steps were executed within the Schrodinger software.)
 
-Here are basic explanation of _MMGBSA ΔG Bind_ and _Ligand Strain Energy_. [Click here to skip.](#b-new-on-screening-through-observation)
+Here are basic explanation of _MMGBSA ΔG Bind_ and _Ligand Strain Energy_. [Click here to skip.](#b-rating-method-used-when-screening-through-visual-inspection)
 
 > #### MMGBSA ΔG Bind
 > 
@@ -640,9 +641,24 @@ Here are basic explanation of _MMGBSA ΔG Bind_ and _Ligand Strain Energy_. [Cli
 
 
 
-### b. New on screening through observation
+### b. Rating method used when screening through visual inspection
 
-In the current virtual screening process, visual inspection remains a crucial part. When done well, it can effectively eliminate false positive results and refine useful molecules and structures. However, for beginners, the first encounter with visual inspection can be daunting, and standards vary, making it difficult to unify the results obtained by two people with different criteria. This is also a problem we encountered. To address this issue, we consulted professors in the field of computational biology and asked them and doctoral students to guide our visual inspection process. Based on..., we established the following evaluation table:
+In the current virtual screening process, **visual inspection** remains a crucial part. When done well, it can **effectively eliminate false positive results and refine useful molecules and structures.** 
+
+However, for _beginners_, the first encounter with visual inspection can be daunting, and standards vary, making it **difficult to unify** the results obtained by two or more people with different criteria. This is also **a problem we encountered**. To address this issue, we _consulted professors_ in the field of computational biology and asked them and doctoral students to give us suggestions on our visual inspection process. 
+
+During visual inspection, there are four important evaluation points: 
+> - the geometric fit between the protein and ligand
+>
+> - the degree of electrostatic complementarity between the protein and ligand
+> 
+> - the formation of good bonds (including hydrogen bonds, halogen bonds, salt bridges, aromatic H-bonds, pi-pi stacking, and pi-cation interactions), and the formation of bad bonds (mainly ugly crushes). 
+>
+>    - In particular, the denser the internal hydrogen bonds in the pocket, the better. _Therefore, we will give extra points for hydrogen bonds formed internally within the binding pocket._
+>
+
+
+Based on..., we established the following evaluation table:
 
 
 ## 2. Results
