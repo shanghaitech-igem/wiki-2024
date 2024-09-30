@@ -17,7 +17,7 @@ const Cursor: React.FC<CursorProps> = ({ svgURL, children }) => {
         if (node) {
           node.style.setProperty(
             "cursor",
-            `url('${svgURL}') 0 0, pointer`,
+            `url('${svgURL}') 0 0, auto`,
             "important"
           );
         }
