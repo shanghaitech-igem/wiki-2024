@@ -11,6 +11,7 @@ import Modal from "src/components/mdx/modal";
 import Plot from "src/components/mdx/plot-lazy";
 import Model from "src/components/mdx/model-lazy";
 import Collapse from "src/components/mdx/collapse";
+import {Tabs, Tab} from "src/components/mdx/tabs";
 const components = {
   Video,
   PDF,
@@ -21,6 +22,8 @@ const components = {
   Plot,
   Model,
   Collapse,
+  Tabs,
+  Tab,
   img: Image,
 };
 

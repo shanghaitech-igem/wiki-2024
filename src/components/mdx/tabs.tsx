@@ -1,51 +1,50 @@
-import React from "react";
-import { PhotoProvider, PhotoView } from "src/plugins/image-viewer";
-import * as styles from "src/styles/modules/gallery.module.scss";
-import parseRemoteURL from "src/utils/remote-url-parser";
+import React, { ReactElement } from "react";
 import { Tab, Tabs as ReactTabs, TabList, TabPanel } from "react-tabs";
+import * as styles from "src/styles/modules/tabs.module.scss";
 
-interface TabsProps {
-  srcList: string[];
+interface TabProps {
+  children: React.ReactNode;
   title?: string;
-  width?: string;
-  height?: string;
 }
 
-const Tabs: React.FC<TabsProps> = ({ srcList, title, width, height }) => {
-  // Parse URLs
-  const parsedUrls = srcList.map((url) => parseRemoteURL(url));
+interface TabsProps {
+  children: ReactElement<TabProps>[];
+}
+
+const Tabs: React.FC<TabsProps> = ({ children }) => {
+  const hasTitles = children.some((child) => !!child.props.title);
+
+  const renderTabList = () => (
+    <TabList className={styles.tabList}>
+      {children.map((child, index) => (
+        <Tab className={styles.tab} key={index}>
+          {child.props.title}
+        </Tab>
+      ))}
+    </TabList>
+  );
+
+  const renderTabPanels = () => (
+    <div className={styles.tabPanelContainer}>
+      {children.map((child, index) => (
+        <TabPanel key={index} className={styles.tabPanel}>
+          {child.props.children}
+        </TabPanel>
+      ))}
+    </div>
+  );
 
   return (
-    <PhotoProvider>
-      <ReactTabs>
-        <TabList className={styles.tabList}>
-          {parsedUrls.map((url, index) => (
-            <Tab className={styles.tab} key={index}>{`Image ${index + 1}`}</Tab>
-          ))}
-        </TabList>
-        {parsedUrls.map((url, index) => (
-          <TabPanel
-            key={index}
-            style={{ width: `${width}px`, height: `${height}px` }}
-            className={styles.tabPanel}
-          >
-            <PhotoView src={url}>
-              <img
-                src={url}
-                alt={`Failed to load the picture: ${url}`}
-                title={title}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "contain",
-                }}
-              />
-            </PhotoView>
-          </TabPanel>
-        ))}
-      </ReactTabs>
-    </PhotoProvider>
+    <ReactTabs className={styles.tabs}>
+      {hasTitles && renderTabList()}
+      {renderTabPanels()}
+      {!hasTitles && renderTabList()}
+    </ReactTabs>
   );
 };
 
-export default Tabs;
+export const TabComponent: React.FC<TabProps> = ({ children }) => {
+  return <>{children}</>;
+};
+
+export { TabComponent as Tab, Tabs };
