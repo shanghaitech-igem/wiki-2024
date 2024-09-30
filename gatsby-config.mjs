@@ -17,6 +17,9 @@ const config = {
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin
   // Learn more at: https://gatsby.dev/graphql-typegen
+  flags: {
+    DEV_SSR: false,
+  },
   graphqlTypegen: true,
   plugins: [
     // These two plugins are only used in development.
@@ -25,14 +28,6 @@ const config = {
     `gatsby-plugin-catch-links`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-postcss`,
-    {
-      resolve: "gatsby-plugin-react-svg",
-      options: {
-        rule: {
-          include: /server/, // See below to configure properly
-        },
-      },
-    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -69,6 +64,7 @@ const config = {
         },
         gatsbyRemarkPlugins: [
           `gatsby-remark-smartypants`, // Replaces “dumb” punctuation marks with “smart” punctuation marks using the retext-smartypants plugin.
+          `gatsby-remark-section-split`, // Splits sections in markdown files into their own pages.
           `gatsby-remark-header-link`, // Adds GitHub-style hover links to headers in markdown files when they’re rendered.
           {
             resolve: `gatsby-remark-mermaid`,
@@ -183,7 +179,13 @@ const config = {
               output: "htmlAndMathml",
             },
           },
-          `gatsby-remark-section-split`,
+          {
+            resolve: `gatsby-plugin-nprogress`,
+            options: {
+              // Disable the loading spinner.
+              showSpinner: false,
+            },
+          },
         ],
       },
     },

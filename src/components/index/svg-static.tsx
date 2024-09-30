@@ -1,7 +1,8 @@
 import React from "react";
+import SVG from "react-inlinesvg";
 
 interface SvgProps {
-  Component: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+  raw: string;
   x: number;
   y: number;
   size?: number;
@@ -11,7 +12,7 @@ interface SvgProps {
 }
 
 const SvgStatic: React.FC<SvgProps> = ({
-  Component,
+  raw,
   x,
   y,
   size,
@@ -21,7 +22,7 @@ const SvgStatic: React.FC<SvgProps> = ({
 }) => {
   return (
     <>
-      <Component
+      <div
         className={className}
         style={{
           width: size ? `${size}px` : "auto",
@@ -29,16 +30,20 @@ const SvgStatic: React.FC<SvgProps> = ({
           rotate: rotate ? `${rotate}deg` : "0deg",
           left: reverseX ? `calc(100% - ${x}px - ${size}px)` : `${x}px`,
           top: y,
+          overflow: "visible",
         }}
-      />
-      <Component
-        className={className}
+      >
+        <SVG src={raw} />
+      </div>
+      <div
         style={{
           width: size ? `${size}px` : "auto",
           position: "relative",
           visibility: "hidden",
         }}
-      />
+      >
+        <SVG src={raw} />
+      </div>
     </>
   );
 };

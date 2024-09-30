@@ -1,0 +1,51 @@
+@use "sass:math";
+@use "src/styles/themes/light" as light;
+@use "src/styles/themes/fonts" as fonts;
+
+.tab-list {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0 0 10px;
+  list-style: none;
+}
+
+.tab {
+  padding: 10px 20px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  margin-right: 5px;
+  transition: background-color 0.3s, color 0.3s;
+  border-radius: 5px;
+
+  &[class*="--selected"] {
+    background-color: light.$pacify-primary;
+    color: white;
+  }
+
+  &:hover {
+    background-color: light.$pacify-secondary;
+    color: white;
+  }
+}
+
+.tab-panel {
+  width: 1px;
+  height: 1px;
+  padding: auto;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  animation: slide 1s ease 3.5s forwards;
+  margin: auto;
+  padding: 1rem;
+  border-radius: 10px;
+  cursor: zoom-in;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out; // Add transition for opacity
+
+  &[class*="--selected"] {
+    width: 60vh;
+    height: 60vh;
+    opacity: 1; // Set opacity to 1 when selected
+  }
+}

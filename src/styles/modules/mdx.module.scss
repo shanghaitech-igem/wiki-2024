@@ -38,6 +38,7 @@ main {
           &::marker {
             content: "";
           }
+
           a {
             color: #fff;
 
@@ -100,6 +101,10 @@ main {
             }
           }
 
+          blockquote {
+            margin-left: 2em;
+          }
+
           li {
             p {
               margin: 0;
@@ -115,11 +120,17 @@ main {
             font-family: fonts.$pacify-content-secondary;
             border-collapse: collapse;
             overflow: hidden;
+            background-color: #fff;
+            table-layout: auto; // Allow columns to adjust based on content
+            font-size: large;
 
             td,
             th {
               padding: math.div(light.$pacify-separation, 2) 2.4em;
               transition: background-color 0.3s ease, transform 0.3s ease;
+              max-width: 200px; // Set a max width for cells
+              word-wrap: break-word; // Allow text to wrap
+              overflow-wrap: break-word; // Ensure text wraps within the cell
             }
 
             th {
@@ -138,13 +149,6 @@ main {
             th:hover {
               background-color: rgba(#111, 0.1);
               transform: scale(1.05);
-            }
-
-            // Active effect for cells
-            td:active,
-            th:active {
-              background-color: rgba(#111, 0.15);
-              transform: scale(1);
             }
           }
         }

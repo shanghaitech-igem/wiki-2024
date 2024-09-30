@@ -10,7 +10,7 @@ Modeling is a pivotal tool for _understanding complex biological systems_, it se
 
 ### **Model 1: Ordinary Differential Equations (ODE)**
 
-Our [first model](#ode) employs **Ordinary Differential Equations (ODEs)** to _simulate the expression levels of the v8 protease and key components within the flip-GFP system_. This model is crucial for understanding the dynamics of protein expression and its impact on receptor cleavage. By using ODEs, we can predict the behavior of these proteins in E.coli , which aids in the design of our therapeutic interventions.
+Our [first model](#ode) employs **Ordinary Differential Equations (ODEs)** to _simulate the expression levels of the v8 protease and key components within the flipGFP system_, specifically focusing on β1-9, β10-E5-β11-K5. This model is _crucial for understanding the dynamics of protein expression and its impact on receptor cleavage_. By using ODEs, we can _predict the behavior of these proteins in E.coli_ , which aids in the design of our therapeutic interventions.
 
 ### **Model 2: Molecular Simulation**
 
@@ -28,9 +28,11 @@ Our [final model](#virtual-screening) involves **Virtual Screening**, where we s
 
 ## 1. Description of the system
 
-In our experiment, we express three proteins in E.coli, namely V8 protease, beta1-9, and beta10-11. When the bacteria started protein expression, V8 protease cleaved beta10-11 into bata10-11cleavaged, and then bata1-9 and beta10-11 self-assembled into Flipcherry. Among them, the analysis of metabolism of these three proteins and their interaction is of great importance. Therefore, we use ordinary differential equation model to simulate and analyze the metabolism and interaction of these three proteins.The metabolic equations of these three proteins is a function of the concentration of the protein itself and the mRNA, which is a little bit complicated.
+In our experiment, we express three proteins in E.coli, namely V8 protease, beta1-9, and beta10-11. When the bacteria started protein expression, V8 protease cleaved beta10-11 into bata10-11cleavaged, and then bata1-9 and beta10-11cleavaged self-assembled into Flipcherry. Among them, **the analysis of metabolism of these three proteins and their interaction is of great importance**. Therefore, we **use ordinary differential equation model to simulate and analyze the metabolism and interaction of these three proteins.** The metabolic equations of these three proteins is a function of the concentration of the protein itself and the mRNA, which is a little bit complicated.[^1]
 
-An alternative model can be obtained by assuming that the mRNA dynamics are extremely fast when compared to the protein dynamics and hence reach their equilibrium instantly. Therefore, the dynamics can be described in just 1 variables, namely the concentration of protein.
+[^1]: Polynikis A, Hogan SJ, di Bernardo M. Comparing different ODE modelling approaches for gene regulatory networks. J Theor Biol. 2009 Dec 21;261(4):511-30. doi: 10.1016/j.jtbi.2009.07.040. Epub 2009 Aug 6. PMID: 19665034.
+
+An alternative model can be obtained by assuming that the mRNA dynamics are extremely fast when compared to the protein dynamics and hence reach their equilibrium instantly. Therefore, **the dynamics can be described in just 1 variables**, namely the concentration of protein.
 
 The interactions among these proteins can be described as the following chemical formulas.
 
@@ -84,9 +86,13 @@ Therefore, we notice that **$c_{v8 protease}$, $c_{beta1-9}$ and $c_{beta10-11 }
 
 To take a deeper insight into the change of each component with time, we import the above 5 ODEs into Matlab and utilize the ODE45 numerical method to simulate the entire process.
 
-![Figure 1.1 The Change In The Concentration Of The Components With Time](server/contents/model/ode-figure-1.png)
+import { data1, layout1 } from "data/model/data-1";
 
-Then to examine the impact of V8 protease competitive inhibitor, we modify the following ODEs, for _competitive inhibitor can increase the $k_{m}$ of enzymatic reactions\_.
+<Plot data={data1} layout={layout1} />
+
+Then to examine the impact of V8 protease competitive inhibitor, we modify the following ODEs, for _competitive inhibitor can increase the $k_{m}$ of enzymatic reactions\_.[^2]
+
+[^2]: Robin T, Reuveni S, Urbakh M. Single-molecule theory of enzymatic inhibition. Nat Commun. 2018 Feb 22;9(1):779. doi: 10.1038/s41467-018-02995-6. PMID: 29472579; PMCID: PMC5823943.
 
 $$
 \begin{align*}
@@ -95,42 +101,71 @@ $$
 \end{align*}
 $$
 
-![Figure 1.2 The Change Of Flipcherry Concentration With Time](server/contents/model/ode-figure-2.png)
+import { data2, layout2 } from "data/model/data-2";
+
+<Plot data={data2} layout={layout2} />
 
 As the figure revealed, inhibitor can decrease the concentration of Flipcherry at steady state, demonstrating that **the purpose of our project is practical**.
 
 ## 3. Model limitation
 
-Although this model have verified the feasibility of our project, we did not conduct experiments to compare our theoretical prediction with the exact expression process.
+Although this model have verified the feasibility of our project, **we did not conduct experiments to compare our theoretical prediction with the exact expression process.**
 
-Moreover, if the degradation of mRNA is sufficiently faster (say, at least 10 times) than the degradation of the corresponding protein, then the stationarity approximation is biologically justified. Note that, under certain conditions, it can be assumed that the stationarity approximation is only valid for some genes of the network. In that case, only those genes for which the assumption is valid can be modelled by a single equation for the protein concentration, while the rest will be associated to two equations, one for the mRNA and one for protein concentration.
+Moreover, if the degradation of mRNA is sufficiently faster (say, at least 10 times) than the degradation of the corresponding protein, then the stationarity approximation is biologically justified. Note that, **under certain conditions, it can be assumed that the stationarity approximation is only valid for some genes of the network.** In that case, **only those genes for which the assumption is valid can be modelled by a single equation for the protein concentration,** while the rest will be associated to two equations, one for the mRNA and one for protein concentration.
 
 # Molecular Simulation
 
-**Molecular simulation** aims to help us better understand the mechanism of flipGFP system. As the inventor of flipGFP has done similar jobs before, we adopt some parameters directly from the essay[^1] and change some of the tools they use. For example, using Schrodinger together with GROMACS instead of NAMD, which are more convenient.
+**Molecular simulation** aims to help us better understand the mechanism of flipGFP system. As the inventor of flipGFP has done similar jobs before, we adopt some parameters directly from the essay[^3] and change some of the tools they use. For example, using Schrodinger together with GROMACS instead of NAMD, which are more convenient.
 
-[^1]: Zhang, Schepis, A., Huang, H., Yang, J., Ma, W., Torra, J., Zhang, S.-Q., Yang, L., Wu, H., Nonell, S., Dong, Z., Kornberg, T. B., Coughlin, S. R., & Shu, X. (2019). Designing a Green Fluorogenic Protease Reporter by Flipping a Beta Strand of GFP for Imaging Apoptosis in Animals. Journal of the American Chemical Society, 141(11), 4526–4530. https://doi.org/10.1021/jacs.8b13042
+[^3]: Zhang, Schepis, A., Huang, H., Yang, J., Ma, W., Torra, J., Zhang, S.-Q., Yang, L., Wu, H., Nonell, S., Dong, Z., Kornberg, T. B., Coughlin, S. R., & Shu, X. (2019). Designing a Green Fluorogenic Protease Reporter by Flipping a Beta Strand of GFP for Imaging Apoptosis in Animals. Journal of the American Chemical Society, 141(11), 4526–4530. https://doi.org/10.1021/jacs.8b13042
 
 ![Figure 2.1 The Description From The Essay (Too General)](server/contents/model/md-figure-3.png)
+
+This model is described in six parts:
+
+> [1. Getting β10-E5-β11-K5 part: Homology Modeling](#1-getting-β10-e5-β11-k5-part-homology-modeling)
+>
+> [2. Getting β1-β9 part: Using AlphaFold2](#2-getting-β1-β9-part-using-alphafold2)
+>
+> [3. Protein Preparation: Using Schrodinger](#3-protein-preparation-using-schrodinger)
+>
+> [4. Molecular Dynamics: Using GROMACS](#4-molecular-dynamics-using-gromacs)
+>
+> > [a. Protein Preparation](#a-protein-preparation)
+> >
+> > [b. EM (Energy Minimization) stage](#b-em-energy-minimization-stage)
+> >
+> > [c. NVT (Canonical Ensemble) stage](#c-nvt-canonical-ensemble-stage)
+> >
+> > [d. NPT (Isothermal-Isobaric Ensemble) stage](#d-npt-isothermal-isobaric-ensemble-stage)
+> >
+> > [e. MD (Molecular Dynamics) stage](#e-md-molecular-dynamics-stage)
+>
+> [5. Results](#5-results)
+>
+> [6. Discussion](#6-discussion)
 
 ## 1. Getting β10-E5-β11-K5 part: Homology Modeling
 
 Homology modeling is a technique to predict the three-dimensional structure of a protein based on its amino acid sequence and a known structure of a homologous protein.
-The structures of β10-E5-β11-K5 (both uncleaved and cleaved) were modeled by the **Modeller**[^2] with a heterodimeric coiled coil structure (PDB code: 1KD8)
+The structures of β10-E5-β11-K5 (both uncleaved and cleaved) were modeled by the **Modeller**[^4] with a heterodimeric coiled coil structure (PDB code: 1KD8)
 
-[^2]: Kuhlman B and Baker D. (2000) Native protein sequences are close to optimal for their structures. Proc Natl Acad Sci USA 97(19):10383-8.
+[^4]: Kuhlman B and Baker D. (2000) Native protein sequences are close to optimal for their structures. Proc Natl Acad Sci USA 97(19):10383-8.
 
 - **Sequence of β10-E5-β11-K5:**
   ```markdown
   MDLPDDHYLSTQTILSKDLNMEVSALEKEVSALEKEVSALEKEVSALEKEVSALEKEKRDHMVLLEYVTAAGITDASKVSALKEKVSALKEKVSALKEKVSALKEKVSALKE
   ```
 
-<Model 
-  title="Protein 2.1 a heterodimeric coiled coil structure (PDB code: 1KD8)" 
-  src="server/contents/model/md-1kd8.stl" 
+<Model
+  title="Protein 2.1 a heterodimeric coiled coil structure (PDB code: 1KD8)"
+  src="server/contents/model/md-1kd8.stl"
 />
 
-<Model title="Protein 2.2 β10-E5-β11-K5" src="server/contents/model/md-beta10-e5-beta11-k5-3.stl" />
+<Model
+  title="Protein 2.2 β10-E5-β11-K5"
+  src="server/contents/model/md-beta10-e5-beta11-k5-3.stl"
+/>
 
 ## 2. Getting β1-β9 part: Using AlphaFold2
 
@@ -140,54 +175,80 @@ We use **AlphaFold2** to get β1-β9 instead of deleting the β10-β11 part in t
   ```markdown
   RKGEELFTGVVPILIELDGDVNGHKFFVRGEGEGDATIGKLSLKFIATTGKLPVPWPTLVTTLXXXVQAFSRYPDHMKRHDFFKSAMPEGYVQERTIYFKDDGTYKTRAEVKFHGDHLVNRIELKGIDFKEDGNILGHKLEYNFNSHKVYITADKQNNGIKANFTIRHNVEDGSVQLADHYQQNTPIGDGPV
   ```
-By inputing the sequence into the platform, we acquire the following results.
+  By inputing the sequence into the platform, we acquire the following results.
 
 ![Figure 2.2 Sequence Coverage Graph From AlphaFold2](server/contents/model/md-figure-1.png)
 ![Figure 2.3 Confidence Figure From AlphaFold2](server/contents/model/md-figure-2.png)
 
 Which shows that the generated structure is countable.
 
-<Model title="Protein 2.3 β1-β9 Structure From AlphaFold2" src="server/contents/model/md-beta1-beta9.stl" />
+<Model
+  title="Protein 2.3 β1-β9 Structure From AlphaFold2"
+  src="server/contents/model/md-beta1-beta9.stl"
+/>
 
+## 3. Protein Preparation: Using Schrodinger
 
+The structures of β10-E5-β11-K5 were inserted into β1-9 based on the GFP structure (PDB code: 4W6T, shown below) [^5].
+The modeled systems were **solvated in water with 150 mM NaCl**.
 
-## 3. Protein preparation: Using Schrodinger
+[^5]: Huang PS, Ban Y, Richter F, Andre I, Vernon R, Schief WR, Baker D. (2011) RosettaRemodel: A Generalized Framework for Flexible Backbone Protein Design. PLoS One 6(8):e24109.
 
-The structures of β10-E5-β11-K5 were inserted into β1-9 based on the GFP structure (PDB code: 4W6T, shown below) [^3]. 
-The modeled systems were **solvated in water with 150 mM NaCl**. 
+<Model
+  title="Protein 2.4 4W6T"
+  src="server/contents/model/md-4w6t-compressed.stl"
+/>
 
-[^3]: Huang PS, Ban Y, Richter F, Andre I, Vernon R, Schief WR, Baker D. (2011) RosettaRemodel: A Generalized Framework for Flexible Backbone Protein Design. PLoS One 6(8):e24109.
-
-<Model title="Protein 2.4 4W6T" src="server/contents/model/md-4w6t-compressed.stl" />
-
-The following are the prepared proteins for both uncleaved and Cleaved system. 
+The following are the prepared proteins for both uncleaved and Cleaved system.
 
 We simply split the β10-E5-β11-K5 into β10-E5-β11 and K5 to obtain the cleaved ones to imitate the cleavage.
 
-<Model title="Protein 2.5 Uncleaved flip-GFP" src="server/contents/model/md-system-uncleaved.stl" />
+<Model
+  title="Protein 2.5 Uncleaved flip-GFP"
+  src="server/contents/model/md-system-uncleaved.stl"
+/>
 
-<Model title="Protein 2.6 Cleaved flip-GFP" src="server/contents/model/md-cleaved.stl" />
+<Model
+  title="Protein 2.6 Cleaved flip-GFP"
+  src="server/contents/model/md-cleaved.stl"
+/>
 
+## 4. Molecular Dynamics: Using GROMACS
 
-## 4. Molecular dynamics: Using GROMACS
+### a. Protein Preparation
 
-### a. Protein preparation
+（相关 bash 操作）
 
-（相关bash操作）
-- 
+-
 
-The modeled systems were **solvated in water with 150 mM NaCl**. (The files are compressed due to the limitation of file size. Therefore, the structures of the prepared ones **serve merely as illustrative examples**.)
+转化成能读懂的
 
-<Model title="Protein 2.7 Compressed prepared uncleaved flip-GFP" src="server/contents/model/md-prepared-uncleaved-compressed.stl" />
+The modeled systems **with solution** are shown below. (The files are compressed due to the limitation of file size. Therefore, the structures of the prepared ones **serve merely as illustrative examples**.)
 
-<Model title="Protein 2.8 Compressed prepared cleaved flip-GFP" src="server/contents/model/md-prepared-cleaved-compressed.stl" />
+<Model
+  title="Protein 2.7 Prepared uncleaved flip-GFP system (Compressed)"
+  src="server/contents/model/md-prepared-uncleaved-compressed.stl"
+/>
 
+<Model
+  title="Protein 2.8 Prepared cleaved flip-GFP system (Compressed)"
+  src="server/contents/model/md-prepared-cleaved-compressed.stl"
+/>
 
-### b. em stage
+### b. EM (Energy Minimization) stage
+
+<Collapse title="Explanation of EM">
+
+> **EM (Energy Minimization):**
+>
+> > _Energy Minimization is a computational technique used to identify the most stable conformation of a molecule or a system by minimizing its potential energy. It's a precursor to molecular dynamics simulations, ensuring that the starting structure is not in an energetically unfavorable state, which can lead to more realistic simulation outcomes._
+
+</Collapse>
 
 em 文件 命令行和相关参数图
+
+<Collapse title="em.mdp">
 ```mdp
-; ions.mdp - used as input into grompp to generate ions.tpr
 ; Parameters describing what to do, when to stop and what to save
 integrator  = steep         ; Algorithm (steep = steepest descent minimization)
 emtol       = 1000.0        ; Stop minimization when the maximum force < 1000.0 kJ/mol/nm
@@ -195,22 +256,34 @@ emstep      = 0.01          ; Minimization step size
 nsteps      = 6000         ; Maximum number of (minimization) steps to perform
 
 ; Parameters describing how to find the neighbors of each atom and how to calculate the interactions
-nstlist         = 1         ; Frequency to update the neighbor list and long range forces
-cutoff-scheme	= Verlet    ; Buffered neighbor searching 
-ns_type         = grid      ; Method to determine neighbor list (simple, grid)
-rlist           = 1.0       ; Cut-off for making neighbor list (short range forces)
-coulombtype     = cutoff    ; Treatment of long range electrostatic interactions
-rcoulomb        = 1.0       ; Short-range electrostatic cut-off
-rvdw            = 1.0       ; Short-range Van der Waals cut-off
-pbc             = xyz       ; Periodic Boundary Conditions in all 3 dimensions
+nstlist = 1 ; Frequency to update the neighbor list and long range forces
+cutoff-scheme = Verlet ; Buffered neighbor searching
+ns_type = grid ; Method to determine neighbor list (simple, grid)
+rlist = 1.0 ; Cut-off for making neighbor list (short range forces)
+coulombtype = cutoff ; Treatment of long range electrostatic interactions
+rcoulomb = 1.0 ; Short-range electrostatic cut-off
+rvdw = 1.0 ; Short-range Van der Waals cut-off
+pbc = xyz ; Periodic Boundary Conditions in all 3 dimensions
+
 ```
+</Collapse>
 
 
-### c. nvt stage
+### c. NVT (Canonical Ensemble) stage
+
+<Collapse title="Explanation of NVT">
+
+> **NVT (Canonical Ensemble):**
+>
+> > _NVT stands for the Canonical Ensemble, where the number of particles (N), volume (V), and temperature (T) are kept constant. In an NVT simulation, the system explores its phase space at a fixed temperature, allowing for the study of thermal equilibrium properties. It's useful for understanding the behavior of molecules at a specific temperature without altering the system's volume._
+
+</Collapse>
 
 中间要更改itp文件
 
 nvt 文件 命令行和相关参数图
+
+<Collapse title="nvt.mdp">
 
 ```mdp
 title       = NVT equilibration
@@ -226,7 +299,7 @@ nstenergy   = 1000       ; save energies every 0.2 ps
 nstlog      = 1000       ; update log file every 0.2 ps
 ; Bond parameters
 continuation            = no            ; first dynamics run
-constraint_algorithm    = lincs         ; holonomic constraints 
+constraint_algorithm    = lincs         ; holonomic constraints
 constraints             = h-bonds     ; all bonds (even heavy atom-H bonds) constrained
 lincs_iter              = 1             ; accuracy of LINCS
 lincs_order             = 4             ; also related to accuracy
@@ -245,7 +318,6 @@ tcoupl      = V-rescale                         ; modified Berendsen thermostat
 tc-grps     = Protein Water_and_ions      ; two coupling groups - more accurate
 tau_t       = 0.1      0.1                 ; time constant, in ps
 ref_t       = 310      310                 ; reZference temperature, one for each group, in K
-
 
 ;;annel
 ;annealing = single single
@@ -270,12 +342,23 @@ comm-mode   = Linear
 comm-grps   = Protein Water_and_ions
 ```
 
-### d. npt stage
+</Collapse>
+
+### d. NPT (Isothermal-Isobaric Ensemble) stage
+
+<Collapse title="Explanation of NPT">
+
+> **NPT (Isothermal-Isobaric Ensemble):**
+>
+> > _NPT represents the Isothermal-Isobaric Ensemble, where the number of particles (N), pressure (P), and temperature (T) are controlled. NPT simulations allow for the study of systems under conditions where both temperature and pressure can fluctuate, mimicking real-world scenarios more closely. This ensemble is ideal for investigating volume changes, such as protein folding or the behavior of liquids under pressure._
+
+</Collapse>
 
 npt 文件 命令行和相关参数图
 
-```mdp
-title       = NPT Equilibration  
+<Collapse title="npt.mdp">
+```mdp 
+title       = NPT Equilibration
 define      = -DPOSRES  ; position restrain the protein
 ; Run parameters
 integrator  = md        ; leap-frog integrator
@@ -326,14 +409,27 @@ comm-mode       = Linear
 comm-grps       = Protein Water_and_ions
 ; Scale COM of reference coordinates
 refcoord_scaling = com
-```
 
-### e. md stage
+```
+</Collapse>
+
+### e. MD (Molecular Dynamics) stage
+
+
+<Collapse title="Explanation of MD">
+
+> **MD (Molecular Dynamics):**
+>
+> > _Molecular Dynamics is a simulation method that models the motion of atoms or molecules in a system over time. By applying Newton's laws of motion to each atom, MD simulates the physical movements, collisions, and responses to forces within the system. It provides insights into dynamic processes, such as conformational changes in proteins or the diffusion of molecules in a solvent._
+
+</Collapse>
 
 md 文件 命令行和相关参数图
 
+<Collapse title="md.mdp">
+
 ```mdp
-title       = Production MD 
+title       = Production MD
 ; Run parameters
 integrator  = md        ; leap-frog integrator
 nsteps      = 50000000    ; 2 * 500000 = 1000 ps (1 ns)
@@ -345,8 +441,8 @@ nstxtcout   = 100000      ; xtc compressed trajectory output every 2 ps
 nstenergy   = 100000      ; save energies every 2 ps
 nstlog      = 10000000      ; update log file every 2 ps
 ; Bond parameters
-continuation            = yes       ; Restarting after NPT 
-constraint_algorithm    = lincs     ; holonomic constraints 
+continuation            = yes       ; Restarting after NPT
+constraint_algorithm    = lincs     ; holonomic constraints
 constraints             = h-bonds ; all bonds (even heavy atom-H bonds) constrained
 lincs_iter              = 1         ; accuracy of LINCS
 lincs_order             = 4         ; also related to accuracy
@@ -381,14 +477,15 @@ gen_vel     = no        ; Velocity generation is off
 ; These options remove motion of the protein/bilayer relative to the solvent/ions
 nstcomm         = 100
 comm-mode       = angular
-comm-grps       = Protein Water_and_ions 
+comm-grps       = Protein Water_and_ions
 ```
 
+</Collapse>
 
-## 5. Result
+## 5. Results
 
 uncleaved：证明无法自组装 且未切割部分稳定没什么变化
-cleaved：没有完全自组装，但是beta10 11有所恢复
+cleaved：没有完全自组装，但是 beta10 11 有所恢复
 
 相关图
 
@@ -396,13 +493,15 @@ cleaved：没有完全自组装，但是beta10 11有所恢复
 
 1. 限制没有完全对应（因为时间限制无法再次模拟） 欢迎大家提意见
 
-2. 好处：薛定谔+gromacs软件优势（优于NAMD）
+2. 好处：薛定谔+gromacs 软件优势（优于 NAMD）
 
 # Relative Fluorescence Model
 
 ## 1. Description of the model
 
-In physics, the fluorescence intensity can be described by the following equation.
+In physics, the fluorescence intensity can be described by the following equation.[^6]
+
+[^6]: Itagaki, H. Chapter 3 - Fluorescence Spectroscopy. In Experimental Methods in Polymer Science; Tanaka, T., Ed.; Academic Press: Boston, 2000; pp 155–260. https://doi.org/10.1016/B978-0-08-050612-8.50009-X.
 
 $$
 I=\frac{\varphi I_{0} (1-e^{\varepsilon lc} ) }{d^{2} }
@@ -426,77 +525,708 @@ to predict the change of relative fluorescence intensity with time.
 
 we import the above 2 ODEs and the physical equation into Matlab and utilize the ODE45 numerical method to simulate the change of relative fluorescence intensity with time.
 
-![Figure 3.1 The Change Of Relative Fluorescence Intensity  With Time During In Vitro Self-Assembly](server/contents/model/fluorescence-figure-1.png)
+import { data3, layout3 } from "data/model/data-3";
+
+<Plot data={data3} layout={layout3} />
 
 This figure illustrates that **our relative fluorescence intensity model matches the experimental results well**.
 
-# Virtual Screening
+Moreover, inhibitor can decrease the amount of beta10-11cleavaged. By applying this model, we can **predict the change of relative fluorescence intensity with time in proper accuracy range without experiment**. This approach can **facilitate to find efficient V8 protease inhibitor in our project**.
 
-## 1. Description of the model
+# Virtual Screening
 
 In wetlab part, we have chosen several compound libraries for drug screening `Natural Compound Library`, `Bioactive Compound Library`, `Clinical Compound Library`, and `Approved Drug Library` applying high-throughput screening technology. The experiment screened approximately 3,600 small molecules, and the process of mixing enzymes and substrates took about six hours, not to mention the preliminary preparation such as protein purification. In contrast, virtual screening can **accomplish the screening of millions of compounds within just a few days**, significantly expanding the scope of screening, increasing the likelihood of identifying inhibitors with high inhibition rates, and uncovering novel patterns. Therefore, we engaged in virtual screening modeling.
 
+This model is described in three parts:
 
+> [1. Description of the model](#1-description-of-the-model-1)
+>
+> > [a. Regular part](#a-regular-part): This section provides a detailed description of our virtual screening process.
+> >
+> > [b. Rating method used when screening through visual inspection](#b-rating-method-used-when-screening-through-visual-inspection): This part focuses on sharing the strategies we observed during the screening.
+>
+> [2. Results](#2-results): This section mainly covers the visualization and interpretation of our results.
+>
+> [3. Discussion](#3-discussion)
 
+## 1. Description of the model
 
 ### a. Regular part
 
+The following flow chart shows the general steps we take to do virtual screening.
+
 <Image
-  src="server/contents/model/vs-figure-workflow.png"
-  alt="Figure 4.1 Flow Chart Of Virtual Screening"
-  title="Figure 4.1 Flow Chart Of Virtual Screening"
-  height="150"
-  width="1200"
+  src="server/contents/model/vs-figure-workflow-part-1.png"
+  alt="Figure 4.1-1 Flow Chart Of Virtual Screening Part 1"
+  title="Figure 4.1-1 Flow Chart Of Virtual Screening Part 1"
+  width="900"
 />
 
+<Image
+  src="server/contents/model/vs-figure-workflow-part-2.png"
+  alt="Figure 4.1-2 Flow Chart Of Virtual Screening Part 2"
+  title="Figure 4.1-2 Flow Chart Of Virtual Screening Part 2"
+  width="900"
+/>
 
+First, we downloaded the PDB file of the v8 protease enzyme [(PDB code: 2O8L) from the RCSB](https://www.rcsb.org/structure/2O8L), and prepared the protein using Schrodinger(removing water molecules, etc.).
 
-流程图，GVSrun命令 ChemDiv
+<Model
+  title="Protein 4.1 Prepared V8 Protease"
+  src="server/contents/model/vs-2o8l-prepared.stl"
+/>
 
-<Model title="Protein 4.1 Prepared V8 Protease" src="server/contents/model/vs-2o8l-prepared.stl" />
+Then, based on the functional region displayed in [UniProt (UniProt Code: Q99V45)](https://www.uniprot.org/uniprotkb/Q99V45), which is a catalytic triad composed of a histidine (HIS), an aspartic acid (ASP), and a serine (SER), we designed the grid box, with the **ligand centroid's radius of action** being **10 Å** and the **ligand's overall radius of action** being **12 Å**.
 
-### b. New on screening through observations
+> _In the PDF, the positions of the active sites are 119, 161 and 237. Whereas, this is under the condition that 68-69 is the cleavage site. So, we shall shift 68 units to obtain the sites in the protein obtained in RCSB, i.e. subtracting 68 respectively, which means that the active sites are 51, 93 and 169. This result is shown below._
 
+<PDF src="server/contents/model/vs-else/vs-uniprot.pdf" />
+
+![Figure 4.2 Functional Region (HIS 51, ASP 93, SER 169)](server/contents/model/vs-else/vs-figure-actice-sites.png)
+
+The prepared protein pocket file and the 3D small molecule library ChemDiv were used as inputs to perform preliminary virtual screening on a Linux cluster using the GVSrun[^7] command (which internally calls Glide's molecular docking method and its files are open-source on [Wang Lin's Github](https://github.com/Wang-Lin-boop/CADD-Scripts)). The GVS command is as follows:
+
+[^7]: "Schrodinger Script Library: Easily Run Computational Biology Tasks on Linux Clusters." (2021, July). Zhihu Column. Retrieved from https://zhuanlan.zhihu.com/p/370850885
+
+```bash
+GVSrun -i "*.zip" -D ChemDiv -m Normal
+```
+
+Here is a brief Description of the meaning of mode `Normal`:
+
+> **Normal mode**:
+>
+> > First, a simple set of physicochemical rules is applied to filter the compound database (molecular weight ≤ 600, rotatable bonds ≤ 10, number of aromatic rings ≤ 6), followed by HTVS docking.
+>
+> > Then, according to the proportion or quantity specified by the **-a parameter**, the top-ranked molecules are extracted and subjected to physicochemical property calculations using the QIKPROP program and a simple 5-rule filter (molecular weight ≤ 650, lipophilicity ≤ 7, hydrogen bond donors ≤ 6, hydrogen bond acceptors ≤ 20). `
+>
+> > Finally, an optimized SP docking is performed (rewarding internal hydrogen bonds of the ligand molecule, allowing halogens to act as hydrogen bond acceptors), and ultimately, the number of molecules specified by **-b parameter** is output.
+
+The **-a parameter** and the **-b parameter** means `The number of Output compounds per Screening Task` and `The number of Output compounds after Standard docking Task` respectively, and we use the default ones.
+
+After several days of screening (less than one week), we obtained the promising molecules and started to screen by observing the structures and calculating relevant metrics.
+
+Subsequently, we utilized `Schrodinger` software to observe bond formation and assess the degree of electrostatic negativity matching for the top 1000 ranked small molecules. _(The following figures show the view in Schrodinger and he correlation between different colors and different bonds.)_
+
+![Figure 4.3-1 One Of The Results As Illustrative Examples](server/contents/model/vs-figure-1.png)
+![Figure 4.3-2 Different Bonds With Corresponding Colors](server/contents/model/vs-else/vs-figure-bonds.png)
+
+We scored them `(see method in` [part b](#b-rating-method-used-when-screening-through-visual-inspection)`)`and calculated their [MMGBSA ΔG bind](#mmgbsa-δg-bind) to further eliminate false positive small molecules, resulting in 200 small molecules with favorable properties. Finally, based on the new protein and small molecule conformations obtained from the calculation of mmgbsa ΔG bind, we calculated the [ligand strain energy](#ligand-strain-energy) for these 200 small molecules. Based on the results, and in conjunction with the previous indicators, we arrived at the final 60 small molecules. (All steps were executed within the Schrodinger software.)
+
+Here are basic explanation of _MMGBSA ΔG Bind_ and _Ligand Strain Energy_. [Click here to skip.](#b-rating-method-used-when-screening-through-visual-inspection)
+
+> #### MMGBSA ΔG Bind
+>
+> > MMGBSA _(Molecular Mechanics-Generalized Born Surface Area)_ is a method used to estimate the binding free energy (ΔG bind) of a ligand to a receptor, such as a protein in our context.
+> >
+> > In brief, the equation of ΔG bind can be represented as:
+> >
+> > $ ΔG_{\text{bind}} = (ΔE_{\text{MM}} + ΔG_{\text{solvation}})_{\text{complex}} - [(ΔE_{\text{MM}} + ΔG_{\text{solvation}})_{\text{ligand}} + (ΔE_{\text{MM}} + ΔG_{\text{solvation}})_{\text{receptor}}$
+> >
+> > Where:
+> >
+> > - $(ΔE_{\text{MM}})$ is the change in molecular mechanics energy.
+> > - $(ΔG_{\text{solvation}})$ is the change in solvation free energy, which includes both Generalized Born and Surface Area terms.
+> >
+> > Normally, **MMGBSA dG Bind** values are generally more favorable when they are lower. `It's better be under -50`
+>
+> #### Ligand Strain Energy
+>
+> > In molecular docking and drug design, the native state of a ligand is typically its lowest energy conformation, which is stable in isolation. However, upon binding to a receptor, the ligand often undergoes conformational changes to fit into the receptor's binding site. These changes can lead to a higher energy state for the ligand, as it is no longer in its most stable form.
+> >
+> > _The energy difference between the bound conformation of the ligand and its lowest energy_, unbound conformation is termed the Ligand Strain Energy. This strain energy represents the penalty or cost in terms of free energy that the system must pay to deform the ligand to fit it into the receptor's binding pocket.
+> >
+> > Normally, **Ligand Strain Energy** values are generally more favorable when they are lower. `It's better be under 5`
+
+### b. Rating method used when screening through visual inspection
+
+In the current virtual screening process, **visual inspection** remains a crucial part. When done well, it can **effectively eliminate false positive results and refine useful molecules and structures.**
+
+However, for _beginners_, the first encounter with visual inspection can be daunting, and standards vary, making it **difficult to unify** the results obtained by two or more people with different criteria. This is also **a problem we encountered**. To address this issue, we _consulted professors_ in the field of computational biology and asked them and doctoral students to give us suggestions on our visual inspection process.
+
+During visual inspection, there are four important evaluation points:
+
+> - the geometric fit between the protein and ligand
+>
+> - the degree of electrostatic complementarity between the protein and ligand
+>
+> - the formation of good bonds (including hydrogen bonds, halogen bonds, salt bridges, aromatic H-bonds, pi-pi stacking, and pi-cation interactions), and the formation of bad bonds (mainly ugly crushes).
+>
+>   - In particular, the denser the internal hydrogen bonds in the pocket, the better. _Therefore, we will give extra points for hydrogen bonds formed internally within the binding pocket._
+
+Based on the factors above, we established the following evaluation table:
+
+| Scoring Criteria |                                Smile                                 | MMGBSA dG Bind | Lig Strain Energy |
+| :--------------: | :------------------------------------------------------------------: | :------------: | :---------------: |
+|      y-4501      |   O=C(c1ccc(Cn2ncc(Br)c2)o1)Nc(cc1)ccc1S(Nc(cc1)cc(Cl)c1Cl)(=O)=O    |     -67.12     |      4.1934       |
+|      y-4502      |           O=C(CCN(CC1)CCN1c1cccc(Cl)c1)Nc1ccc(Cn2ncnc2)cc1           |     -65.49     |     4.613332      |
+|      y-4503      | O=C(c(cccc1)c1Cl)Nc(cc1)ccc1SC(C(N(C1=O)c2ccccc2)=O)=C1Nc(cc1)ccc1Br |     -64.34     |     4.861185      |
+|      y-4508      |  Nc1ccc(Cc2nc(cc(Cc(cc3)cc4c3[nH]c(Cc(cc3)ccc3N)n4)cc3)c3[nH]2)cc1   |     -58.91     |     1.797029      |
+|      y-4513      |  [O-][N+] (c1nn(Cc(cc2)ccc2C(Nc2nn(Cc(ccc(F)c3)c3Cl)cc2)=O)cc1Cl)=O  |     -68.42     |     2.869457      |
 
 ## 2. Results
 
-After 
+Ultimately, we identified the 60 most promising small molecules from ChemDiv. The following table displays detailed information about these small molecules, sequentially showing their identification numbers from the observational screening, their SMILES properties, their MM-GBSA ΔG bind, and ligand strain energy. To view the entire table, please click the "Expand: Rest of the Table" button.
 
-![Figure 4.2 One Of The Results As Illustrative Examples](server/contents/model/vs-figure-1.png)
+| Number | Title  |                                Smile                                 | MMGBSA dG Bind | Lig Strain Energy |
+| :----: | :----: | :------------------------------------------------------------------: | :------------: | :---------------: |
+|   1    | y-4501 |   O=C(c1ccc(Cn2ncc(Br)c2)o1)Nc(cc1)ccc1S(Nc(cc1)cc(Cl)c1Cl)(=O)=O    |     -67.12     |      4.1934       |
+|   2    | y-4502 |           O=C(CCN(CC1)CCN1c1cccc(Cl)c1)Nc1ccc(Cn2ncnc2)cc1           |     -65.49     |     4.613332      |
+|   3    | y-4503 | O=C(c(cccc1)c1Cl)Nc(cc1)ccc1SC(C(N(C1=O)c2ccccc2)=O)=C1Nc(cc1)ccc1Br |     -64.34     |     4.861185      |
+|   4    | y-4508 |  Nc1ccc(Cc2nc(cc(Cc(cc3)cc4c3[nH]c(Cc(cc3)ccc3N)n4)cc3)c3[nH]2)cc1   |     -58.91     |     1.797029      |
+|   5    | y-4513 |  [O-][N+] (c1nn(Cc(cc2)ccc2C(Nc2nn(Cc(ccc(F)c3)c3Cl)cc2)=O)cc1Cl)=O  |     -68.42     |     2.869457      |
+|   6    | y-4515 |            O=C(CN1CCN(C/C=C/c2ccccc2)CC1)Nc(cc1)cc(Cl)c1F            |     -63.76     |     2.711933      |
+|   7    | y-4518 |                         NNC(c1n[nH]cc1Cl)=O                          |     -32.35     |     0.550675      |
+|   8    | y-4520 |       CN(c(sc(C(NCC1CCN(Cc(cc2)ccc2F)CC1)=O)c1)c1C(N1C)=O)C1=O       |     -73.88     |     1.383667      |
+|   9    | y-4525 |               CC(C1C(N2c3ccccc3)=O)(C2=O)NN=C1C(OC)=O                |     -47.18     |     1.033788      |
+|   10   | y-4530 |                         CN1c(cccc2)c2OCC1=O                          |     -31.55     |     1.302034      |
+
+<Collapse title="Rest of the Table: 11-20">
+
+| Number | Title  |                                   Smile                                   | MMGBSA dG Bind | Lig Strain Energy |
+| :----: | :----: | :-----------------------------------------------------------------------: | :------------: | :---------------: |
+|   11   | y-4532 |         CN(c(sc(C(NCC1CCN(Cc2cccc(Cl)c2)CC1)=O)c1)c1C(N1C)=O)C1=O         |     -76.99     |     2.245146      |
+|   12   | y-4533 |       O=C(c1ccc(CN(C(c(scc2)c2N2Cc(cc3)ccc3Cl)=O)C2=O)cc1)NCc1ccco1       |     -73.23     |     2.657251      |
+|   13   | y-4534 |  [O-]N(c(cc(/C=N/NC(CSc1nnc(-c(cc2)ccc2Cl)n1-c(cc1)ccc1Cl)=O)cc1)c1Cl)=O  |     -72.31     |     2.979622      |
+|   14   | y-4547 |                       CNC(C1c(cccc2)c2Oc2c1cccc2)=O                       |     -40.2      |     1.180752      |
+|   15   | y-4548 |                       Clc1cncc(Cl)c1N/N=C/c1ccncc1                        |     -39.26     |     1.580014      |
+|   16   | y-4551 |                       NC(Nc1ncnn1C1c2ccccc2)=C1C#N                        |     -33.44     |     1.226451      |
+|   17   | y-4560 |    CC(C1Sc(cccc2)c2N(Cc(cc2)ccc2F)C1=O)C(NCCCN(CC1)CCN1c(cc1)ccc1F)=O     |     -70.47     |     2.838067      |
+|   18   | y-4563 |        CN(CC(Nc(cc1)ccc1F)=O)C(C(CC1)CN1C(C=NN1Cc2ccccc2)=CC1=O)=O        |     -68.48     |     2.238337      |
+|   19   | y-4567 |                       Cc1cccc2c1Oc(cc(cc1O)O)c1C2=O                       |     -35.21     |     1.058907      |
+|   20   | y-4569 |                         NC(C1=CN=C2SC=CN2C1=O)=O                          |     -33.58     |     1.435636      |
+
+</Collapse>
+
+<Collapse title="Rest of the Table: 21-30">
+
+| Number | Title  |                                   Smile                                   | MMGBSA dG Bind | Lig Strain Energy |
+| :----: | :----: | :-----------------------------------------------------------------------: | :------------: | :---------------: |
+|   21   | y-4570 |                        OC(C(N(C(C1O)O)C=O)O)N1C=O                         |     -32.58     |     0.985928      |
+|   22   | y-4571 | Cc1cccc(CN(c(cccc2)c2S/C2=C/c(cc3)ccc3C(N(CC3)CCN3C(c3ccco3)=O)=O)C2=O)c1 |     -78.74     |     1.750033      |
+|   23   | y-4572 |         CN(c(sc(C(NCC1CCN(Cc2cc(F)ccc2)CC1)=O)c1)c1C(N1C)=O)C1=O          |     -77.3      |     2.115622      |
+|   24   | y-4573 |         CN(c(sc(C(NCCCN(CC1)CCN1c(cccc1)c1F)=O)c1)c1C(N1C)=O)C1=O         |     -75.92     |     2.617953      |
+|   25   | y-4580 |                 O=C(COc1cc2ccccc2cc1)NCCSc1c[nH]c2c1cccc2                 |     -58.69     |     2.022911      |
+|   26   | y-4582 |              Cn1c(ccc(CCC(NCCn(cc2)c(cc3)c2cc3OC)=O)c2)c2nc1              |     -53.28     |      1.54511      |
+|   27   | y-4585 |                 CC(C1)(C2)CN3C(c(ccc(O)c4)c4O)N2CC1(C)C3                  |     -37.67     |     1.232873      |
+|   28   | y-4586 |                        CC(C)Nc(sc(C(C)=O)c1N)c1C#N                        |     -34.47     |     1.011663      |
+|   29   | y-4587 |                       CC(c1c(C)[nH]c(C(C)=O)c1C)=O                        |     -29.29     |      0.31225      |
+|   30   | y-4588 |   Cc1ccc(CN(c(cccc2)c2S/C2=C/c(cc3)ccc3C(N(CC3)CCN3c3ncccc3)=O)C2=O)cc1   |     -73.33     |     2.570823      |
+
+</Collapse>
+
+<Collapse title="Rest of the Table: 31-40">
+
+| Number | Title  |                                   Smile                                   | MMGBSA dG Bind | Lig Strain Energy |
+| :----: | :----: | :-----------------------------------------------------------------------: | :------------: | :---------------: |
+|   31   | y-4593 |               O=C(c1nnc(Cc(cc2)cc3c2OCO3)o1)NCCCN(CCC1)C1=O               |     -52.97     |     2.532537      |
+|   32   | y-4594 |              CC(N(CC1)CCC1c1noc(CC(C2)CN2C(C2CC=CC2)=O)n1)=O              |     -51.4      |     -0.602846     |
+|   33   | y-4598 |              Cc1cccc(CNC(CC(CCC2)CN2C(C=NN2CCOC)=CC2=O)=O)c1              |     -67.07     |     2.758263      |
+|   34   | z-4602	|         O=C(c1cn(CCN(CCOc2ccccc2)C2c3ccccc3)c2n1)NCCc1cnccc1	            |     -73.43     |     2.714755      |
+|   35   | z-4604	|         Cc(cccc1)c1C(SC1=NC(CN(CC2)CCN2C(Nc2c(C)ccc(Cl)c2)=O)=C2)=NN1C2=O |     -71.27     |     4.020383      |
+|   36   | z-4605	|                   O=C(c1ccccc1)N(Cc1ccco1)Cc(cc1)ccc1Cl	                  |     -50.87     |     4.478632      |
+|   37   | z-4606	|         O=C(c(cc1)cc(NC(N2Cc3cccc(Br)c3)=S)c1C2=O)Nc(cc1)ccc1Oc1ccccc1    |  	  -69.87     |     2.245384      |
+|   38   | z-4611	|         [O-][N+] (c1nn(Cc(cc2)ccc2C(Nc2cn(Cc3cccc(Cl)c3)nc2)=O)cc1Cl)=O   |	  	-67.65     |     2.819607      |
+|   39   | z-4617	|         O=C(c(cc1)ccc1N(CCCN1Cc(cc2)ccc2F)C1=O)N(CC1)CCN1c(cccc1)c1F	    |	  	-64.61     |     2.955748      |
+|   40   | z-4619	|         CC(CN(CC1)C(c2ccc(CNS(c3ccccc3)(=O)=O)cc2)=O)N1c1cc(C)ccc1	      |	  	-64.24     |     0.942398      |
+
+</Collapse>
+
+<Collapse title="Rest of the Table: 41-50">
+
+| Number | Title  |                                   Smile                                   | MMGBSA dG Bind | Lig Strain Energy |
+| :----: | :----: | :-----------------------------------------------------------------------: | :------------: | :---------------: |
+|   41   | z-4622 | 	O=C(c1csc(-c2cccc(OCc3cccc(Cl)c3)c2)n1)NCc1ccncc1                       |	  	-62.76     |     1.779476      |
+|   42   | z-4623 | 	COc(cccc1)c1C(Oc(cc1)cc(OC=C2Oc(cc3)ccc3-c3ccccc3)c1C2=O)=O             |	  	-62.3     |     3.506114      |
+|   43   | z-4626 | 	O=C(c(cc1)ccc1N(CCCN1Cc2ccccc2)C1=O)N(CC1)CCN1c1ccccc1                	|	  	-60.14     |     1.763097      |
+|   44   | z-4628 | 	O=C(c(cccc1)c1Cl)Nc(cc1)ccc1SC(C(N(C1=O)c(cc2)ccc2F)=O)=C1Nc(cc1)ccc1F	|	  	-59.06     |     4.499197      |
+|   45   | z-4635 | 	Cc1nnc(SCC(Nc(cc2)cc3c2nc(SCC(Nc2cc(Cl)c(C)cc2)=O)s3)=O)s1             	|	  	-81.68     |     4.300355      |
+|   46   | z-4636 | 	O=C(c1cccc(/C=C(/C(N2Cc3cccc(Cl)c3)=O)\SC2=O)c1)N(CC1)CCN1c(cccc1)c1F 	|	  	-74.46     |     3.195577      |
+|   47   | z-4639 | 	Cc1cccc(-c2noc(-c3cccc(NC(C(CC4=O)CN4c4c(C)cccc4)=O)c3)n2)c1	|	  	-69.37     |     2.932787      |
+|   48   | z-4640 | 	O=C(CCc(n1-c2c3cccc2)nnc1N(Cc(cccc1)c1Cl)C3=O)N(CC1)CCN1c1cc(C(F)(F)F)ccc1	|	  	-67.66     |     3.006346      |
+|   49   | z-4644 | 	O=C(c1ccc(CSc2nc(C(F)(F)F)ccn2)cc1)N(C(CC1)C2)C1CC2Oc(cc1)cc2c1OCO2	|	  	-64.9     |     3.398116      |
+|   50   | z-4648 | 	CC(N(CC1)c(cc2)c1cc2S(NCCC(NCc(cccc1)c1Cl)=O)(=O)=O)=O	|	  	-59.65     |     2.722084      |
+
+</Collapse>
+
+<Collapse title="Rest of the Table: 51-63">
+
+| Number | Title  |                                   Smile                                   | MMGBSA dG Bind | Lig Strain Energy |
+| :----: | :----: | :-----------------------------------------------------------------------: | :------------: | :---------------: |
+|   51   | z-4649 | 	Cc(cccc1)c1N1C(SCC(Nc2cccc(Cl)c2C)=O)=Nc([nH]nc2)c2C1=O	|	  	-52.84     |     3.870534      |
+|   52   | z-4650 | 	O=C(c1ccc(CN(C(c(scc2)c2N2Cc(ccc(F)c3)c3Cl)=O)C2=O)cc1)NCc1ccco1	|	  	-81     |     2.079147      |
+|   53   | z-4651 | 	Cc(ccc(NC(N1CCN(CC(N=C2SC(c(cccc3)c3F)=NN22)=CC2=O)CC1)=O)c1)c1F	|	  	-72.92     |     4.311554      |
+|   54   | z-4652 | 	CCN(c(cccc1)c1C(SCC(NCc(cc1)ccc1OCC)=O)=C1)C1=O	|	  	-70.34     |     1.944497
+|   55   | z-4659 | 	O=C(c(cc1)cc(F)c1F)N1CCN(Cc(cc2)ccc2-c2noc(-c3cc(C(F)(F)F)ccc3)n2)CC1	|	  	-67.44     |     3.414316      |
+|   56   | z-4664 | 	COc1cccc(N(CC2)CCN2c2cc(SCC(NCc3ccco3)=O)ncn2)c1	|	  	-65.61     |     0.836277      |
+|   57   | z-4666 | 	O=C(c1coc(CN2CCN(Cc(cc3)cc4c3OCO4)CC2)n1)NCc1ccccc1	|	  	-65.1     |     3.358678      |
+|   58   | z-4674 | 	O=C(c1csc(-c2cccc(OCc3cccc(Cl)c3)c2)n1)NCc1ccccc1	|	  	-62.81     |     1.73396      |
+|   59   | z-4678 | 	O=C(Nc1cccc(Cl)c1)N(CC1)CCC1c1noc(COc2cnccc2)n1	|	  	-59.46     |     3.345981      |
+|   60   | z-4680 | 	O=C(C(CC(N1)=O)n2c1nc1c2cccc1)Nc(ccc(Cl)c1)c1Cl	|	  	-56.34     |     1.914809      |
+|   61   | z-4682 | 	[O-][N+] (c(cc1)ccc1S(Nc1cn(Cc2cc(C(F)(F)F)ccc2)nc1)(=O)=O)=O	|	  	-53.55     |     4.625884      |
+|   62   | z-4684 | 	Cc1ccc(Cn2c(SCC(N)=O)ncc2CO)cc1	|	  	-50.68     |     4.38232      |
+|   63   | z-4685 | 	Cc1nn(C(c(c2ccccc2cc2)c2O)Nc2c-3cccc2)c3c1	|	  	-50.62     |     1.473868      |
+
+</Collapse>
 
 
-<Model title="Protein 4.2-34 z-4602" src="server/contents/model/vs-z/vs-z-4602.stl" />
-<Model title="Protein 4.2-35 z-4604" src="server/contents/model/vs-z/vs-z-4604.stl" />
-<Model title="Protein 4.2-36 z-4605" src="server/contents/model/vs-z/vs-z-4605.stl" />
-<Model title="Protein 4.2-37 z-4606" src="server/contents/model/vs-z/vs-z-4606.stl" />
-<Model title="Protein 4.2-38 z-4611" src="server/contents/model/vs-z/vs-z-4611.stl" />
-<Model title="Protein 4.2-39 z-4617" src="server/contents/model/vs-z/vs-z-4617.stl" />
-<Model title="Protein 4.2-40 z-4619" src="server/contents/model/vs-z/vs-z-4619.stl" />
-<Model title="Protein 4.2-41 z-4622" src="server/contents/model/vs-z/vs-z-4622.stl" />
-<Model title="Protein 4.2-42 z-4623" src="server/contents/model/vs-z/vs-z-4623.stl" />
-<Model title="Protein 4.2-43 z-4626" src="server/contents/model/vs-z/vs-z-4626.stl" />
-<Model title="Protein 4.2-44 z-4628" src="server/contents/model/vs-z/vs-z-4628.stl" />
-<Model title="Protein 4.2-45 z-4635" src="server/contents/model/vs-z/vs-z-4635.stl" />
-<Model title="Protein 4.2-46 z-4636" src="server/contents/model/vs-z/vs-z-4636.stl" />
-<Model title="Protein 4.2-47 z-4639" src="server/contents/model/vs-z/vs-z-4639.stl" />
-<Model title="Protein 4.2-48 z-4640" src="server/contents/model/vs-z/vs-z-4640.stl" />
-<Model title="Protein 4.2-49 z-4644" src="server/contents/model/vs-z/vs-z-4644.stl" />
-<Model title="Protein 4.2-50 z-4648" src="server/contents/model/vs-z/vs-z-4648.stl" />
-<Model title="Protein 4.2-51 z-4649" src="server/contents/model/vs-z/vs-z-4649.stl" />
-<Model title="Protein 4.2-52 z-4650" src="server/contents/model/vs-z/vs-z-4650.stl" />
-<Model title="Protein 4.2-53 z-4651" src="server/contents/model/vs-z/vs-z-4651.stl" />
-<Model title="Protein 4.2-54 z-4652" src="server/contents/model/vs-z/vs-z-4652.stl" />
-<Model title="Protein 4.2-55 z-4659" src="server/contents/model/vs-z/vs-z-4659.stl" />
-<Model title="Protein 4.2-56 z-4664" src="server/contents/model/vs-z-4664-o.stl" />
-<Model title="Protein 4.2-57 z-4666" src="server/contents/model/vs-z/vs-z-4666.stl" />
-<Model title="Protein 4.2-58 z-4674" src="server/contents/model/vs-z/vs-z-4674.stl" />
-<Model title="Protein 4.2-59 z-4678" src="server/contents/model/vs-z/vs-z-4678.stl" />
-<Model title="Protein 4.2-60 z-4680" src="server/contents/model/vs-z/vs-z-4680.stl" />
-<Model title="Protein 4.2-61 z-4682" src="server/contents/model/vs-z/vs-z-4682.stl" />
-<Model title="Protein 4.2-62 z-4684" src="server/contents/model/vs-z/vs-z-4684.stl" />
-<Model title="Protein 4.2-63 z-4685" src="server/contents/model/vs-z/vs-z-4685.stl" />
+
+
+
+Right behind the table, the structures of these small molecules are presented; due to space limitations, only one 3D structure and its corresponding docking results are shown directly. Click the "Expand: Final 60 Molecules" button to view the structures of all small molecules, which are of various sizes. Regrettably, hydrogen bonds and other interactions (as shown in Figure 4.4-1 and Figure 4.4-2) cannot be displayed in the wiki; these results will be included in our files, and interested parties can download them for viewing with software such as Schrodinger.
+
+![Figure 4.4-1 z-4650 Docking Result With Surface Shown As Example](server/contents/model/vs-else/vs-z-4650-pic-1.png)
+![Figure 4.4-2 z-4650 Docking Result Without Surface Shown As Example](server/contents/model/vs-else/vs-z-4650-pic-2.png)
+
+Spinning 180° to see how ligand intercat with the protein.
+
+<Model
+  title="Protein 4.2-0-1 z-4650 docking result shown as example (Compressed)"
+  src="server/contents/model/vs-else/vs-z-4650-docking-decimated.stl"
+/>
+
+<Model
+  title="Protein 4.2-0-2 z-4650 3D structure shown as example"
+  src="server/contents/model/vs-z/vs-z-4650.stl"
+/>
+
+<Collapse title="Final 63 Molecules">
+<Collapse title="Protein 4.2-1 y-4501">
+  <Model title="Protein 4.2-1 y-4501" src="server/contents/model/vs-y/vs-y-4501.stl" />
+</Collapse>
+
+<Collapse title="Protein 4.2-2 y-4502">
+  <Model
+    title="Protein 4.2-2 y-4502"
+    src="server/contents/model/vs-y/vs-y-4502.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-3 y-4503">
+  <Model
+    title="Protein 4.2-3 y-4503"
+    src="server/contents/model/vs-y/vs-y-4503.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-4 y-4508">
+  <Model
+    title="Protein 4.2-4 y-4508"
+    src="server/contents/model/vs-y/vs-y-4508.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-5 y-4513">
+  <Model
+    title="Protein 4.2-5 y-4513"
+    src="server/contents/model/vs-y/vs-y-4513.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-6 y-4515">
+  <Model
+    title="Protein 4.2-6 y-4515"
+    src="server/contents/model/vs-y/vs-y-4515.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-7 y-4518">
+  <Model
+    title="Protein 4.2-7 y-4518"
+    src="server/contents/model/vs-y/vs-y-4518.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-8 y-4520">
+  <Model
+    title="Protein 4.2-8 y-4520"
+    src="server/contents/model/vs-y/vs-y-4520.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-9 y-4525">
+  <Model
+    title="Protein 4.2-9 y-4525"
+    src="server/contents/model/vs-y/vs-y-4525.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-10 y-4530">
+  <Model
+    title="Protein 4.2-10 y-4530"
+    src="server/contents/model/vs-y/vs-y-4530.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-11 y-4532">
+  <Model
+    title="Protein 4.2-11 y-4532"
+    src="server/contents/model/vs-y/vs-y-4532.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-12 y-4533">
+  <Model
+    title="Protein 4.2-12 y-4533"
+    src="server/contents/model/vs-y/vs-y-4533.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-13 y-4534">
+  <Model
+    title="Protein 4.2-13 y-4534"
+    src="server/contents/model/vs-y/vs-y-4534.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-14 y-4547">
+  <Model
+    title="Protein 4.2-14 y-4547"
+    src="server/contents/model/vs-y/vs-y-4547.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-15 y-4548">
+  <Model
+    title="Protein 4.2-15 y-4548"
+    src="server/contents/model/vs-y/vs-y-4548.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-16 y-4551">
+  <Model
+    title="Protein 4.2-16 y-4551"
+    src="server/contents/model/vs-y/vs-y-4551.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-17 y-4560">
+  <Model
+    title="Protein 4.2-17 y-4560"
+    src="server/contents/model/vs-y/vs-y-4560.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-18 y-4563">
+  <Model
+    title="Protein 4.2-18 y-4563"
+    src="server/contents/model/vs-y/vs-y-4563.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-19 y-4567">
+  <Model
+    title="Protein 4.2-19 y-4567"
+    src="server/contents/model/vs-y/vs-y-4567.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-20 y-4569">
+  <Model
+    title="Protein 4.2-20 y-4569"
+    src="server/contents/model/vs-y/vs-y-4569.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-21 y-4570">
+  <Model
+    title="Protein 4.2-21 y-4570"
+    src="server/contents/model/vs-y/vs-y-4570.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-22 y-4571">
+  <Model
+    title="Protein 4.2-22 y-4571"
+    src="server/contents/model/vs-y/vs-y-4571.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-23 y-4572">
+  <Model
+    title="Protein 4.2-23 y-4572"
+    src="server/contents/model/vs-y/vs-y-4572.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-24 y-4573">
+  <Model
+    title="Protein 4.2-24 y-4573"
+    src="server/contents/model/vs-y/vs-y-4573.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-25 y-4580">
+  <Model
+    title="Protein 4.2-25 y-4580"
+    src="server/contents/model/vs-y/vs-y-4580.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-26 y-4582">
+  <Model
+    title="Protein 4.2-26 y-4582"
+    src="server/contents/model/vs-y/vs-y-4582.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-27 y-4585">
+  <Model
+    title="Protein 4.2-27 y-4585"
+    src="server/contents/model/vs-y/vs-y-4585.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-28 y-4586">
+  <Model
+    title="Protein 4.2-28 y-4586"
+    src="server/contents/model/vs-y/vs-y-4586.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-29 y-4587">
+  <Model
+    title="Protein 4.2-29 y-4587"
+    src="server/contents/model/vs-y/vs-y-4587.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-30 y-4588">
+  <Model
+    title="Protein 4.2-30 y-4588"
+    src="server/contents/model/vs-y/vs-y-4588.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-31 y-4593">
+  <Model
+    title="Protein 4.2-31 y-4593"
+    src="server/contents/model/vs-y/vs-y-4593.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-32 y-4594">
+  <Model
+    title="Protein 4.2-32 y-4594"
+    src="server/contents/model/vs-y/vs-y-4594.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-33 y-4598">
+  <Model
+    title="Protein 4.2-33 y-4598"
+    src="server/contents/model/vs-y/vs-y-4598.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-34 z-4602">
+  <Model
+    title="Protein 4.2-34 z-4602"
+    src="server/contents/model/vs-z/vs-z-4602.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-35 z-4604">
+  <Model
+    title="Protein 4.2-35 z-4604"
+    src="server/contents/model/vs-z/vs-z-4604.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-36 z-4605">
+  <Model
+    title="Protein 4.2-36 z-4605"
+    src="server/contents/model/vs-z/vs-z-4605.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-37 z-4606">
+  <Model
+    title="Protein 4.2-37 z-4606"
+    src="server/contents/model/vs-z/vs-z-4606.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-38 z-4611">
+  <Model
+    title="Protein 4.2-38 z-4611"
+    src="server/contents/model/vs-z/vs-z-4611.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-39 z-4617">
+  <Model
+    title="Protein 4.2-39 z-4617"
+    src="server/contents/model/vs-z/vs-z-4617.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-40 z-4619">
+  <Model
+    title="Protein 4.2-40 z-4619"
+    src="server/contents/model/vs-z/vs-z-4619.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-41 z-4622">
+  <Model
+    title="Protein 4.2-41 z-4622"
+    src="server/contents/model/vs-z/vs-z-4622.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-42 z-4623">
+  <Model
+    title="Protein 4.2-42 z-4623"
+    src="server/contents/model/vs-z/vs-z-4623.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-43 z-4626">
+  <Model
+    title="Protein 4.2-43 z-4626"
+    src="server/contents/model/vs-z/vs-z-4626.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-44 z-4628">
+  <Model
+    title="Protein 4.2-44 z-4628"
+    src="server/contents/model/vs-z/vs-z-4628.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-45 z-4635">
+  <Model
+    title="Protein 4.2-45 z-4635"
+    src="server/contents/model/vs-z/vs-z-4635.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-46 z-4636">
+  <Model
+    title="Protein 4.2-46 z-4636"
+    src="server/contents/model/vs-z/vs-z-4636.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-47 z-4639">
+  <Model
+    title="Protein 4.2-47 z-4639"
+    src="server/contents/model/vs-z/vs-z-4639.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-48 z-4640">
+  <Model
+    title="Protein 4.2-48 z-4640"
+    src="server/contents/model/vs-z/vs-z-4640.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-49 z-4644">
+  <Model
+    title="Protein 4.2-49 z-4644"
+    src="server/contents/model/vs-z/vs-z-4644.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-50 z-4648">
+  <Model
+    title="Protein 4.2-50 z-4648"
+    src="server/contents/model/vs-z/vs-z-4648.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-51 z-4649">
+  <Model
+    title="Protein 4.2-51 z-4649"
+    src="server/contents/model/vs-z/vs-z-4649.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-52 z-4650">
+  <Model
+    title="Protein 4.2-52 z-4650"
+    src="server/contents/model/vs-z/vs-z-4650.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-53 z-4651">
+  <Model
+    title="Protein 4.2-53 z-4651"
+    src="server/contents/model/vs-z/vs-z-4651.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-54 z-4652">
+  <Model
+    title="Protein 4.2-54 z-4652"
+    src="server/contents/model/vs-z/vs-z-4652.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-55 z-4659">
+  <Model
+    title="Protein 4.2-55 z-4659"
+    src="server/contents/model/vs-z/vs-z-4659.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-56 z-4664">
+  <Model
+    title="Protein 4.2-56 z-4664"
+    src="server/contents/model/vs-z-4664-o.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-57 z-4666">
+  <Model
+    title="Protein 4.2-57 z-4666"
+    src="server/contents/model/vs-z/vs-z-4666.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-58 z-4674">
+  <Model
+    title="Protein 4.2-58 z-4674"
+    src="server/contents/model/vs-z/vs-z-4674.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-59 z-4678">
+  <Model
+    title="Protein 4.2-59 z-4678"
+    src="server/contents/model/vs-z/vs-z-4678.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-60 z-4680">
+  <Model
+    title="Protein 4.2-60 z-4680"
+    src="server/contents/model/vs-z/vs-z-4680.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-61 z-4682">
+  <Model
+    title="Protein 4.2-61 z-4682"
+    src="server/contents/model/vs-z/vs-z-4682.stl"
+  />
+</Collapse>
+
+<Collapse title="Protein 4.2-62 z-4684">
+  <Model
+    title="Protein 4.2-62 z-4684"
+    src="server/contents/model/vs-z/vs-z-4684.stl"
+  />
+</Collapse>
+
+  <Collapse title="Protein 4.2-63 z-4685">
+    <Model title="Protein 4.2-63 z-4685" src="server/contents/model/vs-z/vs-z-4685.stl" />
+  </Collapse>
+</Collapse>
 
 ## 3. Discussion
 
-1. 在采用目筛的同时，有计算资源可以把mmgbsa都算出来
-
+1. 在采用目筛的同时，有计算资源可以把 mmgbsa 都算出来

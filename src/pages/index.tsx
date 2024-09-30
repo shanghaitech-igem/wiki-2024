@@ -3,9 +3,7 @@ import Layout from "src/components/layout";
 import Seo from "src/components/seo";
 import Favicon from "src/components/favicon";
 import SvgStatic from "src/components/index/svg-static";
-import SvgImg from "src/components/index/svg-img";
-import { main } from "src/components/index/objects-static";
-import { stems, leaves } from "src/components/index/objects-img";
+import { main, stems, leaves } from "src/components/index/objects-static";
 import * as styles from "src/styles/modules/index.module.scss";
 import ScrollReveal from "scrollreveal";
 
@@ -66,10 +64,10 @@ const IndexPage: React.FC = () => {
         </div>
         <SvgStatic key={`leaf-main`} {...main} />
         {stems.map((stem, index) => (
-          <SvgImg key={`stem-${index}`} {...stem} />
+          <SvgStatic key={`stem-${index}`} {...stem} />
         ))}
         {leaves.map((leaf, index) => (
-          <SvgImg
+          <SvgStatic
             key={`leaf-${index}`}
             {...leaf}
             className="leaf-reveal load-hidden"
