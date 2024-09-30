@@ -11,10 +11,13 @@
 }
 
 .tab {
-  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px; // Adjust padding for thumbnail
   cursor: pointer;
   border: 1px solid #ccc;
-  margin-right: 5px;
+  margin: 0 0.5vw;
   transition: background-color 0.3s, color 0.3s;
   border-radius: 5px;
 
@@ -27,6 +30,14 @@
     background-color: light.$pacify-secondary;
     color: white;
   }
+
+  img {
+    width: 5vw; // Thumbnail width
+    height: 5vw; // Thumbnail height
+    object-fit: contain;
+    margin: auto auto;
+    border-radius: 5px;
+  }
 }
 
 .tab-panel {
@@ -37,15 +48,15 @@
   clip: rect(0, 0, 0, 0);
   animation: slide 1s ease 3.5s forwards;
   margin: auto;
-  padding: 1rem;
   border-radius: 10px;
   cursor: zoom-in;
   opacity: 0;
-  transition: opacity 0.5s ease-in-out; // Add transition for opacity
+  transition: opacity 0.5s ease-in-out;
 
   &[class*="--selected"] {
+    padding: 1rem;
     width: 60vh;
     height: 60vh;
-    opacity: 1; // Set opacity to 1 when selected
+    opacity: 1;
   }
 }
