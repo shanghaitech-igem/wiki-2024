@@ -73,7 +73,7 @@ main {
             margin-top: 0; // Adjust the value as needed
           }
 
-          &> :first-child:not(h1) {
+          & > :first-child:not(h1) {
             padding-top: 10rem;
           }
 
@@ -111,8 +111,34 @@ main {
             }
           }
 
-          a {
+          a:not([data-footnote-ref]):not([data-footnote-backref]) {
+            position: relative;
             color: light.$pacify-success;
+            text-decoration: none;
+            display: inline-block;
+            transition: color 0.3s ease;
+
+            &::after {
+              content: "";
+              position: absolute;
+              left: 0;
+              bottom: -2px;
+              width: 100%;
+              height: 2px;
+              background-color: light.$pacify-success;
+              transform: scaleX(0);
+              transform-origin: right;
+              transition: transform 0.3s ease;
+            }
+
+            &:hover {
+              color: #005999;
+
+              &::after {
+                transform: scaleX(1);
+                transform-origin: left;
+              }
+            }
           }
 
           table {
