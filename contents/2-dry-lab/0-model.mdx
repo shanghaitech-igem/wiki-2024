@@ -24,6 +24,7 @@ The [third model](#relative-fluorescence-model), which is the **Relative Fluores
 
 Our [final model](#virtual-screening) involves **Virtual Screening**, where we searched the ChemDiv library for small molecules that can inhibit the v8 protease. This in silico approach allows us to _narrow down potential candidates without the need for laborious and costly experimental trials._ The model's output guides our experimental design by predicting which compounds are most likely to be effective inhibitors.
 
+<split/>
 # ODE
 
 ## 1. Description of the system
@@ -113,7 +114,7 @@ Although this model have verified the feasibility of our project, **we did not c
 
 Moreover, if the degradation of mRNA is sufficiently faster (say, at least 10 times) than the degradation of the corresponding protein, then the stationarity approximation is biologically justified. Note that, **under certain conditions, it can be assumed that the stationarity approximation is only valid for some genes of the network.** In that case, **only those genes for which the assumption is valid can be modelled by a single equation for the protein concentration,** while the rest will be associated to two equations, one for the mRNA and one for protein concentration.
 
-
+<split/>
 # Molecular Simulation
 
 
@@ -731,6 +732,7 @@ cleaved：没有完全自组装，但是 beta10 11 有所恢复
 
 2. 好处：薛定谔+gromacs 软件优势（优于 NAMD）
 
+<split/>
 # Relative Fluorescence Model
 
 ## 1. Description of the model
@@ -769,6 +771,7 @@ This figure illustrates that **our relative fluorescence intensity model matches
 
 Moreover, inhibitor can decrease the amount of beta10-11cleavaged. By applying this model, we can **predict the change of relative fluorescence intensity with time in proper accuracy range without experiment**. This approach can **facilitate to find efficient V8 protease inhibitor in our project**.
 
+<split/>
 # Virtual Screening
 
 In wetlab part, we have chosen several compound libraries for drug screening `Natural Compound Library`, `Bioactive Compound Library`, `Clinical Compound Library`, and `Approved Drug Library` applying high-throughput screening technology. The experiment screened approximately 3,600 small molecules, and the process of mixing enzymes and substrates took about six hours, not to mention the preliminary preparation such as protein purification. In contrast, virtual screening can **accomplish the screening of millions of compounds within just a few days**, significantly expanding the scope of screening, increasing the likelihood of identifying inhibitors with high inhibition rates, and uncovering novel patterns. Therefore, we engaged in virtual screening modeling.
