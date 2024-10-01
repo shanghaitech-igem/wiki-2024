@@ -117,15 +117,6 @@ Moreover, if the degradation of mRNA is sufficiently faster (say, at least 10 ti
 # Molecular Simulation
 
 
-import { data_em_potential, layout_em_potential } from "data/model/em-potential";
-
-<Plot data={data_em_potential} layout={layout_em_potential} />
-
-import { data_md_rmsd, layout_md_rmsd } from "data/model/md-rmsd";
-
-<Plot data={data_md_rmsd} layout={layout_md_rmsd} />
-
-
 **Molecular simulation** aims to help us better understand the mechanism of flipGFP system. As the inventor of flipGFP has done similar jobs before, we adopt some parameters directly from the essay[^3] and change some of the tools they use. For example, using Schrodinger together with GROMACS instead of NAMD, which are more convenient.
 
 [^3]: Zhang, Schepis, A., Huang, H., Yang, J., Ma, W., Torra, J., Zhang, S.-Q., Yang, L., Wu, H., Nonell, S., Dong, Z., Kornberg, T. B., Coughlin, S. R., & Shu, X. (2019). Designing a Green Fluorogenic Protease Reporter by Flipping a Beta Strand of GFP for Imaging Apoptosis in Animals. Journal of the American Chemical Society, 141(11), 4526–4530. https://doi.org/10.1021/jacs.8b13042
@@ -499,6 +490,12 @@ pbc = xyz ; Periodic Boundary Conditions in all 3 dimensions
 </Collapse>
 
 
+
+import { data_em_potential, layout_em_potential } from "data/model/em-potential";
+
+<Plot data={data_em_potential} layout={layout_em_potential} />
+
+
 ### c. NVT (Canonical Ensemble) stage
 
 <Collapse title="Explanation of NVT">
@@ -711,6 +708,15 @@ comm-grps       = Protein Water_and_ions
 ```
 
 </Collapse>
+
+
+import { data_md_rmsd, layout_md_rmsd } from "data/model/md-rmsd";
+
+<Plot data={data_md_rmsd} layout={layout_md_rmsd} />
+
+
+
+
 
 ## 5. Results
 
@@ -1039,74 +1045,77 @@ Regrettably, hydrogen bonds and other interactions (as shown in Figure 4.4-1 and
   <Tab title="Molecule 1-10">
     ## Molecule 1-10
     <Collapse title="Molecule 1-10">
-    <Collapse title="Protein 4.2-1 y-4501">
-      <Model title="Protein 4.2-1 y-4501" src="server/contents/model/vs-y/vs-y-4501.stl" />
-    </Collapse>
-
-    <Collapse title="Protein 4.2-2 y-4502">
+    <Collapse title="Protein 4.2-31 y-4593">
       <Model
-        title="Protein 4.2-2 y-4502"
-        src="server/contents/model/vs-y/vs-y-4502.stl"
+        title="Protein 4.2-31 y-4593"
+        src="server/contents/model/vs-y/vs-y-4593.stl"
       />
     </Collapse>
 
-    <Collapse title="Protein 4.2-3 y-4503">
+    <Collapse title="Protein 4.2-32 y-4594">
       <Model
-        title="Protein 4.2-3 y-4503"
-        src="server/contents/model/vs-y/vs-y-4503.stl"
+        title="Protein 4.2-32 y-4594"
+        src="server/contents/model/vs-y/vs-y-4594.stl"
       />
     </Collapse>
 
-    <Collapse title="Protein 4.2-4 y-4508">
+    <Collapse title="Protein 4.2-33 y-4598">
       <Model
-        title="Protein 4.2-4 y-4508"
-        src="server/contents/model/vs-y/vs-y-4508.stl"
+        title="Protein 4.2-33 y-4598"
+        src="server/contents/model/vs-y/vs-y-4598.stl"
       />
     </Collapse>
 
-    <Collapse title="Protein 4.2-5 y-4513">
+    <Collapse title="Protein 4.2-34 z-4602">
       <Model
-        title="Protein 4.2-5 y-4513"
-        src="server/contents/model/vs-y/vs-y-4513.stl"
+        title="Protein 4.2-34 z-4602"
+        src="server/contents/model/vs-z/vs-z-4602.stl"
       />
     </Collapse>
 
-    <Collapse title="Protein 4.2-6 y-4515">
+    <Collapse title="Protein 4.2-35 z-4604">
       <Model
-        title="Protein 4.2-6 y-4515"
-        src="server/contents/model/vs-y/vs-y-4515.stl"
+        title="Protein 4.2-35 z-4604"
+        src="server/contents/model/vs-z/vs-z-4604.stl"
+      />
+    </Collapse>
+    <Collapse title="Protein 4.2-36 z-4605">
+      <Model
+        title="Protein 4.2-36 z-4605"
+        src="server/contents/model/vs-z/vs-z-4605.stl"
       />
     </Collapse>
 
-    <Collapse title="Protein 4.2-7 y-4518">
+    <Collapse title="Protein 4.2-37 z-4606">
       <Model
-        title="Protein 4.2-7 y-4518"
-        src="server/contents/model/vs-y/vs-y-4518.stl"
+        title="Protein 4.2-37 z-4606"
+        src="server/contents/model/vs-z/vs-z-4606.stl"
       />
     </Collapse>
 
-    <Collapse title="Protein 4.2-8 y-4520">
+    <Collapse title="Protein 4.2-38 z-4611">
       <Model
-        title="Protein 4.2-8 y-4520"
-        src="server/contents/model/vs-y/vs-y-4520.stl"
+        title="Protein 4.2-38 z-4611"
+        src="server/contents/model/vs-z/vs-z-4611.stl"
       />
     </Collapse>
 
-    <Collapse title="Protein 4.2-9 y-4525">
+    <Collapse title="Protein 4.2-39 z-4617">
       <Model
-        title="Protein 4.2-9 y-4525"
-        src="server/contents/model/vs-y/vs-y-4525.stl"
+        title="Protein 4.2-39 z-4617"
+        src="server/contents/model/vs-z/vs-z-4617.stl"
       />
     </Collapse>
 
-    <Collapse title="Protein 4.2-10 y-4530">
+    <Collapse title="Protein 4.2-40 z-4619">
       <Model
-        title="Protein 4.2-10 y-4530"
-        src="server/contents/model/vs-y/vs-y-4530.stl"
+        title="Protein 4.2-40 z-4619"
+        src="server/contents/model/vs-z/vs-z-4619.stl"
       />
     </Collapse>
     </Collapse>
   </Tab>
+
   <Tab title="Molecule 11-20">
     ## Molecule 11-20
     <Collapse title="Molecule 11-20">
@@ -1259,76 +1268,75 @@ Regrettably, hydrogen bonds and other interactions (as shown in Figure 4.4-1 and
   <Tab title="Molecule 31-40">
     ## Molecule 31-40
     <Collapse title="Molecule 31-40">
-    <Collapse title="Protein 4.2-31 y-4593">
+    <Collapse title="Protein 4.2-1 y-4501">
+      <Model title="Protein 4.2-1 y-4501" src="server/contents/model/vs-y/vs-y-4501.stl" />
+    </Collapse>
+
+    <Collapse title="Protein 4.2-2 y-4502">
       <Model
-        title="Protein 4.2-31 y-4593"
-        src="server/contents/model/vs-y/vs-y-4593.stl"
+        title="Protein 4.2-2 y-4502"
+        src="server/contents/model/vs-y/vs-y-4502.stl"
       />
     </Collapse>
 
-    <Collapse title="Protein 4.2-32 y-4594">
+    <Collapse title="Protein 4.2-3 y-4503">
       <Model
-        title="Protein 4.2-32 y-4594"
-        src="server/contents/model/vs-y/vs-y-4594.stl"
+        title="Protein 4.2-3 y-4503"
+        src="server/contents/model/vs-y/vs-y-4503.stl"
       />
     </Collapse>
 
-    <Collapse title="Protein 4.2-33 y-4598">
+    <Collapse title="Protein 4.2-4 y-4508">
       <Model
-        title="Protein 4.2-33 y-4598"
-        src="server/contents/model/vs-y/vs-y-4598.stl"
+        title="Protein 4.2-4 y-4508"
+        src="server/contents/model/vs-y/vs-y-4508.stl"
       />
     </Collapse>
 
-    <Collapse title="Protein 4.2-34 z-4602">
+    <Collapse title="Protein 4.2-5 y-4513">
       <Model
-        title="Protein 4.2-34 z-4602"
-        src="server/contents/model/vs-z/vs-z-4602.stl"
+        title="Protein 4.2-5 y-4513"
+        src="server/contents/model/vs-y/vs-y-4513.stl"
       />
     </Collapse>
 
-    <Collapse title="Protein 4.2-35 z-4604">
+    <Collapse title="Protein 4.2-6 y-4515">
       <Model
-        title="Protein 4.2-35 z-4604"
-        src="server/contents/model/vs-z/vs-z-4604.stl"
-      />
-    </Collapse>
-    <Collapse title="Protein 4.2-36 z-4605">
-      <Model
-        title="Protein 4.2-36 z-4605"
-        src="server/contents/model/vs-z/vs-z-4605.stl"
+        title="Protein 4.2-6 y-4515"
+        src="server/contents/model/vs-y/vs-y-4515.stl"
       />
     </Collapse>
 
-    <Collapse title="Protein 4.2-37 z-4606">
+    <Collapse title="Protein 4.2-7 y-4518">
       <Model
-        title="Protein 4.2-37 z-4606"
-        src="server/contents/model/vs-z/vs-z-4606.stl"
+        title="Protein 4.2-7 y-4518"
+        src="server/contents/model/vs-y/vs-y-4518.stl"
       />
     </Collapse>
 
-    <Collapse title="Protein 4.2-38 z-4611">
+    <Collapse title="Protein 4.2-8 y-4520">
       <Model
-        title="Protein 4.2-38 z-4611"
-        src="server/contents/model/vs-z/vs-z-4611.stl"
+        title="Protein 4.2-8 y-4520"
+        src="server/contents/model/vs-y/vs-y-4520.stl"
       />
     </Collapse>
 
-    <Collapse title="Protein 4.2-39 z-4617">
+    <Collapse title="Protein 4.2-9 y-4525">
       <Model
-        title="Protein 4.2-39 z-4617"
-        src="server/contents/model/vs-z/vs-z-4617.stl"
+        title="Protein 4.2-9 y-4525"
+        src="server/contents/model/vs-y/vs-y-4525.stl"
       />
     </Collapse>
 
-    <Collapse title="Protein 4.2-40 z-4619">
+    <Collapse title="Protein 4.2-10 y-4530">
       <Model
-        title="Protein 4.2-40 z-4619"
-        src="server/contents/model/vs-z/vs-z-4619.stl"
+        title="Protein 4.2-10 y-4530"
+        src="server/contents/model/vs-y/vs-y-4530.stl"
       />
     </Collapse>
     </Collapse>
   </Tab>
+
 
   <Tab title="Molecule 41-50">
     ## Molecule 41-50
