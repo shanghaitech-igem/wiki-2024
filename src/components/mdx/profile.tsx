@@ -33,7 +33,7 @@ const Profile: React.FC<ProfileProps> = ({
       marginLeft: 0,
       width: bounds.width * 0.4,
       opacity: 0,
-      height: bounds.height,
+      height: bounds.height * 0.4,
     },
     to: {
       marginLeft: isOpen
@@ -43,7 +43,7 @@ const Profile: React.FC<ProfileProps> = ({
         : 0,
       width: isOpen ? bounds.width * 0.4 : 0,
       opacity: isOpen ? 1 : 0,
-      height: isOpen ? bounds.height : 0,
+      height: isOpen ? bounds.height * 0.4 : 0,
     },
   });
 
