@@ -1,13 +1,13 @@
 .primary-container {
-  position: relative; // Ensure the primary container is positioned
-  display: block;
-  margin: 0 auto;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  margin: 1em auto;
   width: 90%;
 
   .portrait {
     opacity: 1;
     position: relative;
-    left: 0;
     bottom: 0;
     width: 20vw;
     height: 20vw;
@@ -19,33 +19,33 @@
   }
 
   .secondary-container {
-    position: absolute; // Change to absolute positioning
-    bottom: 0; // Adjust as needed to position behind
-    left: 0; // Adjust as needed to position behind
+    position: absolute;
+    bottom: 0;
+    left: 0;
     height: 18vw;
     border-radius: 12vw 0 12vw 0;
     background-color: #e7e3d7;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 1; // Set a lower z-index to be behind
+    z-index: 1;
     padding: 2em;
     align-items: flex-end;
 
     .intro {
-      position: absolute; // Change to absolute positioning
-      bottom: 0; // Adjust as needed to position behind
-      left: 0; // Adjust as needed to position behind
-      overflow: hidden;
       display: flex;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      overflow: hidden;
       align-items: center;
-      justify-content: flex-end;
     }
   }
 
   .third-container {
-    position: absolute; // Change to absolute positioning
-    bottom: 0; // Adjust as needed to position behind
-    left: 0; // Adjust as needed to position behind
+    position: absolute;
+    bottom: 0;
+    left: 0;
     z-index: 3;
+
     .name-job {
       display: flex;
       flex-direction: column;
@@ -65,6 +65,25 @@
         font-weight: normal;
         font-size: 2em;
       }
+    }
+  }
+
+  &.align-right {
+    flex-direction: row-reverse;
+
+    .portrait {
+      right: 0;
+      left: auto;
+    }
+
+    .secondary-container,
+    .third-container {
+      right: 0;
+      left: auto;
+    }
+
+    .name-job {
+      text-align: left;
     }
   }
 }
