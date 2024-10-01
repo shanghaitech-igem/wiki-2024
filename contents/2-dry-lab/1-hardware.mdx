@@ -4,4 +4,263 @@ favicon: "server/test/igem-favicon.svg"
 slug: "hardware"
 ---
 
-This page contains Hardware of the project.
+# Hardware
+
+## Overview
+
+Our hardware design aims to address **itching problems** while protecting the user's delicate skin. By providing a **standardized method of scratching**, our device can thoroughly solve the problem of itching, while **preventing skin damage and further infection** caused by improper scratching actions.
+
+# Section 1: Manual Scratching Rake
+
+![Actual Product Photo](server/contents/hardware/sec-1-actual.jpg)
+
+### Overview
+
+The manual scratching rake is a **simple, cost-effective** tool designed to help users relieve itching **without direct contact with their nails**, thereby **reducing** the risk of skin damage and infection caused by scratching. At the same time, we made some **functional improvements** to the manual scratcher. We aim to combine the physical scratching action with the application of **medication**, achieving a better **anti-itch effect**.
+
+![Exploded View](server/contents/hardware/sec-1-virtual-1.jpg)
+![Exploded View](server/contents/hardware/sec-1-virtual-2.jpg)
+
+### Structure
+
+The manual scratcher consists of three main parts: the scratcher head, the handle, and the upper container. The entire device is manufactured through 3D printing. Next, we will provide a detailed introduction for each of the three parts:
+
+<Model title="The Three Parts" src="server/contents/hardware/pa3-1.stl" />
+
+<Model title="Scratcher Head" src="server/contents/hardware/balls.stl" />
+
+- **Scratcher Head**: The scratcher head is designed with a roller-ball structure, specifically using R16 model balls. Through the top channel, the roller balls are connected to a container, allowing each scratching action to simultaneously apply skincare products via the roller
+
+<Model title="Rake Handle" src="server/contents/hardware/lower.stl" />
+
+- **Rake Handle**: The design of the handle is inspired by the shape of a comb, making the entire device easier to hold while providing a soft, feminine feel. Multiple channels run through the middle of the handle, connecting the upper container to the roller balls below, enabling the application of liquids.
+
+<Model title="Container" src="server/contents/hardware/upper.stl" />
+
+- **Container**: The design of the container is inspired by our PACIFY project logo, giving the entire device more distinctiveness and showcasing the personality of our team. The opening at the top allows users to easily add their preferred skincare products. So far, for safety reasons, we have only added purified water to the container, without incorporating other skincare products.
+
+### Procedures of Use
+
+1. Hold the manual scratching rake in hand, ensuring the scratcher head is aligned with the itchy area.
+2. Gently scrape the itchy area back and forth without applying excessive force.
+3. Depending on personal preference, users can add liquid or creamy skincare products to the container.
+
+<Model title="3D Design Sketch" src="server/contents/hardware/upper.stl" />
+
+### Product Advantage
+
+- **Simple to Use**: No need for a power supply.
+- **Cost-Effective**: Suitable for a wide range of users.
+- **Ergonomic Design**: Comfortable to operate and visually appealing
+- **Safe Materials**: Protect skin and prevent infection.
+
+
+
+
+
+<split/>
+# Section 2: Electric Scratching Rake
+
+![Exploded View](server/contents/hardware/sec-2-actual.jpg)
+
+### Overview
+
+The design inspiration for the electric scratcher comes from electric **toothbrushes**. Initially, our team had some doubts about the necessity of designing an electric scratcher: the manual scratcher seemed sufficient, and did we really need to electrify such a simple, everyday device? However, the actual case of electric toothbrushes quickly dispelled our concerns: the **precise control of force** that comes with electrification is an advantage that manual scratchers cannot match. Just as electric toothbrushes clean better and **cause less harm** to the gums compared to regular toothbrushes, we aim for our electric scratcher to thoroughly **address the skin damage** caused by scratching during itching through **precise control of force and speed.**
+
+### Implementation
+
+The electric scratcher mounts the massage **head onto a motor**, allowing users to send their **desired scratching force level** to the scratcher's Bluetooth module via their mobile phones. The device then **controls the scratching frequency and intensity** by adjusting the motor speed. The entire system utilizes a **PID algorithm** for automatic speed regulation, and **PWM control** is employed to achieve **precise control** over the motor speed. We use an **Arduino Uno R3** as the main processor for PID calculations, PWM speed control, and Bluetooth signal reception processing. The Bluetooth module we chose is the **HC-015**. For the motor driver board, we selected the **AT8236** (with a voltage regulation module), which can control **two geared motors simultaneously**. We opted for geared motors with Hall encoders. Specifically, when users send the desired speed via Bluetooth, the device begins to operate. During operation, the motor's Hall encoder measures the speed according to the code, and the measured speed is calculated using the PID algorithm to determine the PWM value needed to adjust to the set speed.
+
+### Wiring Diagram
+
+![Schematic Diagram](server/contents/hardware/schematic-diagram.jpg)
+
+### Main Function Code
+The main function code is as follows:
+<Collapse title="Codes">
+
+```cpp
+#include <PID_v1.h> 
+
+String X;                     
+double rpm;
+
+int motor1_A = 2;
+int motor1_B = 3;
+int motor2_A = 4;
+int motor2_B = 5;
+int PWMA = 10;
+int DIRA = 12;
+int PWMB = 11;
+volatile int count1 = 0;
+volatile int count2 = 0;
+
+float reducation = 500;
+int pulse = 11; 
+int per_round = pulse * reducation;
+long start_time = millis();
+long interval_time = 50;
+double current_vel1, current_vel2;
+
+
+void count_1(){
+  if(digitalRead(motor1_A) == HIGH){
+    if(digitalRead(motor1_B) == HIGH){
+      count1++;  
+    } else {
+      count1--;  
+    }
+  }
+}
+
+void count_2(){
+  if(digitalRead(motor2_A) == HIGH){
+    if(digitalRead(motor2_B) == HIGH){
+      count2++;  
+    } else {
+      count2--;  
+    }
+  }
+}
+
+void get_current_vel1(){
+  long right_now = millis();  
+  long past_time = right_now - start_time;
+  if(past_time >= interval_time){
+    noInterrupts();
+    current_vel1 = (double)(count1) / per_round / past_time * 1000 * 60;
+    count1 = 0;
+
+    start_time = right_now;
+    interrupts();
+
+    //Serial.println(current_vel1);
+
+  }
+}
+
+void get_current_vel2(){
+  long right_now = millis();  
+  long past_time = right_now - start_time;
+  if(past_time >= interval_time){
+    noInterrupts();
+    current_vel2 = (double)(count2) / per_round / past_time * 1000 * 60;
+    count2 = 0;
+
+    start_time = right_now;
+    interrupts();
+
+    //Serial.println(current_vel2);
+
+  }
+}
+
+double pwm1, pwm2;
+double target = 0;
+double kp=1.5, ki=3.0, kd=0.1;
+PID pid1(&current_vel1,&pwm1,&target,kp,ki,kd,DIRECT);
+PID pid2(&current_vel2,&pwm2,&target,kp,ki,kd,DIRECT);
+
+void update_vel(){
+  get_current_vel1();
+  get_current_vel2();
+  pid1.Compute();
+  pid2.Compute();
+  digitalWrite(12,LOW);
+  analogWrite(PWMA,pwm1);
+  analogWrite(PWMB,pwm2);
+}
+
+void setup() {
+  Serial.begin(38400); 
+  pinMode(9,INPUT);
+  pinMode(2, INPUT_PULLUP);
+  pinMode(10,OUTPUT);
+  pinMode(11,OUTPUT);
+  pinMode(12,OUTPUT);
+  attachInterrupt(2,count_1,CHANGE);
+  attachInterrupt(3,count_2,CHANGE);
+  pid1.SetMode(AUTOMATIC);
+  pid2.SetMode(AUTOMATIC);
+  digitalWrite(12,LOW);
+
+  BT.begin(9600); 
+}
+
+
+void loop() {
+  if (Serial.available()) {
+    X = BT.readString();      
+    Serial.println(X);       
+    rpm = X.toDouble();
+  }
+  if (BT.available())           
+  {
+    X = BT.readString();          
+    Serial.println(X);             
+    rpm = X.toDouble();
+  }
+  target = rpm;
+  Serial.println(target);
+  update_vel();
+  delay(10);
+}
+```
+</Collapse>
+
+
+### Procedures of Use
+
+1. Open your phone and connect to the scratcher's Bluetooth. Then, send your desired scratching intensity (from 1 to 10) in the Serial Port
+2. Place the silicone massage head on the itchy area and remove it once the itching subsides
+
+### Product Advantage
+
+- **Precise Control of Force and Speed**: Inspired by electric toothbrushes, the electric scratcher offers precise control over scratching intensity and frequency, effectively minimizing skin damage caused by scratching.
+
+- **User-Friendly Interface**: Users can easily adjust the scratching force level through a mobile phone interface via Bluetooth, allowing for a customizable and convenient experience.
+
+- **Advanced Speed Regulation**: The integration of a PID algorithm enables automatic speed regulation, ensuring consistent performance during operation.
+
+- **PWM Control**: The use of Pulse Width Modulation (PWM) allows for fine-tuned control over motor speed, enhancing the overall effectiveness of the scratching action.
+
+- **Robust Design**: The device utilizes high-quality components, including geared motors with Hall encoders, ensuring reliable and accurate speed measurements.
+
+- **Multi-Functional Capability**: The motor driver board can control two geared motors simultaneously, allowing for more versatile applications of the scratcher.
+
+## Future Improvements of Our Hardware Project
+
+
+### Manual Scratcher
+
+**Incorporation of Medication Delivery:**
+   - Future designs could integrate a mechanism for dispensing topical treatments simultaneously with scratching. This would enhance the overall efficacy of itch relief, allowing users to apply soothing ointments or anti-itch creams directly during use.
+
+**Ergonomic Enhancements:**
+   - Continued refinement of the handle design to improve grip comfort and usability. Additional ergonomic studies could lead to shapes that better accommodate different hand sizes and preferences.
+
+**Material Upgrades:**
+   - Exploring the use of antimicrobial and hypoallergenic materials for the scratcher head could further protect users’ skin and prevent potential infections.
+
+**Aesthetic Customization:**
+   - Offering customizable colors and designs would allow users to personalize their manual scratchers, increasing user engagement and satisfaction.
+
+### Electric Scratcher
+
+**Smart Technology Integration:**
+   - Future iterations could incorporate sensors to detect skin conditions, adjusting the scratching intensity automatically based on real-time feedback. This would ensure optimal pressure is applied without causing harm.
+
+**Expanded Connectivity Features:**
+   - Developing a companion app that tracks usage patterns, suggests optimal settings based on user feedback, and provides educational content about skin health and itch management.
+
+**Enhanced Battery Life:**
+   - Improving battery efficiency or offering rechargeable options could make the electric scratcher more convenient for users, reducing the frequency of recharging.
+
+**Modular Design:**
+   - Creating a modular system that allows users to easily replace or upgrade components, such as different types of massage heads or motor types, could extend the product’s lifespan and versatility.
+
+**Productized Casing and Graphic Design:**
+   - Focusing on the development of an attractive, functional casing and appealing graphic design would enhance the product's marketability and user experience.
+
+
+
