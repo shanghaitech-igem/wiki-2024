@@ -67,6 +67,8 @@ The manual scratcher consists of three main parts: the scratcher head, the handl
 
 The design inspiration for the electric scratcher comes from electric **toothbrushes**. Initially, our team had some doubts about the necessity of designing an electric scratcher: the manual scratcher seemed sufficient, and did we really need to electrify such a simple, everyday device? However, the actual case of electric toothbrushes quickly dispelled our concerns: the **precise control of force** that comes with electrification is an advantage that manual scratchers cannot match. Just as electric toothbrushes clean better and **cause less harm** to the gums compared to regular toothbrushes, we aim for our electric scratcher to thoroughly **address the skin damage** caused by scratching during itching through **precise control of force and speed.**
 
+
+
 ## Implementation
 
 The electric scratcher mounts the massage **head onto a motor**, allowing users to send their **desired scratching force level** to the scratcher's Bluetooth module via their mobile phones. The device then **controls the scratching frequency and intensity** by adjusting the motor speed. The entire system utilizes a **PID algorithm** for automatic speed regulation, and **PWM control** is employed to achieve **precise control** over the motor speed. We use an **Arduino Uno R3** as the main processor for PID calculations, PWM speed control, and Bluetooth signal reception processing. The Bluetooth module we chose is the **HC-015**. For the motor driver board, we selected the **AT8236** (with a voltage regulation module), which can control **two geared motors simultaneously**. We opted for geared motors with Hall encoders. Specifically, when users send the desired speed via Bluetooth, the device begins to operate. During operation, the motor's Hall encoder measures the speed according to the code, and the measured speed is calculated using the PID algorithm to determine the PWM value needed to adjust to the set speed.
@@ -213,7 +215,6 @@ void loop() {
 ![PCB Top](server/contents/hardware/pcb-top.png)
 ![PCB Bottom](server/contents/hardware/pcb-bottom.png)
 
-
 This PCB board is organized into three distinct sections:
 
 1. **Left Section:** This area houses the Bluetooth module, which facilitates wireless communication capabilities.
@@ -257,6 +258,9 @@ This PCB board is organized into three distinct sections:
 **Aesthetic Customization:**
    - Offering customizable colors and designs would allow users to personalize their manual scratchers, increasing user **engagement and satisfaction**.
 
+
+![Scratcher Head](server/contents/hardware/scratcher-head.jpg)
+![Motor](server/contents/hardware/motor.jpg)
 ## Electric Scratcher
 
 **Smart Technology Integration:**
