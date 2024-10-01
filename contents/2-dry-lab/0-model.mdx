@@ -115,6 +115,16 @@ Moreover, if the degradation of mRNA is sufficiently faster (say, at least 10 ti
 
 # Molecular Simulation
 
+
+import { data_em_potential, layout_em_potential } from "data/model/em-potential";
+
+<Plot data={data_em_potential} layout={layout_em_potential} />
+
+import { data_md_rmsd, layout_md_rmsd } from "data/model/md-rmsd";
+
+<Plot data={data_md_rmsd} layout={layout_md_rmsd} />
+
+
 **Molecular simulation** aims to help us better understand the mechanism of flipGFP system. As the inventor of flipGFP has done similar jobs before, we adopt some parameters directly from the essay[^3] and change some of the tools they use. For example, using Schrodinger together with GROMACS instead of NAMD, which are more convenient.
 
 [^3]: Zhang, Schepis, A., Huang, H., Yang, J., Ma, W., Torra, J., Zhang, S.-Q., Yang, L., Wu, H., Nonell, S., Dong, Z., Kornberg, T. B., Coughlin, S. R., & Shu, X. (2019). Designing a Green Fluorogenic Protease Reporter by Flipping a Beta Strand of GFP for Imaging Apoptosis in Animals. Journal of the American Chemical Society, 141(11), 4526–4530. https://doi.org/10.1021/jacs.8b13042
