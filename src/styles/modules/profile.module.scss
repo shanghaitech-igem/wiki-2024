@@ -1,0 +1,89 @@
+.primary-container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  margin: 1em auto;
+  width: 90%;
+
+  .portrait {
+    opacity: 1;
+    position: relative;
+    bottom: 0;
+    width: 40%;
+    height: 20vw;
+    background-size: cover;
+    background-position: center;
+    border-radius: 12vw 0 12vw 0;
+    z-index: 2;
+    cursor: pointer;
+  }
+
+  .secondary-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 18vw;
+    border-radius: 12vw 0 12vw 0;
+    background-color: #e7e3d7;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    padding: 2em;
+    align-items: flex-end;
+
+    .intro {
+      display: flex;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      overflow: hidden;
+      align-items: center;
+    }
+  }
+
+  .third-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 3;
+
+    .name-job {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 10px;
+      text-align: right;
+      gap: 0.5em;
+
+      .name {
+        font-family: "Cinzel";
+        font-weight: normal;
+        font-size: 3em;
+      }
+
+      .job {
+        font-family: "Cinzel";
+        font-weight: normal;
+        font-size: 2em;
+      }
+    }
+  }
+
+  &.align-right {
+    flex-direction: row-reverse;
+
+    .portrait {
+      right: 0;
+      left: auto;
+    }
+
+    .secondary-container,
+    .third-container {
+      right: 0;
+      left: auto;
+    }
+
+    .name-job {
+      text-align: left;
+    }
+  }
+}

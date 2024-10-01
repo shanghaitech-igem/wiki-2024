@@ -32,7 +32,7 @@ main {
         top: 8rem;
 
         li {
-          margin: 2rem 0;
+          margin: 1.5rem 0;
           line-height: 1em;
 
           &::marker {
@@ -120,6 +120,22 @@ main {
 
             p:not(:first-child) {
               margin: 0 1.5em;
+            }
+          }
+
+          a:has(code[class*="language-"]) {
+            &::after {
+              transform: scaleX(1) !important;
+              transform-origin: left !important;
+            }
+
+            &:hover {
+              color: light.$pacify-success;
+
+              &::after {
+                transform: scaleX(0) !important;
+                transform-origin: right !important;
+              }
             }
           }
 
