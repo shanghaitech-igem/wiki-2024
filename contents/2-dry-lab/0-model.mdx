@@ -611,32 +611,40 @@ Subsequently, we utilized `Schrodinger` software to observe bond formation and a
 ![Figure 4.3-1 One Of The Results As Illustrative Examples](server/contents/model/vs-figure-1.png)
 ![Figure 4.3-2 Different Bonds With Corresponding Colors](server/contents/model/vs-else/vs-figure-bonds.png)
 
-We scored them `(see method in` [part b](#b-rating-method-used-when-screening-through-visual-inspection)`)`and calculated their [MMGBSA ΔG bind](#mmgbsa-δg-bind) to further eliminate false positive small molecules, resulting in 200 small molecules with favorable properties. Finally, based on the new protein and small molecule conformations obtained from the calculation of mmgbsa ΔG bind, we calculated the [ligand strain energy](#ligand-strain-energy) for these 200 small molecules. Based on the results, and in conjunction with the previous indicators, we arrived at the final 60 small molecules. (All steps were executed within the Schrodinger software.)
+We scored them `(see method in` [part b](#b-rating-method-used-when-screening-through-visual-inspection)`)`and calculated their [MMGBSA ΔG bind](#mmgbsa-δg-bind) to further eliminate false positive small molecules, resulting in 200 small molecules with favorable properties. Finally, based on the new protein and small molecule conformations obtained from the calculation of mmgbsa ΔG bind, we calculated the [ligand strain energy](#mmgbsa-δg-bind) for these 200 small molecules. Based on the results, and in conjunction with the previous indicators, we arrived at the final 60 small molecules. (All steps were executed within the Schrodinger software.)
 
 Here are basic explanation of _MMGBSA ΔG Bind_ and _Ligand Strain Energy_. [Click here to skip.](#b-rating-method-used-when-screening-through-visual-inspection)
 
-> #### MMGBSA ΔG Bind
->
-> > MMGBSA _(Molecular Mechanics-Generalized Born Surface Area)_ is a method used to estimate the binding free energy (ΔG bind) of a ligand to a receptor, such as a protein in our context.
-> >
-> > In brief, the equation of ΔG bind can be represented as:
-> >
-> > $ ΔG_{\text{bind}} = (ΔE_{\text{MM}} + ΔG_{\text{solvation}})_{\text{complex}} - [(ΔE_{\text{MM}} + ΔG_{\text{solvation}})_{\text{ligand}} + (ΔE_{\text{MM}} + ΔG_{\text{solvation}})_{\text{receptor}}$
-> >
-> > Where:
-> >
-> > - $(ΔE_{\text{MM}})$ is the change in molecular mechanics energy.
-> > - $(ΔG_{\text{solvation}})$ is the change in solvation free energy, which includes both Generalized Born and Surface Area terms.
-> >
-> > Normally, **MMGBSA dG Bind** values are generally more favorable when they are lower. `It's better be under -50`
->
-> #### Ligand Strain Energy
->
-> > In molecular docking and drug design, the native state of a ligand is typically its lowest energy conformation, which is stable in isolation. However, upon binding to a receptor, the ligand often undergoes conformational changes to fit into the receptor's binding site. These changes can lead to a higher energy state for the ligand, as it is no longer in its most stable form.
-> >
-> > _The energy difference between the bound conformation of the ligand and its lowest energy_, unbound conformation is termed the Ligand Strain Energy. This strain energy represents the penalty or cost in terms of free energy that the system must pay to deform the ligand to fit it into the receptor's binding pocket.
-> >
-> > Normally, **Ligand Strain Energy** values are generally more favorable when they are lower. `It's better be under 5`
+
+<Tabs>
+  <Tab title="MMGBSA ΔG Bind">
+    > #### MMGBSA ΔG Bind
+    >
+    > > MMGBSA _(Molecular Mechanics-Generalized Born Surface Area)_ is a method used to estimate the binding free energy (ΔG bind) of a ligand to a receptor, such as a protein in our context.
+    > >
+    > > In brief, the equation of ΔG bind can be represented as:
+    > >
+    > > $ ΔG_{\text{bind}} = (ΔE_{\text{MM}} + ΔG_{\text{solvation}})_{\text{complex}} - [(ΔE_{\text{MM}} + ΔG_{\text{solvation}})_{\text{ligand}} + (ΔE_{\text{MM}} + ΔG_{\text{solvation}})_{\text{receptor}}$
+    > >
+    > > Where:
+    > >
+    > > - $(ΔE_{\text{MM}})$ is the change in molecular mechanics energy.
+    > > - $(ΔG_{\text{solvation}})$ is the change in solvation free energy, which includes both Generalized Born and Surface Area terms.
+    > >
+    > > Normally, **MMGBSA dG Bind** values are generally more favorable when they are lower. `It's better be under -50`
+
+  </Tab>
+  <Tab title="Ligand Strain Energy">
+    > #### Ligand Strain Energy
+    >
+    > > In molecular docking and drug design, the native state of a ligand is typically its lowest energy conformation, which is stable in isolation. However, upon binding to a receptor, the ligand often undergoes conformational changes to fit into the receptor's binding site. These changes can lead to a higher energy state for the ligand, as it is no longer in its most stable form.
+    > >
+    > > _The energy difference between the bound conformation of the ligand and its lowest energy_, unbound conformation is termed the Ligand Strain Energy. This strain energy represents the penalty or cost in terms of free energy that the system must pay to deform the ligand to fit it into the receptor's binding pocket.
+    > >
+    > > Normally, **Ligand Strain Energy** values are generally more favorable when they are lower. `It's better be under 5`
+
+  </Tab>
+</Tabs>
 
 ### b. Rating method used when screening through visual inspection
 
