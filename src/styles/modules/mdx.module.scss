@@ -123,6 +123,22 @@ main {
             }
           }
 
+          a:has(code[class*="language-"]) {
+            &::after {
+              transform: scaleX(1) !important;
+              transform-origin: left !important;
+            }
+
+            &:hover {
+              color: light.$pacify-success;
+
+              &::after {
+                transform: scaleX(0) !important;
+                transform-origin: right !important;
+              }
+            }
+          }
+
           a:not([data-footnote-ref]):not([data-footnote-backref]):not(
               [aria-label*="permalink"]
             ) {
