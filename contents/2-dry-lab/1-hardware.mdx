@@ -14,40 +14,40 @@ Our hardware design aims to address **itching problems** while protecting the us
 
 ![Actual Product Photo](server/contents/hardware/sec-1-actual.jpg)
 
-### Overview
+## Overview
 
 The manual scratching rake is a **simple, cost-effective** tool designed to help users relieve itching **without direct contact with their nails**, thereby **reducing** the risk of skin damage and infection caused by scratching. At the same time, we made some **functional improvements** to the manual scratcher. We aim to combine the physical scratching action with the application of **medication**, achieving a better **anti-itch effect**.
 
 ![Exploded View](server/contents/hardware/sec-1-virtual-1.jpg)
 ![Exploded View](server/contents/hardware/sec-1-virtual-2.jpg)
 
-### Structure
+## Structure
 
 The manual scratcher consists of three main parts: the scratcher head, the handle, and the upper container. The entire device is manufactured through 3D printing. Next, we will provide a detailed introduction for each of the three parts:
 
-<Model title="The Three Parts" src="server/contents/hardware/pa3-1.stl" />
+<Model title="Whole Section" src="server/contents/hardware/total-1.stl" /> 
 
-<Model title="Scratcher Head" src="server/contents/hardware/balls.stl" />
+<Model title="Scratcher Head(Ball)" src="server/contents/hardware/balls.stl" /> 
+<Model title="Scratcher Head(Hat)" src="server/contents/hardware/ball-plastic.stl" /> 
 
 - **Scratcher Head**: The scratcher head is designed with a roller-ball structure, specifically using R16 model balls. Through the top channel, the roller balls are connected to a container, allowing each scratching action to simultaneously apply skincare products via the roller
 
-<Model title="Rake Handle" src="server/contents/hardware/lower.stl" />
+<Model title="Rake Handle" src="server/contents/hardware/lower.stl" /> 
 
 - **Rake Handle**: The design of the handle is inspired by the shape of a comb, making the entire device easier to hold while providing a soft, feminine feel. Multiple channels run through the middle of the handle, connecting the upper container to the roller balls below, enabling the application of liquids.
 
-<Model title="Container" src="server/contents/hardware/upper.stl" />
+<Model title="Container" src="server/contents/hardware/total-2.stl" /> 
 
 - **Container**: The design of the container is inspired by our PACIFY project logo, giving the entire device more distinctiveness and showcasing the personality of our team. The opening at the top allows users to easily add their preferred skincare products. So far, for safety reasons, we have only added purified water to the container, without incorporating other skincare products.
 
-### Procedures of Use
+## Procedures of Use
 
 1. Hold the manual scratching rake in hand, ensuring the scratcher head is aligned with the itchy area.
 2. Gently scrape the itchy area back and forth without applying excessive force.
 3. Depending on personal preference, users can add liquid or creamy skincare products to the container.
 
-<Model title="3D Design Sketch" src="server/contents/hardware/upper.stl" />
-
-### Product Advantage
+![Design Sketch](server/contents/hardware/zoom-in.jpg)
+## Product Advantage
 
 - **Simple to Use**: No need for a power supply.
 - **Cost-Effective**: Suitable for a wide range of users.
@@ -63,19 +63,19 @@ The manual scratcher consists of three main parts: the scratcher head, the handl
 
 ![Exploded View](server/contents/hardware/sec-2-actual.jpg)
 
-### Overview
+## Overview
 
 The design inspiration for the electric scratcher comes from electric **toothbrushes**. Initially, our team had some doubts about the necessity of designing an electric scratcher: the manual scratcher seemed sufficient, and did we really need to electrify such a simple, everyday device? However, the actual case of electric toothbrushes quickly dispelled our concerns: the **precise control of force** that comes with electrification is an advantage that manual scratchers cannot match. Just as electric toothbrushes clean better and **cause less harm** to the gums compared to regular toothbrushes, we aim for our electric scratcher to thoroughly **address the skin damage** caused by scratching during itching through **precise control of force and speed.**
 
-### Implementation
+## Implementation
 
 The electric scratcher mounts the massage **head onto a motor**, allowing users to send their **desired scratching force level** to the scratcher's Bluetooth module via their mobile phones. The device then **controls the scratching frequency and intensity** by adjusting the motor speed. The entire system utilizes a **PID algorithm** for automatic speed regulation, and **PWM control** is employed to achieve **precise control** over the motor speed. We use an **Arduino Uno R3** as the main processor for PID calculations, PWM speed control, and Bluetooth signal reception processing. The Bluetooth module we chose is the **HC-015**. For the motor driver board, we selected the **AT8236** (with a voltage regulation module), which can control **two geared motors simultaneously**. We opted for geared motors with Hall encoders. Specifically, when users send the desired speed via Bluetooth, the device begins to operate. During operation, the motor's Hall encoder measures the speed according to the code, and the measured speed is calculated using the PID algorithm to determine the PWM value needed to adjust to the set speed.
 
-### Wiring Diagram
+## Wiring Diagram
 
 ![Schematic Diagram](server/contents/hardware/schematic-diagram.jpg)
 
-### Main Function Code
+## Main Function Code
 The main function code is as follows:
 <Collapse title="Codes">
 
@@ -208,13 +208,25 @@ void loop() {
 ```
 </Collapse>
 
+## PCB Design Drawing
 
-### Procedures of Use
+![PCB Top](server/contents/hardware/pcb-top.png)
+![PCB Bottom](server/contents/hardware/pcb-bottom.png)
+
+
+This PCB board is organized into three distinct sections:
+
+1. **Left Section:** This area houses the Bluetooth module, which facilitates wireless communication capabilities.
+2. **Middle Section:** The central part of the board is dedicated to the Arduino UNO-R3, serving as the main processing unit.
+3. **Right Section:** The rightmost section is designed for the motor control module, which manages the operation of the motors.
+
+
+## Procedures of Use
 
 1. Open your phone and connect to the scratcher's Bluetooth. Then, send your desired scratching intensity (from 1 to 10) in the Serial Port
 2. Place the silicone massage head on the itchy area and remove it once the itching subsides
 
-### Product Advantage
+## Product Advantage
 
 - **Precise Control of Force and Speed**: Inspired by electric toothbrushes, the electric scratcher offers precise control over scratching intensity and frequency, effectively minimizing skin damage caused by scratching.
 
@@ -231,33 +243,33 @@ void loop() {
 ## Future Improvements of Our Hardware Project
 
 
-### Manual Scratcher
+## Manual Scratcher
 
 **Incorporation of Medication Delivery:**
    - Future designs could integrate a mechanism for dispensing topical treatments simultaneously with scratching. This would enhance the overall efficacy of itch relief, allowing users to apply soothing ointments or anti-itch creams directly during use.
 
 **Ergonomic Enhancements:**
-   - Continued refinement of the handle design to improve grip comfort and usability. Additional ergonomic studies could lead to shapes that better accommodate different hand sizes and preferences.
+   - Continued refinement of the handle design to improve grip **comfort and usability**. Additional ergonomic studies could lead to shapes that better accommodate different hand sizes and preferences.
 
 **Material Upgrades:**
-   - Exploring the use of antimicrobial and hypoallergenic materials for the scratcher head could further protect users’ skin and prevent potential infections.
+   - Exploring the use of **antimicrobial and hypoallergenic** materials for the scratcher head could further protect users' skin and prevent potential infections.
 
 **Aesthetic Customization:**
-   - Offering customizable colors and designs would allow users to personalize their manual scratchers, increasing user engagement and satisfaction.
+   - Offering customizable colors and designs would allow users to personalize their manual scratchers, increasing user **engagement and satisfaction**.
 
-### Electric Scratcher
+## Electric Scratcher
 
 **Smart Technology Integration:**
-   - Future iterations could incorporate sensors to detect skin conditions, adjusting the scratching intensity automatically based on real-time feedback. This would ensure optimal pressure is applied without causing harm.
+   - Future iterations could incorporate sensors to detect skin conditions, adjusting the scratching intensity **automatically** based on real-time feedback. This would ensure **optimal pressure** is applied without causing harm.
 
 **Expanded Connectivity Features:**
-   - Developing a companion app that tracks usage patterns, suggests optimal settings based on user feedback, and provides educational content about skin health and itch management.
+   - Developing a companion app that tracks usage patterns, suggests optimal settings based on user feedback, and provides **educational** content about skin health and itch management.
 
 **Enhanced Battery Life:**
-   - Improving battery efficiency or offering rechargeable options could make the electric scratcher more convenient for users, reducing the frequency of recharging.
+   - Improving battery efficiency or offering rechargeable options could make the electric scratcher more **convenient** for users, reducing the **frequency** of recharging.
 
 **Modular Design:**
-   - Creating a modular system that allows users to easily replace or upgrade components, such as different types of massage heads or motor types, could extend the product’s lifespan and versatility.
+   - Creating a modular system that allows users to **easily** replace or upgrade components, such as different types of massage heads or motor types, could extend the product's lifespan and versatility.
 
 **Productized Casing and Graphic Design:**
    - Focusing on the development of an attractive, functional casing and appealing graphic design would enhance the product's marketability and user experience.
