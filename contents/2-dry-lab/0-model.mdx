@@ -169,7 +169,7 @@ The structures of β10-E5-β11-K5 (both uncleaved and cleaved) were modeled by t
   ```
 - **Relevant files**
 
-<Collapse title = "Input file for align2d.py">
+<Collapse title = "Input files for align2d.py">
 1. The PDB file of 1KD8
 
 2. seq.ali
@@ -299,11 +299,159 @@ We simply split the β10-E5-β11-K5 into β10-E5-β11 and K5 to obtain the cleav
 
 First, we need to convert the files obtained from Schrodinger into a format recognizable by GROMACS.
 
-（相关 bash 操作）
+- **Relevant files**:
 
--
 
-转化成能读懂的
+<Collapse title = "Standardize the naming of atoms and residues in PDB files.">
+
+<Tabs>
+
+<Tab title = "uncleaved: 1_parse_pro_ter.sh">
+```sh
+find -name '1_protein_nonacl_nonma.pdb' | xargs perl -pi -e 's|3H   ACE|HH33 ACE|g'
+find -name '1_protein_nonacl_nonma.pdb' | xargs perl -pi -e 's|2H   ACE|HH32 ACE|g'
+find -name '1_protein_nonacl_nonma.pdb' | xargs perl -pi -e 's|1H   ACE|HH31 ACE|g'
+find -name '1_protein_nonacl_nonma.pdb' | xargs perl -pi -e 's|NMA|NME|g'
+find -name '1_protein_nonacl_nonma.pdb' | xargs perl -pi -e 's|1HA  NME|HH31 NME|g'
+find -name '1_protein_nonacl_nonma.pdb' | xargs perl -pi -e 's|2HA  NME|HH32 NME|g'
+find -name '1_protein_nonacl_nonma.pdb' | xargs perl -pi -e 's|3HA  NME|HH33 NME|g'
+find -name '1_protein_nonacl_nonma.pdb' | xargs perl -pi -e 's|CA  NME|CH3 NME|g'
+find -name '1_protein_nonacl_nonma.pdb' | xargs perl -pi -e 's|H   NME|HN  NME|g'
+```
+
+</Tab>
+<Tab title = "cleaved: 2_parse_pro_ter.sh">
+```sh
+find -name '2_protein_nonacl_nonma.pdb' | xargs perl -pi -e 's|3H   ACE|HH33 ACE|g'
+find -name '2_protein_nonacl_nonma.pdb' | xargs perl -pi -e 's|2H   ACE|HH32 ACE|g'
+find -name '2_protein_nonacl_nonma.pdb' | xargs perl -pi -e 's|1H   ACE|HH31 ACE|g'
+find -name '2_protein_nonacl_nonma.pdb' | xargs perl -pi -e 's|NMA|NME|g'
+find -name '2_protein_nonacl_nonma.pdb' | xargs perl -pi -e 's|1HA  NME|HH31 NME|g'
+find -name '2_protein_nonacl_nonma.pdb' | xargs perl -pi -e 's|2HA  NME|HH32 NME|g'
+find -name '2_protein_nonacl_nonma.pdb' | xargs perl -pi -e 's|3HA  NME|HH33 NME|g'
+find -name '2_protein_nonacl_nonma.pdb' | xargs perl -pi -e 's|CA  NME|CH3 NME|g'
+find -name '2_protein_nonacl_nonma.pdb' | xargs perl -pi -e 's|H   NME|HN  NME|g'
+```
+</Tab>
+</Tabs>
+</Collapse>
+
+Having the .sh file above, we run:
+<Tabs>
+
+<Tab title = "uncleaved">
+```bash
+sh 1_parse_pro_ter.sh
+```
+</Tab>
+<Tab title = "cleaved">
+```bash
+sh 2_parse_pro_ter.sh
+```
+</Tab>
+</Tabs>
+
+
+Then, we run: 
+<Tabs>
+
+<Tab title = "uncleaved">
+```bash
+gmx pdb2gmx -f 1_protein_nonacl_nonma.pdb -o protein_cutin.pdb -p protein.top -ter -ignh
+```
+</Tab>
+<Tab title = "cleaved">
+```bash
+gmx pdb2gmx -f 2_protein_nonacl_nonma.pdb -o protein_cutin.pdb -p protein.top -ter -ignh
+```
+</Tab>
+</Tabs>
+
+where _1_protein_nonacl_nonma.pdb_ and _2_protein_nonacl_nonma.pdb_ are the pdb file of the uncleaved/cleaved flipGFP. We choose the `CHARMM36 force field`, `TIP3P water model`, `None` for the start terminus type for ACE-0 and `COO-` for end terminus type.
+
+Eventually, we execute the following commands to finish the construction of the systems.
+
+<Collapse title = "tools/trans.py">
+
+```python
+import sys
+
+filename = sys.argv[1]
+func = sys.argv[2]
+
+def main_popc():
+	with open("tools/POPC_desmond2charmm36m",'r') as fr:
+		temp1 = fr.readlines()
+		temp2 = [x.split() for x in temp1]
+
+	transDict = {}
+	for i in range(len(temp2)):
+		transDict[temp2[i][0]] = temp2[i][1]
+
+	with open("%s.pdb" % filename,'r') as fr:
+		filelines = fr.readlines()
+
+	transet = list(transDict.keys())
+	output = []
+	for line in filelines:
+		if line[17:21] == 'POPC':
+			if line[12:16].strip() in transet:
+				newline = line[:12] + "%4s" % transDict[line[12:16].strip()] + line[16:]
+				output.append(newline)
+			else:
+				output.append(line)
+		else:
+			output.append(line)
+
+	with open("%s_processed.pdb" % filename,'w') as fw:
+		fw.writelines(output)
+
+def main_sol():
+	with open("%s.pdb" % filename,'r') as fr:
+		filelines = fr.readlines()
+	output = []
+	for line in filelines:
+		if line[0:6] == "HETATM":
+			if line[12:16].strip() == "O":
+				newline = line[:12] + "%4s%4s"%("OW","SOL") + line[20:]
+				output.append(newline)
+			if line[12:16].strip() == "H1":
+				newline = line[:12] + "%4s%4s"%("HW1","SOL") + line[20:]
+				output.append(newline)
+			if line[12:16].strip() == "H2":
+				newline = line[:12] + "%4s%4s"%("HW2","SOL") + line[20:]
+				output.append(newline)
+	with open("%s_processed.pdb" % filename,'w') as fw:
+		fw.writelines(output)
+
+if func == "m":
+	main_popc()
+elif func == "s":
+	main_sol()
+else:
+	print("Wrong input params!")
+
+```
+</Collapse>
+
+```bash
+python3 tools/trans.py water s
+```
+```bash
+grep '^HETATM'  na.pdb  > NA_cutin.pdb
+```
+```bash
+grep '^HETATM' cl.pdb > CL_cutin.pdb
+```
+```bash
+cat protein_cutin.pdb water_processed.pdb NA_cutin.pdb CL_cutin.pdb > system.pdb
+```
+```bash
+find -name 'system.pdb' | xargs perl -pi -e 's|MDL||g'
+```
+```bash
+cp protein.top topol.top
+```
 
 The modeled systems **with solution** are shown below. (The files are decimated due to the limitation of file size. Therefore, the structures of the prepared ones **serve merely as illustrative examples**.)
 
@@ -761,18 +909,19 @@ In practice, the highest possible score is 11 points, and the lowest is 2 points
 
 Ultimately, we identified the **63 most promising small molecules** from ChemDiv. The following table displays detailed information about these small molecules, sequentially showing their identification numbers from the observational screening, their SMILES properties, their MM-GBSA ΔG bind, and ligand strain energy. To view the entire table, please click the "Expand: Rest of the Table" button.
 
-| No. |    Title    |                                SMILE                                 | MMGBSA dG Bind | Lig Strain Energy |
-| :-: | :---------: | :------------------------------------------------------------------: | :------------: | :---------------: |
-|  1  | `y-` `4501` |   O=C(c1ccc(Cn2ncc(Br)c2)o1)Nc(cc1)ccc1S(Nc(cc1)cc(Cl)c1Cl)(=O)=O    |     -67.12     |      4.1934       |
-|  2  | `y-` `4502` |           O=C(CCN(CC1)CCN1c1cccc(Cl)c1)Nc1ccc(Cn2ncnc2)cc1           |     -65.49     |     4.613332      |
-|  3  | `y-` `4503` | O=C(c(cccc1)c1Cl)Nc(cc1)ccc1SC(C(N(C1=O)c2ccccc2)=O)=C1Nc(cc1)ccc1Br |     -64.34     |     4.861185      |
-|  4  | `y-` `4508` |  Nc1ccc(Cc2nc(cc(Cc(cc3)cc4c3[nH]c(Cc(cc3)ccc3N)n4)cc3)c3[nH]2)cc1   |     -58.91     |     1.797029      |
-|  5  | `y-` `4513` |  [O-][N+] (c1nn(Cc(cc2)ccc2C(Nc2nn(Cc(ccc(F)c3)c3Cl)cc2)=O)cc1Cl)=O  |     -68.42     |     2.869457      |
-|  6  | `y-` `4515` |            O=C(CN1CCN(C/C=C/c2ccccc2)CC1)Nc(cc1)cc(Cl)c1F            |     -63.76     |     2.711933      |
-|  7  | `y-` `4518` |                         NNC(c1n[nH]cc1Cl)=O                          |     -32.35     |     0.550675      |
-|  8  | `y-` `4520` |       CN(c(sc(C(NCC1CCN(Cc(cc2)ccc2F)CC1)=O)c1)c1C(N1C)=O)C1=O       |     -73.88     |     1.383667      |
-|  9  | `y-` `4525` |               CC(C1C(N2c3ccccc3)=O)(C2=O)NN=C1C(OC)=O                |     -47.18     |     1.033788      |
-| 10  | `y-` `4530` |                         CN1c(cccc2)c2OCC1=O                          |     -31.55     |     1.302034      |
+| No. |    Title    |                               SMILE                               | MMGBSA dG Bind | Lig Strain Energy |
+| :-: | :---------: | :---------------------------------------------------------------: | :------------: | :---------------: |
+|  1  | `y-` `4593` |           O=C(c1nnc(Cc(cc2)cc3c2OCO3)o1)NCCCN(CCC1)C1=O           |     -52.97     |     2.532537      |
+|  2  | `y-` `4594` |          CC(N(CC1)CCC1c1noc(CC(C2)CN2C(C2CC=CC2)=O)n1)=O          |     -51.4      |     -0.602846     |
+|  3  | `y-` `4598` |          Cc1cccc(CNC(CC(CCC2)CN2C(C=NN2CCOC)=CC2=O)=O)c1          |     -67.07     |     2.758263      |
+|  4  | `z-` `4602` |       O=C(c1cn(CCN(CCOc2ccccc2)C2c3ccccc3)c2n1)NCCc1cnccc1        |     -73.43     |     2.714755      |
+|  5  | `z-` `4604` | Cc(cccc1)c1C(SC1=NC(CN(CC2)CCN2C(Nc2c(C)ccc(Cl)c2)=O)=C2)=NN1C2=O |     -71.27     |     4.020383      |
+|  6  | `z-` `4605` |               O=C(c1ccccc1)N(Cc1ccco1)Cc(cc1)ccc1Cl               |     -50.87     |     4.478632      |
+|  7  | `z-` `4606` |  O=C(c(cc1)cc(NC(N2Cc3cccc(Br)c3)=S)c1C2=O)Nc(cc1)ccc1Oc1ccccc1   |     -69.87     |     2.245384      |
+|  8  | `z-` `4611` |  [O-][N+] (c1nn(Cc(cc2)ccc2C(Nc2cn(Cc3cccc(Cl)c3)nc2)=O)cc1Cl)=O  |     -67.65     |     2.819607      |
+|  9  | `z-` `4617` |   O=C(c(cc1)ccc1N(CCCN1Cc(cc2)ccc2F)C1=O)N(CC1)CCN1c(cccc1)c1F    |     -64.61     |     2.955748      |
+| 10  | `z-` `4619` |    CC(CN(CC1)C(c2ccc(CNS(c3ccccc3)(=O)=O)cc2)=O)N1c1cc(C)ccc1     |     -64.24     |     0.942398      |
+
 
 <Collapse title="Rest of the Table: 11-20">
 
@@ -810,18 +959,18 @@ Ultimately, we identified the **63 most promising small molecules** from ChemDiv
 
 <Collapse title="Rest of the Table: 31-40">
 
-| No. |    Title    |                               SMILE                               | MMGBSA dG Bind | Lig Strain Energy |
-| :-: | :---------: | :---------------------------------------------------------------: | :------------: | :---------------: |
-| 31  | `y-` `4593` |           O=C(c1nnc(Cc(cc2)cc3c2OCO3)o1)NCCCN(CCC1)C1=O           |     -52.97     |     2.532537      |
-| 32  | `y-` `4594` |          CC(N(CC1)CCC1c1noc(CC(C2)CN2C(C2CC=CC2)=O)n1)=O          |     -51.4      |     -0.602846     |
-| 33  | `y-` `4598` |          Cc1cccc(CNC(CC(CCC2)CN2C(C=NN2CCOC)=CC2=O)=O)c1          |     -67.07     |     2.758263      |
-| 34  | `z-` `4602` |       O=C(c1cn(CCN(CCOc2ccccc2)C2c3ccccc3)c2n1)NCCc1cnccc1        |     -73.43     |     2.714755      |
-| 35  | `z-` `4604` | Cc(cccc1)c1C(SC1=NC(CN(CC2)CCN2C(Nc2c(C)ccc(Cl)c2)=O)=C2)=NN1C2=O |     -71.27     |     4.020383      |
-| 36  | `z-` `4605` |               O=C(c1ccccc1)N(Cc1ccco1)Cc(cc1)ccc1Cl               |     -50.87     |     4.478632      |
-| 37  | `z-` `4606` |  O=C(c(cc1)cc(NC(N2Cc3cccc(Br)c3)=S)c1C2=O)Nc(cc1)ccc1Oc1ccccc1   |     -69.87     |     2.245384      |
-| 38  | `z-` `4611` |  [O-][N+] (c1nn(Cc(cc2)ccc2C(Nc2cn(Cc3cccc(Cl)c3)nc2)=O)cc1Cl)=O  |     -67.65     |     2.819607      |
-| 39  | `z-` `4617` |   O=C(c(cc1)ccc1N(CCCN1Cc(cc2)ccc2F)C1=O)N(CC1)CCN1c(cccc1)c1F    |     -64.61     |     2.955748      |
-| 40  | `z-` `4619` |    CC(CN(CC1)C(c2ccc(CNS(c3ccccc3)(=O)=O)cc2)=O)N1c1cc(C)ccc1     |     -64.24     |     0.942398      |
+| No. |    Title    |                                SMILE                                 | MMGBSA dG Bind | Lig Strain Energy |
+| :-: | :---------: | :------------------------------------------------------------------: | :------------: | :---------------: |
+| 31  | `y-` `4501` |   O=C(c1ccc(Cn2ncc(Br)c2)o1)Nc(cc1)ccc1S(Nc(cc1)cc(Cl)c1Cl)(=O)=O    |     -67.12     |      4.1934       |
+| 32  | `y-` `4502` |           O=C(CCN(CC1)CCN1c1cccc(Cl)c1)Nc1ccc(Cn2ncnc2)cc1           |     -65.49     |     4.613332      |
+| 33  | `y-` `4503` | O=C(c(cccc1)c1Cl)Nc(cc1)ccc1SC(C(N(C1=O)c2ccccc2)=O)=C1Nc(cc1)ccc1Br |     -64.34     |     4.861185      |
+| 34  | `y-` `4508` |  Nc1ccc(Cc2nc(cc(Cc(cc3)cc4c3[nH]c(Cc(cc3)ccc3N)n4)cc3)c3[nH]2)cc1   |     -58.91     |     1.797029      |
+| 35  | `y-` `4513` |  [O-][N+] (c1nn(Cc(cc2)ccc2C(Nc2nn(Cc(ccc(F)c3)c3Cl)cc2)=O)cc1Cl)=O  |     -68.42     |     2.869457      |
+| 36  | `y-` `4515` |            O=C(CN1CCN(C/C=C/c2ccccc2)CC1)Nc(cc1)cc(Cl)c1F            |     -63.76     |     2.711933      |
+| 37  | `y-` `4518` |                         NNC(c1n[nH]cc1Cl)=O                          |     -32.35     |     0.550675      |
+| 38  | `y-` `4520` |       CN(c(sc(C(NCC1CCN(Cc(cc2)ccc2F)CC1)=O)c1)c1C(N1C)=O)C1=O       |     -73.88     |     1.383667      |
+| 39  | `y-` `4525` |               CC(C1C(N2c3ccccc3)=O)(C2=O)NN=C1C(OC)=O                |     -47.18     |     1.033788      |
+| 40  | `y-` `4530` |                         CN1c(cccc2)c2OCC1=O                          |     -31.55     |     1.302034      |
 
 </Collapse>
 
@@ -1360,7 +1509,7 @@ Regrettably, hydrogen bonds and other interactions (as shown in Figure 4.4-1 and
 
 ## 3. Discussion
 
-1. Although the lengthy drug procurement cycle prevented us from experimentally validating the virtual screening outcomes before the deadline of this year's iGEM competition, based on the [quantitative results](#2-results),_(Click to see the ΔG bind and ligand strain energy, given that blow -50 and 0-5 are the threshold of great results respectively.)_ **these small molecules hold considerable promise for achieving stronger inhibitory effects than those obtained from laboratory screenings.**
+1. Although the lengthy drug procurement cycle prevented us from experimentally validating the virtual screening outcomes before the deadline of this year's iGEM competition, based on the [quantitative results](#2-results),_(Click to see the ΔG bind and ligand strain energy, given that_ **below -50** and **0-5** _are the desirable results respectively.)_ **these small molecules hold considerable promise for achieving stronger inhibitory effects than those obtained from laboratory screenings.**
 
 2. However, it is worth noting that without experimental validation, the **small molecules may be subject to cleavage by the V8 protease**, thereby failing to achieve the desired inhibitory effect. We will conduct experiments in the future to verify the results of the virtual screening.
 
