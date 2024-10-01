@@ -8,7 +8,7 @@ html {
 
   &.sr {
     .load-hidden {
-      visibility: hidden;
+      // visibility: hidden;
     }
   }
   
@@ -17,5 +17,7 @@ html {
     * {
       scroll-margin-top: $scroll-margin;
     }
+
+    padding-bottom: 30vh;
   }
 }

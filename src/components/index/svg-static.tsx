@@ -35,15 +35,6 @@ const SvgStatic: React.FC<SvgProps> = ({
       >
         <SVG src={raw} />
       </div>
-      <div
-        style={{
-          width: size ? `${size}px` : "auto",
-          position: "relative",
-          visibility: "hidden",
-        }}
-      >
-        <SVG src={raw} />
-      </div>
     </>
   );
 };
