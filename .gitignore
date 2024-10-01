@@ -8,3 +8,4 @@ public/
 server/
 static/
 .venv/
+.DS_Store
