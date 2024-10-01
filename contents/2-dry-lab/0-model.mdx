@@ -265,7 +265,7 @@ rcoulomb = 1.0 ; Short-range electrostatic cut-off
 rvdw = 1.0 ; Short-range Van der Waals cut-off
 pbc = xyz ; Periodic Boundary Conditions in all 3 dimensions
 
-````
+```
 </Collapse>
 
 
@@ -340,7 +340,7 @@ gen_seed    = -1        ; generate a random seed
 nstcomm     = 100
 comm-mode   = Linear
 comm-grps   = Protein Water_and_ions
-````
+```
 
 </Collapse>
 
@@ -410,7 +410,7 @@ comm-grps       = Protein Water_and_ions
 ; Scale COM of reference coordinates
 refcoord_scaling = com
 
-````
+```
 </Collapse>
 
 ### e. MD (Molecular Dynamics) stage
@@ -478,7 +478,7 @@ gen_vel     = no        ; Velocity generation is off
 nstcomm         = 100
 comm-mode       = angular
 comm-grps       = Protein Water_and_ions
-````
+```
 
 </Collapse>
 
@@ -621,7 +621,7 @@ Here are basic explanation of _MMGBSA ΔG Bind_ and _Ligand Strain Energy_. [Cli
 > >
 > > In brief, the equation of ΔG bind can be represented as:
 > >
-> > $ ΔG*{\text{bind}} = (ΔE*{\text{MM}} + ΔG*{\text{solvation}})*{\text{complex}} - [(ΔE*{\text{MM}} + ΔG*{\text{solvation}})_{\text{ligand}} + (ΔE_{\text{MM}} + ΔG*{\text{solvation}})*{\text{receptor}}$
+> > $ ΔG_{\text{bind}} = (ΔE_{\text{MM}} + ΔG_{\text{solvation}})_{\text{complex}} - [(ΔE_{\text{MM}} + ΔG_{\text{solvation}})_{\text{ligand}} + (ΔE_{\text{MM}} + ΔG_{\text{solvation}})_{\text{receptor}}$
 > >
 > > Where:
 > >
@@ -656,13 +656,14 @@ During visual inspection, there are **three important evaluation points**:
 
 Based on the factors above, we established the following evaluation table:
 
-|           Scoring Aspects           |                                                                         Description                                                                          |                                                Scoring criteria                                                |
+
+|           Scoring Aspects           |                                                                         Description                                                                          |                                                Scoring Criteria                                                |
 | :---------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------: |
-|       1. Number of good bonds       |                                       Including the aforementioned hydrogen bonds, halogen bonds, pi-pi stacking, ect.                                       |          0-2 bonds: 0 points, 3-4 bonds: 1 point, 5-6 bonds: 2 points, 7-8 bonds: 3 points, and so on          |
-| 2. Hydrogen bonds within the pocket |                                                              The deeper and denser, the better                                                               |                         0-2 points, default is 0 points, each instance adds one point                          |
-|  3. Concentrated orange/red bonds   | These are bad/ugly bonds often result in clashes that cannot be resolved even after optimization by the MMGBSA method, representing unreasonable structures. | 0-2 points, default is 2 points, one point deducted for each additional concentrated area of excessive contact |
-|        4. Morphological fit         |                                                                 i.e. conformational matching                                                                 |                        0-1 point, 0 points are given only if there are significant gaps                        |
-|        5. Electronegativity         |                                                                                                                                                              |                     0-1 point, 1 point is given if there are no obvious conflicts overall                      |
+|       `1.` `Number` `of` `good` `bonds`       |                                       `Including the aforementioned`<br></br>`hydrogen bonds, halogen bonds,`<br></br>`pi-pi stacking, ect.`                                       |          `0-2 bonds: 0 point`<br></br>`3-4 bonds: 1 point`<br></br>`5-6 bonds: 2 points`<br></br>`7-8 bonds: 3 points`<br></br>`and so on`          |
+| `2.` `Hydrogen` `bonds` `within` `the` `pocket` |                                                              `The deeper and denser,` `the better`                                                               |                         `0-2 points,`<br></br>`default` `is` `0` `points,` `each` `instance` `adds` `one` `point`                          |
+|  `3.` `Concentrated` `orange/red` `bonds`   | `These` `are` `bad/ugly` `bonds` `often` `result` `in` `clashes` `that` `cannot` `be` `resolved` `even` `after` `optimization` `by` `the MMGBSA` `method,` `representing` `unreasonable` `structures.` | `0-2 points,`<br></br>`default is 2 points,`<br></br>`one` `point` `deducted` `for` `each` `additional` `concentrated` `area` `of` `excessive` `contact` |
+|        `4.` `Morphological` `fit`         |                                                                 `i.e. conformational matching`                                                                 |                        `0-1 point,`<br></br>`0 points` `are` `given` `only` `if` `there` `are` `significant` `gaps`                        |
+|        `5.` `Electronegativity`         |                                                                                                                                                              |                     `0-1 point,`<br></br>`1 point` `is` `given` `if` `there` `are` `no` `obvious` `conflicts` `overall`                      |
 
 In practice, the highest possible score is 11 points, and the lowest is 2 points.
 
@@ -1235,6 +1236,6 @@ Regrettably, hydrogen bonds and other interactions (as shown in Figure 4.4-1 and
 
 3. 建议
 
-- 在采用目筛的同时，有计算资源可以把 mmgbsa 都算出来
+  - 在采用目筛的同时，有计算资源可以把 mmgbsa 都算出来
 
-- 保留大的也保留小的
+  - 保留大的也保留小的
