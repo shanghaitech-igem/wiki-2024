@@ -190,6 +190,7 @@ main {
               transition: background-color 0.3s ease, transform 0.3s ease;
               word-wrap: break-word;
               overflow-wrap: break-word;
+              text-align: center; // Aligns text to the center
             }
 
             th {
