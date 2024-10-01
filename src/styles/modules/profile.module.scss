@@ -31,11 +31,8 @@
     align-items: flex-end;
 
     .intro {
-      display: flex;
       position: absolute;
-      bottom: 0;
-      left: 0;
-      overflow: hidden;
+      overflow: scroll;
       align-items: center;
     }
   }
@@ -51,12 +48,15 @@
       flex-direction: column;
       justify-content: center;
       padding: 10px;
+      width: 100%;
       text-align: right;
       gap: 0.5em;
+      margin-left: 5em;
 
       .name {
         font-family: "Cinzel";
         font-weight: normal;
+        line-height: 0.8em;
         font-size: 3em;
       }
 
@@ -84,6 +84,7 @@
 
     .name-job {
       text-align: left;
+      margin-left: -5em;
     }
   }
 }
