@@ -491,7 +491,7 @@ cleaved：没有完全自组装，但是 beta10 11 有所恢复
 
 ## 6. Discussion
 
-1. 限制没有完全对应（因为时间限制无法再次模拟） 欢迎大家提意见
+1. 限制没有完全对应（因为时间限制无法再次模拟） 欢迎讨论
 
 2. 好处：薛定谔+gromacs 软件优势（优于 NAMD）
 
@@ -604,7 +604,7 @@ Here is a brief Description of the meaning of mode `Normal`:
 
 The **-a parameter** and the **-b parameter** means `The number of Output compounds per Screening Task` and `The number of Output compounds after Standard docking Task` respectively, and we use the default ones.
 
-After several days of screening (less than one week), we obtained the promising molecules and started to screen by observing the structures and calculating relevant metrics.
+After several days of screening _(less than one week)_, we obtained the promising molecules and started to screen by observing the structures and calculating relevant metrics.
 
 Subsequently, we utilized `Schrodinger` software to observe bond formation and assess the degree of electrostatic negativity matching for the top 1000 ranked small molecules. _(The following figures show the view in Schrodinger and he correlation between different colors and different bonds.)_
 
@@ -663,7 +663,7 @@ Based on the factors above, we established the following evaluation table:
 | `2.` `Hydrogen` `bonds` `within` `the` `pocket` |                                                              `The deeper and denser,` `the better`                                                               |                         `0-2 points,`<br></br>`default` `is` `0` `points,` `each` `instance` `adds` `one` `point`                          |
 |  `3.` `Concentrated` `orange/red` `bonds`   | `These` `are` `bad/ugly` `bonds` `often` `result` `in` `clashes` `that` `cannot` `be` `resolved` `even` `after` `optimization` `by` `the MMGBSA` `method,` `representing` `unreasonable` `structures.` | `0-2 points,`<br></br>`default is 2 points,`<br></br>`one` `point` `deducted` `for` `each` `additional` `concentrated` `area` `of` `excessive` `contact` |
 |        `4.` `Morphological` `fit`         |                                                                 `i.e. conformational matching`                                                                 |                        `0-1 point,`<br></br>`0 points` `are` `given` `only` `if` `there` `are` `significant` `gaps`                        |
-|        `5.` `Electronegativity`         |                                                                                                                                                              |                     `0-1 point,`<br></br>`1 point` `is` `given` `if` `there` `are` `no` `obvious` `conflicts` `overall`                      |
+|        `5.` `Electronegativity` `Compatibility`         |                                                       `/`                                                                                                       |                     `0-1 point,`<br></br>`1 point` `is` `given` `if` `there` `are` `no` `obvious` `conflicts` `overall`                      |
 
 In practice, the highest possible score is 11 points, and the lowest is 2 points.
 
@@ -779,7 +779,7 @@ Regrettably, hydrogen bonds and other interactions (as shown in Figure 4.4-1 and
 ![Figure 4.4-1 z-4650 Docking Result With Surface Shown As Example](server/contents/model/vs-else/vs-z-4650-pic-1.png)
 ![Figure 4.4-2 z-4650 Docking Result Without Surface Shown As Example](server/contents/model/vs-else/vs-z-4650-pic-2.png)
 
-**`Spinning 180°`** to see how ligand intercat with the protein.
+**`Spinning 180°`** and **`zoom in`** to see the **Morphological Fit** of the ligand and the protein.
 
 <Model
   title="Protein 4.2-0-1 z-4650 docking result shown as example (Decimated)"
@@ -1232,10 +1232,13 @@ Regrettably, hydrogen bonds and other interactions (as shown in Figure 4.4-1 and
 
 1. Although the lengthy drug procurement cycle prevented us from experimentally validating the virtual screening outcomes before the deadline of this year's iGEM competition, based on the [quantitative results](#2-results),_(Click to see the ΔG bind and ligand strain energy, given that blow -50 and 0-5 are the threshold of great results respectively.)_ **these small molecules hold considerable promise for achieving stronger inhibitory effects than those obtained from laboratory screenings.**
 
-2. 可能出现切割而不是抑制的问题。
+2. However, it is worth noting that without experimental validation, the **small molecules may be subject to cleavage by the V8 protease**, thereby failing to achieve the desired inhibitory effect. We will conduct experiments in the future to verify the results of the virtual screening.
 
-3. 建议
 
-  - 在采用目筛的同时，有计算资源可以把 mmgbsa 都算出来
+3. Suggestions for beginners of virtual screening:
 
-  - 保留大的也保留小的
+> - In HTVS, the protein conformation remains unchanged, so potential hydrogen bonds and other interactions may not be displayed. Identifying such situations requires experience, which is why we recommend, if computational resources permit, to **use the MM-GBSA to obtain all optimized conformations and bonding information**, thereby also accumulating experience for oneself during the visual inspection process.
+>
+> - When a protein has multiple binding pockets, ensure that the selected molecules include those that occupy multiple pockets simultaneously as well as those that occupy different individual pockets, to ensure **comprehensive** experimental validation.
+
+ 
