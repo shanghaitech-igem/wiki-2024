@@ -13,28 +13,30 @@ Our hardware design aims to address **itching problems** while protecting the us
 # Section 1: Manual Scratching Rake
 
 ![Actual Product Photo](server/contents/hardware/sec-1-actual.jpg)
-<Video src="https://video.igem.org/videos/embed/426c83d7-d298-400e-b534-bddecd176aab" />
-<Image
-  src="server/test/hula-loop-octodex-gif.webp"
-  alt="Minion"
-  title="Minion"
-  height="300"
-  width="300"
-/>
+
 ### Overview
 
 The manual scratching rake is a **simple, cost-effective** tool designed to help users relieve itching **without direct contact with their nails**, thereby **reducing** the risk of skin damage and infection caused by scratching. At the same time, we made some **functional improvements** to the manual scratcher. We aim to combine the physical scratching action with the application of **medication**, achieving a better **anti-itch effect**.
+
+![Exploded View](server/contents/hardware/sec-1-virtual-1.jpg)
+![Exploded View](server/contents/hardware/sec-1-virtual-2.jpg)
 
 ### Structure
 
 The manual scratcher consists of three main parts: the scratcher head, the handle, and the upper container. The entire device is manufactured through 3D printing. Next, we will provide a detailed introduction for each of the three parts:
 
+<Model title="The Three Parts" src="server/contents/hardware/pa3-1.stl" />
+
 <Model title="Scratcher Head" src="server/contents/hardware/balls.stl" />
 
 - **Scratcher Head**: The scratcher head is designed with a roller-ball structure, specifically using R16 model balls. Through the top channel, the roller balls are connected to a container, allowing each scratching action to simultaneously apply skincare products via the roller
 
+<Model title="Rake Handle" src="server/contents/hardware/lower.stl" />
+
 - **Rake Handle**: The design of the handle is inspired by the shape of a comb, making the entire device easier to hold while providing a soft, feminine feel. Multiple channels run through the middle of the handle, connecting the upper container to the roller balls below, enabling the application of liquids.
-![Container]()
+
+<Model title="Container" src="server/contents/hardware/upper.stl" />
+
 - **Container**: The design of the container is inspired by our PACIFY project logo, giving the entire device more distinctiveness and showcasing the personality of our team. The opening at the top allows users to easily add their preferred skincare products. So far, for safety reasons, we have only added purified water to the container, without incorporating other skincare products.
 
 ### Procedures of Use
@@ -42,6 +44,8 @@ The manual scratcher consists of three main parts: the scratcher head, the handl
 1. Hold the manual scratching rake in hand, ensuring the scratcher head is aligned with the itchy area.
 2. Gently scrape the itchy area back and forth without applying excessive force.
 3. Depending on personal preference, users can add liquid or creamy skincare products to the container.
+
+<Model title="3D Design Sketch" src="server/contents/hardware/upper.stl" />
 
 ### Product Advantage
 
@@ -56,15 +60,8 @@ The manual scratcher consists of three main parts: the scratcher head, the handl
 
 <split/>
 # Section 2: Electric Scratching Rake
-![Actual Product Photo](server/contents/hardware/sec-1-actual.jpg)
-<Video src="https://video.igem.org/videos/embed/426c83d7-d298-400e-b534-bddecd176aab" />
-<Image
-  src="server/test/hula-loop-octodex-gif.webp"
-  alt="Minion"
-  title="Minion"
-  height="300"
-  width="300"
-/>
+
+![Exploded View](server/contents/hardware/sec-2-actual.jpg)
 
 ### Overview
 
@@ -75,6 +72,8 @@ The design inspiration for the electric scratcher comes from electric **toothbru
 The electric scratcher mounts the massage **head onto a motor**, allowing users to send their **desired scratching force level** to the scratcher's Bluetooth module via their mobile phones. The device then **controls the scratching frequency and intensity** by adjusting the motor speed. The entire system utilizes a **PID algorithm** for automatic speed regulation, and **PWM control** is employed to achieve **precise control** over the motor speed. We use an **Arduino Uno R3** as the main processor for PID calculations, PWM speed control, and Bluetooth signal reception processing. The Bluetooth module we chose is the **HC-015**. For the motor driver board, we selected the **AT8236** (with a voltage regulation module), which can control **two geared motors simultaneously**. We opted for geared motors with Hall encoders. Specifically, when users send the desired speed via Bluetooth, the device begins to operate. During operation, the motor's Hall encoder measures the speed according to the code, and the measured speed is calculated using the PID algorithm to determine the PWM value needed to adjust to the set speed.
 
 ### Wiring Diagram
+
+![Schematic Diagram](server/contents/hardware/schematic-diagram.jpg)
 
 ### Main Function Code
 The main function code is as follows:
