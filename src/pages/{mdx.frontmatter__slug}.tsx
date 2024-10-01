@@ -11,8 +11,10 @@ import Modal from "src/components/mdx/modal";
 import Plot from "src/components/mdx/plot-lazy";
 import Model from "src/components/mdx/model-lazy";
 import Collapse from "src/components/mdx/collapse";
-import {Tabs, Tab} from "src/components/mdx/tabs";
+import { Tabs, Tab } from "src/components/mdx/tabs";
+import Profile from "src/components/mdx/profile";
 const components = {
+  img: Image,
   Video,
   PDF,
   Audio,
@@ -24,7 +26,7 @@ const components = {
   Collapse,
   Tabs,
   Tab,
-  img: Image,
+  Profile,
 };
 
 import Layout from "src/components/layout";

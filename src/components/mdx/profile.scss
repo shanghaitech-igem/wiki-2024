@@ -1,0 +1,70 @@
+.primary-container {
+  position: relative; // Ensure the primary container is positioned
+  display: block;
+  margin: 0 auto;
+  width: 90%;
+
+  .portrait {
+    opacity: 1;
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 20vw;
+    height: 20vw;
+    background-size: cover;
+    background-position: center;
+    border-radius: 12vw 0 12vw 0;
+    z-index: 2;
+    cursor: pointer;
+  }
+
+  .secondary-container {
+    position: absolute; // Change to absolute positioning
+    bottom: 0; // Adjust as needed to position behind
+    left: 0; // Adjust as needed to position behind
+    height: 18vw;
+    border-radius: 12vw 0 12vw 0;
+    background-color: #e7e3d7;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1; // Set a lower z-index to be behind
+    padding: 2em;
+    align-items: flex-end;
+
+    .intro {
+      position: absolute; // Change to absolute positioning
+      bottom: 0; // Adjust as needed to position behind
+      left: 0; // Adjust as needed to position behind
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+  }
+
+  .third-container {
+    position: absolute; // Change to absolute positioning
+    bottom: 0; // Adjust as needed to position behind
+    left: 0; // Adjust as needed to position behind
+    z-index: 3;
+    .name-job {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 10px;
+      text-align: right;
+      gap: 0.5em;
+
+      .name {
+        font-family: "Cinzel";
+        font-weight: normal;
+        font-size: 3em;
+      }
+
+      .job {
+        font-family: "Cinzel";
+        font-weight: normal;
+        font-size: 2em;
+      }
+    }
+  }
+}
