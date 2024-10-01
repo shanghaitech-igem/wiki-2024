@@ -10,7 +10,7 @@ slug: "test/mdx"
 
 # PDF
 
-<PDF src="https://static.igem.wiki/teams/4594/wiki/ihp-static/hp-word1.pdf" />
+<PDF src="https://static.igem.wiki/teams/4594/wiki/ihp-static/hp-word1.pdf" title="Test PDF"/>
 
 # Audio
 
@@ -21,6 +21,122 @@ slug: "test/mdx"
 <Image title="Test" src="server/test/hula-loop-octodex-gif.webp" />
 
 <Image src="server/svgs/main-logo.svg" height="50" title="SVG Test"/>
+
+# Gallery
+
+<Gallery srcList={
+  [
+    "server/svgs/main-logo.svg", 
+    "server/test/hula-loop-octodex-gif.webp", 
+    "server/test/hula-loop-octodex-gif.webp", 
+    "server/test/hula-loop-octodex-gif.webp",
+    "server/test/hula-loop-octodex-gif.webp", 
+    "server/test/hula-loop-octodex-gif.webp", 
+  ]} 
+/>
+
+# Tabs
+
+
+## No Title
+<Tabs>
+  <Tab>
+  # Test1
+
+  ```js
+  console.log("Hello World!");
+  ```
+
+  # Background
+
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  Fusce eget libero elit.
+  Donec fermentum purus non iaculis sodales.
+  In quis est semper, venenatis libero vel, consectetur nisl.
+  Vivamus malesuada diam augue, eget varius est suscipit eget.
+  Curabitur nec feugiat ante.
+  Sed malesuada risus in ex aliquam, vitae lacinia tellus lacinia.
+  Pellentesque tincidunt eu purus eget iaculis.
+  Duis quis augue varius, scelerisque massa vitae, mattis nulla.
+  Pellentesque ullamcorper purus libero, et rhoncus purus dapibus vitae.
+  Aenean eu mauris molestie, tristique enim vel, blandit est.
+  Nulla sodales quis ipsum quis auctor.
+  Nunc condimentum lectus enim, vel vehicula mi vehicula non.
+  Fusce nisi mi, tempus vel eros non, interdum convallis diam.
+  Proin eu sapien quis elit suscipit tristique suscipit nec diam.
+  Vivamus vulputate orci enim, a molestie metus tincidunt vel.
+  Vivamus eleifend imperdiet aliquet.
+  </Tab>
+  <Tab>
+    # Test 2
+
+    ```py
+    import numpy as np
+    import matplotlib.pyplot as plt
+    print("Hello World!")
+    ```
+  </Tab>
+  <Tab>
+    # Test 3
+
+    ```c
+    #include <stdio.h>
+    int main() {
+      printf("Hello World!\n");
+      return 0;
+    }
+    ```
+  </Tab>
+</Tabs>
+
+## With Title
+
+<Tabs>
+  <Tab title="Test1">
+    # Test1
+
+    ```js
+    console.log("Hello World!");
+    ```
+  </Tab>
+  <Tab title="Test1">
+    # Test 2
+
+    ```py
+    import numpy as np
+    import matplotlib.pyplot as plt
+    print("Hello World!")
+    ```
+  </Tab>
+  <Tab title="Test1">
+    # Test 3
+
+    ```c
+    #include <stdio.h>
+    int main() {
+      printf("Hello World!\n");
+      return 0;
+    }
+    ```
+  </Tab>
+</Tabs>
+
+# Profile
+
+<Profile 
+  portrait="server/test/cash-macanaya-x9cemmq4yjm-unsplash.jpg"
+  brief="Me is me. Me is me. Me is me. Me is me. Me is me. Me is me. Me is me. Me is me. Me is me. Me is me. Me is me."
+  name="Me"
+  role="Developer"
+/>
+
+<Profile 
+  portrait="server/test/cash-macanaya-x9cemmq4yjm-unsplash.jpg"
+  brief="Me is me. Me is me. Me is me. Me is me. Me is me. Me is me. Me is me. Me is me. Me is me. Me is me. Me is me."
+  name="Me"
+  role="Developer"
+  reverse
+/>
 
 
 # Plotly.js

@@ -6,20 +6,27 @@ import Video from "src/components/mdx/video";
 import PDF from "src/components/mdx/pdf";
 import Audio from "src/components/mdx/audio";
 import Image from "src/components/mdx/image";
+import Gallery from "src/components/mdx/gallery";
 import Modal from "src/components/mdx/modal";
-import Plot from "src/components/mdx/plot-loadable";
-import Model from "src/components/mdx/model-loadable";
+import Plot from "src/components/mdx/plot-lazy";
+import Model from "src/components/mdx/model-lazy";
 import Collapse from "src/components/mdx/collapse";
+import { Tabs, Tab } from "src/components/mdx/tabs";
+import Profile from "src/components/mdx/profile";
 const components = {
+  img: Image,
   Video,
   PDF,
   Audio,
   Image,
+  Gallery,
   Modal,
   Plot,
   Model,
   Collapse,
-  img: Image,
+  Tabs,
+  Tab,
+  Profile,
 };
 
 import Layout from "src/components/layout";
@@ -53,6 +60,7 @@ interface MdxPageProps {
         title: string;
         favicon: string;
         tracer: string | null;
+        cursor: string | null;
       };
       tableOfContents: { items: TocItem[] };
     };
@@ -79,7 +87,7 @@ const MDXPage: React.FC<MdxPageProps> = ({ data, children }) => {
   const { frontmatter } = data.mdx;
 
   return (
-    <Layout>
+    <Layout cursor={frontmatter.cursor}>
       {frontmatter.tracer && (
         <Tracer src={frontmatter.tracer} alt="Tracer Image" />
       )}
@@ -103,6 +111,7 @@ export const query = graphql`
         title
         favicon
         tracer
+        cursor
       }
       tableOfContents
     }

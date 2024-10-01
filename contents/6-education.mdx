@@ -4,4 +4,717 @@ favicon: "server/test/igem-favicon.svg"
 slug: "education"
 ---
 
-This page contains Education of the project.
+# Our Philosophy
+
+> To be more... Engaging！Creative！And improvable！
+
+In this year's iGEM journey, our education sector has ushered in unprecedented innovation and vitality, leading the new trend of science communication. 
+We are convinced that education is the key to unlocking the wonders of future technology, and this year's project types have added fuel to this belief with their unprecedented novelty.
+
+We not only continue our past efforts to popularize science and raise public awareness, but also focus on creating an educational feast that transcends traditional boundaries. 
+In this year's project, we cleverly combine the most cutting-edge synthetic biology technology with a creative interactive experience, aiming to make everyone who touches it feel the infinite charm and possibility of scientific exploration.
+
+Of course, supporting this all comes from our goal of this year's campaign - we want to make our educational programs more creative, engaging and improvable.
+
+## Creative
+
+The first key word is creative.
+
+Our project is not just a series of experiments and research, it is a comprehensive journey of exploration, covering all aspects from basic science to practical applications. 
+Through an innovative showcase of carefully designed events, we aim to push the boundaries of traditional science communication so that everyone can experience and learn about synthetic biology in entirely new ways.
+
+## Improvable
+
+The next key word is improvable.
+
+Our activities are designed with a focus on sustainability and aim to create a circular learning platform where participants not only learn the basics of synthetic biology, but also explore how this knowledge can be applied to real-world problem solving. 
+By... As well as working across disciplines, we are creating a flexible, open framework that encourages future iGEMers and members of the wider community to join us on a journey of discovery.We increase the sustainability of our projects through continuous feedback
+
+## Engaging
+
+We believe that true education and innovation come from hands-on experience and deep understanding. 
+That's why we've crafted a series of activities, from community collaboration to artistic integration, each designed to break traditional boundaries and allow participants to learn through exploration and grow through engagement.
+
+# The Melody of Genes
+
+## Why we do this?
+
+### To be more creative
+
+We pioneered the bidirectional link between gene sequences and music, with the aim of educating the public about bioinformatics through music, a popular art form. 
+Through this innovative approach, we make complex biological information accessible and accessible. 
+We have also developed the underlying program so that it not only visualizes the data, but also has customization capabilities so that users can adjust and optimize the presentation according to their needs. 
+Such designs not only demonstrate the close relationship between DNA and programming, but also emphasize the centrality of programming in bioinformatics, thus attracting more attention to the field.
+
+### To be more improvable
+
+On our website, we share in detail the many ways to get involved and open source the program to encourage more people to get involved. 
+We value feedback from our participants and actively collect comments and suggestions in order to continuously improve our procedures and event formats. 
+Through regular updates, we strive to improve the science popularization effect of the event, so that it is closer to the needs and expectations of users, thereby enhancing the overall participation experience.
+
+### To be more engaging
+
+In order to increase the participation of the event, we make full use of the resources of the website, calling on the world of biology lovers and music lovers to participate. 
+Our goal is to make the melody of genes accessible to people from all corners of the world, spreading scientific knowledge to a wider audience through the power of music. 
+We believe that only through such interaction and communication can we truly stimulate people's interest in biological science, and then promote the popularization and deepening of scientific knowledge.
+
+## From Gene to Music
+
+DNA sequence visualization has a relatively long history in bioinformatics. 
+Even the representation of the four bases as letters - A, C, G, and T - and the sequence of a single strand of the double helix as a string of those letters is an easy way to visualize and has a long tradition in databases and publications dealing with DNA sequences. 
+Visualization of genome annotations, paired sequence alignment maps, and multiple alignments extend visualization further by adding visualizations of sequence properties (e.g., predicted gene structure or similarity to other sequences).
+
+However, like any representation, visualization has its limitations. 
+In the research context, visualization of a large number of sequences is limited by the size of the computer screen, the ability to convey diverse information through color or symbols, and the attention of the researcher. 
+In the context of public engagement in science, DNA sequences have a drab visual appearance that is at odds with the "dazzling" usually expected in such public displays or performances.
+
+While the number and seemingly random nature of a large number of DNA sequences is attractive for a short period of time, the level of concentration required for more detailed examination of DNA sequences or annotations is often very high for the public to participate in AD hoc or short-term events. 
+Therefore, in public activities, on the whole, bioinformatics is relatively lacking in public participation activities.
+
+We aim to help fill this gap through the sonification of DNA, in which the representation of the sequence is auditory rather than visual. 
+Since music is widely understood and used for relaxation and entertainment, this may be more appealing to a public audience than a screen full of DNA sequences or associated data.
+
+### The Logic
+
+By finding and replacing, the bases A, C, G, and T are converted to the A4 note or note 69 in the Music Standard Interface (MIDI), the C4 note (MIDI 60), the G4 note (MIDI 67), and the G#0 note (MIDI 20, chosen because T is the 20th letter of the alphabet), respectively. 
+And use the default synthesizer. 
+A filtered bass drum is added at the beginning of each codon (i.e., every three bases)
+
+### The Method
+
+First, you need to download the music software sonic pi with the zip package. 
+After that, edit the sequence of bases you want to musicalize into a file similar to gulo.fa, open the file dnason with VScode, and type python dnason.py gulo.fa 0 > Sono.txt in terminal (python: environment variable; dnason.py: the executed program, gulo.fa: contains your base sequence) and run it, you get the sonic.txt folder. 
+Finally, open sonic pi, open the Sonic.txt folder in the software, click Run, and you can hear the melody of genes.
+
+![img](server/contents/edu/d6ccb201a556ceeb279277d91bc0d5c8fb7d44d0.webp)
+
+## From Music to The Base
+
+And then we started thinking, can we match music to genes? In the process of brainstorming, we believe that it is not practical and popular science significance to convert music into base sequences only through some mapping relationship, because the results usually do not correspond to a real gene sequence in reality. 
+Therefore, we decided to match music with the base sequence of an existing gene through a specific mapping relationship, and to popularize the relevant information about that gene.
+
+### The Logic
+
+Convert all C1-7 and D1-7 to base C (cytosine), all E1-7 to base T (thymine), all F1-7 and G1-7 to base G (guanine), and all A1-7 and B1-7 to base A (adenine), and compare the resulting base sequences with our gene pool. 
+Get the most similar genes.
+
+![img](server/contents/edu/55018f3e8adf059b2ddd8bc12200e38fd8d86996.webp)
+
+![image-20240930004123511](server/contents/edu/image-20240930004123511.webp)
+
+### The Method
+
+First you need to get a music file (mp3 format). 
+You can download your favorite songs from the music software. 
+Of course, we encourage you to use suno ai to create songs that have a unique style and theme (or even describe the function of a certain gene).
+
+After that, you need to use our program dnatrans.py, change 1.mp3 to your own music file name, click Run, the program will convert and match the program.
+
+```py
+# Example usage
+if __name__=="__main__":
+	mp3_file = "1.mp3" #Change this to your MP3 file path
+	notes = convert_mp3_to_notes(mp3_file)
+	note_sequence = "".join(notes)
+```
+
+If you want to experience it for yourself, click [here](https://igem-dna-sonify-zivmax-947a69ae9a7018c1ab1f7b3179105f9fac104ed9.igem.wiki/).
+
+## Feedback
+
+We got some feedback on the website. 
+
+
+"I often hear the teacher in biology class say "gene is a song of life", but I wonder: why can gene be melody? What exactly is a gene? The activity of "Hearing the melody of genes" gives me a clearer understanding of the nature of genes and makes me feel more great about life."
+
+"I'm an arranger, and I was shocked when I heard about this activity: the arrangement of the bases in the gene is basically disordered, but the arrangement requires a harmonious, regular arrangement of notes to get good music. 
+But when I tried, I found that I was wrong. 
+The team used clever corresponding methods to turn the basic disordered editing arrangement into a harmonious sound! I think the design is very clever."
+
+"Through the activity of "Hearing the melody of genes", I realized more deeply that genes as a kind of information are highly concise. 
+I was also shocked that it could be transformed into a beautiful melody through a series of rules! I think it's a cool project!"
+
+We avoided everything we thought would be a problem during the production process! What made us even more surprised was that the first attempt got very good results.
+
+In the following, we hope to combine our works with diseases to tell more people about the pathogenesis of diseases with high incidence and the methods to reduce the probability of disease. 
+We believe that the way of music can better achieve the purpose of publicity!
+
+# The Minecraft Module
+
+## Why we do this?
+
+As the ShanghaiTech-Chian iGEM team, we are dedicated to elucidating synthetic biology through more vibrant and interactive means. 
+So we use video games as an ideal medium to introduce the subject to a broader audience.
+
+As a globally celebrated game, Minecraft, with its unique sandbox game-play, immense freedom, and a multitude of exceptional mods, offers players limitless possibilities. 
+Minecraft stands as an excellent conduit for synthetic biology, sharing numerous similarities with the real world, including creatures like cows and sheep and minerals such as iron and gold. 
+In the game, players continually strive to improve their standard of living through their efforts.
+
+One of Minecraft’s extraordinary attributes is its superb expandability. 
+By integrating mods, new contents, game-play styles, and mechanisms can be introduced, making the game increasingly engaging. 
+In Minecraft, players are free to explore, build, and survive without constraints, thus stimulating their creativity and innovation.
+
+Synthetic biology aids a lot in resolving numerous challenges otherwise insurmountable by traditional means. 
+Incorporating synthetic biology concepts, such as plasmid construction, PCR, and transformation, into Minecraft, allows players to harness their creativity to solve problems, thus enhancing the gaming experience. 
+Significantly, as the world’s most-downloaded game, Minecraft’s vast popularity ensures a broad player base and a lower learning curve, fostering effective educational outreach.
+
+Consequently, we have developed a Minecraft mod that encompasses the core framework of synthetic biology. 
+Players, through the free creation of engineered organisms, can gradually grasp the basic processes of synthetic biology, promoting the field among the youth in an entertaining and educational manner.
+
+### To be more creative
+
+Our mod is designed to maximize the creativity of our players. 
+Players can design their own synthetic biology experiments, construct plasmids based on existing fragments, and freely choose the culture, transformation, and screening processes of Mcoli. 
+This is not only a unique advantage of the Minecraft mod, but also an attempt to give players a more comprehensive and in-depth approach to synthetic biology. 
+By playing this mod, more people are no longer passively accepting and understanding synthetic biology, but actively trying to carry out experiments.
+
+### To be more improvable
+
+Real-world synthetic biology experiments are very rich in content, and our mods are just showing some of the most basic operations in the experiment. 
+In the future, we will continue to improve our mods, adding new genes, function blocks, items, and mechanics to give players a more comprehensive understanding of synthetic biology experiments.
+
+### To be more engaging
+
+Video games are especially popular among young people, and Minecraft is one of the best among them. 
+The minecraft mods we produce can be released on major mature mod websites, and can be quickly and widely promoted and promoted among the player community. 
+After we released the mod introduction video, we were greeted by a lot of comments from viewers who shared with us a lot of ways to integrate biology experiments with minecraft content, and they also expressed their desire to experience more synthetic biology operations.
+
+## Mod Design
+
+Our Minecraft Synthetic Biology mod has been meticulously crafted to mirror actual laboratory tools, instruments, and procedures.
+
+![image-20240930004554128](server/contents/edu/image-20240930004554128-7628354.webp)
+
+We designed a model organism, Mcoli, analogous to E. 
+coli. 
+Mcoli can autonomously reproduce, and players can introduce plasmids to confer specific traits.
+
+![image-20240930004639520](server/contents/edu/image-20240930004639520.webp)
+
+For plasmid design, we simplified the structure based on real plasmids, retaining essential components while easing the assembly process for players. 
+Additionally, we considered Minecraft’s core features and the challenges players might face in survival mode, and designed Minecraft-specific genes, such as an iron-producing gene—to address resource scarcity and offer new methods for mass production.
+
+![image-20240930004702005](server/contents/edu/image-20240930004702005.webp)
+
+We also designed three functional blocks: the Bio-Workbench, Sequencing Analyzer, and PCR Machine, which extensively borrow from real laboratory equipment. 
+These instruments allow for plasmid analysis, deconstruction, construction, and replication.
+
+![image-20240930004715993](server/contents/edu/image-20240930004715993.webp)
+
+![image-20240930004720690](server/contents/edu/image-20240930004720690.webp)
+
+To enhance realism and educational value, we included items like Taq Polymerase and GFP Protein, pivotal in laboratory processes. 
+For instance, the PCR Machine necessitates Taq Polymerase to function correctly.
+
+![image-20240930004738276](server/contents/edu/image-20240930004738276.webp)
+
+## Game-play
+
+Our mod introduces game-play elements like expanding model organism, extracting plasmids and genes, and plasmid deconstruction and construction, which encompass the essential procedures of fundamental synthetic biology experiments.
+
+We integrated these workflows with Minecraft’s original elements. 
+For instance, modeled after real antibiotic resistance genes, we designed a “Poison Resistance Gene” to mark the successful integration of plasmids into Mcoli. 
+Extracted from the game’s Cave Spiders, known for their venom, this gene renders Mcoli immune to the poison effects from Potion of Poison, while unmodified Mcoli would perish. 
+This mirrors real-world antibiotic screening.
+
+The Taq polymerase gene will be derived from Strider, a vanilla Minecraft creature capable of traversing lava, which logically possesses a thermostable DNA polymerase.
+
+For more detailed game content, you can click the button below to read the comprehensive mod tutorial.
+
+## Feedback and Improvement
+
+Following the design phase, our objective is to disseminate the mod and solicit player feedback for refinement. 
+We produced a promotional video on Bilibili and published the mod alongside a tutorial on Bilibili, Mcreator forums, and the Minecraft Mod Wiki, platforms equipped with comment sections for player reviews and suggestions. 
+We will iteratively update the mod, incorporating new genes, functional blocks, items, and mechanisms, to broaden players’ comprehension of synthetic biology experiments.
+
+## Do You **Want to Play?**
+
+Our mod is available in both English and Chinese. 
+Click the button below to download. 
+The mod is compatible with Minecraft Java Edition 1.20.1 Fabric version. 
+Please use this version to install the mod.
+
+If you want to know more about this module, please click here.
+
+# Card Games
+
+## Why we do this
+
+Our education team is dedicated to teach synthetic biology knowledge to teenagers, but only lecture teaching is not particularly effective in making teenagers like the knowledge system therein. 
+Therefore, our team students designed two games of cards, which are in the form of board game cards, so that teenagers can memorize the knowledge in the process of playing the game, understand the principles and uses of synthetic biology, and develop an interest in synthetic biology, learning knowledge through playing.
+
+### To be more creative
+
+Our two card games show unprecedented depth and breadth on a creative level. 
+First, we build an intricate biological ecosystem. 
+In terms of game mechanics, we have innovatively introduced the concept of "gene editing", which allows players to create unique creature cards by strategically combining genetic fragments of different creatures, and this highly customized game-play greatly stimulates players' creativity and imagination. 
+In addition, the backstory of the game combines science fiction and fantasy elements to build a scientifically rigorous and fantastical world view, allowing players to enjoy the fun of the game, but also feel the charm of biological and genetic science
+
+### To be more improvable
+
+While our card games are already bright in terms of creativity and game-play, we understand the importance of continuous improvement and optimization. 
+In terms of improvements, we plan to introduce richer game modes to increase the game's playability and replay value. 
+At the same time, we will continue to improve the user interface and user experience, so that new players can easily get started, and experienced players can dig into the depth of the game strategy. 
+In addition, we will constantly adjust the card balance based on player feedback to ensure that each creature and gene combination has its own unique value and strategic significance, avoiding a single optimal solution. 
+Finally, we plan to add more interactive elements, such as a trading system between players, community sharing features, etc., to promote communication and cooperation between players, and jointly build a more active and diverse game community.
+
+### To be more engaging
+
+In order to create the ultimate immersive experience, our Biology and Genetics card games put a lot of effort into engaging and interactivity. 
+Each card has been carefully designed, not only to show the unique shape and details of the creature, but also cleverly integrated scientific elements such as DNA helix, so that players can feel a strong scientific atmosphere in the visual. 
+At the same time, the game plot is compact and fascinating, through guiding the player to gradually uncover the secrets of the biological world, and experience the complete process from discovery to exploration to creation. 
+In addition, we designed a rich achievement system and reward system to encourage players to pursue higher game goals. 
+
+
+## Game1:THE ROAD OF TRANSCRIPTION (By design team members of iGEM ShanghaiTech-China)
+
+"The Road of Transcription" is an educational card game designed to help players learn and understand the fundamental processes involved in DNA transcription. 
+It focuses on biological principles such as DNA, RNA, base pairing, and genetic editing tools like CRISPR-Cas9 and TALEN.
+
+### Game-play Overview
+
+- **Objective***: The game aims to successfully transcribe a sequence by pairing the correct DNA and RNA bases, simulating the biological transcription process. 
+The first player to complete ten base pairs wins.
+
+- ***Players***: At the beginning of the game, each player is dealt ten cards, and the remaining cards form the draw pile. 
+Players take turns according to a randomly chosen sequence. 
+They draw four cards on each player's turn unless a particular tool card modifies this number.
+
+### Card Types
+
+1. 
+***Basic Cards***
+
+	- The basic cards represent the four nucleotides (A, T, C, G) in
+
+	- DNA and (A, U, C, G) in RNA.
+
+	- Players place DNA cards (A, T, C, G) into the DNA path and RNA cards (A, U, C, G) into the mRNA path, following the base-pairing rules (A with T or U, C with G).
+
+2. 
+***Function Cards***
+
+	- These include synthesis cards, which allow players to draw additional cards and simulate the process of nucleobase synthesis within a cell.
+
+3. 
+***Tool Cards***
+
+	- *CRISPER-Cas9* and *TALEN* are two powerful tool cards based on real-life gene-editing technologies. 
+	These cards can break sequences on an opponent's path if the base pairs match the sequence on the tool card.
+
+	- For *CRISPR-Cas9*, the tool only works if the opponent's path contains a sequence matching the base pair pattern on the card.
+
+	- *TALEN* cards work similarly but require an exact match of two specific bases on the path.
+
+4. 
+***Special Function Cards***
+
+	- *Mutation Cards*: These cards introduce genetic mutations. 
+	For instance, a base substitution mutation card changes one of the bases on the opponent's DNA path. 
+	The player draws a new card to replace the affected base.
+
+	- *Frame Shift Mutation*: This card forces an opponent to remove base pairs until their path contains a multiple of three base pairs, simulating the effect of frame-shift mutations in genetic coding.
+
+	- *Transcription Activators*: These unique cards allow players to substitute any base with a transcription factor, speeding up the transcription process.
+
+### Educational Value
+
+The game has a strong foundation in biological education, simulating the real-life DNA transcription process. 
+Players learn about the complementary base-pairing rules between DNA and RNA and the role of enzymes and proteins involved in gene editing and transcription. 
+Each card is designed to represent actual biological functions and processes, though simplified for game-play purposes.
+
+For example:
+
+- ***Base Pairing***: Players must adhere to strict rules, placing adenine (A) with thymine (T) or uracil (U) and cytosine (C) with guanine (G), just like in biological systems.
+
+- ***Gene Editing***: *CRISPR-Cas9* and *TALEN* cards represent advanced biotechnologies used in gene editing, allowing players to "edit" their opponent's genetic sequences.
+
+### Strategy
+
+The game's strategy lies in how players use their function and tool cards. 
+Players can sabotage their opponents' paths using mutation or gene-editing tools, forcing them to correct errors before proceeding with transcription. 
+Properly utilizing these function cards can slow opponents down or prevent them from winning if used wisely. 
+
+
+"The Road of Transcription" offers biological education and strategic game-play. 
+It helps players understand the transcription process and related biological concepts while engaging in a competitive and fun environment. 
+Players can gain a deeper appreciation for the complexity and precision of genetic processes through interaction with concepts like base pairing, gene editing, and mutation.
+
+## Game2:VOYAGE OF BACTERIA(By Yiping Zeng and Di Tian)
+
+### Overview
+
+"Voyage of Bacteria" is a strategy-based board game that uniquely incorporates rigorous knowledge of synthetic biology. 
+Primarily drawing upon concepts typically introduced at the high school level, the game builds on this foundation by expanding the biological scope, offering a fun yet educational experience. 
+Players can immerse themselves in a thrilling competition while gaining insights into genetic engineering, enzyme functions, and microbial growth. 
+Even when a player's bacteria are eliminated, they are not out of the game, as they can join other research teams and continue playing. 
+Every player is engaged throughout the entire game, making it an enjoyable and interactive experience from start to finish.
+
+### Game Setting
+
+Players step into the shoes of brilliant synthetic biologists engaged in friendly but fierce bacterial competition. 
+The objective is to manipulate bacteria through genetic engineering, making them more robust, more resistant, and ultimately victorious over other players' bacterial strains in a race to dominate the petri dish. 
+Players must carefully strategize, using genes, enzymes, and tools to alter their bacteria, enhance combat abilities, and expand across the Petri dish's territory. 
+With each turn, they get closer to either domination or elimination, but teamwork offers them the chance for redemption.
+
+### Game Features
+
+The game features several distinct elements that make it stand out, combining fun with learning:
+
+1. 
+***Synthetic Biology Integration***
+
+While the game's mechanics are easy to grasp, it embeds authentic synthetic biology concepts. 
+For example, players must use restriction enzymes and ligases to modify bacterial genomes realistically, offering a deep dive into genetic manipulation. 
+It serves as a subtle educational tool that helps spread synthetic biology knowledge.
+
+2. 
+***Survival Beyond Defeat***
+
+Even if a player's bacterial strain is eradicated, they can still join other teams, ensuring continuous engagement. 
+By acting as a secondary researcher for different teams, players are never out of the game, maintaining excitement throughout the session.
+
+3. 
+***Territorial Expansion***
+
+The game's petri dish setting is divided into hexagonal cells, and players must strategically grow their bacterial colonies across these spaces. 
+Combat is initiated when bacterial colonies from different teams come into contact, requiring careful planning and using cards to attack or defend.
+
+### Game-play Mechanics
+
+At the start of the game, each player selects a bacterial strain from a deck of "Character Cards." These strains include *E. 
+coli*, *Diatoms*, *Shewanella*, and more exotic organisms like *Greenlandic Prehistoric Bacteria*. 
+Players then position their bacteria in one of the hexagonal spaces within the petri dish. 
+With each turn, players draw cards from the deck and perform one of two possible actions: use a card to enhance their bacteria or launch an attack on an adjacent bacterial colony.
+
+Bacteria grow and replicate every few turns, varying growth rates by species. 
+Players gain attack or defense abilities When they successfully modify their bacteria with new genes, such as toxin-producing genes or antibiotic-resistance genes. 
+Players must carefully balance growth, defense, and attack to outwit their opponents. 
+Once the bacteria come into contact, they can engage in battle, which results in either the destruction of some of the opponent's bacteria or the withdrawal of bacteria from a contested area.
+
+### Cards and Strategic Elements
+
+- ***Character Cards (Bacterial Strains)***: Each strain has unique traits and corresponding expression vectors that guide genetic engineering possibilities. 
+For example, *E. 
+coli* is a versatile strain with no special abilities but multiplies. 
+At the same time, *Diatoms* have a silica-covered cell wall that offers them a natural defense against attacks.
+
+- ***Item Cards (Enzymes)***: These cards represent enzymes such as T4 DNA ligase, *E. 
+coli* DNA ligase, and restriction enzymes. 
+Each enzyme allows players to perform specific genetic modifications, giving their bacteria new strengths. 
+For instance, restriction enzymes are necessary for cutting out genes from plasmids. 
+At the same time, ligases connect genes to bacterial genomes.
+
+- ***Gene Cards***: These cards feature genes that provide either attack or defense capabilities. 
+For example, the aflatoxin gene boosts a bacterial strain's attack by 5 points. 
+In comparison, the tetracycline resistance gene boosts defense by 3 points. 
+The game requires players to intelligently combine these genes to create a strain that can survive and conquer.
+
+- ***Environment Cards***: These cards offer environmental modifications or tools that can change the course of the game. 
+Some cards may double the gene expression in bacteria, while others provide the necessary enzymes for gene editing.
+
+- ***Attack and Defense Mechanisms***: A battle ensues when two opposing bacteria colonies meet. 
+There are specific requirements for initiating an attack:
+
+	1. 
+	Bacteria must be adjacent to the petri dish.
+
+	2. 
+	The attacking bacteria must use the appropriate genes or cards to launch the attack. 
+	After an attack, the targeted bacteria in adjacent hexagonal cells are killed, leaving the cells unoccupied. 
+	However, bacteria are not entirely wiped out in one attack; only a specific number of cells are cleared based on the attack power. 
+	The game's strategic depth comes from deciding when to attack and when to defend, and players must be mindful of gene combinations to strengthen their bacterial colonies.
+
+- ***Regeneration and Switching Teams***: One of the game's unique features is the ability to regenerate or switch teams even after total bacterial destruction. 
+For example, the "Greenlandic Prehistoric Bacteria" can regenerate in any part of the petri dish and destroy surrounding bacteria upon revival, offering a second chance to dominate the game. 
+Alternatively, when a player's bacteria are destroyed, they can join another research team as an assistant, contributing their previously engineered expression vectors to the new team's efforts.
+
+- ***Bacteria Enhancement Steps***: To enhance bacterial abilities, players follow a series of genetic engineering steps:
+
+	1. 
+	Extract the target gene from a plasmid using the appropriate restriction enzymes.
+	2. 
+	Use a second set of restriction enzymes to open the bacterial expression vector.
+	3. 
+	Ligate the gene into the bacterial genome using DNA ligases, with sticky or blunt ends requiring different approaches.
+
+During this process, opponents can use item cards to disrupt your progress. 
+However, once the ligation step is complete, interference is no longer possible, and the bacteria gain their new ability.
+
+- ***Player Interaction and Endgame***: Player interaction is critical, with strategies involving cooperation and competition. 
+Players can work together or betray alliances, depending on the situation. 
+The game ends when a single team dominates the petri dish. 
+However, with the ability to rejoin other teams, the path to victory is always challenging.
+
+- ***Target Audience and Implementation***: "Voyage of Bacteria" is designed for board game enthusiasts and students interested in biology. 
+With a mix of fun game-play and scientific knowledge, it offers a unique blend of entertainment and education. 
+Collaboration with board game companies and hosting game sessions at schools can help spread the word and gather feedback to refine the experience.
+
+Ultimately, this game teaches synthetic biology in an engaging format and fosters critical thinking, teamwork, and strategic planning. 
+It's an exciting way to make science more accessible and enjoyable for all ages.
+
+## Feedbacks
+
+From March to May, the students involved in card design took their creations to the World Board Game Original Design Competition. 
+They hope to use the platform to get more communication opportunities with professional designers and board game enthusiasts, and according to its suggestions to improve the card game, enhance the game's playability, and seek cooperation with the official.
+
+Here are some of the players' comments.
+
+>  Bacteria this genre is really good, but if you consider the launch, see if bacteria will cause players a loss of discomfort, of course, the professional hardcore players in the board game must be no problem! Moreover, the subject of bacteria, I personally, see it and a lot of medical-related themes and game-play, but also look forward to its release, in fact, everyone hopes to learn the relevant knowledge through related games, the amount of knowledge and professional degree of this board game is helpful to improve the knowledge of medicine. 
+ ----Card Empire
+
+>  It is always cool to have a science theme board game! I think the scientific terms will stumble and deter many from understanding the game mechanics. 
+This is because the nomenclature and term do not help normal player understand the mechanics. 
+One important function of a good theme is that it can help players understand and remember the mechanics. 
+Maybe designer can consider abstracting some of the processes so that the mechanics can be more familiar to players. 
+  ----hockleonggoh
+
+Therefore, they believe that the focus of popular science games is not the dissemination of popular science knowledge, but the combination of knowledge and the game itself. 
+If you want to convey popular knowledge to players, the first priority must be to arouse others' interest through game-play design. 
+When you are interested, you go back to learning and accepting. 
+Popular science games should best allow players to "learn knowledge by playing games" rather than "learn knowledge before playing games."
+
+# Popularization of Science and Media
+
+## Why we do this
+
+Zhang Feng, the first scientist to use the CRISPR system inside eukaryotic cells, got his start in life sciences when he saw Jurassic Park in high school. 
+Nowadays, a large number of science fiction films and TV shows will contain the content of molecular biology, which can not only make the world view in the movie more close to reality, but also enhance the sense of substitution when watching the movie, but also bury the seeds of science in the hearts of some viewers. 
+At least most movies and TV shows have a positive attitude toward biology. 
+We hope that through professional analysis of the biological knowledge involved in science fiction movies, and the latest research results in the field of science popularization, more audiences will be interested in life science.
+
+### To be more creative
+
+We don't want to feel like a lecture, the video has to be interesting. 
+So we added a lot of creative points to the video. 
+This includes, but is not limited to, making the copy interesting, adding a carefully chosen soundtrack, creating memes to summarize the plot of the film, and using images from unrelated works such as Lonely Rock to facilitate the audience's understanding of the content. 
+
+
+### To be more improvable
+
+Popular science content is not the core of our project, the main purpose of our project is to give the audience a pair of eyes to discover science. 
+After all, there are only so many videos we can make, and the number of sci-fi movies is infinite. 
+The audience of our project is those who like science fiction movies, so planting the seeds of life science in their hearts can make them look at things with a scientific perspective and pay more attention to those scientific details that we have no chance to talk about in the future life.
+
+### To be more engaging
+
+Compared to other formats, video can reach audiences of all ages in all regions and effectively increase audience engagement. 
+We read all the comments, we like almost every comment, and we answer all the questions we can. 
+After the video was released, it always caused discussions among people in various circles.
+
+## Biology in the Movies
+
+### *Jurassic Park*
+
+Based on the topics of hybrid dinosaurs and bioluminescence in the series of works, the audience is taught the structure of genes in reality, the principles of bioluminescence and bioluminescence, and the knowledge of fluorescent proteins and their applications.
+
+### *Pacific Rim*
+
+Relying on the movie pictures to show the way of making monsters, science and technology such as science and technology, 3D printing of cells and epigenetics.
+
+### *Rise of the Planet of the Apes*
+
+Based on the film setting and picture performance, the science of Alzheimer's disease, gene therapy, and the function of some genes related to neurodevelopment.
+
+### *Alien: Romulus*
+
+Based on the plot of Romulus Laboratory in the new series Alien Repuller, it popularize transgenic technology and viral vectors. 
+It is worth noting that the video was released two days after the film's global release, and the video is somewhat rushed and short. 
+However, due to the popularity of the movie, it got 140,000 views (previous videos usually have thousands of views). 
+Our video also garnered nearly 600 comments. 
+And it may be the first video on the Chinese Internet to analyze Alien Reaper from this perspective.
+
+If you are interested in these videos, please click the links below:
+
+## Feedback and Achievements
+
+![image-20240930011619155](server/contents/edu/image-20240930011619155.webp)
+
+As one of the more popular tracks on the bilibili video site, film analysis has always been loved by many viewers. 
+The latest video has received 140,000 views and more than 600 comments. 
+It is because of our team members' careful analysis and constant digging for details that we can gain the love of so many netizens, and also achieve the purpose of popular science to more people.
+
+# Education & Communication
+This year, we continue the most basic and direct way of science popularization and communication - offline science popularization and project communication between Igem teams.
+We achieve **creativity** by exploring different and interesting popular science topics, improvability by getting feedback after class to modify lecture content and collaboration in team communication to improve projects, and **engagement** through communication in class.
+We carried out the following activities.
+
+## A Lecture About Gene at Jianping Experimental School
+
+For primary school students, the knowledge we need to explain to them should not be too difficult, but should be closer to life, so that it is easier for them to understand. 
+So we use movies and cartoons that kids love to extract useful information to teach them about genes.
+
+We use fun rehearsals, visual ICONS and interactive presentations to simplify complex genetic science and make the abstract and mysterious concept of "the blueprint of life" - genes - gradually clear in the minds of children.
+
+We talked about the double helix structure of DNA, the transmission of genetic information, and how genes affect our appearance, personality and even disease susceptibility, etc. 
+The children also showed great enthusiasm and repeatedly asked questions, which also made us better understand what parts of children in this age group need more explanation and what knowledge they are more interested in. 
+We also modified our lecture notes to complete the process of two-way learning.
+
+![image-20240930012443023](server/contents/edu/image-20240930012443023.webp)
+
+## A Lecture About PACIFY at Xiangnan Road Neighborhood Committee
+
+Publicity is necessary in the course of our project. 
+Itch and Staphylococcus aureus are very relevant to our lives, so we choose to publicize in the community, facing people of different ages.
+
+We explained why the human body feels itch, described the morphological characteristics of Staphylococcus aureus, life habits, and how it is under certain conditions, such as skin damage or decreased immunity, to take advantage of the opportunity to cause skin infection, and then lead to itching, redness and other uncomfortable symptoms.
+
+At the same time, we also explained the effective ways to relieve itching and resist bacterial infection to the audience through interaction, which are very useful methods in life, and we think it is very meaningful.
+
+Finally, we also reflect on the class situation. 
+For audiences of different ages, we need to find a teaching method that can be understood by all, and we also need to refine the content of the lecture so that it can be more attractive to the audience.
+
+![image-20240930012453575](server/contents/edu/image-20240930012453575.webp)
+
+![image-20240930012457472](server/contents/edu/image-20240930012457472.webp)
+
+## The association of the world's top scientists cooperated in popularizing science
+In this activity, we are very honored to be able to popularize synthetic biology to the students with scientific talent selected by the world's top scientists society, in order to further stimulate their scientific interest.
+
+Our team members introduced synthetic biology through the history of synthetic insulin, introduced the principles of synthetic biology in a more comprehensive way, and discussed with the students through case analysis.
+
+After class, the teacher in charge of this activity commented to us: "Synthetic biology is a hot topic in the society now. 
+In addition to insulin, we can also give some examples of more applications in the industry and people's attention." We also think that this activity should be changed to add more interactive links to increase the participation of students, and should be more focused on the introduction of the engineering and modular concepts of synthetic biology.
+
+![image-20240930012533911](server/contents/edu/image-20240930012533911.webp)
+
+![image-20240930012537766](server/contents/edu/image-20240930012537766.webp)
+
+![image-20240930012557036](server/contents/edu/image-20240930012557036.webp)
+
+## Summer School program presentation
+
+In addition to educating the community about our project this year, it is also important to educate more knowledgeable people to help us get more useful suggestions.
+
+So during summer school, we explained our program to high school students who came to visit our school. 
+Different from the community lecture, this time we focused more on the principle of relieving itching caused by Staphylococcus aureus, including the mechanism of itching and the action of V8 protease.
+
+These contents are more profound than high school knowledge. 
+For these students who are interested in biology and scientific research, this is undoubtedly a great opportunity to expand their knowledge and further enhance their interest.
+
+![image-20240930012639126](server/contents/edu/image-20240930012639126.webp)
+
+![image-20240930012644159](server/contents/edu/image-20240930012644159.webp)
+
+## School Visits at Yantai No.1 Middle School and Jingxian County Middle School
+
+We are deeply aware that in addition to popularizing science in the city where our school is located, it is particularly necessary to go to other cities, especially the hometowns of our team members and those places that lack educational resources.
+
+So our team members went to his Alma mater - Yantai No. 
+1 Middle School for popular science. 
+He introduced the team projects of our school in previous years to the students who are studying in high school. 
+Through a series of chronological projects, they can not only learn the diversity of synthetic biology, but also better understand the development trend of synthetic biology in recent years.
+
+Another member of the team brought a popular science course on climate change and environmental protection to local middle school students during his social practice. 
+Not only that, we have combined climate change with synthetic biology projects in an interactive way to get students thinking about how to mitigate climate problems. 
+For students with little biological knowledge reserve, this is the best way to arouse their interest in biology.
+
+After receiving positive feedback, we found that we could arouse students' interest either by explaining our new project or by popularizing popular topics. 
+And interaction is undoubtedly an essential way to teach.
+
+![image-20240930012715226](server/contents/edu/image-20240930012715226.webp)
+
+![image-20240930012718399](server/contents/edu/image-20240930012718399.webp)
+
+![image-20240930012724777](server/contents/edu/image-20240930012724777.webp)
+
+## Participation in CCiC
+
+On July 12-14, Shanghaitech-China 2024 students attended the 2024 CCiC at Xi 'an Jiaotong-Liverpool University.
+
+In the venue, the team members not only met with the friends who had previously reached a consensus on cooperation, but also learned about their projects from new friends. 
+
+
+Throughout the conference, teams from all over the world presented their projects, and our team members also scattered in different sub-venues to learn about the innovation of the team projects with different tracks compared to the past, and the "imaginative" ideas for this year's new track.
+
+At the same time, we also reflected on the improvement of our project by learning from the excellent points of other teams, and took this opportunity to completely straighten out the next work.
+
+In addition to presenting their projects, teams also mention the work of other departments, and members of EDU and HP are actively looking for opportunities to collaborate.
+
+The CCiC is a milestone for the team, and it encourages us to reflect and improve our projects and continuously optimize our work in all areas.
+
+## Communication and cooperation between teams
+
+On May 4, the students of Shanghaitech-China 2024 went to Fudan University to conduct exchange activities with iGEMers from Fudan University, Beijing Institute of Technology and Tongji University.
+
+In the process of communication, students from each school introduced the projects that have been selected or deepened this year, including the background and reasons for the topic selection, the general idea and progress of the experiment.
+
+In addition to the project itself, good ideas for Education and Human Practices activities were also exchanged between the schools. 
+Some more complex activities that require many people to work together, we actively seek cooperation to improve the program of each activity; In addition, we also shared different resources, so that each school has a richer choice of activities, so that the types of activities in addition to the typical offline science popularization have more novel creation.
+
+Of course, in addition to presenting each part of the project to the outside, the team members also exchanged various questions that they had to think about as competitors. 
+For example, the reimbursement you want to apply for, the sponsors you want to work with, the main page you want to appear on... In addition to doing experiments, activities, and interviews, the team asked for help in the success of the project. 
+Even if you don't succeed in one attempt, all the team members working together will solve the problem.
+
+The exchange lasted for about four hours, and although the several schools that have cooperated continuously every year have updated their team members every year, they represented their schools like old friends, generously sharing their ideas and methods, giving suggestions, and maintaining a pure and enthusiastic heart - this is also the scientific research concept that iGEM wants to convey.
+
+# ZINE
+
+> A DIY publication that encourages creative works about synthetic biology
+
+## Why we do this
+
+### To be more creative
+
+Education needs not only interesting content, but also more creative forms. 
+Zine printing is relatively simple, requiring only one a4 sheet of paper, but allows participants to create their own small book by hand. 
+We hope that this novel format will encourage more participants to actively create and share their perspectives on synthetic biology.
+
+### To be more improvable
+
+The focus of the zine is to encourage thinking and creation, and its content is not time-sensitive and can be used continuously in the future. 
+Here is a pdf of the Chinese and English versions for other igem groups who may need it. 
+It can be used to take notes and impressions for students attending lectures, or it can be used to hold cartoon competitions...
+
+### To be more engaging
+
+Traditional forms of education, such as lectures and picture books, are based on input, but we hope to encourage participants to convey their own ideas about synthetic biology through this project, so that they can further improve their understanding and understanding of this discipline through spontaneous thinking.
+
+## A unique approach to understanding the public about our project and synthetic biology
+
+A zine refers to a self-published, small, or noncommercial booklet, which is created by an individual. 
+These small publications can take the form of different sizes, formats, and shapes, and cover a variety of topics. 
+
+
+We designed this zine with the theme of synthetic biology and distributed it offline. 
+Participants can fold and cut the paper into a self-decorating booklet, in which they record their knowledge and thinking about synthetic biology.
+
+<PDF src="server/contents/edu/zine/zine-english-min.pdf" />
+
+<PDF src="server/contents/edu/zine/zine-chinese-min.pdf" />
+
+The contents of the inner pages have also been carefully designed, mainly guided questions, encouraging participants not only to use words, but also to create in various forms such as painting, collage, etc. 
+People of different ages can create content of different difficulty according to their understanding of the subject. 
+We hope that in this activity, participants of different ages and knowledge levels can give play to their strengths and get an immersive creative experience.
+
+In addition, in future designs, posters or questionnaires can also be added to the back of the zine to help promote or get feedback.
+
+# Publicity & Online activities
+
+Social media has always been a very important project for us. 
+Because in today's society, this is the most important way to disseminate information. 
+Through social media, we can be more easily seen by others, so as to obtain more opportunities for communication and help.
+
+In this year's social media section, we continued last year's wiki translation work, and popularized the projects of teams from different countries and regions for native Chinese speakers. 
+Many students commented that this was a very meaningful work, and we could learn a lot of unexpected ideas from these projects.
+
+
+We also help other EDU programs get the word out. 
+For example, we will excerpt the copy of the media video, which can be better for the audience and readers to learn.
+
+![image-20240930013408494](server/contents/edu/image-20240930013408494.webp)
+
+![image-20240930013426508](server/contents/edu/image-20240930013426508.webp)
+
+![image-20240930013437166](server/contents/edu/image-20240930013437166.webp)
+
+![image-20240930013442032](server/contents/edu/image-20240930013442032.webp)
+
+![image-20240930013446452](server/contents/edu/image-20240930013446452.webp)
+
+![image-20240930013450067](server/contents/edu/image-20240930013450067.webp)
+
+![image-20240930013454716](server/contents/edu/image-20240930013454716.webp)
+
+![image-20240930013502542](server/contents/edu/image-20240930013502542.webp)
+

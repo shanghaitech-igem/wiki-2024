@@ -1,9 +1,7 @@
-import LeafMain from "server/home/leaf-main.svg";
-import Stem1 from "server/home/stem-1.svg";
-import LeafStem from "server/home/leaf-stem.svg";
+import { mainLeafRaw, stem1Raw, leafStemRaw } from "./svg-raw";
 
 export const main = {
-  Component: LeafMain,
+  raw: mainLeafRaw,
   x: -100,
   y: -100,
   size: 1200,
@@ -13,7 +11,7 @@ export const main = {
 
 export const stems = [
   {
-    Component: Stem1,
+    raw: stem1Raw,
     x: 150,
     y: 1000,
     size: 1200,
@@ -23,7 +21,7 @@ export const stems = [
 
 export const leaves = [
   {
-    Component: LeafStem,
+    raw: leafStemRaw,
     x: 40,
     y: 1550,
     size: 100,
@@ -31,7 +29,7 @@ export const leaves = [
     reverseX: true,
   },
   {
-    Component: LeafStem,
+    raw: leafStemRaw,
     x: 400,
     y: 1650,
     size: 130,
@@ -39,7 +37,7 @@ export const leaves = [
     reverseX: true,
   },
   {
-    Component: LeafStem,
+    raw: leafStemRaw,
     x: 770,
     y: 2000,
     size: 100,
@@ -47,7 +45,7 @@ export const leaves = [
     reverseX: true,
   },
   {
-    Component: LeafStem,
+    raw: leafStemRaw,
     x: 680,
     y: 2170,
     size: 100,
@@ -55,7 +53,7 @@ export const leaves = [
     reverseX: true,
   },
   {
-    Component: LeafStem,
+    raw: leafStemRaw,
     x: 1350,
     y: 2500,
     size: 180,
@@ -63,7 +61,7 @@ export const leaves = [
     reverseX: true,
   },
   {
-    Component: LeafStem,
+    raw: leafStemRaw,
     x: 935,
     y: 2550,
     size: 180,

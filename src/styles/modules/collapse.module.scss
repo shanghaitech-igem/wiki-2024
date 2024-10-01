@@ -2,7 +2,9 @@
 @use "src/styles/themes/fonts" as fonts;
 
 main {
-  .collapse {
+  .collapse {    
+    width: 95%;
+    margin: 0 auto;
     h1 {
       margin: 0 !important;
       padding: 0 !important;

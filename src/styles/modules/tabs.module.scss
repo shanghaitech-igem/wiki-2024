@@ -1,0 +1,65 @@
+@use "sass:math";
+@use "src/styles/themes/light" as light;
+@use "src/styles/themes/fonts" as fonts;
+
+.tabs {
+  .tab-list {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0 0 10px;
+    list-style: none;
+  }
+
+  .tab {
+    padding: 5px; // Adjust padding for thumbnail
+    cursor: pointer;
+    border: 1px solid #ccc;
+    margin: 0 0.5vw;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 5px;
+
+    &[class*="--selected"] {
+      background-color: light.$pacify-primary;
+      color: white;
+    }
+
+    &:hover {
+      background-color: light.$pacify-secondary;
+      color: white;
+    }
+  }
+
+  .tab-panel-container {
+    background-color: #f9f9f9; /* Light background for better contrast */
+    border: 1px solid #ddd; /* Light border for better definition */
+    border-radius: 8px; /* Rounded corners for a modern look */
+    margin: 0.5rem;
+    .tab-panel {
+      width: 1px;
+      height: 1px;
+      overflow: scroll;
+      clip: rect(0, 0, 0, 0);
+      animation: slide 1s ease 3.5s forwards;
+      border-radius: 10px;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+
+      width: 90%;
+      margin: 0rem auto;
+
+      h1 {
+        margin: 0rem !important;
+      }
+
+      &[class*="--selected"] {
+        margin: auto;
+        width: 100%;
+        padding: 3em;
+        height: auto;
+        max-height: 70vh;
+        opacity: 1;
+      }
+    }
+  }
+}

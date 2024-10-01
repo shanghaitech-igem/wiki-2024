@@ -1,4 +1,4 @@
-image: ubuntu:latest
+image: alpine:latest
 
 variables:
   DEPLOY_BRANCH: "pages"  # The branch name is fixed as 'pages'
@@ -9,7 +9,7 @@ stages:
 pages:
   stage: deploy
   script:
-    - apt-get update && apt-get install -y zip curl brotli gzip
+    - apk update && apk add zip curl brotli gzip bash
     - echo "Downloading ZIP file..."
     - curl -L -o ${CI_PROJECT_NAME}-${DEPLOY_BRANCH}.zip "https://gitlab.igem.org/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}/-/archive/${DEPLOY_BRANCH}/${CI_PROJECT_NAME}-${DEPLOY_BRANCH}.zip"
     - unzip ${CI_PROJECT_NAME}-${DEPLOY_BRANCH}.zip
@@ -26,3 +26,5 @@ pages:
   artifacts:
     paths:
       - public
+  only:
+    - main
