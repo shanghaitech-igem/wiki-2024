@@ -86,7 +86,7 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 25vh;
+    gap: 300px;
 
     .card {
       position: relative;
@@ -189,15 +189,45 @@ main {
         }
 
         a {
-          font-family: fonts.$pacify-content-secondary;
+          font-family: fonts.$pacify-heading-secondary;
           font-size: 1.2rem;
           font-weight: 600;
           text-decoration: none;
           transition: color 0.3s;
           margin: 1rem 0; // Consistent margin for spacing
+          color: light.$pacify-char-layout;
 
           &:hover {
-            color: light.$pacify-char-layout;
+            color: light.$pacify-secondary;
+
+            &::after {
+              animation-play-state: running; // Starts the animation on hover
+            }
+          }
+
+          &::after {
+            content: "➔";
+            display: inline-block;
+            margin-left: 0.5em;
+            height: 0.15em;
+            animation: shake 2s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+            animation-play-state: paused; // Pauses the animation by default
+          }
+        }
+
+        @keyframes shake {
+          0%,
+          100% {
+            transform: translateX(0.08em);
+          }
+          25% {
+            transform: translateX(0.5em);
+          }
+          50% {
+            transform: translateX(0.08em);
+          }
+          75% {
+            transform: translateX(0.5em);
           }
         }
       }
