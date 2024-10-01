@@ -31,50 +31,54 @@
 }
 
 main {
-  .title-container {
-    line-height: 1;
-    position: absolute;
-    left: 5rem;
-    top: 20rem;
+  .bg-container {
+    overflow: visible;
+    min-height: 200vh;
 
-    .title-banner {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
+    .title-container {
+      line-height: 1;
+      position: absolute;
+      left: 5rem;
+      top: 20rem;
 
-      p {
+      .title-banner {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        p {
+          font-family: fonts.$pacify-layout;
+          font-weight: bold;
+          margin-left: 1em;
+          padding: 0;
+          color: #c0b2a6;
+        }
+      }
+
+      .title {
+        color: light.$pacify-char-layout;
+        font-size: 5rem;
+        font-family: fonts.$pacify-layout;
+        font-weight: normal;
+        font-style: normal;
+        line-height: 1;
+        width: 1.5em;
+        overflow-wrap: break-word;
+        padding: 0;
+        margin: 0;
+      }
+
+      .title-prompt {
+        color: light.$pacify-char-layout;
+        font-size: 1.5rem;
         font-family: fonts.$pacify-layout;
         font-weight: bold;
-        margin-left: 1em;
-        padding: 0;
-        color: #c0b2a6;
+        font-style: normal;
+
+        // Anime bouncing
+        animation: bounce 2s ease infinite;
       }
     }
-
-    .title {
-      color: light.$pacify-char-layout;
-      font-size: 5rem;
-      font-family: fonts.$pacify-layout;
-      font-weight: normal;
-      font-style: normal;
-      line-height: 1;
-      width: 1.5em;
-      overflow-wrap: break-word;
-      padding: 0;
-      margin: 0;
-    }
-
-    .title-prompt {
-      color: light.$pacify-char-layout;
-      font-size: 1.5rem;
-      font-family: fonts.$pacify-layout;
-      font-weight: bold;
-      font-style: normal;
-
-      // Anime bouncing
-      animation: bounce 2s ease infinite;
-    }
-  }
 
   .container {
     overflow: visible;
