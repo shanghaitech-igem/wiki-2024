@@ -23,17 +23,9 @@ const Profile: React.FC<ProfileProps> = ({
   const [isOpen, setIsOpen] = useState(false);
   const [ref, bounds] = useMeasure();
 
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   const spring = useSpring({
-    from: { width: windowWidth * 0.2 },
-    to: { width: isOpen ? bounds.width : windowWidth * 0.2 },
+    from: { width: bounds.width * 0.4 },
+    to: { width: isOpen ? bounds.width : bounds.width * 0.4 },
   });
 
   const springText = useSpring({
@@ -46,8 +38,8 @@ const Profile: React.FC<ProfileProps> = ({
     to: {
       marginLeft: isOpen
         ? reverse
-          ? windowWidth * 0.05
-          : windowWidth * 0.21
+          ? bounds.width * 0.15
+          : bounds.width * 0.45
         : 0,
       width: isOpen ? bounds.width * 0.4 : 0,
       opacity: isOpen ? 1 : 0,
