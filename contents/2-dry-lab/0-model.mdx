@@ -113,6 +113,7 @@ Although this model have verified the feasibility of our project, **we did not c
 
 Moreover, if the degradation of mRNA is sufficiently faster (say, at least 10 times) than the degradation of the corresponding protein, then the stationarity approximation is biologically justified. Note that, **under certain conditions, it can be assumed that the stationarity approximation is only valid for some genes of the network.** In that case, **only those genes for which the assumption is valid can be modelled by a single equation for the protein concentration,** while the rest will be associated to two equations, one for the mRNA and one for protein concentration.
 
+
 # Molecular Simulation
 
 
@@ -166,6 +167,75 @@ The structures of β10-E5-β11-K5 (both uncleaved and cleaved) were modeled by t
   ```markdown
   MDLPDDHYLSTQTILSKDLNMEVSALEKEVSALEKEVSALEKEVSALEKEVSALEKEKRDHMVLLEYVTAAGITDASKVSALKEKVSALKEKVSALKEKVSALKEKVSALKE
   ```
+- **Relevant files**
+
+<Collapse title = "Input file for align2d.py">
+1. The PDB file of 1KD8
+
+2. seq.ali
+
+```ali
+>P1;1KD8
+structureX:1KD8:1:A:284:B:::::
+COCNCCOCCCOONCCOCCCNCCOCNCCOCNCCOCCCCNCCOCCCOONCCOCNCCOCCCOONCCOCCCNCCOCCCOONCCOCCCOONCCOCCCCNCCOCCCOONCCOCONCCOCCCOONCCOCCCNCCOCCCCNCCCCCNCCOCCNCCNNCCOCCCCNCCOCCCOONCCOCCONNCCOCCCOONCCOCCCNCCOCNCCOCCCNCNNNCCOCCCCNCCOCCCOONCCOCCCCNNCCOCCCOONCCOCCONNCCOCNCCOCCCOONCCOCSNCCOCCCOONCCOCONCCOCCCCNNCCOCNCCOCNCCOCCCONNCCOCCCCNCCOCCNCCOCNCCOCCCCNNCCOCCCNCCOCCCOONCCOCCCOONCCOCCCCNCCOCCCCNNCCOCONCCOCCCCNNCCOCCCCNCCOCCCCNCCCCCNCCOCCNCCNNCCOCCCCNCCOCCCCNNCCOCCONNCCOCCCCNNCCOCCCNCCOCNCCOCCCNCNNNCCOCCCCNCCOCCCCNNCCOCCCCNNCCOCCCCNNCCOCCONNCCOCNCCOCCCOONCCOCSNCCOCCCCNNCCOCO*
+
+>P1;beta10_E5_beta11_K5
+sequence:beta10_E5_beta11_K5:::::::0.00: 0.00
+MDLPDDHYLSTQTILSKDLNMEVSALEKEVSALEKEVSALEKEVSALEKEVSALEKEKRDHMVLLEYVTAAGITDASKVSALKEKVSALKEKVSALKEKVSALKEKVSALKE*
+```
+
+</Collapse>
+
+<Collapse title = "align2d.py">
+
+```python
+from modeller import *
+
+env = Environ()
+aln = Alignment(env)
+mdl = Model(env, file='1KD8', model_segment=('FIRST:A','LAST:B'))
+aln.append_model(mdl, align_codes='1KD8', atom_files='1KD8.pdb')
+aln.append(file='seq.ali', align_codes='beta10_E5_beta11_K5')
+aln.align2d(max_gap_length=50)
+aln.write(file='seq-1KD8A.ali', alignment_format='PIR')
+aln.write(file='seq-1KD8A.pap', alignment_format='PAP')
+
+```
+
+</Collapse>
+
+<Collapse title = "model-single.py">
+
+```python
+from modeller import *
+from modeller.automodel import *
+#from modeller import soap_protein_od
+
+env = Environ()
+a = AutoModel(env, alnfile='seq-1KD8A.ali',
+              knowns='1KD8', sequence='beta10_E5_beta11_K5',
+              assess_methods=(assess.DOPE,
+                              #soap_protein_od.Scorer(),
+                              assess.GA341))
+a.starting_model = 1
+a.ending_model = 5
+a.make()
+
+```
+</Collapse>
+
+After downloading **Modeller**, we put the aforementioned files together into a folder and run the following commands:
+
+```bash
+cd path/to/the/folder
+```
+```bash
+python align2d.py
+```
+```bash
+python model-single.py
+```
+to obtain the PDB file of β10-E5-β11-K5.
 
 <Model
   title="Protein 2.1 a heterodimeric coiled coil structure (PDB code: 1KD8)"
@@ -226,6 +296,8 @@ We simply split the β10-E5-β11-K5 into β10-E5-β11 and K5 to obtain the cleav
 ## 4. Molecular Dynamics: Using GROMACS
 
 ### a. Protein Preparation
+
+First, we need to convert the files obtained from Schrodinger into a format recognizable by GROMACS.
 
 （相关 bash 操作）
 
