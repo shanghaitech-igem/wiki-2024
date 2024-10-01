@@ -6,17 +6,17 @@ import * as styles from "src/styles/modules/profile.module.scss";
 
 interface ProfileProps {
   portrait: string;
-  intro: string;
+  brief: string;
   name: string;
-  job: string;
+  role: string;
   reverse?: boolean;
 }
 
 const Profile: React.FC<ProfileProps> = ({
   portrait,
-  intro,
+  brief,
   name,
-  job,
+  role,
   reverse = false,
 }) => {
   portrait = parseRemoteURL(portrait);
@@ -39,7 +39,7 @@ const Profile: React.FC<ProfileProps> = ({
   const springText = useSpring({
     from: {
       marginLeft: 0,
-      width: windowWidth * 0.25,
+      width: bounds.width * 0.4,
       opacity: 0,
       height: bounds.height,
     },
@@ -49,7 +49,7 @@ const Profile: React.FC<ProfileProps> = ({
           ? windowWidth * 0.05
           : windowWidth * 0.21
         : 0,
-      width: isOpen ? windowWidth * 0.25 : 0,
+      width: isOpen ? bounds.width * 0.4 : 0,
       opacity: isOpen ? 1 : 0,
       height: isOpen ? bounds.height : 0,
     },
@@ -71,13 +71,13 @@ const Profile: React.FC<ProfileProps> = ({
       />
       <animated.div style={{ ...spring }} className={styles.secondaryContainer}>
         <animated.div style={{ ...springText }} className={styles.intro}>
-          {intro}
+          {brief}
         </animated.div>
       </animated.div>
       <animated.div style={{ ...spring }} className={styles.thirdContainer}>
         <div className={styles.nameJob}>
           <div className={styles.name}>{name}</div>
-          <div className={styles.job}>{job}</div>
+          <div className={styles.job}>{role}</div>
         </div>
       </animated.div>
     </div>
