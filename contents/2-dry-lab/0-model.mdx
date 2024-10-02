@@ -753,6 +753,20 @@ gmx grompp -f mdp_final_step/md.mdp -c npt.gro -t npt.cpt -p topol.top -o md.tpr
 gmx mdrun -deffnm md -gpu_id 0 -nb gpu -pme gpu -pmefft gpu -bonded gpu -update gpu -nt 36 -pin on -pinstride 1 -pinoffset 0
 ```
 
+
+
+
+## 5. Results
+
+<Gallery srcList={
+  [
+    "server/contents/model/md-figure-result-1.png", 
+    "server/contents/model/md-figure-result-2.png", 
+    "server/contents/model/md-figure-result-3.png", 
+    "server/contents/model/md-figure-result-4.png", 
+  ]} 
+/>
+
 import { data_md_rmsd, layout_md_rmsd } from "data/model/md-rmsd";
 
 <Plot data={data_md_rmsd} layout={layout_md_rmsd} />
@@ -760,11 +774,6 @@ import { data_md_rmsd, layout_md_rmsd } from "data/model/md-rmsd";
 import { data_md_rmsd_cleaved, layout_md_rmsd_cleaved } from "data/model/md-rmsd-cleaved";
 
 <Plot data={data_md_rmsd_cleaved} layout={layout_md_rmsd_cleaved} />
-
-
-
-
-## 5. Results
 
 uncleaved：证明无法自组装 且未切割部分稳定没什么变化
 cleaved：没有完全自组装，但是 beta10 11 有所恢复
