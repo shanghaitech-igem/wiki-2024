@@ -117,6 +117,14 @@ Moreover, if the degradation of mRNA is sufficiently faster (say, at least 10 ti
 <split/>
 # Molecular Simulation
 
+import { data_nvt_temperature, layout_nvt_temperature } from "data/model/nvt-temperature";
+
+<Plot data={data_nvt_temperature} layout={layout_nvt_temperature} />
+
+
+import { data_md_rmsd_cleaved, layout_md_rmsd_cleaved } from "data/model/md-rmsd-cleaved";
+
+<Plot data={data_md_rmsd_cleaved} layout={layout_md_rmsd_cleaved} />
 
 **Molecular simulation** aims to help us better understand the mechanism of flipGFP system. As the inventor of flipGFP has done similar jobs before, we adopt some parameters directly from the essay[^3] and change some of the tools they use. For example, using Schrodinger together with GROMACS instead of NAMD, which are more convenient.
 
