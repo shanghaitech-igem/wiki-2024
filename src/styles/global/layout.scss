@@ -11,9 +11,11 @@ html {
       visibility: hidden;
     }
   }
-  
+
   main {
     // Scroll margin for all children
+    overflow: clip;
+    padding-bottom: 30vh;
     * {
       scroll-margin-top: $scroll-margin;
     }

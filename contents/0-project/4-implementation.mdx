@@ -1,5 +1,182 @@
 ---
 title: "Implementation"
 favicon: "server/test/igem-favicon.svg"
-slug: "Implementation"
+slug: "implementation"
 ---
+
+# Background
+
+Amidst the growing health challenges, we have addressed the itching caused by Staphylococcus aureus by identifying substances that alleviate this condition through our E.coli platform and fluorescence reporting system. The application of these substances in everyday products, such as skincare items, represents an innovative approach.
+
+
+This integration not only significantly reduces the educational outreach costs associated with standalone products but also seamlessly integrates our product into consumers' daily skincare practices. Moreover, with this positioning, our product does not require the rigorous testing and clinical trials that drugs do, allowing for a swift market launch, provided it is both effective and safe.
+
+<split/>
+# Competitive Analysis
+
+| Product | Advantages | Disadvantages |
+| :------: | :------: | :------: |
+| Traditional Anti-itch Medications | Widely used, high brand recognition, and easily accessible | Often rely on inhibiting nerve receptors, which may have side effects; short-lived effects and can lead to drug resistance. For example, some topical medications containing steroids can quickly alleviate symptoms but may cause skin thinning and other health issues with long-term use |
+| Antibiotic Products | Effective against bacterial infections and can rapidly control symptoms | Prone to induce drug resistance, and the antibiotic resistance to Staphylococcus aureus is becoming increasingly serious. Additionally, simple antibiotic treatments do not effectively alleviate itching sensations |
+| Plant Extracts and Natural Ingredients | Relatively safe, highly accepted in the market, and can reduce skin irritation | Often lack strong efficacy and lack clear molecular mechanisms to support their claims. Many products rely solely on the soothing effects of plant components without targeting specific causes |
+| Biologic Formulations | Significantly effective for specific diseases, especially advantageous in the management of chronic conditions | Expensive, high barriers to use, and typically require prescriptions from medical institutions, making them unsuitable for large-scale daily use |
+
+<split/>
+# SWOT Analysis
+
+<Collapse title="Strengths">
+  # Strengths
+
+  1. Clear Scientific Basis: The mechanism by which Staphylococcus aureus releases protease V8 to activate PAR1 protein and cause itching has been confirmed. This provides a solid scientific foundation for product development.
+  2. High Market Demand: Itching caused by Staphylococcus aureus is common in patients with atopic dermatitis, eczema, and other skin conditions, with traditional treatment methods having limited effects. Therefore, there is a broad market prospect for such products.
+  3. Strong Innovation: The product is innovative as it targets Staphylococcus aureus and its itching mechanism directly, potentially filling a market gap.
+  4. Significant Potential Efficacy: Experiments have shown that blocking the activation of PAR1 protein can significantly alleviate itching symptoms and reduce skin damage. This provides strong support for the product's efficacy.
+</Collapse>
+
+<Collapse title="Weaknesses">
+  # Weaknesses
+  > Cellular experiments are typically conducted in controlled environments, while clinical trials involve complex human physiological and pathological processes. Therefore, the effects observed in cellular experiments may show different outcomes in clinical applications, so it is necessary to ensure the effective translation from the cellular level to clinical use. (From the interview with Liu Pengxin)
+  1. Confirmation Pending: (High R&D Difficulty: Due to the complexity of itching mechanisms, as well as the diversity and variability of Staphylococcus aureus, the R&D of the product is challenging and requires substantial R&D resources and time.)
+2. High Safety Requirements: As a product that acts directly on the skin, it has extremely high safety requirements. During the R&D process, it is necessary to strictly follow relevant regulations and standards to ensure the product's safety and efficacy.
+3. Intense Market Competition: Although there is a high market demand, there are already many products on the market aimed at relieving itching. Therefore, the product needs to have significant advantages in terms of efficacy, safety, and convenience of use.
+  
+</Collapse>
+
+<Collapse title="Opportunity">
+  # Opportunity
+
+> Instead of following traditional treatment areas, integrating technology into cosmetics and skincare products & the current hotspot-related traditional culture provides a very innovative idea for promotion. (From the interview with Yang Jidong)
+1. Policy Support: With the state's emphasis on and support for the health industry, as well as the deepening advancement of medical reform, innovative drugs and treatment methods for chronic diseases such as skin conditions are expected to gain more policy support and market opportunities.
+2. Technological Advancements: The continuous development in fields such as biotechnology and nanotechnology provides more technological options and innovation space for product development.
+3. Growing Market Demand: As people's health awareness and living standards improve, the demand for treatment of chronic diseases such as skin conditions is constantly increasing. This provides a broad market space for product development and market promotion.
+  4. Content inside is a new container that could contain any markdown syntax.
+</Collapse>
+
+<Collapse title="Trears">
+  # Trears
+
+  1. Regulatory and technological substitution risks.
+2. Market acceptance and popularity risks: With many treatment products already on the market, consumer acceptance of new products may be uncertain. If market promotion is ineffective or consumers have doubts about the efficacy and safety of new products, it will affect product sales and market share. Additionally, there is a risk that the prevalence of skin problems caused by Staphylococcus aureus may not be widely recognized, preventing potential consumers from realizing the necessity of the product.
+</Collapse>
+
+# Product Design & Use
+
+### Manual Scratching Rake
+The product features an automatic drug delivery system through a rollerball, connecting the medicine container with the rollerball head, offering an excellent user experience and comfort.
+![Manual Scratching Rake](server/contents/hardware/sec-1-virtual-1.jpg)
+For more details, please refer to the [Hardware section 1](/hardware/#section-1-manual-scratching-rake).
+
+### Electric Scratching Rake
+The electric massager is designed to alleviate skin itching caused by various reasons. Its core functionality is achieved by four efficient silicone massage heads and a powerful drive system, providing users with a lasting and stable itching experience. We have introduced the electric function with the hope of standardizing the force and motion trajectory when people scratch, similar to an electric toothbrush, to prevent further dermal damage and infection caused by scratching.
+![Electric Scratching Rake](server/contents/hardware/sec-2-actual.jpg)
+
+For more details, please refer to the [Hardware section 2](/hardware/#section-2-electric-scratching-rake).
+
+### Skincare products.
+Our screened small molecules, once tested, can be integrated with other skincare products, making them readily available for everyday use.
+
+<split/>
+# Optimization
+
+## WetLab:
+In the future, we aim to further optimize the Flip fluorescent reporter system so that it can simulate the cleavage process of a broader range of proteases, thereby assisting various types of research. We will conduct in-depth studies on the currently identified effective substances to identify the most suitable candidates for one or more ingredients in safe and specialized skincare products that alleviate itching sensations. Moreover, we hope to expand the scope of applicable symptoms beyond the itching caused by Staphylococcus aureus, ultimately developing a more widely-used product.
+
+## Drylab
+### Modeling
+<Collapse title="Molecular dynamics">
+  # Molecular dynamics
+
+  Redo molecular dynamics, adding stronger restraint on β10-E5-β11 to prove the correctness of the self-assembly process.
+
+</Collapse>
+
+<Collapse title="Virtual screening">
+  # Virtual screening
+
+  Do wetlab experiments to test the effect of the molecules selected through virtual screening.
+
+</Collapse>
+
+### Hardware
+Regarding future optimization directions, we believe that the manual massager is already a relatively mature design, while the electric model still has plenty of room for improvement. The most pressing is the addition of an automatic drug delivery system to achieve continuous application of skincare products during itching. In addition to this, we have the following optimization plans:
+
+
+<Collapse title="Add Smart Features">
+  # Add Smart Features
+
+  In future upgraded versions, consider introducing smart features such as connecting to a mobile application via Bluetooth or Wi-Fi for remote control and customized massage programs, providing a personalized care experience.
+</Collapse>
+
+<Collapse title="Diversify Modes">
+  # Diversify Modes
+
+  Expand the range of available modes by adding more skincare options, such as customizing drug dosages, to meet the itch relief needs of different users.
+</Collapse>
+
+<Collapse title="Automatic Cleaning System">
+  # Automatic Cleaning System
+
+  Include an automatic cleaning system so that the massage head and the interior of the device can clean themselves after use, enhancing user experience and device hygiene.
+</Collapse>
+
+
+<Collapse title="Eco-friendly Design">
+  # Eco-friendly Design
+
+  Focus on environmental protection by using recyclable or biodegradable materials to reduce environmental impact and improve the sustainability of the product.
+</Collapse>
+
+Through these optimization designs, the electric itch-relief massager will not only better meet users' itch relief needs in the future but also achieve comprehensive upgrades in terms of intelligence, convenience, and environmental friendliness.
+
+## Entrepreneurship
+We aim to provide a substance that can alleviate itching caused by Staphylococcus aureus and integrate it into existing anti-itch products or skincare products. To successfully launch the product and secure orders from B-end businesses, we have many preparations to make. Here are the key steps we plan to take:
+
+<Collapse title="Product Testing">
+  # Product Testing
+
+  Firstly, after the product development is completed, we will conduct comprehensive product testing. This phase includes basic information, testing objectives and scope, testing environment, testing methods and strategies, and testing execution and result analysis. Through a systematic testing process, we can not only evaluate the product's quality and stability but also provide solid decision support for subsequent product launches and market promotion.
+</Collapse>
+
+<Collapse title="Compliance Check">
+  # Compliance Check
+
+  While ensuring product quality, we must also pay attention to product compliance. This involves adhering to relevant laws and regulations domestically and internationally, ensuring that the product meets industry standards, and considering ethical and social responsibilities. Through strict compliance reviews, we can not only enhance the overall quality of the product but also effectively reduce potential safety risks and strengthen consumers' trust in our brand.
+</Collapse>
+
+<Collapse title="Intellectual Property Protection">
+  # Intellectual Property Protection
+
+  To protect our innovative achievements, we will actively apply for and maintain intellectual property rights to ensure that our products and technologies do not infringe on others' rights. At the same time, we seek legal protection for our technologies and designs to safeguard the company's long-term development from infringement.
+</Collapse>
+
+<Collapse title="Market Entry Strategy">
+  # Market Entry Strategy
+
+  Considering the limited public awareness of Staphylococcus aureus and the difficulty in self-diagnosing the cause of itching, we plan to initially integrate our product into daily care products or existing anti-itch products used by consumers. This strategy helps us focus on product optimization in the early stage while reducing the difficulty of popularizing relevant knowledge to consumers. As our team grows and our capabilities strengthen, we will build an independent brand in the future and launch our own product line.
+</Collapse>
+
+<Collapse title="Production Preparation">
+  # Production Preparation
+
+  In addition, ensuring the integrity of the supply chain and sufficient production capacity is also key to our success. We need to establish a robust supply chain management system to ensure that every link in the production process runs smoothly, thereby supporting efficient production and market supply of the product.
+</Collapse>
+
+<Collapse title="Partner Relationship Building">
+  # Partner Relationship Building
+
+  Establishing good cooperative relationships with B-end businesses and integrating PACIFY into their products.
+</Collapse>
+
+<Collapse title="Continuous Innovation and Development">
+  # Continuous Innovation and Development 
+  
+  Maintain a certain level of R&D efforts to continuously explore new technologies and solutions to keep our products competitive. At the same time, develop multiple anti-itch products to form a barrier and explore other markets.
+</Collapse>
+
+<split/>
+# Challenges
+- Due to the highly individualized nature of the sensation of itching, it may be challenging to comprehensively verify the product's effectiveness during the testing phase.
+- Given the limited public awareness of Staphylococcus aureus, additional resources may need to be allocated to educate consumers and enhance their understanding and recognition of the product's value.
+- Establishing a solid cooperative relationship with B-end businesses may pose certain difficulties. 
+- The virtual screening results may not be optimal.
+- In wet lab experiments, we encountered two primary challenges. Firstly, the purification of V8 protease, which is essential for in vitro validation experiments, is complicated by its tendency to undergo self-degradation. We can only prevent this by adding a propeptide, which, however, inhibits the enzyme's activity. Thus, successfully obtaining V8 protease presents a significant challenge. Secondly, the challenge arises from the E. coli in vivo system, which, due to the need to express multiple protein segments, imposes a certain metabolic burden on the bacteria. If the induction time is shortened to reduce the expression level, the protein concentration might become too low for effective self-assembly to occur.

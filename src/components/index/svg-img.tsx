@@ -36,15 +36,6 @@ const SvgImage: React.FC<SvgProps> = ({
           overflow: "visible",
         }}
       />
-      <img
-        src={src}
-        alt=""
-        style={{
-          width: size ? `${size}px` : "auto",
-          position: "relative",
-          visibility: "hidden",
-        }}
-      />
     </>
   );
 };
