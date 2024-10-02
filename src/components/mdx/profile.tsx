@@ -61,6 +61,16 @@ const Profile: React.FC<ProfileProps> = ({
         className={styles.portrait}
         style={{ backgroundImage: `url(${portrait})` }}
       />
+      <div
+        onClick={() => {
+          setIsOpen(!isOpen);
+        }}
+        className={styles.portrait}
+        style={{
+          zIndex: 4,
+          transform: "translateX(-100%)",
+        }}
+      />
       <animated.div style={{ ...spring }} className={styles.secondaryContainer}>
         <animated.div style={{ ...springText }} className={styles.intro}>
           {brief}
