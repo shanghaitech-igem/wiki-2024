@@ -1,7 +1,135 @@
 ---
 title: "Proof of Concept"
 favicon: "server/test/igem-favicon.svg"
-slug: "Proof of Concept"
+slug: "proof-of-concept"
 ---
 
-# Overview
+# Objectives
+
+The primary objective of this proof of concept is to establish a robust experimental framework aimed at identifying substances that can effectively alleviate pruritus caused by _Staphylococcus aureus_. This framework leverages the V8 protease mechanism, which is implicated in the itching sensation in humans.
+
+# Methodology
+
+The methodology is structured around the DBTL (Design, Build, Test, Learn) cycle, ensuring a systematic, iterative approach to refining our experimental setup. We outline four main components of the PoC: V8 Protease Purification, Drug Screening, Flip Reporting System Verification and Simulation of Pruritus Mechanism in E. coli.
+
+<split />
+
+# V8 Protease Purification
+
+## Design
+
+Based on previous studies, V8 protease is a challenging enzyme to purify due to its propensity for self-degradation in recombinant _E. coli_ systems. To overcome this, four specific amino acid mutations were introduced into the prosequence of the V8 protease to inhibit self-degradation. The mutated proenzyme was designed to carry a C-terminal His-tag for purification purposes.
+
+![](server/contents/pj/activation.jpg)
+
+## Build
+
+The gene encoding the mutant V8 protease was cloned into the pET-28a vector and transformed into E. coli BL21(DE3) cells.
+
+![pET-28a-His(C)-pro-sspA-mut4 Map](server/contents/plasmid/proV8.png)
+
+## Test
+
+The protein was successfully expressed and purified. Initial assays showed a shift in protein bands upon cleavage, confirmed by mass spectrometry. However, protease activity was not detected, likely due to residual non-covalent attachment of the prosequence.
+
+## Learn
+
+A more efficient purification method involving anion exchange chromatography (Q column) was implemented, which successfully separated the prosequence, yielding active V8 protease as confirmed by fluorescence assays.
+
+![](server/contents/pj/q.jpg)
+
+# Drug Screening
+
+## Design
+
+A high-throughput screening (HTS) system was set up using a library of 3,600 small molecule compounds. The goal was to identify inhibitors of V8 protease activity.
+
+![](server/contents/pj/screen.jpg)
+
+## Build
+
+Using HTS technology, the compounds were screened against the active V8 protease.
+
+## Test
+
+Nine compounds were identified as potential inhibitors, with inhibition rates ranging from 40% to 71%.
+
+![](server/contents/wetlab/result/drug/7.png)
+
+## Learn
+
+While initial results were promising, the inhibition rates were not sufficiently high. Expanding the screening library and iterating on the conditions will be necessary.
+
+# Flip Reporting System Verification
+
+## Design
+
+A flip fluorescent protein system based on previous research was designed to report the cleavage activity of V8 protease. Initially, the system was tested with TEV protease to validate the cleavage mechanism.
+
+![](server/contents/pj/flipsystem.jpg)
+
+## Build
+
+A 6x His-tagged FlipGFP system (beta1-9 and beta10-11 with the TEV target sequence) was constructed and expressed in E. coli.
+
+![Plasmids for the FlipGFP system](server/contents/plasmid/flipgfp-1.png)
+
+![Plasmids for the FlipGFP system](server/contents/plasmid/flipgfp-2.png)
+
+## Test
+
+Initial in vitro tests did not show significant fluorescence. Adjustments were made to cleavage times and protein concentrations, leading to successful validation of the system with TEV protease.
+
+![Result of FlipGFP(TEVprotease) in vitro test](server/contents/wetlab/result/tev.png)
+
+![Result of FlipGFP(V8protease) in vitro test](server/contents/wetlab/result/v8.png)
+
+![Result of FlipGFP(V8-short) in vitro test](server/contents/wetlab/result/v8s.png)
+
+## Learn
+
+Concentration ratios and cleavage times are critical to the system's performance. A shorter V8-specific cleavage sequence was designed to prevent non-specific assembly and minimize spatial hindrance.
+
+# Simulation of Pruritus
+
+## Design
+
+The goal was to simulate itching by S. aureus in E. coli using a flip fluorescent system with the V8 protease target sequence substituted for the TEV sequence. A system to express V8 protease homolog, Glutamyl endopeptidase (gseA), was designed due to its similar cleavage specificity and better folding characteristics.
+
+![The 3D structure of gseA(Glutamyl endopeptidase)](server/contents/wetlab/gsea.jpg)
+
+## Build
+
+Plasmids were constructed to co-express the fluorescent reporter system (FlipCherry, modified for target sequence of V8 protease) and the gseA protease in E. coli.
+
+![Plasmid pRSFDuet-Flipcherry(V8short)-EGFP-gseA for in vivo Flipcherry system Testing](server/contents/plasmid/rsf-tev.png)
+
+![Plasmid pETDuet-thermolysin for in vivo Flipcherry system Testing](server/contents/plasmid/thermo.png)
+
+## Test
+
+Tests showed successful co-expression and specific red fluorescence indicative of cleavage activity, validated by fluorescence microscopy and plate reader measurements.
+
+![Fluorescence Result of Experimental Group](server/contents/wetlab/result/fl/fl-exp-1.png)
+
+![Fluorescence Result of Control Group](server/contents/wetlab/result/fl/fl-c-1.png)
+
+## Learn
+
+The system successfully simulates pruritus in E. coli, with fluorescence results indicating cleavage activity of gseA. Further optimization will focus on refining expression conditions to ensure robust and reproducible results.
+
+![Detecting the efficacy of substances in a fluorescent reporter system simulating human itch sensation in Escherichia coli](server/contents/pj/ecoli.jpg)
+
+<split />
+
+# Conclusion & Perspectives
+
+## Conclusion
+
+The proof of concept successfully establishes a methodological framework for identifying and characterizing substances that can alleviate pruritus by targeting the V8 protease mechanism in Staphylococcus aureus. Ongoing refinements and iterative testing will enhance the system's robustness, paving the way for potential therapeutic development.
+
+## Future Directions
+
+- Expand Drug Screening: Increase the library of compounds and optimize screening conditions to identify more potent inhibitors.
+
+- Optimize Expression Systems: Refine the E. coli expression systems to enhance the robustness and stability of the reporter proteins.
