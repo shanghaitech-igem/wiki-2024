@@ -117,14 +117,6 @@ Moreover, if the degradation of mRNA is sufficiently faster (say, at least 10 ti
 <split/>
 # Molecular Simulation
 
-import { data_nvt_temperature, layout_nvt_temperature } from "data/model/nvt-temperature";
-
-<Plot data={data_nvt_temperature} layout={layout_nvt_temperature} />
-
-
-import { data_md_rmsd_cleaved, layout_md_rmsd_cleaved } from "data/model/md-rmsd-cleaved";
-
-<Plot data={data_md_rmsd_cleaved} layout={layout_md_rmsd_cleaved} />
 
 **Molecular simulation** aims to help us better understand the mechanism of flipGFP system. As the inventor of flipGFP has done similar jobs before, we adopt some parameters directly from the essay[^3] and change some of the tools they use. For example, using Schrodinger together with GROMACS instead of NAMD, which are more convenient.
 
@@ -475,8 +467,9 @@ The modeled systems **with solution** are shown below. (The files are decimated 
 
 </Collapse>
 
-We performed a 6000-step energy using the following .mdp file:
+We performed a 6000-step energy using the following .mdp file and commands:
 
+- **File**
 <Collapse title="em.mdp">
 ```mdp
 ; Parameters describing what to do, when to stop and what to save
@@ -498,6 +491,14 @@ pbc = xyz ; Periodic Boundary Conditions in all 3 dimensions
 ```
 </Collapse>
 
+- **Commands**
+```bash
+gmx grompp -f mdp_final_step/em.mdp -c system.pdb -p topol.top -o em.tpr -maxwarn 100
+```
+```bash
+gmx mdrun -v -deffnm em -gpu_id 0 -nt 36 -pin on -pinstride 1 -pinoffset 0 
+```
+
 import { data_em_potential, layout_em_potential } from "data/model/em-potential";
 
 <Plot data={data_em_potential} layout={layout_em_potential} />
@@ -514,8 +515,9 @@ This potential plot demonstrates the nice, steady convergence of $E_{pot}$.
 
 </Collapse>
 
-Then the system was heated from 0 to 310 K in 20 ps, applying 2 kcal/(mol A2) harmonic constraints to the non-hydrogen atoms of β1-9 by changing the .itp file manually.
+Then the system was heated from **0 to 310 K in 20 ps**, applying **2 kcal/(mol A2) harmonic constraints** to the non-hydrogen atoms of **β1-9** by **changing the .itp file manually.**
 
+- **File**
 <Collapse title="nvt.mdp">
 
 ```mdp
@@ -577,7 +579,22 @@ comm-grps   = Protein Water_and_ions
 
 </Collapse>
 
-This graph shows that
+- **Commands**
+```bash
+gmx grompp -f mdp_final_step/nvt.mdp -c em.gro -r em.gro -p topol.top -o nvt.tpr -maxwarn 100
+```
+```bash
+gmx mdrun -deffnm nvt -gpu_id 0 -nb gpu -pme gpu -pmefft gpu -bonded gpu  -update gpu  -nt 36 -pin on -pinstride 1 -pinoffset 0
+```
+
+From the plot, it is clear that the temperature of the system quickly reaches the target value (310 K), and remains stable over the remainder of the equilibration.
+
+import { data_nvt_temperature, layout_nvt_temperature } from "data/model/nvt-temperature";
+
+<Plot data={data_nvt_temperature} layout={layout_nvt_temperature} />
+
+
+
 
 ### d. NPT (Isothermal-Isobaric Ensemble) stage
 
@@ -589,7 +606,9 @@ This graph shows that
 
 </Collapse>
 
-npt 文件 命令行和相关参数图
+After the nvt stage, **250 ns simulation** in the NPT ensemble was performed at **1 bar**.
+
+- **File**
 
 <Collapse title="npt.mdp">
 ```mdp 
@@ -630,7 +649,7 @@ pcoupl      = Berendsen;Parrinello-Rahman     ; Pressure coupling on in NPT
 pcoupltype  = semiisotropic         ; uniform scaling of x-y box vectors, independent z
 tau_p       = 5.0                   ; time constant, in ps
 ref_p       = 1.0   1.0             ; reference pressure, x-y, z (in bar)
-compressibility = 4.5e-5    4.5e-5  ; isothermal compressibility, bar^1
+compressibility = 4.5e-5    4.5e-5  ; isothermal compressibility, bar^-1
 ; Periodic boundary conditions
 pbc         = xyz       ; 3-D PBC
 ; Dispersion correction
@@ -644,9 +663,16 @@ comm-mode       = Linear
 comm-grps       = Protein Water_and_ions
 ; Scale COM of reference coordinates
 refcoord_scaling = com
-
 ```
 </Collapse>
+
+- **Commands**
+```bash
+gmx grompp -f mdp_final_step/npt.mdp -c nvt.gro -r nvt.gro -p topol.top -o npt.tpr -maxwarn 100
+```
+```bash
+gmx mdrun -deffnm npt -gpu_id 0 -nb gpu -pme gpu -pmefft gpu -bonded gpu  -update gpu  -nt 36 -pin on -pinstride 1 -pinoffset 0
+```
 
 ### e. MD (Molecular Dynamics) stage
 
@@ -659,7 +685,9 @@ refcoord_scaling = com
 
 </Collapse>
 
-md 文件 命令行和相关参数图
+Finally, molecular dynamics simulation was performed **for 100 ns** with an integration **timestep of 2 fs**.
+
+- **File**
 
 <Collapse title="md.mdp">
 
@@ -717,11 +745,21 @@ comm-grps       = Protein Water_and_ions
 
 </Collapse>
 
+- **Commands**
+```bash
+gmx grompp -f mdp_final_step/md.mdp -c npt.gro -t npt.cpt -p topol.top -o md.tpr -maxwarn 100
+```
+```bash
+gmx mdrun -deffnm md -gpu_id 0 -nb gpu -pme gpu -pmefft gpu -bonded gpu -update gpu -nt 36 -pin on -pinstride 1 -pinoffset 0
+```
 
 import { data_md_rmsd, layout_md_rmsd } from "data/model/md-rmsd";
 
 <Plot data={data_md_rmsd} layout={layout_md_rmsd} />
 
+import { data_md_rmsd_cleaved, layout_md_rmsd_cleaved } from "data/model/md-rmsd-cleaved";
+
+<Plot data={data_md_rmsd_cleaved} layout={layout_md_rmsd_cleaved} />
 
 
 
