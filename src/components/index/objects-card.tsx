@@ -15,7 +15,7 @@ export const cardData: CardData[] = [
     number: "01",
     subtitle: "FROM LAB TO DAILY CARE",
     title: "Pioneering a New Era in Personal Care",
-    imgSrc: "server/home/scrath-1.png",
+    imgSrc: "server/home/images/01.webp",
     readmoreURL: "/description",
     content: `Itching, though often perceived as a minor issue, can have a
     significant impact on people’s quality of life. Persistent itching not
@@ -26,7 +26,7 @@ export const cardData: CardData[] = [
     number: "02",
     subtitle: "NAUGHTY SCRATCHING",
     title: "Scratching is a Natural Response to Itching",
-    imgSrc: "server/home/scrath-1.png",
+    imgSrc: "server/home/images/02.webp",
     readmoreURL: "/description",
     content: `Scratching not only worsens skin damage but can also result in
     infections, inflammation, and even scarring, which can severely affect
@@ -37,7 +37,7 @@ export const cardData: CardData[] = [
     number: "03",
     subtitle: "ITCHING AND HEALTH",
     title: "Itching Can Be a Sign of Serious Conditions",
-    imgSrc: "server/home/scrath-1.png",
+    imgSrc: "server/home/images/03.webp",
     readmoreURL: "/description",
     content: `For certain vulnerable groups, such as individuals with weakened
     immune systems or the elderly, itching can be a sign of more serious
@@ -48,7 +48,7 @@ export const cardData: CardData[] = [
     number: "04",
     subtitle: "THE IMPORTANCE OF ITCHING",
     title: "Addressing Itching Is Crucial for Overall Health",
-    imgSrc: "server/home/scrath-1.png",
+    imgSrc: "server/home/images/04.webp",
     readmoreURL: "/description",
     content: `
         Thus, addressing itching in a timely and effective manner is not only
@@ -61,7 +61,7 @@ export const cardData: CardData[] = [
     number: "05",
     subtitle: "LIMITATIONS OF CURRENT TREATMENTS",
     title: "Challenges with Existing Anti-Itch Products",
-    imgSrc: "server/home/scrath-1.png",
+    imgSrc: "server/home/images/05.webp",
     readmoreURL: "/human-practices",
     content: `
         Although a wide range of anti-itch products are available, most focus on
@@ -75,7 +75,7 @@ export const cardData: CardData[] = [
     number: "06",
     subtitle: "SIDE EFFECTS OF TREATMENTS",
     title: "Hormonal Treatments and Their Risks",
-    imgSrc: "server/home/scrath-1.png",
+    imgSrc: "server/home/images/06.webp",
     readmoreURL: "/human-practices",
     content: `
         Additionally, some products that claim to relieve itching contain
@@ -88,7 +88,7 @@ export const cardData: CardData[] = [
     number: "07",
     subtitle: "OUR INNOVATIVE APPROACH",
     title: "Developing Green, Safe Inhibitors",
-    imgSrc: "server/home/scrath-1.png",
+    imgSrc: "server/home/images/07.webp",
     readmoreURL: "/design",
     content: `
         Our project recognizes the critical importance of addressing itching and
@@ -101,7 +101,7 @@ export const cardData: CardData[] = [
     number: "08",
     subtitle: "IMPROVING QUALITY OF LIFE",
     title: "Innovative Solutions for Personal Care",
-    imgSrc: "server/home/scrath-1.png",
+    imgSrc: "server/home/images/08.webp",
     readmoreURL: "/implementation",
     content: `
         Our solution not only alleviates patient discomfort and improves their
@@ -115,7 +115,7 @@ export const cardData: CardData[] = [
     number: "09",
     subtitle: "OUR PHILOSOPHY",
     title: "Managing Bacteria for Better Health",
-    imgSrc: "server/home/scrath-1.png",
+    imgSrc: "server/home/images/09.webp",
     readmoreURL: "/design",
     content: (
       <>
@@ -137,7 +137,7 @@ export const cardData: CardData[] = [
     number: "10",
     subtitle: "APPLICATION",
     title: "Creating Specialized Cosmeceuticals",
-    imgSrc: "server/home/scrath-1.png",
+    imgSrc: "server/home/images/10.webp",
     readmoreURL: "/application",
     content: `
         We aim to develop a safe product that specifically targets persistent
