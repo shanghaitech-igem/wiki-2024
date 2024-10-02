@@ -32,7 +32,6 @@
 main {
   .bg-container {
     overflow: visible;
-    min-height: 180vh;
 
     .title-container {
       line-height: 1;
@@ -41,16 +40,21 @@ main {
       top: 30vh;
 
       .title-banner {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
+        $line-width: 4em;
+        font-family: fonts.$pacify-layout;
+        font-weight: bold;
+        padding-left: $line-width + 1em;
+        color: #c0b2a6;
 
-        p {
-          font-family: fonts.$pacify-layout;
-          font-weight: bold;
-          margin-left: 1em;
-          padding: 0;
-          color: #c0b2a6;
+        &::before {
+          content: "";
+          display: block;
+          width: $line-width;
+          height: 0.1em;
+          background-color: #c0b2a6;
+          position: absolute;
+          top: 50%;
+          left: 0;
         }
       }
 
@@ -122,6 +126,18 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 300px;
+    margin-top: 1000px;
+    gap: 45rem;
+  }
+
+  .slogan {
+    font-family: fonts.$pacify-heading-primary;
+    width: 60vw;
+    text-align: center;
+    font-size: 6rem;
+    font-weight: bold;
+    font-style: normal;
+    color: light.$pacify-char-layout;
+    margin: 5rem auto 0 auto;
   }
 }

@@ -7,6 +7,7 @@ import Card from "src/components/index/card";
 import { main, stems, leaves } from "src/components/index/objects-static";
 import * as styles from "src/styles/modules/index.module.scss";
 import ScrollReveal from "scrollreveal";
+import SVG from "react-inlinesvg";
 
 const IndexPage: React.FC = () => {
   React.useEffect(() => {
@@ -51,18 +52,9 @@ const IndexPage: React.FC = () => {
     <Layout>
       <div className={styles.bgContainer} style={{ position: "relative" }}>
         <div className={styles.titleContainer}>
-          <div className={`${styles.titleBanner} load-hidden`}>
-            <svg
-              width="72"
-              height="2"
-              viewBox="0 0 72 2"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect width="72" height="2" fill="#c0b2a6" />
-            </svg>
-            <p>2024 SHANGHAITECH CHINA</p>
-          </div>
+          <p className={`${styles.titleBanner} load-hidden`}>
+            2024 SHANGHAITECH CHINA
+          </p>
           <p className={`${styles.title} load-hidden`}>PACIFY</p>
           <p className={`${styles.titlePrompt} load-hidden`}>scroll down ↓</p>
         </div>
@@ -78,6 +70,10 @@ const IndexPage: React.FC = () => {
           />
         ))}
       </div>
+      <SVG
+        src={main.raw}
+        style={{ position: "relative", visibility: "hidden" }}
+      />
       <div className={styles.contentContainer}>
         <Card
           number="01"
@@ -204,6 +200,7 @@ const IndexPage: React.FC = () => {
           thereby reducing the harm caused by scratching.
         </Card>
       </div>
+      <div className={styles.slogan}>Calm your skin, Elevate your life</div>
     </Layout>
   );
 };
