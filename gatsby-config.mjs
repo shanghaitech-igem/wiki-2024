@@ -10,7 +10,7 @@ const config = {
     title: `ShanghaiTech 2024 iGEM Wiki`,
     siteUrl: `https://2024.igem.wiki/shanghaitech-china`,
     staticServerURL: `https://static.igem.wiki/teams/5174/`,
-    favicon: `server/test/igem-favicon.svg`,
+    favicon: `server/svgs/main-logo.svg`,
     logo: `server/svgs/main-logo.svg`,
   },
   pathPrefix: `/shanghaitech-china`,
