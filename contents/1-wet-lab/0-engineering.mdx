@@ -14,6 +14,8 @@ In order to successfully realize our product design, which aims to identify subs
 
 The entire engineering process is logically structured under the principles of DBTL (Design, Build, Test, Learn), as recommended by iGEM. We continuously conduct transformations and iterations to refine our projects. Below is a summary of the experimental content and the logical workflow we have completed.
 
+<split/>
+
 # V8 Purification
 
 ## Research
@@ -68,6 +70,8 @@ When wild-type V8 protease is directly expressed in _E. coli_ BL21(DE3), it unde
 
   ![Measure the activity of the enzyme by using fluorescent substrate](server/contents/pj/screen-fluoro.jpg)
 
+<split/>
+
 # Drug Screening
 
 - Design
@@ -88,29 +92,37 @@ When wild-type V8 protease is directly expressed in _E. coli_ BL21(DE3), it unde
 
 - Learn
 
-  The nine potential inhibitors identified from over 3,600 compounds showed limited inhibition rates. As a next step, we plan to expand the screening scope to identify small molecules with higher inhibition rates.  
+  The nine potential inhibitors identified from over 3,600 compounds showed limited inhibition rates. As a next step, we plan to expand the screening scope to identify small molecules with higher inhibition rates.
+
+<split/>
 
 # Flip Reporting System in vitro Verification
 
 ## Research
 
-Based on previous research, a lab at the University of California, San Francisco, developed a protease-activated fluorescent reporter system. In this system, the structure of the fluorescent protein is divided into two parts: beta sheets 1-9 and beta sheets 10-11. Initially, one of the beta strands in the latter part is flipped. The two beta strands of beta sheets 10-11 are connected by a linker, which contains the target cleavage sequence for the protease. Upon activation of the protease, the linker in beta sheets 10-11 is cleaved, allowing the flipped beta strand to return to its correct orientation and assemble with beta sheets 1-9, forming a complete fluorescent protein structure that emits light. This mechanism of the fluorescent reporter system inspires us to use it to characterize the cleavage activity of V8 protease on its target sequence, thereby simulating the human itching sensation in vivo.
+Based on previous research, a lab at the University of California, San Francisco, developed a protease-activated fluorescent reporter system. In this system, the structure of the fluorescent protein is divided into two parts: beta sheets 1-9 and beta sheets 10-11. Initially, one of the beta strands in the latter part is flipped. The two beta strands of beta sheets 10-11 are connected by a linker, which contains the target cleavage sequence for the protease. Upon activation of the protease, the linker in beta sheets 10-11 is cleaved, allowing the flipped beta strand to return to its correct orientation and assemble with beta sheets 1-9, forming a complete fluorescent protein structure that emits light. This mechanism of the fluorescent reporter system inspires us to use it to characterize the cleavage activity of V8 protease on its target sequence, thereby simulating the human itching sensation in vivo.[^2]
+
+[^2]: Zhang, Qiang et al. “Designing a Green Fluorogenic Protease Reporter by Flipping a Beta Strand of GFP for Imaging Apoptosis in Animals.” Journal of the American Chemical Society vol. 141,11 (2019): 4526-4530. doi:10.1021/jacs.8b13042
+
+![The principle of the "Flip" protease fluorescent reporter system](server/contents/pj/flipsystem.jpg)
 
 ## Cycle 1
 
 - Design
 
-  To validate the feasibility of the Flip system, we first conducted in vitro tests using the well-established TEV protease. After purifying the proteins, we confirmed the sequence accuracy through mass spectrometry. Next, we incubated TEV protease with beta10-11 to ensure complete cleavage of the target sequence. This step minimizes any potential variability in the cleavage process that could affect the subsequent self-assembly of beta1-9 with the cleaved beta10-11 into the superfold GFP fluorescent protein.
+  To validate the feasibility of the Flip system, we first conducted in vitro tests using the well-established TEV protease. After purifying the proteins, we confirmed the sequence accuracy through mass spectrometry. Next, we incubated TEV protease with beta10-11 to ensure complete cleavage of the target sequence. This step minimizes any potential variability in the cleavage process that could affect the subsequent self-assembly of beta1-9 with the cleaved beta10-11 into the superfold GFP fluorescent protein.[^3]
+
+[^3]: Raran-Kurussi, Sreejith et al. “Removal of Affinity Tags with TEV Protease.” Methods in molecular biology (Clifton, N.J.) vol. 1586 (2017): 221-230. doi:10.1007/978-1-4939-6887-9_14
 
 - Build
 
   We added a 6x His-tag to the C-terminus of both parts of the fluorescent system (beta1-9 and beta10-11) for expression and purification. We selected the same FlipGFP sequence and TEV protease target cleavage sequence as described in the literature. The TEV protease target sequence is ENLYFQS. These sequences were submitted to GeneScript for direct synthesis in the expression region of the pET-28a plasmid.
 
-
+![Plasmids for the FlipGFP system](server/contents/plasmid/flipgfp.jpg)
 
 - Test
 
-  The two plasmids were separately transformed into BL21 (DE3) cells for expression. When the OD600 of the culture reached 0.6, IPTG was added at a final concentration of 0.1 mM to induce protein expression, and the cultures were incubated for 12-16 hours before harvesting the cells for subsequent purification steps. The purified beta10-11 fragment was incubated with TEV protease at 4°C for 1 hour, with an enzyme-to-substrate ratio of 1:100. After incubation, a 200 μL fluorescent protein self-assembly system was prepared, with FlipGFP beta1-9 at a concentration of 2.9 μM and FlipGFP beta10-11 at 6.5 μM. Following the initiation of the assembly process, absorbance at 535 nm was measured every hour using a plate reader, with excitation at a wavelength of 488 nm. Absorbance was recorded over a total period of 12 hours.
+  The two plasmids were separately transformed into BL21 (DE3) cells for expression. When the OD600 of the culture reached 0.6, IPTG was added at a final concentration of 0.1 mM to induce protein expression, and the cultures were incubated for 14 hours before harvesting the cells for subsequent purification steps. The purified beta10-11 fragment was incubated with TEV protease at 4°C for 1 hour, with an enzyme-to-substrate ratio of 1:100. After incubation, a 200 μL fluorescent protein self-assembly system was prepared, with FlipGFP beta1-9 at a concentration of 2.9 μM and FlipGFP beta10-11 at 6.5 μM. Following the initiation of the assembly process, absorbance at 535 nm was measured every hour using a plate reader, with excitation at a wavelength of 488 nm. Absorbance was recorded over a total period of 12 hours.
 
 - Learn
 
@@ -120,21 +132,39 @@ Based on previous research, a lab at the University of California, San Francisco
 
 - Design
 
-  After protein electrophoresis and mass spectrometry analysis, we confirmed that the purified protein had no sequence errors. Therefore, we aimed to improve the self-assembly process by adjusting the experimental conditions. We shortened the TEV protease cleavage time to avoid potential nonspecific cleavage and increased the concentration of the beta10-11 fragment during assembly to ensure sufficient fragments were available for assembly with FlipGFP1-9.
+  After protein electrophoresis and mass spectrometry analysis, we confirmed that the purified protein had no sequence errors. Therefore, we aimed to improve the self-assembly process by adjusting the experimental conditions. We shortened the TEV protease cleavage time to avoid potential nonspecific cleavage and increased the concentration of the FlipGFP beta sheet 10-11 fragment during assembly to ensure sufficient fragments were available for assembly with FlipGFP beta sheet 1-9.
 
 - Test
 
-  The two plasmids were separately transformed into BL21 (DE3) cells for expression. When the OD600 of the culture reached 0.6, IPTG was added at a final concentration of 0.1 mM to induce expression, and the cultures were incubated for 12-16 hours before collecting the cells for subsequent purification steps. The purified beta10-11 fragment was incubated with TEV protease at 4°C for 5 minutes, using enzyme-to-substrate ratios of 1:50 and 1:100. After incubation, a 200 μL fluorescent protein self-assembly system was prepared, with the concentration of FlipGFP beta1-9 at 5.8 μM and FlipGFP beta10-11 at 44.6 μM. Following the initiation of the assembly process, absorbance at 535 nm was measured using a plate reader every hour for 12 hours, with excitation at a wavelength of 488 nm.
+  The two plasmids were separately transformed into BL21 (DE3) cells for expression. When the OD600 of the culture reached 0.6, IPTG was added at a final concentration of 0.1 mM to induce expression, and the cultures were incubated for 14 hours before collecting the cells for subsequent purification steps. The purified beta10-11 fragment was incubated with TEV protease at 4°C for 5 minutes, using enzyme-to-substrate ratios of 1:50 and 1:100. After incubation, a 200 μL fluorescent protein self-assembly system was prepared, with the concentration of FlipGFP beta1-9 at 5.8 μM and FlipGFP beta10-11 at 44.6 μM. Following the initiation of the assembly process, absorbance at 535 nm was measured using a plate reader every hour for 12 hours, with excitation at a wavelength of 488 nm.
+
+![Result of FlipGFP(TEVprotease) in vitro test](server/contents/wetlab/result/tev.png)
 
 - Learn
 
   We successfully validated the FlipGFP fluorescent reporter system. Based on the in vitro results, we realized that the concentration ratio between the two protein segments in the Flip system has a significant impact on the experimental outcome. Therefore, in future in vivo experiments, it will be essential to carefully control the induction time and protein concentrations to ensure optimal protein assembly.
 
+## Cycle 3
+
+- Design
+
+
+
+- Build
+
+  We construct the plasmid with V8 protease cleavage site inserted in FlipGFP beta sheet 1-9.
+
+  ![Plasmid for FlipGFP(V8)](server/contents/plasmid/gfp-v8.png)
+
+<split/>
+
 # E.coli Pruritus Simulation System
 
 ## Research
 
-Through literature review, we identified the mechanism by which _Staphylococcus aureus_ causes itching in humans: it secretes V8 protease, which cleaves the extracellular sequence of the PAR1 receptor on the skin. Based on this, we replaced the TEV protease cleavage sequence in the Flip system with the V8 protease target sequence to report the activity of V8 protease. To more accurately simulate the conditions of skin itching, we substituted FlipGFP with FlipCherry. FlipCherry contains a fluorescent protein structure based on the directed evolution of superfold Cherry, offering enhanced brightness.
+Through literature review, we identified the mechanism by which _Staphylococcus aureus_ causes itching in humans: it secretes V8 protease, which cleaves the extracellular sequence of the PAR1 receptor on the skin. Based on this, we replaced the TEV protease cleavage sequence in the Flip system with the V8 protease target sequence to report the activity of V8 protease. To more accurately simulate the conditions of skin itching, we substituted FlipGFP with FlipCherry. FlipCherry contains a fluorescent protein structure based on the directed evolution of superfold Cherry, offering enhanced brightness.[^4]
+
+[^4]: Deng, Liwen et al. “S. aureus drives itch and scratch-induced skin damage through a V8 protease-PAR1 axis.” Cell vol. 186,24 (2023): 5375-5393.e25. doi:10.1016/j.cell.2023.10.019
 
 V8 protease, also known as Glutamyl endopeptidase from _Staphylococcus aureus_, specifically cleaves peptide bonds at the carboxyl side of glutamic acid residues, making it a valuable tool in protein mapping. However, its tendency to misfold and self-degrade when expressed in non-native systems like _E. coli_ presents challenges for experimental setups. By using Glutamyl endopeptidase as a substitute, we can preserve the same specificity at cleavage sites while avoiding the folding and degradation issues. This ensures that the cleavage analysis more accurately reflects the system’s behavior without introducing artifacts due to enzyme instability.
 
