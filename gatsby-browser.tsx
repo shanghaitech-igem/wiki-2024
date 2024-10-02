@@ -47,16 +47,6 @@ export const shouldUpdateScroll: GatsbyBrowser["shouldUpdateScroll"] = ({
 }): [number, number] | boolean => {
   const { pathname, hash } = routerProps.location;
 
-  // Always scroll to the top for the index page
-  if (pathname === "/") {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "instant", // Instant scrolling
-    });
-    return false;
-  }
-
   // Handle scrolling for other pages
   if (hash === "") {
     const currentPosition = getSavedScrollPosition(routerProps.location);

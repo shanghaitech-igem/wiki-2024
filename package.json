@@ -20,6 +20,7 @@
   "dependencies": {
     "@iconify/react": "^5.0.2",
     "@mdx-js/react": "^3.0.1",
+    "@react-spring/web": "^9.7.4",
     "autoprefixer": "^10.4.20",
     "gatsby": "^5.13.7",
     "gatsby-plugin-catch-links": "^5.13.1",
@@ -49,6 +50,7 @@
     "react-plotly.js": "^2.6.0",
     "react-stl-viewer": "^2.5.0",
     "react-tabs": "^6.0.2",
+    "react-use-measure": "^2.1.1",
     "remark-gfm": "^3.0.1",
     "remark-math": "5.1.1",
     "sass": "^1.79.3",

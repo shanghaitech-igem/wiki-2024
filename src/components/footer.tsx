@@ -102,7 +102,11 @@ const Footer: React.FC = () => {
         <div className={communication}>
           <p>Follow Us</p>
           <div className={icons}>
-            <a href="https://instagram.com" target="_blank" rel="noreferrer">
+            <a
+              href="https://www.instagram.com/igemshanghaitech2024"
+              target="_blank"
+              rel="noreferrer"
+            >
               <Icon icon="mdi:instagram" className={icon} />
             </a>
             <a

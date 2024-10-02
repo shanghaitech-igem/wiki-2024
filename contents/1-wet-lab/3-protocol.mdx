@@ -1,0 +1,394 @@
+---
+title: "Protocol"
+favicon: "server/test/igem-favicon.svg"
+slug: "protocol"
+---
+
+# Molecular experiments
+
+## DNA PCR
+
+Reagent: Double distilled water, 2x Phanta Max Master Mix (Dye Plus) P525 or Golden Mix(Green)(TSINGKE, production: TSE101), Template DNA(plasmid DNA), Forward primer(10μM), Reverse primer(10 μM), Ice
+
+Device: Pipette, Pipette tips, PCR tube, Icebox, PCR-Instrument, Centrifuge
+
+Procedure:
+
+1. Turn on the PCR instrument in advance.
+2. Mix reagents on ice according to the table below in the PCR tube:
+
+|                          Components                           |       Volume       |
+| :-----------------------------------------------------------: | :----------------: |
+| 2x Phanta Max Master Mix (Dye Plus) P525 or Golden Mix(Green) |       25 μl        |
+|                     Forward primer(10 μM)                     |        2 μl        |
+|                     Reverse primer(10 μM)                     |        2 μl        |
+|                   Template DNA(plasmid DNA)                   | x μl (10 pg-30 ng) |
+|                    Double distilled water                     |    up to 50 μl     |
+
+3. Mix the solution system evenly. Carry out rapid centrifugation if the droplets hang on the tube wall.
+4. Put the PCR tube in the PCR-Instrument. Set the PCR program according to the table below.
+
+<table>
+<tr>
+	<th>Stage/Number of Cycles</th>
+	<th>Temperature ($^{\circ}$C)</th>
+	<th>Time (s)</th>
+</tr>
+<tr>
+	<td> Stage 1/1</td>
+	<td>95</td>
+	<td>30</td>
+</tr>
+<tr>
+	<td rowspan="3">Stage 2/35</td>
+    <td>95</td>
+    <td>15</td>
+    </tr>
+<tr>
+    <td>Tm of primer - 5</td>
+    <td>15</td>
+</tr>
+<tr>
+    <td>72</td>
+    <td>30s/kb for Phanta Max Master Mix</td>	
+</tr>
+<tr>
+	<td>Stage 3/1</td>
+    <td>72</td>
+    <td>300</td>
+</tr>
+<tr>
+	<td>Stage 4/1</td>    
+    <td>10</td>
+    <td>forever</td>
+</tr>
+</table>
+
+5. Take the tube out and put it in the icebox containing ice.
+
+## Nucleic Acid Electrophoresis
+
+### Gel Preparation
+
+Reagent: 1xTAE buffer, Agarose, 10000x Nucleic acid dye
+
+Device: Pipette, Pipette tips, Measuring cylinder, Electronic balance, Medicine spoon, Microwave oven, Gel-making tank, Gel-making plate, Gel-making comb
+
+Procedure (for a 1\% nucleic acid electrophoresis gel):
+
+1. Accurately weigh 0.3 g agarose and then add 30 ml of 1xTAE buffer.
+2. Heat to boiling in the microwave oven at least 3 times to dissolve agarose completely.
+3. Put a gel-making plate on the gel-making tank and put a gel-making comb on it.
+4. Add 3 μl 10000xNucleic acid dye in the agarose solution when it's cooled to about 60℃.
+5. Pour the agarose solution into the gel-making mold.
+6. Wait about 20 minutes until the gel sets. Remove the comb.
+
+Sample loading and Electrophoresis
+
+Reagent: Nucleic acid electrophoresis gel, DNA marker, PCR product, 1xTAE buffer
+
+Device: Pipette, Pipette tips, Electrophoresis apparatus, Electrophoresis tank for nucleic acid
+
+Procedure:
+
+1. Add 1x TAE buffer into the electrophoresis tank for nucleic acid. Put the gel into the tank and make sure it can be submerged by TAE buffer.
+2. Make sure the loading pore is close to the negative side.
+3. Add 10 μl DNA marker into the loading pore. Add 50 μl PCR product into the loading pore. Record the position of the sample added.
+4. Open the electrophoresis apparatus and connect it with the electrophoresis tank for nucleic acid.
+5. Set the voltage to 100 V. Run 30 minutes or as appropriate.
+
+P.S. The choice of DNA marker is based on the length of the PCR product.
+
+### Gel Imaging
+
+Reagent: Post-electrophoresis nucleic acid gel
+
+Device: Gel imager(azure biosystems c150), Computer, Disposable gloves
+
+Procedure:
+
+1. Take out post-electrophoresis gel with disposable gloves on the hands.
+2. Open the computer and gel imager. Open the software of the gel imager.
+3. Put the gel in the imager. Set the exposure mode and capture the image of the gel.
+4. Find the target bands and save the image.
+
+### Gel Recovery
+
+Reagent: Post-electrophoresis nucleic acid gel, Gel recovery kit(FastPure Gel DNA Extraction Mini Kit DC301 from Vazynme), double distilled water
+
+Device: UV Transilluminator, Scalpel, 1.5ml EP tube, Metal bath heater, Pipette, Pipette tips, Electronic balance
+
+Procedure:
+
+1. Set the metal bath heater to 55℃ in advance.
+2. Precisely cut the gel containing the target bands with a scalpel under the UV transilluminator.
+3. Accurately weigh the pieces of gel. Put them into 1.5 ml EP tubes respectively.
+4. According to the instructions in the kit recover the DNA fragment until the last step. Use double distilled water but not the buffer to dissolve the DNA fragment.
+
+### DNA concentration determination
+
+Reagent: Gel recovery product, double distilled water
+
+Device: NanoDrop one ultramicro ultraviolet spectrophotometer(Thermo SCIENTIFIC), Lens papers, Pipette, Pipette tips
+
+Procedure:
+
+1. Turn on the NanoDrop one in advance.
+2. Select the "nucleic acid " tab and click the "double strain DNA" option on the home page of NanoDrop one.
+3. Clean the instrument base with double distilled water. Wipe clean with lens papers.
+4. Use 1 μl of double distilled water as a blank sample. After detecting, wipe clean with lens papers.
+5. Add 1 μl gel recovery product to the base for detection. After detecting, record data and clean the instrument base with double distilled water. Wipe clean with lens papers.
+6. Shut down the instrument after use.
+
+## Gibson Assembly
+
+Reagent: Gel recovery product, double distilled water, Exnase II, 5xCE II buffer, Ice
+
+Device: Pipette, Pipette tips, Icebox, PCR-Instrument, PCR tube
+
+Procedure:
+
+1. Open the PCR-instrument in advance.
+2. Mix reagents on ice according to the table below in the PCR tube:
+
+|       Components       |         Volume         |
+| :--------------------: | :--------------------: |
+| Linearization carrier  | x μl (up to 0.03 pmol) |
+|     Inset Fragment     | y μl (up to 0.06 pmol) |
+|    5x CE II buffer     |          4 μl          |
+|       Exnase II        |          2 μl          |
+| Double distilled water |      up to 20 μl       |
+
+3. Mix the solution system evenly. Carry out rapid centrifugation if the droplets hang on the tube wall.
+4. Put the PCR tube in the PCR-Instrument. Set the PCR program according to the table below.
+
+| Stage/Number of Cycles | Temperature (℃) | Time (min) |
+| :--------------------: | --------------- | ---------- |
+|       Stage 1/1        | 37              | 30         |
+|       Stage 2/1        | 10              | forever    |
+
+5. Take the tube out and put it in the icebox containing ice.
+
+## Transformation and Coating
+
+Reagent: Recombination product, DH5α competent E. coli cells, Ice, Resistant LB plate, Non-resistant LB liquid medium
+
+Device: Pipette, Sterile Pipette tips, Icebox, Metal bath heater, Ultra clean bench, Disposable spreader, 1.5ml EP tube
+
+Procedure:
+
+1. Set the metal bath heater to 42℃ in advance.
+2. Take DH5α
+
+3. After thawing, add 10 μl recombination product into 100μl DH5α competent E. coli cells. Put it on ice for 30 minutes.
+
+4. Heat shock the transformation tube for 90 seconds. Cool it on the ice for 3 minutes immediately after heat shock.
+5. Add 600 μl non-resistant LB liquid medium in the transformation tube. Culture the transformed bacteria for 45 minutes.
+6. Use a disposable spreader to evenly coat 100 μl of the bacterial fluid on the resistant LB plate. Keep coating until no flowing liquid on the surface of the plate.
+7. Seal the plate with parafilm. Label and put the plate in the thermostatic incubator.
+
+P.S. The cultural time should not last too long, or the single colony can't be obtained
+
+Colony Selection and Amplificated Culture
+
+Reagent: Antibiotic screening plate culturing transformed bacteria, Resistant LB liquid medium
+
+Device: Pipette, Sterile Pipette tips, Ultra clean bench, Culture tubes
+
+Procedure:
+
+1. Use a sterile pipette tip to pick up the single colony on the plate.
+2. Put the pipette tip stained with colony into the culture tube containing resistant LB liquid medium. Culture the bacterial fluid for about 12 hours.
+
+## Plasmid Extraction
+
+Reagent: TIANprep Mini Plasmid Kit(TIANGEN(®) , product number: DP103-02) or NucleoSpin(®) Plasmid, Mini kit for plasmid DNA(MACHEREY-NAGEL), double distilled water, Bacterial fluid to be used
+
+Device: 1.5 ml EP tube, Metal bath heater, Pipette, Pipette tips, Electronic balance, Centrifuge
+
+Procedure:
+
+1. Set metal bath heater to 55℃ in advance.
+2. According to the instructions in the kit recover the DNA fragment until the last step. Use double distilled water but not the buffer to dissolve the plasmids.
+
+<split/>
+
+# E.coli
+
+## Culture medium
+
+### LB liquid medium
+
+Reagent: LB broth powder (Sangon Biotech, product number: A507002), Milli-Q water
+
+Device: Measuring cylinder, Electronic balance, Medicine spoon
+
+Procedure (for a 1 L mixture):
+
+1. Accurately weigh 25 g of LB broth powder and then add 1 L of Milli-Q water.
+2. High-pressure steam sterilization at 121℃ for 20 min.
+3. If the non-resistant medium is required, use it after cooling. If the resistant medium is required, add antibiotics after cooling. Make sure to use it after mixing completely.
+
+P.S. Antibiotic concentration of E. coli selection is as follows: Kan 30 ng/μl, and Amp 100 ng/μl.
+
+List of ingredients for LB broth powder (Sangon Biotech, product number: A507002)
+
+|   Component   | Content (g/L) |
+| :-----------: | :-----------: |
+|   Tryptone    |      10       |
+| Yeast extract |       5       |
+|  $\ce{NaCl}$  |      10       |
+
+## LB plate
+
+Reagent: LB broth Agar powder (Sangon Biotech, product number: A507003), Milli-Q water
+
+Device: Measuring cylinder, Electronic balance, Medicine spoon
+
+Procedure(for a 1 L mixture with 1.5% agar):
+
+4. Accurately weigh 40 g of LB broth agar powder and then add 1 L of Milli-Q water.
+5. High-pressure steam sterilization at 121℃ for 15 min.
+6. If the non-resistant medium is required, pour the plate before solidification. If the resistant medium is required, add antibiotics after cooling but before solidification.
+7. Make sure to mix well before pouring. Pour the plate until the bottom of the petri dish is completely covered and the thickness reaches 2-3 mm.
+
+List of ingredients for M9 broth powder (Sangon Biotech, product number: A507024)
+
+|    Component     | Content (g/L) |
+| :--------------: | :-----------: |
+| $\ce{Na_2HPO_4}$ |      6.8      |
+| $\ce{KH_2PO_4}$  |       3       |
+|   $\ce{NaCl}$    |      0.5      |
+|  $\ce{NH_4Cl}$   |       1       |
+
+## IPTG Induction
+
+Reagent: E. coli BL12(DE3) transformants on plate, LB Broth medium with antibiotics, IPTG(1M)
+
+Device: Sterile culture tubes, Pipette and tips, Bunsen flames, 1.5 mL EP tube
+
+Precedure:
+
+1. Work near Bunsen flames.
+2. Fill a culture tube with 5 mL of LB medium containing the right antibiotic(s).
+3. Using a sterile pipette tip, pick one of the colonies and shoot the pipette tip into the culture tube. Keep the cap of the culture tube loose.
+4. Grow the bacteria at 37 °C and 250 rpm overnight.
+5. Inoculate the other 5 mL new LB medium with 50 μL overnight culture, culturing it at 37 ºC for 2-3 hours until OD600 reaches 0.6.
+6. Extract 1 mL culture a 1.5 mL EP tube for SDS-PAGE sample and add 0.8 μL IPTG(1M) into the culture. Then grow the bacteria at 23 °C and 250 rpm for 16 hours.
+7. Extract 1 mL culture for SDS-PAGE sample into a 1.5 mL EP tube and store the rest of culture for other usages.
+
+## Lysate SDS-PAGE
+
+Reagent: Bacteria culture before and after induction, 5xSDS-PAGE Protein Loading Buffer, Tris-MOPS-SDS Running Buffer, UltraPure sterile water, Deionized water, Protein molecular marker, Coomassie Brilliant Blue Staining Reagent, Coomassie Brilliant Blue Destaining Solution.
+
+Device: ExpressPlus™ PAGE Gel, 10x8, 4-20%, 10 wells, Mini-PROTEAN Tetra Vertical Electrophoresis Cell, Heating block, 1.5 mL EP tube.
+
+Precedure:
+
+Sample-preparation:
+
+1. The sample before induction is the 1mL culture with 0.6 OD600, so there is not any other preparation for it. But the sample after induction should be diluted to 0.6 OD600 and draw 1 mL of the dilution into another EP tube.
+2. Centrifuge them in a micro centrifuge at room temperature at the maximum speed for 1 minute and abandon the supernatant.
+3. Add 50 μL 5xSDS-PAGE Protein Loading Buffer into each EP tube and mix well. Then incubate them in an 85 ºC heating block for 3 minutes, shaking them intensively during the incubation for several times.
+4. Add 100 μL UltraPure sterile water into EP tubes and mix well.
+5. UltraPure sterile water into EP tubes and mix well.
+6. Centrifuge them in a micro centrifuge at room temperature at the maximum speed for 3 minutes. The supernatant is the sample for further usage.
+
+SDS-PAGE:
+
+1. Place gels into the Vertical Electrophoresis Cell and fill the inner portion between the gel(s) and the gel holder with enough Tris-MOPS-SDS Running Buffer.
+2. Load samples and the marker into gel lanes with the appropriate volume depending on gels.
+3. Cover the chamber and firmly connect both the anode and the cathode. Set the voltage on the electrophoresis power supply to a constant voltage of 140 V. Turn ON the power supply.
+4. Allow the gel to electrophorese for 45-90 minutes. Turn OFF the power immediately after the dye front migrates out from the bottom of the gel.
+
+Coomassie Brilliant Blue Staining:
+
+1. Rinse the gel 3 times for 5 minutes with 100 ml deionized water to remove SDS and buffer salts, which interfere with binding of the dye to the protein. Discard each rinse.
+2. Stain the gel with enough Coomassie Brilliant Blue Staining Reagent (20-100 ml) to cover the gel. Stain for 1 hour at room temperature with gentle shaking.
+3. Retrieve Coomassie Brilliant Blue Staining Reagent and wash the gel with enough deionized water to wash off the rest of the dye.
+4. Incubate the gel with Coomassie Brilliant Blue Destaining Solution to cover the gel, and gently shaking the gel overnight.
+5. Observe the band.
+
+## Fluorescence assay
+
+**Reagent:** Bacterial culture, LB medium.
+
+**Device:** 96-well plate, Multimode plate reader (SpectraMax i3).
+
+**Procedure:**
+
+1. Dilute the bacteria culture with LB medium to 1.0 OD600.
+2. Add 200 μL dilution into the well of the 96-well plate.
+3. Place the plate into the multimode plate reader.
+4. Setting the reading area, the luminescence-testing mode, the range of wavelength, and the step.
+5. Close the plate reader and start the reading.
+6. Store and analyze data.
+
+<split/>
+
+# Protein Purification
+
+1. Centrifuge the bacterial liquid (1L centrifuge tube, double-layer lid, high-speed centrifuge, 4500rpm, 12 minutes, at 16 degrees).
+
+2. While waiting for the centrifugation, prepare the lysis buffer: 50mM Tris HCl (pH=8), 300mM NaCl. Resuspend the centrifuged bacterial liquid in 40mL of lysis buffer. Then use a high-pressure homogenizer to break the bacterial liquid.
+
+3. Transfer the broken bacterial liquid to a high-speed centrifuge tube and centrifuge (18500rpm, 4 degrees, 45 minutes). While waiting, prepare two types of elution buffers (20mM imidazole, 350mM imidazole); take 7 1.5mL EP tubes, add 5μL of loading buffer to each for later running of the protein gel (before and after sedimentation); resuspend the nickel beads; add 2mL of nickel bead solution to the column, open the bottom outlet of the column, let the ethanol from the nickel bead solution flow out, and add lysis buffer for washing, trying not to drain it completely.
+
+4. Take the supernatant from the centrifuged solution (bacterial debris + protein solution) and pour it into the nickel column, gently rotate to resuspend the beads, then transfer the solution to a 50mL centrifuge tube. Incubate in a cold room for 1 hour; take a 96-well plate, add 10 wells for each protein, and add 50μL of Bradford reagent, referred to as BF.
+
+5. After incubation, pour the mixture into the column, open the bottom outlet, and take the fifth drop of the sample to add to BF and loading buffer.
+
+6. Add 20mM imidazole elution buffer, adding 4mL each time, gently rotate to resuspend the beads, wait on ice for about 3 minutes, open the bottom outlet, take 10μL to add to BF, mix well, and compare the color changes, repeating multiple times until the color does not change after adding the dye. At the same time, take 20μL from the first wash and the last wash to add to the loading buffer for "before" and "after".
+
+7. Add 350mM imidazole elution buffer, adding 1.5mL each time. Rotate the column to resuspend the beads and fully mix with the elution buffer. Wait on ice for about 3 minutes for the beads to resettle. Open the bottom outlet and connect a 1.5mL EP tube, similarly adding samples to BF and observing the color change; repeat the operation until the color changes to light blue after adding the dye. Pour the multi-tube protein samples into a concentration tube and take 20μL to add to the loading buffer for "elution".
+
+8. Heat all the centrifuge tubes containing protein at 99°C for 5 minutes; briefly centrifuge; load into the protein gel (10μL sample + 10μL marker); run the gel (first at 120V for 15 minutes, then at 200V for 35 minutes).
+
+9. Stain with Coomassie Brilliant Blue solution, then decolorize with Coomassie Brilliant Blue decolorizing solution and water.
+
+10. Concentrate the solution. First, pre-cool the centrifuge to 4 degrees, centrifuge at 2500rpm for 3 minutes, and repeatedly centrifuge to concentrate the solution volume to below 1000μL.
+
+11. Freeze the samples. Add 20% volume of glycerol to the protein solution, aliquot into small tubes, adding 100μL to each tube, and freeze in a -40°C freezer.
+
+# Mass Spectrometry
+
+## In-Gel Digestion of Proteins from SDS-PAGE Gel
+
+Reagents:
+
+1. 25 mM $\ce{NH_4HCO_3}$ (pH 7.8)
+2. 25 mM $\ce{NH_4HCO_3}$/Acetonitrile (ACN) (1:1) (Destaining Solution)
+3. Pure Acetonitrile (ACN)
+4. 20 μL per tube of 1M DTT (prepared in advance) and 20 μL per tube of 1M IAM (prepared in advance)
+5. 50% ACN/0.5% FA (only for use on the second day)
+
+Notes:
+
+1. Ensure thorough mixing (vortex) after adding each solution to fully immerse the gel pieces. Adjust the volume of solutions based on the size of the gel pieces. Remove the solution before proceeding to the next step.
+2. Ensure cleanliness of reagents and equipment throughout the process to avoid keratin contamination.
+
+Procedure:
+
+1. Cut the selected gel bands into approximately 1.5 mm pieces using a gel excision pen or scalpel. Place the pieces into labeled eppendorf (EP) tubes.
+2. Add an appropriate amount of purified water (e.g., Wahaha purified water) to wash the gel pieces twice, ensuring all pieces are fully immersed. Remove the water after washing.
+3. Add 25 mM $\ce{NH_4HCO_3}$/ACN (1:1) (twice the volume of the gel pieces) to the tube. Shake in a thermomixer at 37°C for 10 minutes (500 rpm) to destain. Remove the solution. Repeat until the blue color dissipates (note: destaining is not required if the gel is silver-stained).
+4. Dehydrate the gel pieces by adding pure ACN, shaking for 10 minutes (500 rpm). Repeat once, ensuring the gel pieces turn white. Remove the ACN and vacuum dry for 10 minutes until completely dry.
+5. Add 10 mM DTT (prepared by diluting 10 μL of 1M DTT with 990 μL of 25 mM $\ce{NH_4HCO_3}$) to the gel pieces, and incubate in a thermomixer at 56°C and 500 rpm for 1 hour.
+6. Cool to room temperature, remove the solution, and quickly add 25 mM IAM (prepared by diluting 20 μL of 1M IAM with 780 μL of 25 mM $\ce{NH_4HCO_3}$). Incubate in the dark (e.g., in a drawer) for 45 minutes.
+7. Sequentially wash the gel pieces with 25 mM $\ce{NH_4HCO_3}$ (2x10 minutes), 25 mM $\ce{NH_4HCO_3}$/ACN (1:1) (2x10 minutes), and ACN for 10 minutes (dehydrate until the gel pieces turn white). Vacuum dry for 10 minutes until completely dry.
+8. Based on the amount of gel pieces and the protein content (protein-to-enzyme mass ratio of 50:1), dilute 0.5 μg/μL enzyme with 25 mM $\ce{NH_4HCO_3}$ and add to the gel pieces to fully absorb the enzyme solution. Incubate at 37°C, 500 rpm, for 10 minutes.
+9. Remove the EP tubes. Transfer all the supernatant from each tube to new EP tubes and acidify with 50% FA until the pH is below 5.
+10. Add 200 μL of 50%ACN/0.5%FA to the gel pieces (adjust the volume according to the size of the gel pieces). Vortex mix in a thermomixer at 500 rpm for 10 minutes, then centrifuge at 3000g for 3 minutes. Transfer all supernatants from each tube to the corresponding new EP tubes from step 9. Repeat this step once.
+11. Place the new EP tubes in a SpeedVac to dry. Redissolve the samples in 100 μL of 0.1% FA, vortex mix, and centrifuge at high speed (12000g) for 5 minutes in preparation for desalting.
+
+## Desalting (Stage-tip Method)
+
+Buffer A: 0.1% FA; Buffer B: 70% ACN, 0.1% FA
+
+1. Place the stage-tip in a 1.5 mL EP tube without a cap, using a white frit. Add 200 μL of Buffer B to the tip, centrifuge at 500g for 3 minutes, and discard the flow-through. Repeat once.
+2. Add 200 μL of Buffer A to the tip, centrifuge at 500g for 3 minutes, and discard the flow-through. Repeat once.
+3. Load the protein digest supernatant (from step 11 above) onto the tip, centrifuge at 500g for 3 minutes. Collect the flow-through and reload it onto the tip once.
+4. Wash the tip with 100 μL of Buffer A, centrifuge at 500g for 3 minutes. Discard the flow-through.
+5. Elute the peptides with 200 μL of Buffer B into a new EP tube, centrifuge at 500g for 3 minutes.
+6. Dry the EP tube in a SpeedVac (keep the white frit).
+7. Submit the samples to the appropriate personnel for further analysis.

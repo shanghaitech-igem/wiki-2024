@@ -16,15 +16,8 @@ const Gallery: React.FC<GalleryProps> = ({ srcList, title, width, height }) => {
   const parsedUrls = srcList.map((url) => parseRemoteURL(url));
 
   return (
-    <PhotoProvider>
-      <Tabs forceRenderTabPanel>
-        <TabList className={styles.tabList}>
-          {parsedUrls.map((url, index) => (
-            <Tab className={styles.tab} key={`tab-${url}`}>{`Image ${
-              index + 1
-            }`}</Tab>
-          ))}
-        </TabList>
+    <PhotoProvider maskOpacity={0.8}>
+      <Tabs className={styles.tabs} forceRenderTabPanel>
         {parsedUrls.map((url, index) => (
           <TabPanel
             key={`tabpanel-${index}`}
@@ -45,6 +38,13 @@ const Gallery: React.FC<GalleryProps> = ({ srcList, title, width, height }) => {
             </PhotoView>
           </TabPanel>
         ))}
+        <TabList className={styles.tabList}>
+          {parsedUrls.map((url, index) => (
+            <Tab className={styles.tab} key={`tab-${url}-${index}`}>
+              <img src={url} alt={`Thumbnail ${index + 1}`} />
+            </Tab>
+          ))}
+        </TabList>
       </Tabs>
     </PhotoProvider>
   );
