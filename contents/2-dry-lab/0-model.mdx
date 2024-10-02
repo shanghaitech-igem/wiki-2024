@@ -467,7 +467,7 @@ The modeled systems **with solution** are shown below. (The files are decimated 
 
 </Collapse>
 
-em 文件 命令行和相关参数图
+We performed a 6000-step energy using the following .mdp file:
 
 <Collapse title="em.mdp">
 ```mdp
@@ -490,12 +490,11 @@ pbc = xyz ; Periodic Boundary Conditions in all 3 dimensions
 ```
 </Collapse>
 
-
-
 import { data_em_potential, layout_em_potential } from "data/model/em-potential";
 
 <Plot data={data_em_potential} layout={layout_em_potential} />
 
+This potential plot demonstrates the nice, steady convergence of $E_{pot}$.
 
 ### c. NVT (Canonical Ensemble) stage
 
