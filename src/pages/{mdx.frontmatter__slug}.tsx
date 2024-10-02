@@ -1,6 +1,7 @@
 import * as React from "react";
 import { graphql } from "gatsby";
 import { MDXProvider } from "@mdx-js/react";
+import { Link } from "gatsby";
 
 import Video from "src/components/mdx/video";
 import PDF from "src/components/mdx/pdf";
@@ -13,6 +14,7 @@ import Model from "src/components/mdx/model-lazy";
 import Collapse from "src/components/mdx/collapse";
 import { Tabs, Tab } from "src/components/mdx/tabs";
 import Profile from "src/components/mdx/profile";
+
 const components = {
   img: Image,
   Video,
@@ -27,6 +29,7 @@ const components = {
   Tabs,
   Tab,
   Profile,
+  Link,
 };
 
 import Layout from "src/components/layout";

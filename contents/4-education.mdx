@@ -96,7 +96,7 @@ By finding and replacing, the bases A, C, G, and T are converted to the A4 note 
 
 ### The Method
 
-First, you need to download the music software sonic pi with the zip package.
+First, you need to [download](https://gitlab.igem.org/zivmax/igem-dna-sonify/-/raw/main/downloads/dna_to_music.zip) the music software sonic pi with the zip package.
 
 After that, edit the sequence of bases you want to musicalize into a file similar to gulo.fa, open the file dnason with VScode, and type python dnason.py gulo.fa 0 > Sono.txt in terminal (python: environment variable; dnason.py: the executed program, gulo.fa: contains your base sequence) and run it, you get the sonic.txt folder.
 
@@ -138,6 +138,15 @@ if __name__=="__main__":
 
 If you want to experience it for yourself, click [here](https://igem-dna-sonify-zivmax-947a69ae9a7018c1ab1f7b3179105f9fac104ed9.igem.wiki/).
 
+## example
+
+We created a piece of music themed around itching using suno AI and fed it into our program to find matches. The gene most similar to the music is AKT1.
+| Music File | Corresponding Gene |Function |
+| --- | --- | --- |
+| Itchy Life | AKT1 | Akt1 is involved in the cell survival pathway by inhibiting apoptosis. It can also induce protein synthesis pathways, making it an important signaling protein in pathways that lead to skeletal muscle hypertrophy and general tissue growth. Due to its ability to block apoptosis and subsequently promote cell survival, Akt1 has been shown to play a major role in various tumors. Akt (formerly known as Akt1) was first identified as an oncogene in the transforming retrovirus AKT8.|
+
+We provide you a [json file](https://gitlab.igem.org/zivmax/igem-dna-sonify/-/raw/main/downloads/database.json) that contain information of 8 gene sequence to experience our program.
+
 ## Feedback
 
 We got some feedback on the website.
@@ -154,7 +163,7 @@ In the following, we hope to combine our works with diseases to tell more people
 
 <split />
 
-# The Minecraft Module
+# The Minecraft Mod
 
 ## Why we do this?
 
@@ -194,7 +203,7 @@ After we released the mod introduction video, we were greeted by a lot of commen
 <Tabs>
   <Tab title="Pipette">
 
-    ![Demonstration of pipette in the module](server/contents/edu/mc/mod-design-1.png)
+    ![Demonstration of pipette in the mod](server/contents/edu/mc/mod-design-1.png)
 
     Our Minecraft Synthetic Biology mod has been meticulously crafted to mirror actual laboratory tools, instruments, and procedures.
 
@@ -250,17 +259,22 @@ Following the design phase, our objective is to disseminate the mod and solicit 
 
 We produced a promotional video on Bilibili and published the mod alongside a tutorial on Bilibili, Mcreator forums, and the Minecraft Mod Wiki, platforms equipped with comment sections for player reviews and suggestions.
 
+The page of our mod on the Mcreator has been archived to `gitlab.igem.org` [here](https://mcreator-page-archive-zivmax-0f65df246fe94a9d70e04fda110a192ca9.igem.wiki)
+
 We will iteratively update the mod, incorporating new genes, functional blocks, items, and mechanisms, to broaden players' comprehension of synthetic biology experiments.
 
-## Do You **Want to Play?**
+## Want to Play?
 
-Our mod is available in both English and Chinese. Click [here](https://gitlab.igem.org/zivmax/mcreator-page-archive/-/raw/main/downloads/igem-shanghaitech-synthetic-bio-forge-1.20.1.jar) to download.
+Our mod is available in both English and Chinese, and been hosted on `gitlab.igem.org`.
+Click the links bellow to download:
+
+- [English Version](https://gitlab.igem.org/zivmax/mcreator-page-archive/-/raw/main/downloads/igem-shanghaitech-synthetic-bio-forge-1.20.1-english.jar)
+- [Chinese Version](https://gitlab.igem.org/zivmax/mcreator-page-archive/-/raw/main/downloads/igem-shanghaitech-synthetic-bio-forge-1.20.1-chinese.jar)
 
 The mod is compatible with Minecraft Java Edition 1.20.1 Fabric version. Please use this version to install the mod.
 
-If you want to know more about this module, please check the tutorial below.
-
-<PDF src="server/contents/edu/mc/module-tutorial.pdf" />
+If you want to know more about this mod, please check this <Link to="/education/minecraft">tutorial</Link> in our wiki.
+And chinese version of the tutorial hosted on BiliBili is [here](https://www.bilibili.com/opus/983350943055609865)
 
 <split />
 

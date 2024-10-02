@@ -767,6 +767,12 @@ gmx mdrun -deffnm md -gpu_id 0 -nb gpu -pme gpu -pmefft gpu -bonded gpu -update 
   ]} 
 />
 
+In the figures above, pink represents the initial state of the uncleaved md stage, green represents the final state of the uncleaved md stage; blue represents the initial state of the cleaved md stage, and brown represents the final state of the cleaved md stage.
+
+In both scenarios, β10-E5-β11 is not embedded within β1-9, which is the expected outcome in the uncleaved condition.
+
+Compare the structures of the uncleaved form in the before-and-after contrast (figure 1 and figure 2 in the gallery above), it can be observed that in the uncut state, both the β1-9 and β10-E5-β11-K5 segments maintain their relative positions stably, indicating that in the uncut condition, GFP is unlikely to revert to its fluorescent state.
+
 import { data_md_rmsd, layout_md_rmsd } from "data/model/md-rmsd";
 
 <Plot data={data_md_rmsd} layout={layout_md_rmsd} />
@@ -1568,16 +1574,11 @@ Regrettably, hydrogen bonds and other interactions (as shown in Figure 4.4-1 and
   </Tab>
 </Tabs>
 
-
-
-
-
 ## 3. Discussion
 
 1. Although the lengthy drug procurement cycle prevented us from experimentally validating the virtual screening outcomes before the deadline of this year's iGEM competition, based on the [quantitative results](#2-results),_(Click to see the ΔG bind and ligand strain energy, given that_ **below -50** and **0-5** _are the desirable results respectively.)_ **these small molecules hold considerable promise for achieving stronger inhibitory effects than those obtained from laboratory screenings.**
 
 2. However, it is worth noting that without experimental validation, the **small molecules may be subject to cleavage by the V8 protease**, thereby failing to achieve the desired inhibitory effect. We will conduct experiments in the future to verify the results of the virtual screening.
-
 
 3. Suggestions for beginners of virtual screening:
 

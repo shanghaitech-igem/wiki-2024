@@ -72,7 +72,8 @@ export function generateNavItems(): NavItemType[] {
     // Skip items from the specific folders
     if (
       parent.sourceInstanceName === "test" ||
-      parent.sourceInstanceName === "docs"
+      parent.sourceInstanceName === "docs" ||
+      parent.sourceInstanceName === "lib"
     )
       return;
 
