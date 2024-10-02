@@ -40,6 +40,8 @@ main {
       top: 30vh;
 
       .title-banner {
+        display: flex;
+        align-items: center;
         $line-width: 4em;
         font-family: fonts.$pacify-layout;
         font-weight: bold;
@@ -53,7 +55,6 @@ main {
           height: 0.1em;
           background-color: #c0b2a6;
           position: absolute;
-          top: 50%;
           left: 0;
         }
       }
