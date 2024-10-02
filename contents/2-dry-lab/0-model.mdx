@@ -767,11 +767,14 @@ gmx mdrun -deffnm md -gpu_id 0 -nb gpu -pme gpu -pmefft gpu -bonded gpu -update 
   ]} 
 />
 
-In the figures above, pink represents the initial state of the uncleaved md stage, green represents the final state of the uncleaved md stage; blue represents the initial state of the cleaved md stage, and brown represents the final state of the cleaved md stage.
+In the figures above, the **1st and the 2nd** figure are from the **uncleaved situation**, while **the 3rd and the 4th** are from the **cleaved situation**. As for **the meaning of different colors**, pink represents the initial state of the uncleaved md stage, green represents the final state of the uncleaved md stage; blue represents the initial state of the cleaved md stage, and brown represents the final state of the cleaved md stage.
 
 In both scenarios, β10-E5-β11 is not embedded within β1-9, which is the expected outcome in the uncleaved condition.
 
-Compare the structures of the uncleaved form in the before-and-after contrast (figure 1 and figure 2 in the gallery above), it can be observed that in the uncut state, both the β1-9 and β10-E5-β11-K5 segments maintain their relative positions stably, indicating that in the uncut condition, GFP is unlikely to revert to its fluorescent state.
+Comparing the structures of the uncleaved form in the before-and-after contrast (figure 1 and figure 2 in the gallery above), it can be observed that in the uncleaved state, **both the β1-9 and β10-E5-β11-K5 segments maintain their relative positions stably**, indicating that in the uncleaved condition, **GFP is unlikely to revert to its fluorescent state.**
+
+The _self-assembly process was not fully completed in the cleaved state_, which can be seen from the rmsd plots below that if the self-assembly were complete, the rmsd plot should stabilize at last. However, compared to the uncleaved state, it is evident that there is _a significant increase in displacement in the cleaved state_, indicating **a less stable system**, which is what we expect. Particularly in the β10-E5-β11 section after cleavage (comparing the 2nd and the 4th figure above), there is **a noticeable interaction and morphological recovery between β10 and β11**, with E5 being **significantly folded** by this interaction, which is precisely the function we hope the flipGFP system will achieve. It is possible that the complete self-assembly process still requires _a longer simulation time_ and _with more stringent restrictions_.
+
 
 import { data_md_rmsd, layout_md_rmsd } from "data/model/md-rmsd";
 
@@ -781,10 +784,6 @@ import { data_md_rmsd_cleaved, layout_md_rmsd_cleaved } from "data/model/md-rmsd
 
 <Plot data={data_md_rmsd_cleaved} layout={layout_md_rmsd_cleaved} />
 
-uncleaved：证明无法自组装 且未切割部分稳定没什么变化
-cleaved：没有完全自组装，但是 beta10 11 有所恢复
-
-相关图
 
 ## 6. Discussion
 
