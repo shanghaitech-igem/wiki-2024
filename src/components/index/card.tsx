@@ -9,6 +9,7 @@ interface CardProps {
   title: string;
   imgSrc: string;
   reverse?: boolean;
+  readmoreURL?: string;
   children: React.ReactNode;
 }
 
@@ -18,6 +19,7 @@ const Card: React.FC<CardProps> = ({
   title,
   imgSrc: imageSrc,
   reverse = false,
+  readmoreURL,
   children,
 }) => {
   imageSrc = parseRemoteURL(imageSrc);
@@ -30,7 +32,10 @@ const Card: React.FC<CardProps> = ({
         </div>
         <h2 className={styles.title}>{title}</h2>
         <div className={styles.description}>{children}</div>
-        <Link className={styles.readmore} to="/read-more">
+        <Link
+          className={styles.readmore}
+          to={readmoreURL ? readmoreURL : "/description"}
+        >
           READ MORE
         </Link>
       </div>

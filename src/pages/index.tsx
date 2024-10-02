@@ -2,8 +2,9 @@ import * as React from "react";
 import Layout from "src/components/layout";
 import Seo from "src/components/seo";
 import Favicon from "src/components/favicon";
+import SVG from "react-inlinesvg";
 import SvgStatic from "src/components/index/svg-static";
-import Card from "src/components/index/card";
+import SvgImage from "src/components/index/svg-img";
 import {
   main,
   stems,
@@ -13,8 +14,8 @@ import {
 import { leaves as imgLeaves } from "src/components/index/objects-img";
 import * as styles from "src/styles/modules/index.module.scss";
 import ScrollReveal from "scrollreveal";
-import SVG from "react-inlinesvg";
-import SvgImage from "src/components/index/svg-img";
+import Card from "src/components/index/card";
+import { cardData } from "src/components/index/objects-card";
 
 const IndexPage: React.FC = () => {
   // React.useEffect(() => {
@@ -90,130 +91,18 @@ const IndexPage: React.FC = () => {
         style={{ position: "relative", visibility: "hidden" }}
       />
       <div className={styles.contentContainer}>
-        <Card
-          number="01"
-          subtitle="FROM LAB TO DAILY CARE"
-          title="Pioneering a New Era in Personal Care"
-          imgSrc="server/home/scrath-1.png"
-        >
-          Itching, though often perceived as a minor issue, can have a
-          significant impact on people’s quality of life. Persistent itching not
-          only causes intense discomfort but also leads to involuntary
-          scratching.
-        </Card>
-        <Card
-          reverse
-          number="02"
-          subtitle="NAUGHTY SCRATCHING"
-          title="Scratching is a Natural Response to Itching"
-          imgSrc="server/home/scrath-1.png"
-        >
-          Scratching not only worsens skin damage but can also result in
-          infections, inflammation, and even scarring, which can severely affect
-          both the appearance and mental well-being of the patient.
-        </Card>
-        <Card
-          number="03"
-          subtitle="ITCHING AND HEALTH"
-          title="Itching Can Be a Sign of Serious Conditions"
-          imgSrc="server/home/scrath-1.png"
-        >
-          For certain vulnerable groups, such as individuals with weakened
-          immune systems or the elderly, itching can be a sign of more serious
-          underlying health conditions, such as skin disorders or complications
-          from diabetes.
-        </Card>
-        <Card
-          reverse
-          number="04"
-          subtitle="THE IMPORTANCE OF ITCHING"
-          title="Addressing Itching Is Crucial for Overall Health"
-          imgSrc="server/home/scrath-1.png"
-        >
-          Thus, addressing itching in a timely and effective manner is not only
-          crucial for improving patients’ quality of life but also vital for
-          ensuring their overall health.
-        </Card>
-        <Card
-          number="05"
-          subtitle="LIMITATIONS OF CURRENT TREATMENTS"
-          title="Challenges with Existing Anti-Itch Products"
-          imgSrc="server/home/scrath-1.png"
-        >
-          Although a wide range of anti-itch products are available, most focus
-          on using antibiotics and other medications to directly target
-          pathogens. While effective in treating the underlying causes, these
-          treatments often do not provide immediate or substantial relief from
-          the itching, leaving patients to endure discomfort during the healing
-          process.
-        </Card>
-        <Card
-          reverse
-          number="06"
-          subtitle="SIDE EFFECTS OF TREATMENTS"
-          title="Hormonal Treatments and Their Risks"
-          imgSrc="server/home/scrath-1.png"
-        >
-          Additionally, some products that claim to relieve itching contain
-          hormones, which can lead to side effects such as skin thinning and
-          hyperpigmentation with prolonged use, while offering limited relief.
-        </Card>
-        <Card
-          number="07"
-          subtitle="OUR INNOVATIVE APPROACH"
-          title="Developing Green, Safe Inhibitors"
-          imgSrc="server/home/scrath-1.png"
-        >
-          Our project recognizes the critical importance of addressing itching
-          and is dedicated to developing green, safe inhibitors that
-          scientifically address persistent itching caused by Staphylococcus
-          aureus. This is achieved through an in-depth understanding of the V8
-          protease mechanism.
-        </Card>
-        <Card
-          reverse
-          number="08"
-          subtitle="IMPROVING QUALITY OF LIFE"
-          title="Innovative Solutions for Personal Care"
-          imgSrc="server/home/scrath-1.png"
-        >
-          Our solution not only alleviates patient discomfort and improves their
-          quality of life but also introduces an innovative approach to personal
-          care product development, breathing new life into the skin health
-          industry.
-        </Card>
-        <Card
-          number="09"
-          subtitle="OUR PHILOSOPHY"
-          title="Managing Bacteria for Better Health"
-          imgSrc="server/home/scrath-1.png"
-        >
-          <p>
-            Blind sterilization of bacteria isn't always ideal, as it can lead
-            to antibiotic overuse. Staphylococcus aureus is common and can't be
-            completely eradicated. We view bacteria as part of the human
-            ecosystem and focus on reducing their harmful effects to prevent
-            severe diseases.
-          </p>
-          <p>
-            Our products aim to manage itching from Staphylococcus aureus,
-            stopping issues from escalating.
-          </p>
-        </Card>
-
-        <Card
-          reverse
-          number="10"
-          subtitle="APPLICATION"
-          title="Creating Specialized Cosmeceuticals"
-          imgSrc="server/home/scrath-1.png"
-        >
-          We aim to develop a safe product that specifically targets persistent
-          itching caused by Staphylococcus aureus. By combining our screened
-          effective compounds with existing skincare products, we strive to
-          create specialized cosmeceuticals that suppress itching early on,
-          thereby reducing the harm caused by scratching.
-        </Card>
+        {cardData.map((card, index) => (
+          <Card
+            key={index}
+            number={card.number}
+            subtitle={card.subtitle}
+            title={card.title}
+            imgSrc={card.imgSrc}
+            reverse={card.reverse}
+          >
+            {card.content}
+          </Card>
+        ))}
       </div>
       <div className={styles.slogan}>Calm your skin, Elevate your life</div>
     </Layout>
