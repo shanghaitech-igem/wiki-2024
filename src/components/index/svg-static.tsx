@@ -2,7 +2,7 @@ import React from "react";
 import SVG from "react-inlinesvg";
 
 interface SvgProps {
-  raw: string;
+  svg: string;
   x: number;
   y: number;
   size?: number;
@@ -12,7 +12,7 @@ interface SvgProps {
 }
 
 const SvgStatic: React.FC<SvgProps> = ({
-  raw,
+  svg,
   x,
   y,
   size,
@@ -33,7 +33,7 @@ const SvgStatic: React.FC<SvgProps> = ({
           overflow: "visible",
         }}
       >
-        <SVG src={raw} />
+        <SVG src={svg} />
       </div>
     </>
   );
