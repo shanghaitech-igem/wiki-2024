@@ -457,6 +457,8 @@ The modeled systems **with solution** are shown below. (The files are decimated 
   src="server/contents/model/md-prepared-cleaved-decimated.stl"
 />
 
+
+
 ### b. EM (Energy Minimization) stage
 
 <Collapse title="Explanation of EM">
@@ -504,6 +506,8 @@ import { data_em_potential, layout_em_potential } from "data/model/em-potential"
 <Plot data={data_em_potential} layout={layout_em_potential} />
 
 This potential plot demonstrates the nice, steady convergence of $E_{pot}$.
+
+
 
 ### c. NVT (Canonical Ensemble) stage
 
@@ -595,7 +599,6 @@ import { data_nvt_temperature, layout_nvt_temperature } from "data/model/nvt-tem
 
 
 
-
 ### d. NPT (Isothermal-Isobaric Ensemble) stage
 
 <Collapse title="Explanation of NPT">
@@ -605,6 +608,7 @@ import { data_nvt_temperature, layout_nvt_temperature } from "data/model/nvt-tem
 > > _NPT represents the Isothermal-Isobaric Ensemble, where the number of particles (N), pressure (P), and temperature (T) are controlled. NPT simulations allow for the study of systems under conditions where both temperature and pressure can fluctuate, mimicking real-world scenarios more closely. This ensemble is ideal for investigating volume changes, such as protein folding or the behavior of liquids under pressure._
 
 </Collapse>
+
 
 After the nvt stage, **250 ns simulation** in the NPT ensemble was performed at **1 bar**.
 
@@ -684,6 +688,7 @@ gmx mdrun -deffnm npt -gpu_id 0 -nb gpu -pme gpu -pmefft gpu -bonded gpu  -updat
 > > _Molecular Dynamics is a simulation method that models the motion of atoms or molecules in a system over time. By applying Newton's laws of motion to each atom, MD simulates the physical movements, collisions, and responses to forces within the system. It provides insights into dynamic processes, such as conformational changes in proteins or the diffusion of molecules in a solvent._
 
 </Collapse>
+
 
 Finally, molecular dynamics simulation was performed **for 100 ns** with an integration **timestep of 2 fs**.
 
@@ -767,6 +772,16 @@ gmx mdrun -deffnm md -gpu_id 0 -nb gpu -pme gpu -pmefft gpu -bonded gpu -update 
   ]} 
 />
 
+In the figures above, the **1st and the 2nd** figure are from the **uncleaved situation**, while **the 3rd and the 4th** are from the **cleaved situation**. As for **the meaning of different colors**, pink represents the initial state of the uncleaved md stage, green represents the final state of the uncleaved md stage; blue represents the initial state of the cleaved md stage, and brown represents the final state of the cleaved md stage.
+
+In both scenarios, β10-E5-β11 is not embedded within β1-9, which is the expected outcome in the uncleaved condition.
+
+Comparing the structures of the uncleaved form in the before-and-after contrast (figure 1 and figure 2 in the gallery above), it can be observed that in the uncleaved state, **both the β1-9 and β10-E5-β11-K5 segments maintain their relative positions stably**, indicating that in the uncleaved condition, **GFP is unlikely to revert to its fluorescent state.**
+
+The _self-assembly process was not fully completed in the cleaved state_, which can be seen from the rmsd plots below that if the self-assembly were complete, the rmsd plot should stabilize at last. However, compared to the uncleaved state, it is evident that there is _a significant increase in displacement in the cleaved state_, indicating **a less stable system**, which is what we expect. Particularly in the β10-E5-β11 section after cleavage (comparing the 2nd and the 4th figure above), there is **a noticeable interaction and morphological recovery between β10 and β11**, with E5 being **significantly folded** by this interaction, which is precisely the function we hope the flipGFP system will achieve. It is possible that the complete self-assembly process still requires _a longer simulation time_ and _with more stringent restrictions_.
+
+It is worth noting that observing the blue and brown alone in Figure 4 may not be as striking in terms of morphological recovery, as the blue represents the initial state of the md stage, not the initial state of the β10-E5-β11 segment. Its actual initial state can be seen in [Protein 2.6](#4-molecular-dynamics-using-gromacs). However, recall that the initial state of the β10-E5-β11 segment is the same in both the uncleaved and cleaved conditions. Therefore, by comparing the green (results of the uncleaved state) and brown (results of the cleaved state), it is evident that the folding of β10-E5-β11 is quite pronounced.
+
 import { data_md_rmsd, layout_md_rmsd } from "data/model/md-rmsd";
 
 <Plot data={data_md_rmsd} layout={layout_md_rmsd} />
@@ -775,16 +790,20 @@ import { data_md_rmsd_cleaved, layout_md_rmsd_cleaved } from "data/model/md-rmsd
 
 <Plot data={data_md_rmsd_cleaved} layout={layout_md_rmsd_cleaved} />
 
-uncleaved：证明无法自组装 且未切割部分稳定没什么变化
-cleaved：没有完全自组装，但是 beta10 11 有所恢复
-
-相关图
 
 ## 6. Discussion
 
-1. 限制没有完全对应（因为时间限制无法再次模拟） 欢迎讨论
+- The model simulates and helps vitualize the recovery of the shape of β10 and β11 after the flipGFP has been cleaved.
 
-2. 好处：薛定谔+gromacs 软件优势（优于 NAMD）
+- Due to the limitations of time and computational resources, we have found it challenging to conduct more refined and longer simulations. However, by reviewing the literature and consulting with relevant personnel, we have identified the following areas that can still be optimized:
+
+It was mentioned in the aforementioned reference[^3] that, 
+
+> Due to the many hydrogen bonding interactions between β10-11 (in β10-E5-β11-K5) and their neighboring β sheets in β1-9, the separation of β10-11 from β1-9 could take millisecond or longer timescale.
+
+Whereas, in our simulation, we used the mode `pbc = xyz` and may not be the restrictions that could satisfy the need to simulate the system in 100ns.
+
+In the future, we could apply stronger restrictions and run longer time to help us acquire the expected results
 
 <split/>
 # Relative Fluorescence Model
@@ -1568,16 +1587,11 @@ Regrettably, hydrogen bonds and other interactions (as shown in Figure 4.4-1 and
   </Tab>
 </Tabs>
 
-
-
-
-
 ## 3. Discussion
 
 1. Although the lengthy drug procurement cycle prevented us from experimentally validating the virtual screening outcomes before the deadline of this year's iGEM competition, based on the [quantitative results](#2-results),_(Click to see the ΔG bind and ligand strain energy, given that_ **below -50** and **0-5** _are the desirable results respectively.)_ **these small molecules hold considerable promise for achieving stronger inhibitory effects than those obtained from laboratory screenings.**
 
 2. However, it is worth noting that without experimental validation, the **small molecules may be subject to cleavage by the V8 protease**, thereby failing to achieve the desired inhibitory effect. We will conduct experiments in the future to verify the results of the virtual screening.
-
 
 3. Suggestions for beginners of virtual screening:
 
@@ -1585,4 +1599,9 @@ Regrettably, hydrogen bonds and other interactions (as shown in Figure 4.4-1 and
 >
 > - When a protein has multiple binding pockets, ensure that the selected molecules include those that occupy multiple pockets simultaneously as well as those that occupy different individual pockets, to ensure **comprehensive** experimental validation.
 
- 
+
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+**Visit** [our models on iGEM gitlab](https://gitlab.igem.org/2024/software-tools/shanghaitech-china/-/tree/main/Modeling) **for more details.**

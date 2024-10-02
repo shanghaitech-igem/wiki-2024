@@ -1,0 +1,81 @@
+---
+title: "Results"
+favicon: "server/test/igem-favicon.svg"
+slug: "results"
+---
+
+# V8 Protease Purification
+
+## Plasmid Design & Construction
+
+The V8 protease expression plasmid was modified to remove the signal peptide. A four-amino-acid mutation was introduced into the propeptide to prevent self-degradation of the V8 protease in the Escherichia coli system, facilitating easier protein purification. Using this modified plasmid, we successfully obtained the V8 protease precursor, which was later activated through enzymatic cleavage.
+
+```
+before:
+LSSKAMDNHPQQTQSSKQQTPKIQKGGNLKPLEQREHAN
+after:
+LSSKAMDNHPQQTQSSKQQTPKIQKGGNLKPLQQRSHP
+```
+
+![pET-28a-His(C)-pro-sspA-mut4 Map](assets/pET-28a-His(C)-pro-sspA-mut4 Map.png)
+
+We synthesized the gene sequence of V8 protease according to the preferences of translation in Escherichia coli, using PCR to amplify both the pro and mature sequences of V8 protease while introducing four amino acid mutations. The constructed plasmid was confirmed by sequencing, and after amplification in DH5α, it was transformed into the BL21 (DE3) strain for expression and purification.
+
+## V8 Protease Expression and Purification
+
+We synthesized the gene sequence of V8 protease, tailored to the codon preferences for efficient translation in Escherichia coli. Using PCR, we amplified both the pro and mature sequences of V8 protease, incorporating four specific amino acid mutations. The constructed plasmid was verified through sequencing, amplified in DH5α, and subsequently transformed into the BL21 (DE3) strain for expression and purification.
+
+We added a His tag to the C-terminus of the constructed V8 protease and purified the protein using Nickel affinity chromatography. From the protein gel image, we observed the target protein at the sixth band in the marker (corresponding to a molecular weight of 39 kDa), which is consistent with the theoretical prediction. We also performed a Western blot using anti-His antibodies, and the results showed a positive signal, indicating that we successfully expressed the target protein.
+
+![Protein purification gel image.1: Flow Through; 2: Supernatant; 3: Wash flow-through; 4: Wash buffer; 5: Elution flow-through; 6: Elution buffer](server/contents/wetlab/result/v8gel-1.png)
+
+![Western blot result image. 1: Flow Through; 2: Supernatant; 3: Wash flow-through; 4: Wash buffer; 5: Elution flow-through; 6: Elution buffer](server/contents/wetlab/result/v8gel-2.png)
+
+## Activation of V8 Protease
+
+Next, we will use thermolysin to cleave the Ni-purified V8 protease protein for activation, resulting in V8 protease with the pro-sequence removed. After a second purification using a Q column, the gel image shows that the target protein band has shifted from the original sixth band to the fourth band, corresponding to a molecular weight of 25 kDa.
+
+![Protein purification gel image; The three visible bands in the image represent the V8 protease after cleavage with thermolysin and subsequent second purification using the Q column.](server/contents/wetlab/result/v8act.jpg)
+
+## Enzyme Activity Assay
+
+We used Z-leu-leu-glu-AMC as the substrate for V8 protease to test its activity. AMC (7-amino-4-methylcoumarin) is a fluorescent group commonly used in biochemistry for detecting protease activity. When cleaved by proteases, AMC releases a free amine that emits strong fluorescence upon excitation.After enzyme activation, we immediately incubated V8 protease with the substrate and promptly measured the fluorescence intensity of the fluorescent group using a microplate reader (Ex/Em: 340/460 nm) after adding the substrate.
+
+# Drug Screening
+
+We aim to find a green and safe inhibitor of V8 protease. With this consideration, we have chosen several compound libraries for drug screening: the Natural Compound Library, Bioactive Compound Library, Clinical Compound Library, and Approved Drug Library. High-throughput screening technology uses microplates as experimental tools, allowing for convenient and rapid automatic liquid addition to quickly screen potential inhibitors of V8 protease. We have successfully purified active V8 protease, and we will further use a fluorescence system and a plate reader to measure fluorescence intensity as an indicator of V8 protease activity, combining this with high-throughput screening to identify potential inhibitors from the aforementioned compound libraries.
+
+![Drug screening assay](server/contents/wetlab/result/assay.jpg)
+
+The V8 protein was diluted to final concentrations of 1 μM, 0.5 μM, 0.25 μM, and 0.125 μM, and the enzyme cleavage curves were measured using a microplate reader. The curves exhibited good linearity at concentrations greater than 0.125 μM, making them suitable for drug screening.
+
+In our assay, we used 45 μL of V8 protein (final concentration 0.125 μM) and 5 μL of substrate (final concentration 20 μM), along with an inhibitor (10 μM) to dilute the protein. The substrate buffer consisted of enzyme activity test buffer at pH 8.0, containing 50 mM Tris-HCl, 5 mM EDTA, and 0.1% Triton X-100, along with 0.1% BSA, to create the enzyme activity system for drug screening.
+
+## Result
+
+Suppression rate is calculated as follows.
+
+$\text{Suppression Rate}=(\text{Slope of Experimental Group}−\text{Slope of Negative Control})$
+
+The suppression rate curve is plotted alongside the negative control curve, where the red curve represents the control curve, and the black curve represents the curve after suppression.
+
+|         Name         |                          Suppression Rate                          |                                                   Resource                                                   |
+| :------------------: | :----------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------: |
+|        jqez5         | ![Suppression Rate: 43%](server/contents/wetlab/result/drug/1.png) |      A synthetic EZH2 inhibitor that can be used for targeted therapy in lung cancer and other tumors.       |
+| PROTAC ERRα ligand 2 | ![Suppression Rate: 49%](server/contents/wetlab/result/drug/2.png) |    PROTAC ERRα Degrader-2 is a compound composed of an MDM2 ligand, a linker, and an ERRα binding moiety.    |
+|         thz2         | ![Suppression Rate: 44%](server/contents/wetlab/result/drug/3.png) |             A synthetic compound used for the study of cyclin-dependent kinase (CDK) inhibition.             |
+|      fiauridine      | ![Suppression Rate: 61%](server/contents/wetlab/result/drug/4.png) |                              Microbial metabolites, plant, or animal extracts.                               |
+|        t-5224        | ![Suppression Rate: 47%](server/contents/wetlab/result/drug/5.png) |           Inhibiting the invasion and metastasis of liver cancer cells through chemical synthesis.           |
+|    vtp-27999 tfa     | ![Suppression Rate: 44%](server/contents/wetlab/result/drug/6.png) |   It is a synthetic selective renin inhibitor used for the treatment of hypertension and related diseases.   |
+|        LQZ-7i        | ![Suppression Rate: 71%](server/contents/wetlab/result/drug/7.png) | A chemical synthetic inhibitor targeting survivin, which can effectively suppress the growth of tumor cells. |
+|       GFB8438        | ![Suppression Rate: 66%](server/contents/wetlab/result/drug/8.png) |   It is an effective TRPC5 inhibitor with good selectivity and in vitro activity, synthesized chemically.    |
+|       BMV-8c3o       | ![Suppression Rate: 41%](server/contents/wetlab/result/drug/9.png) |  A chemically synthesized small molecule used for studying biological activity or pharmacological effects.   |
+
+# In vitro Fluorescent Reporting System
+
+To test the cleavage of target sequences by proteases in the fluorescent reporter system in vitro, and to observe the reconstitution of the two protein segments in the Flip system after cleavage, we purified FlipGFP beta sheet 1-9 and beta sheet 10-11 separately. Each specific protease target cleavage sequence requires a different beta sheet 10-11, as the target sequence is inserted within this region.
+
+When testing the FlipGFP fluorescent reporter system in vitro, we conducted the experiment in three stages, each involving a different target cleavage sequence. These included one TEV protease cleavage sequence and two V8 protease cleavage sequences, which provided guidance for the experimental design of subsequent in vivo validation.
+
+
+# In vivo Pruritus Fluorescent System
