@@ -45,7 +45,7 @@
       left: 0;
       font-family: fonts.$pacify-content-secondary;
       font-size: 14rem;
-      opacity: 0.2;
+      opacity: 0.3;
       font-weight: 800;
       transform: translate(-65%, -40%);
       z-index: -1;
@@ -74,7 +74,7 @@
           height: 0.1em;
           background-color: #c0b2a6;
           position: absolute;
-          left: 0;
+          left: 0.1rem;
         }
       }
     }
