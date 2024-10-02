@@ -55,7 +55,8 @@ const IndexPage: React.FC = () => {
           <p className={`${styles.titleBanner} load-hidden`}>
             2024 SHANGHAITECH CHINA
           </p>
-          <p className={`${styles.title} load-hidden`}>PACIFY</p>
+          <p className={`${styles.title} load-hidden`}> Calm skin</p>
+          <p className={`${styles.title} load-hidden`}> Elevate life</p>
           <p className={`${styles.titlePrompt} load-hidden`}>scroll down ↓</p>
         </div>
         <SvgStatic key={`leaf-main`} {...main} />
