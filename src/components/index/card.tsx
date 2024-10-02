@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
-import * as styles from "src/styles/modules/index.module.scss";
+import * as styles from "src/styles/modules/card.module.scss";
 import parseRemoteURL from "src/utils/remote-url-parser";
 
 interface CardProps {
