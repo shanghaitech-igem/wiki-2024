@@ -775,6 +775,7 @@ Comparing the structures of the uncleaved form in the before-and-after contrast 
 
 The _self-assembly process was not fully completed in the cleaved state_, which can be seen from the rmsd plots below that if the self-assembly were complete, the rmsd plot should stabilize at last. However, compared to the uncleaved state, it is evident that there is _a significant increase in displacement in the cleaved state_, indicating **a less stable system**, which is what we expect. Particularly in the β10-E5-β11 section after cleavage (comparing the 2nd and the 4th figure above), there is **a noticeable interaction and morphological recovery between β10 and β11**, with E5 being **significantly folded** by this interaction, which is precisely the function we hope the flipGFP system will achieve. It is possible that the complete self-assembly process still requires _a longer simulation time_ and _with more stringent restrictions_.
 
+It is worth noting that observing the blue and brown alone in Figure 4 may not be as striking in terms of morphological recovery, as the blue represents the initial state of the md stage, not the initial state of the β10-E5-β11 segment. Its actual initial state can be seen in [Protein 2.6](#4-molecular-dynamics-using-gromacs). However, recall that the initial state of the β10-E5-β11 segment is the same in both the uncleaved and cleaved conditions. Therefore, by comparing the green (results of the uncleaved state) and brown (results of the cleaved state), it is evident that the folding of β10-E5-β11 is quite pronounced.
 
 import { data_md_rmsd, layout_md_rmsd } from "data/model/md-rmsd";
 
@@ -787,9 +788,17 @@ import { data_md_rmsd_cleaved, layout_md_rmsd_cleaved } from "data/model/md-rmsd
 
 ## 6. Discussion
 
-1. 限制没有完全对应（因为时间限制无法再次模拟） 欢迎讨论
+- The model simulates and helps vitualize the recovery of the shape of β10 and β11 after the flipGFP has been cleaved.
 
-2. 好处：薛定谔+gromacs 软件优势（优于 NAMD）
+- Due to the limitations of time and computational resources, we have found it challenging to conduct more refined and longer simulations. However, by reviewing the literature and consulting with relevant personnel, we have identified the following areas that can still be optimized:
+
+It was mentioned in the aforementioned reference[^3] that, 
+
+> Due to the many hydrogen bonding interactions between β10-11 (in β10-E5-β11-K5) and their neighboring β sheets in β1-9, the separation of β10-11 from β1-9 could take millisecond or longer timescale.
+
+Whereas, in our simulation, we used the mode `pbc = xyz` and may not be the restrictions that could satisfy the need to simulate the system in 100ns.
+
+In the future, we could apply stronger restrictions and run longer time to help us acquire the expected results
 
 <split/>
 # Relative Fluorescence Model
