@@ -9,38 +9,38 @@ import * as styles from "src/styles/modules/index.module.scss";
 import ScrollReveal from "scrollreveal";
 
 const IndexPage: React.FC = () => {
-  // React.useEffect(() => {
-  //   ScrollReveal().reveal(".leaf-reveal", {
-  //     scale: 0.5,
-  //     opacity: 0,
-  //     duration: 1200,
-  //     viewOffset: {
-  //       bottom: 130,
-  //     },
-  //     reset: false, // Ensures the animation happens only one time.
-  //   });
+  React.useEffect(() => {
+    ScrollReveal().reveal(".leaf-reveal", {
+      scale: 0.5,
+      opacity: 0,
+      duration: 1200,
+      viewOffset: {
+        bottom: 130,
+      },
+      reset: false, // Ensures the animation happens only one time.
+    });
 
-  //   const interval = 300;
-  //   const startDelay = 300;
+    const interval = 300;
+    const startDelay = 300;
 
-  //   ScrollReveal().reveal(`.${styles.titleBanner}`, {
-  //     delay: startDelay,
-  //     distance: "100px",
-  //     easing: "ease-out",
-  //     reset: false, // Ensures the animation happens only one time.
-  //   });
+    ScrollReveal().reveal(`.${styles.titleBanner}`, {
+      delay: startDelay,
+      distance: "100px",
+      easing: "ease-out",
+      reset: false, // Ensures the animation happens only one time.
+    });
 
-  //   ScrollReveal().reveal(`.${styles.title}`, {
-  //     delay: startDelay + interval * 1,
-  //     distance: "100px",
-  //     reset: false,
-  //   });
+    ScrollReveal().reveal(`.${styles.title}`, {
+      delay: startDelay + interval * 1,
+      distance: "100px",
+      reset: false,
+    });
 
-  //   ScrollReveal().reveal(`.${styles.titlePrompt}`, {
-  //     delay: startDelay + interval * 2,
-  //     reset: false,
-  //   });
-  // }, []);
+    ScrollReveal().reveal(`.${styles.titlePrompt}`, {
+      delay: startDelay + interval * 2,
+      reset: false,
+    });
+  }, []);
 
   return (
     <Layout>
@@ -76,35 +76,127 @@ const IndexPage: React.FC = () => {
       <div className={styles.contentContainer}>
         <Card
           number="01"
-          subtitle="GET STARTED"
-          title="What level of hiker are you?"
-          imgSrc="server/test/cash-macanaya-x9cemmq4yjm-unsplash.jpg"
+          subtitle="FROM LAB TO DAILY CARE"
+          title="Pioneering a New Era in Personal Care"
+          imgSrc="server/home/scrath-1.png"
         >
-          Determining what level of hiker you are can be an important tool when
-          planning future hikes. This hiking level guide will help you plan
-          hikes according to different hike ratings set by various websites like
-          All Trails and Modern Hiker. What type of hiker are you – novice,
-          moderate, advanced moderate, expert, or expert backpacker?
+          Itching, though often perceived as a minor issue, can have a
+          significant impact on people’s quality of life. Persistent itching not
+          only causes intense discomfort but also leads to involuntary
+          scratching.
         </Card>
         <Card
-          reverse={true}
+          reverse
           number="02"
-          subtitle="EXPLORE"
-          title="Find new trails"
-          imgSrc="server/test/cash-macanaya-x9cemmq4yjm-unsplash.jpg"
+          subtitle="NAUGHTY SCRATCHING"
+          title="Scratching is a Natural Response to Itching"
+          imgSrc="server/home/scrath-1.png"
         >
-          Explore new trails and discover hidden gems in your area. Whether
-          you're looking for a challenging hike or a leisurely walk, there's
-          something for everyone.
+          Scratching not only worsens skin damage but can also result in
+          infections, inflammation, and even scarring, which can severely affect
+          both the appearance and mental well-being of the patient.
         </Card>
         <Card
           number="03"
-          subtitle="GEAR UP"
-          title="Essential hiking gear"
-          imgSrc="server/test/cash-macanaya-x9cemmq4yjm-unsplash.jpg"
+          subtitle="ITCHING AND HEALTH"
+          title="Itching Can Be a Sign of Serious Conditions"
+          imgSrc="server/home/scrath-1.png"
         >
-          Make sure you're prepared for your next adventure with the right gear.
-          From boots to backpacks, we've got you covered with our gear guides.
+          For certain vulnerable groups, such as individuals with weakened
+          immune systems or the elderly, itching can be a sign of more serious
+          underlying health conditions, such as skin disorders or complications
+          from diabetes.
+        </Card>
+        <Card
+          reverse
+          number="04"
+          subtitle="THE IMPORTANCE OF ITCHING"
+          title="Addressing Itching Is Crucial for Overall Health"
+          imgSrc="server/home/scrath-1.png"
+        >
+          Thus, addressing itching in a timely and effective manner is not only
+          crucial for improving patients’ quality of life but also vital for
+          ensuring their overall health.
+        </Card>
+        <Card
+          number="05"
+          subtitle="LIMITATIONS OF CURRENT TREATMENTS"
+          title="Challenges with Existing Anti-Itch Products"
+          imgSrc="server/home/scrath-1.png"
+        >
+          Although a wide range of anti-itch products are available, most focus
+          on using antibiotics and other medications to directly target
+          pathogens. While effective in treating the underlying causes, these
+          treatments often do not provide immediate or substantial relief from
+          the itching, leaving patients to endure discomfort during the healing
+          process.
+        </Card>
+        <Card
+          reverse
+          number="06"
+          subtitle="SIDE EFFECTS OF TREATMENTS"
+          title="Hormonal Treatments and Their Risks"
+          imgSrc="server/home/scrath-1.png"
+        >
+          Additionally, some products that claim to relieve itching contain
+          hormones, which can lead to side effects such as skin thinning and
+          hyperpigmentation with prolonged use, while offering limited relief.
+        </Card>
+        <Card
+          number="07"
+          subtitle="OUR INNOVATIVE APPROACH"
+          title="Developing Green, Safe Inhibitors"
+          imgSrc="server/home/scrath-1.png"
+        >
+          Our project recognizes the critical importance of addressing itching
+          and is dedicated to developing green, safe inhibitors that
+          scientifically address persistent itching caused by Staphylococcus
+          aureus. This is achieved through an in-depth understanding of the V8
+          protease mechanism.
+        </Card>
+        <Card
+          reverse
+          number="08"
+          subtitle="IMPROVING QUALITY OF LIFE"
+          title="Innovative Solutions for Personal Care"
+          imgSrc="server/home/scrath-1.png"
+        >
+          Our solution not only alleviates patient discomfort and improves their
+          quality of life but also introduces an innovative approach to personal
+          care product development, breathing new life into the skin health
+          industry.
+        </Card>
+        <Card
+          number="09"
+          subtitle="OUR PHILOSOPHY"
+          title="Managing Bacteria for Better Health"
+          imgSrc="server/home/scrath-1.png"
+        >
+          <p>
+            Blind sterilization of bacteria isn't always ideal, as it can lead
+            to antibiotic overuse. Staphylococcus aureus is common and can't be
+            completely eradicated. We view bacteria as part of the human
+            ecosystem and focus on reducing their harmful effects to prevent
+            severe diseases.
+          </p>
+          <p>
+            Our products aim to manage itching from Staphylococcus aureus,
+            stopping issues from escalating.
+          </p>
+        </Card>
+
+        <Card
+          reverse
+          number="10"
+          subtitle="APPLICATION"
+          title="Creating Specialized Cosmeceuticals"
+          imgSrc="server/home/scrath-1.png"
+        >
+          We aim to develop a safe product that specifically targets persistent
+          itching caused by Staphylococcus aureus. By combining our screened
+          effective compounds with existing skincare products, we strive to
+          create specialized cosmeceuticals that suppress itching early on,
+          thereby reducing the harm caused by scratching.
         </Card>
       </div>
     </Layout>

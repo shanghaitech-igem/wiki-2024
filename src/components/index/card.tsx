@@ -29,7 +29,7 @@ const Card: React.FC<CardProps> = ({
           <h3 className={styles.subtitle}>{subtitle}</h3>
         </div>
         <h2 className={styles.title}>{title}</h2>
-        <p className={styles.description}>{children}</p>
+        <div className={styles.description}>{children}</div>
         <Link className={styles.readmore} to="/read-more">
           READ MORE
         </Link>

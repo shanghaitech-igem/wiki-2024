@@ -179,7 +179,7 @@ main {
           margin: -2rem 0; // Consistent margin for spacing
         }
 
-        p {
+        .description {
           font-family: fonts.$pacify-content-primary;
           letter-spacing: 0.075em;
           line-height: 1.5em;
@@ -188,7 +188,7 @@ main {
           margin: 1rem 0; // Consistent margin for spacing
         }
 
-        a {
+        .readmore {
           font-family: fonts.$pacify-heading-secondary;
           font-size: 1.2rem;
           font-weight: 600;
