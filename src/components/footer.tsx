@@ -146,6 +146,10 @@ const Footer: React.FC = () => {
 
       <div className={declaration}>
         <p>
+          Some photos used for decoration are from Freepik{" "}
+          <a href="https://wwww.freepik.com">Freepik</a>.
+        </p>
+        <p>
           © 2024 - Content on this site is licensed under a{" "}
           <a href="https://creativecommons.org/licenses/by/4.0/">
             Creative Commons Attribution 4.0 International license
@@ -154,7 +158,7 @@ const Footer: React.FC = () => {
         </p>
         <p>
           The repository used to create this website is available at{" "}
-          <a href="gitlab.igem.org/2024/shanghaitech-china">
+          <a href="https://gitlab.igem.org/2024/shanghaitech-china">
             gitlab.igem.org/2024/shanghaitech-china
           </a>
           .
