@@ -1,31 +1,131 @@
-import { mainLeafRaw, stemRaw, leafStemRaw } from "./svg-raw";
+import {
+  mainLeafRaw as mainLeaf,
+  stemRaw as stem,
+  leafStemRaw as leafStem,
+} from "./svg-raw";
 
 export const main = {
-  raw: mainLeafRaw,
+  svg: mainLeaf,
   x: -100,
   y: -100,
-  size: 1200,
+  size: 1409,
   rotate: 81.06,
   reverseX: true,
 };
 
 export const stems = [
   {
-    raw: stemRaw,
-    x: 1000,
-    y: 1150,
-    size: 1200,
+    svg: stem,
+    x: -400,
+    y: 1050,
+    size: 2729,
     reverseX: true,
   },
 ];
 
 export const leaves = [
   {
-    raw: leafStemRaw,
-    x: 40,
+    svg: leafStem,
+    x: 100,
     y: 1550,
-    size: 100,
-    rotate: -45,
+    size: 132,
+    rotate: -63,
     reverseX: true,
-  }
+  },
+  {
+    svg: leafStem,
+    x: 275,
+    y: 1680,
+    size: 132,
+    rotate: -195,
+    reverseX: true,
+  },
+  {
+    svg: leafStem,
+    x: 730,
+    y: 3000,
+    size: 132,
+    rotate: 70,
+    reverseX: true,
+  },
+  {
+    svg: leafStem,
+    x: 230,
+    y: 3330,
+    size: 132,
+    rotate: -84,
+    reverseX: true,
+  },
+  {
+    svg: leafStem,
+    x: 1720,
+    y: 4560,
+    size: 132,
+    rotate: -12,
+    reverseX: true,
+  },
+  {
+    svg: leafStem,
+    x: 1720,
+    y: 4380,
+    size: 132,
+    rotate: -156,
+    reverseX: true,
+  },
+  {
+    svg: leafStem,
+    x: 1800,
+    y: 5140,
+    size: 132,
+    rotate: 3,
+    reverseX: true,
+  },
+  {
+    svg: leafStem,
+    x: 1630,
+    y: 5700,
+    size: 132,
+    rotate: -59,
+    reverseX: true,
+  },
+  {
+    svg: leafStem,
+    x: 1500,
+    y: 6000,
+    size: 132,
+    rotate: 75,
+    reverseX: true,
+  },
+  {
+    svg: leafStem,
+    x: 820,
+    y: 6200,
+    size: 132,
+    rotate: 35,
+    reverseX: true,
+  },
+  {
+    svg: leafStem,
+    x: 820,
+    y: 6190,
+    size: 132,
+    rotate: -124,
+    reverseX: true,
+  },
+  {
+    svg: leafStem,
+    x: 200,
+    y: 6600,
+    size: 132,
+    rotate: -58,
+    reverseX: true,
+  },
+  {
+    svg: leafStem,
+    x: 1300,
+    y: 7320,
+    size: 132,
+    rotate: 169,
+    reverseX: true,
+  },
 ];
