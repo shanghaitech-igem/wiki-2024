@@ -1,9 +1,9 @@
 .tracer {
-    position: fixed;
-    width: 100px; /* Adjust size as needed */
-    height: 100px;
-    pointer-events: none; /* Allow clicks through the tracer */
-    z-index: 1;
-    transform: translate(30%, 30%);
-    transition: "transform 2s ease-out", // Optional: smooth the transform
+  position: fixed;
+  width: 25px; /* Adjust size as needed */
+  height: 25px;
+  pointer-events: none; /* Allow clicks through the tracer */
+  z-index: 1;
+  transform: translate(30%, 30%);
+  transition: "transform 2s ease-out"; // Optional: smooth the transform
 }
