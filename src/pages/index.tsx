@@ -10,7 +10,7 @@ import ScrollReveal from "scrollreveal";
 
 const IndexPage: React.FC = () => {
   React.useEffect(() => {
-    ScrollReveal().reveal(".leaf-reveal", {
+    ScrollReveal().reveal(`.${styles.leaf}`, {
       scale: 0.5,
       opacity: 0,
       duration: 1200,
@@ -18,6 +18,11 @@ const IndexPage: React.FC = () => {
         bottom: 130,
       },
       reset: false, // Ensures the animation happens only one time.
+      afterReveal: (el) => {
+        if (el instanceof HTMLElement) {
+          el.classList.add(`${styles.leafWaving}`);
+        }
+      },
     });
 
     const interval = 300;
@@ -69,7 +74,7 @@ const IndexPage: React.FC = () => {
           <SvgStatic
             key={`leaf-${index}`}
             {...leaf}
-            className="leaf-reveal load-hidden"
+            className={`${styles.leaf} load-hidden`}
           />
         ))}
       </div>

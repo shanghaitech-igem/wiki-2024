@@ -78,6 +78,42 @@ main {
         animation: bounce 2s ease infinite;
       }
     }
+
+    .leaf {
+      z-index: 0;
+      transform-origin: top left; /* Adjust the origin here */
+    }
+
+    .leaf-waving {
+      animation: wave 3s infinite ease-in-out;
+
+      @keyframes wave {
+        0% {
+          transform: rotate(0deg);
+        }
+        25% {
+          transform: rotate(5deg);
+        }
+        50% {
+          transform: rotate(0deg);
+        }
+        75% {
+          transform: rotate(-5deg);
+        }
+        100% {
+          transform: rotate(0deg);
+        }
+      }
+
+      &:nth-child(odd) {
+        animation-duration: 2.5s;
+      }
+
+      &:nth-child(even) {
+        animation-duration: 3.5s;
+        animation-delay: 0.5s;
+      }
+    }
   }
 
   .content-container {
