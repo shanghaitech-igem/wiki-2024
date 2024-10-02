@@ -17,7 +17,7 @@ after:
 LSSKAMDNHPQQTQSSKQQTPKIQKGGNLKPLQQRSHP
 ```
 
-![pET-28a-His(C)-pro-sspA-mut4 Map](assets/pET-28a-His(C)-pro-sspA-mut4 Map.png)
+![Plasmid pET28a-sspA-Mut4-His(C) for V8 protease expression and purification.](server/contents/plasmid/proV8.png)
 
 We synthesized the gene sequence of V8 protease according to the preferences of translation in Escherichia coli, using PCR to amplify both the pro and mature sequences of V8 protease while introducing four amino acid mutations. The constructed plasmid was confirmed by sequencing, and after amplification in DH5α, it was transformed into the BL21 (DE3) strain for expression and purification.
 
@@ -61,17 +61,17 @@ $\text{Suppression Rate}=(\text{Slope of Experimental Group}−\text{Slope of Ne
 
 The suppression rate curve is plotted alongside the negative control curve, where the red curve represents the control curve, and the black curve represents the curve after suppression.
 
-|         Name         |                          Suppression Rate                          |                                                   Resource                                                   |
-| :------------------: | :----------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------: |
-|        jqez5         | ![Suppression Rate: 43%](server/contents/wetlab/result/drug/1.png) |      `A` `synthetic` `EZH2` `inhibitor` `that` `can` `be` `used` `for` `targeted` `therapy` `in` `lung` `cancer` `and` `other` `tumors.`       |
-| PROTAC ERRα ligand 2 | ![Suppression Rate: 49%](server/contents/wetlab/result/drug/2.png) |    `PROTAC` `ERRα` `Degrader-2` `is` `a` `compound` `composed` `of` `an` `MDM2` `ligand,` `a` `linker,` `and` `an` `ERRα` `binding` `moiety.`    |
-|         thz2         | ![Suppression Rate: 44%](server/contents/wetlab/result/drug/3.png) |             `A` `synthetic` `compound` `used` `for` `the` `study` `of` `cyclin-dependent` `kinase` `(CDK)` `inhibition.`             |
-|      fiauridine      | ![Suppression Rate: 61%](server/contents/wetlab/result/drug/4.png) |                              `Microbial` `metabolites,` `plant,` `or` `animal` `extracts.`                               |
-|        t-5224        | ![Suppression Rate: 47%](server/contents/wetlab/result/drug/5.png) |           `Inhibiting` `the` `invasion` `and` `metastasis` `of` `liver` `cancer` `cells` `through` `chemical` `synthesis.`           |
-|    vtp-27999 tfa     | ![Suppression Rate: 44%](server/contents/wetlab/result/drug/6.png) |   `It` `is` `a` `synthetic` `selective` `renin` `inhibitor` `used` `for` `the` `treatment` `of` `hypertension` `and` `related` `diseases.`   |
+|         Name         |                          Suppression Rate                          |                                                                  Resource                                                                  |
+| :------------------: | :----------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------: |
+|        jqez5         | ![Suppression Rate: 43%](server/contents/wetlab/result/drug/1.png) |    `A` `synthetic` `EZH2` `inhibitor` `that` `can` `be` `used` `for` `targeted` `therapy` `in` `lung` `cancer` `and` `other` `tumors.`     |
+| PROTAC ERRα ligand 2 | ![Suppression Rate: 49%](server/contents/wetlab/result/drug/2.png) | `PROTAC` `ERRα` `Degrader-2` `is` `a` `compound` `composed` `of` `an` `MDM2` `ligand,` `a` `linker,` `and` `an` `ERRα` `binding` `moiety.` |
+|         thz2         | ![Suppression Rate: 44%](server/contents/wetlab/result/drug/3.png) |                `A` `synthetic` `compound` `used` `for` `the` `study` `of` `cyclin-dependent` `kinase` `(CDK)` `inhibition.`                |
+|      fiauridine      | ![Suppression Rate: 61%](server/contents/wetlab/result/drug/4.png) |                                       `Microbial` `metabolites,` `plant,` `or` `animal` `extracts.`                                        |
+|        t-5224        | ![Suppression Rate: 47%](server/contents/wetlab/result/drug/5.png) |              `Inhibiting` `the` `invasion` `and` `metastasis` `of` `liver` `cancer` `cells` `through` `chemical` `synthesis.`              |
+|    vtp-27999 tfa     | ![Suppression Rate: 44%](server/contents/wetlab/result/drug/6.png) |  `It` `is` `a` `synthetic` `selective` `renin` `inhibitor` `used` `for` `the` `treatment` `of` `hypertension` `and` `related` `diseases.`  |
 |        LQZ-7i        | ![Suppression Rate: 71%](server/contents/wetlab/result/drug/7.png) | `A` `chemical` `synthetic` `inhibitor` `targeting` `survivin,` `which` `can` `effectively` `suppress` `the` `growth` `of` `tumor` `cells.` |
 |       GFB8438        | ![Suppression Rate: 66%](server/contents/wetlab/result/drug/8.png) |   `It` `is` `an` `effective` `TRPC5` `inhibitor` `with` `good` `selectivity` `and` `in` `vitro` `activity,` `synthesized` `chemically.`    |
-|       BMV-8c3o       | ![Suppression Rate: 41%](server/contents/wetlab/result/drug/9.png) |  `A` `chemically` `synthesized` `small` `molecule` `used` `for` `studying` `biological` `activity` `or` `pharmacological` `effects.`   |
+|       BMV-8c3o       | ![Suppression Rate: 41%](server/contents/wetlab/result/drug/9.png) |    `A` `chemically` `synthesized` `small` `molecule` `used` `for` `studying` `biological` `activity` `or` `pharmacological` `effects.`     |
 
 <split />
 
@@ -81,9 +81,20 @@ To test the cleavage of target sequences by proteases in the fluorescent reporte
 
 When testing the FlipGFP fluorescent reporter system in vitro, we conducted the experiment in three stages, each involving a different target cleavage sequence. These included one TEV protease cleavage sequence and two V8 protease cleavage sequences, which provided guidance for the experimental design of subsequent in vivo validation.
 
+## TEV Protease Cleavage
+
+First, we utilized the target cleavage sequence of TEV protease `ENLYFQS`, which consists of seven amino acids recognized specifically by the TEV protease. Given that the activation of the FlipGFP system by TEV protease in HEK293 cells has been documented in the literature, and TEV protease cleavage is known for its high specificity, employing TEV protease initially allows us to optimize experimental conditions such as protein purification, cleavage time, and assembly time. This lays a solid foundation for subsequent experiments.
+
+For the protein purification results, we first performed SDS-PAGE analysis on the supernatant, precipitate, and samples before and after washing, as well as the elution fractions from the purification process. Based on protein size and the electrophoresis results, we identified the target proteins FlipGFP beta 1-9 and FlipGFP beta 10-11 (with a TEV protease cleavage site).
+
+Since the molecular weight displayed in the SDS-PAGE results may differ slightly from the calculated value, we further conducted mass spectrometry to confirm that the proteins in the bands matched the designed sequences. It is important to note that a sequence coverage exceeding 90% in mass spectrometry can be considered as confirming that the protein sequence matches the design. This is a very high coverage, as mass spectrometry rarely achieves 100% coverage.
+
+The purified beta10-11 fragment was incubated with TEV protease at 4°C for 1 hour, with an enzyme-to-substrate ratio of 1:100. After incubation, a 200 μL fluorescent protein self-assembly system was prepared, with FlipGFP beta1-9 at a concentration of 2.9 μM and FlipGFP beta10-11 at 6.5 μM. Following the initiation of the assembly process, absorbance at 535 nm was measured every hour using a plate reader, with excitation at a wavelength of 488 nm. Absorbance was recorded over a total period of 12 hours.
+
+The results from the microplate reader show that, over the course of the assembly process, the fluorescence intensity in the experimental group (which includes successfully cleaved Flip GFP beta sheet 10-11 with the TEV protease cleavage site and Flip GFP beta 1-9) steadily increased. In contrast, the fluorescence intensity in the control group (which contains the same concentration of Flip GFP beta sheet 10-11 with the TEV protease cleavage site and Flip GFP beta 1-9 but without cleavage) showed almost no change over time.
+
+
+
 <split />
 
 # In vivo Pruritus Fluorescent System
-
-
-
