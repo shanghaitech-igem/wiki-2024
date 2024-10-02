@@ -39,8 +39,16 @@ const config = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `test`,
-        path: `${__dirname}/test/`,
+        name: `docs`,
+        path: `${__dirname}/docs/`,
+        ignore: [`**/data/**`],
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `lib`,
+        path: `${__dirname}/lib/`,
         ignore: [`**/data/**`],
       },
     },
@@ -48,10 +56,11 @@ const config = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `test`,
-        path: `${__dirname}/docs/`,
+        path: `${__dirname}/test/`,
         ignore: [`**/data/**`],
       },
     },
+
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
