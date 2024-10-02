@@ -1,0 +1,150 @@
+---
+title: MC Tutorial
+slug: education/minecraft
+cursor: "server/contents/edu/mc/mc-cursor.png"
+tracer: "server/contents/edu/mc/mc-tracer-0.svg"
+---
+
+# Introduction
+
+Synthetic biology is a burgeoning interdisciplinary field that fuses genetics, biochemistry, molecular biology, bioengineering, and information technology to redesign and modify the functional components and metabolic pathways of natural organisms, yielding bioengineered products beneficial to humanity. Essentially, it involves deconstructing useful parts of biological genetic material as “building blocks” to construct intricate, precise machines.
+
+The International Genetically Engineered Machine (iGEM) competition, hosted annually by MIT, is the world’s premier synthetic biology contest. As the ShanghaiTech University iGEM team, we are committed to demystifying synthetic biology for the public through engaging, interactive methods. Utilizing games as a medium can magnify outreach, allowing a broader audience to experience and grasp synthetic biology concepts.
+
+To this end, we have developed a Minecraft mod based on the fundamental principles of synthetic biology. Players can gradually familiarize themselves with essential synthetic biology operations through the construction of engineered organisms. This educational approach aims to popularize synthetic biology, especially among the youth.
+
+**This** **mod** **is compatible with Minecraft version 1.20.1 Fabric.**
+
+# Game Content
+
+## Organisms
+
+**Model Organisms – Mcoli**
+
+In real-world synthetic biology, model organisms like E. coli and yeast are frequently employed in experimental procedures. Similarly, in our mod, we introduce Mcoli. Resembling real-world E. coli, Mcoli can be modified to produce substances like iron and gold through plasmid insertion. Mcoli are found in forest biomes and can be bred with potatoes or beef, inspired by the starch and protein content in E. coli growth media. Mcoli also self-replicate every half-day in-game, multiplying their numbers.
+
+E. coli is a widely-used model organism in biological experiments due to the need for large quantities of bacterial strains. In our mod, Mcoli is equally central; players should focus on locating, collecting, and proliferating Mcoli for various applications.
+
+![](server/contents/edu/mc/mod-tutorial/mod-tutorial-1.png)
+
+**Scaly-foot Gastropods**
+
+In nature, Scaly-foot gastropods accumulate sulfur and iron from their environment to form protective armor. In our mod, these gastropods can be found in jungle biomes, and their genes can be extracted to produce iron.
+
+![](server/contents/edu/mc/mod-tutorial/mod-tutorial-2.png)
+
+## Plasmids and Fragments
+
+Plasmids are circular DNA elements prevalent in nature, containing genes (genetic instructions) that can be subdivided into structural genes, promoters, and more. In our mod, plasmids have three editable regions—promoter, gene, and marker gene, distinguishable by shape and color.
+
+![](server/contents/edu/mc/mod-tutorial/mod-tutorial-3.png)
+
+**Blank Plasmid: Editable Regions**
+
+The core plasmid region, “gene”, can host various fragments, such as:
+
+- **Blank Fragment:** Non-functional
+- **Iron Gene:** Drives iron production
+- **Gold Gene:** Drives gold production
+- **Self-Healing Gene:** Confers regenerative abilities, extractable for brewing potions
+- **Taq Polymerase Gene:** Produces Taq enzyme for PCR (plasmid replication)
+
+![](server/contents/edu/mc/mod-tutorial/mod-tutorial-4.png)
+
+The promoter region regulates gene expression. Genes function only when a promoter is present. The marker gene region bestows unique traits to Mcoli, aiding in identifying successful plasmid insertions.
+
+![](server/contents/edu/mc/mod-tutorial/mod-tutorial-5.png)
+
+**Left: Plasmid Without Promoter - Right: Plasmid With Promoter**
+
+**Marker Gene Area Inserts:**
+
+- **Blank Fragment:** Non-functional but does not hinder gene expression
+- **Toxin Resistance Fragment:** Enables Mcoli to withstand poison, useful for selection
+- **GFP Fragment:** Causes Mcoli to glow, indicating successful plasmid insertion
+
+![](server/contents/edu/mc/mod-tutorial/mod-tutorial-6.png)
+
+**From Left to Right:** Blank Fragment, Toxin Resistance Fragment, GFP Fragment
+
+Right-clicking Mcoli with a plasmid initiates the insertion process, observable through particle effects. Success is not guaranteed; failed attempts result in plasmid loss. Hence, marker genes help identify Mcoli that have successfully incorporated plasmids.
+
+## **Plasmid Extraction from Mcoli**
+
+The design of the extractor is inspired by the pipettes commonly used in laboratories. In this module, the extractor is crafted from iron, glass, and a piston and can be used to extract plasmids from Mcoli or other organisms. By right-clicking with the handheld extractor on Mcoli or other creatures containing plasmids, such as cave spiders or scaly-foot snails, you can obtain the corresponding plasmid extract for further use.
+
+![](server/contents/edu/mc/mod-tutorial/mod-tutorial-7.png)
+
+![](server/contents/edu/mc/mod-tutorial/mod-tutorial-8.png)
+
+**Taq Enzyme**
+
+In reality, Taq enzyme is a thermostable DNA polymerase used to replicate DNA during the PCR process. In this module, plasmids containing the promoter + Taq enzyme gene can be introduced into Mcoli. Subsequently, you can use the extractor to obtain the extract. Place this extract in the brewing stand with water bottles below, and you can brew Taq enzyme.
+
+![](server/contents/edu/mc/mod-tutorial/mod-tutorial-9.png)
+
+**GFP Protein**
+
+GFP, or Green Fluorescent Protein, is a protein originally extracted from a type of jellyfish in the ocean. In reality, bacteria that express the GFP gene emit green fluorescence, which can be used for labeling and screening bacteria. In this mod, Mcoli with the GFP marker gene fragment will exhibit a glowing effect, clearly indicating successful plasmid introduction. Additionally, Mcoli carrying this gene have a chance to drop GFP protein. In this mod, GFP protein is designed to be edible. Consuming GFP protein will restore hunger and grant a glowing effect for a certain period.
+
+![](server/contents/edu/mc/mod-tutorial/mod-tutorial-10.png)
+
+# Functional Blocks
+
+**Sequencing Analyzer:** The sequencing analyzer can be used to obtain plasmids from extracts (obtained via the extractor) or certain vanilla items. It can be crafted from iron, redstone, and a brewing stand. Place the extract or certain vanilla items on the left side, click the “Analyze” button, and the corresponding plasmid will be obtained on the right side. In addition to obtaining plasmids from extracts, GFP, Self-Healing, and Taq enzyme genes can also be acquired from Glow Ink Sacs, Oxeye Daisies, and Magma Cream, respectively.
+
+![](server/contents/edu/mc/mod-tutorial/mod-tutorial-11.png)
+
+![](server/contents/edu/mc/mod-tutorial/mod-tutorial-12.png)
+
+**Biological Workbench:** The design of the bio-workbench is inspired by biosafety cabinets used in laboratories. It is crafted from glass, a workbench, glass bottles, and iron blocks. Players can use the bio-workbench to decompose plasmids into fragments or synthesize fragments into plasmids.
+
+![](server/contents/edu/mc/mod-tutorial/mod-tutorial-13.png)
+
+![](server/contents/edu/mc/mod-tutorial/mod-tutorial-14.png)
+
+When decomposing plasmids, please place the plasmid in the central slot on the left side and press the “break” button (as shown in the top diagram). When synthesizing plasmids, please place the fragments used for the promoter, “gene,” and marker gene in the corresponding slots within the solid-line frames and press the “synthesize” button (as shown in the bottom diagram). Blank fragments can be used interchangeably in all three regions.
+
+![](server/contents/edu/mc/mod-tutorial/mod-tutorial-15.png)
+
+![](server/contents/edu/mc/mod-tutorial/mod-tutorial-16.png)
+
+**PCR** **Machine:** The design of the PCR machine is inspired by real-life PCR (Polymerase Chain Reaction) machines, which are used to amplify plasmids or DNA fragments. The PCR machine is crafted from iron, redstone, and a chest.
+
+![](server/contents/edu/mc/mod-tutorial/mod-tutorial-17.png)
+
+![](server/contents/edu/mc/mod-tutorial/mod-tutorial-18.png)
+
+When using the PCR machine, place the plasmid or fragment in the leftmost “Plasmid” slot and the Taq enzyme in the “Taq” slot. Click the “PCR” button and wait for a few seconds to complete the process. One Taq enzyme will be consumed, and you will obtain double the amount of plasmids or fragments.
+
+![](server/contents/edu/mc/mod-tutorial/mod-tutorial-19.png)
+
+# Gameplay Operations
+
+**Obtaining** **Plasmids** Plasmids can be acquired through various methods.
+
+- Naturally occurring or artificially bred Mcoli have a certain chance of carrying plasmids containing promoters or self-healing genes.
+- Iron-producing plasmids can be obtained by extracting iron golems or scaly-foot snails with the extractor.
+- Gold-producing plasmids can be obtained by extracting Striders with the extractor.
+- Self-healing gene fragments can be obtained by analyzing oxeye daisies in the sequencing analyzer.
+- Taq enzyme gene fragments can be obtained by analyzing magma cream in the sequencing analyzer.
+- GFP marker genes can be obtained by analyzing glow ink sacs in the sequencing analyzer.
+- Anti-venom marker genes can be obtained by extracting cave spiders with the extractor.
+
+**Introducing Plasmids** Right-click on Mcoli while holding a plasmid to start introducing the plasmid into the Mcoli. You will observe particle effects emitted by the Mcoli. When the particle effects disappear, the introduction process is complete. Note that there is only a small chance of successfully introducing a plasmid into Mcoli, and a higher chance of failure. If successful, the Mcoli will contain the plasmid and can function accordingly; if failed, the plasmid will be lost. Therefore, it is advisable to construct plasmids with marker genes to screen for successfully introduced plasmids in Mcoli. An Mcoli can only contain one plasmid at a time.
+
+**Extracting** **Plasmids** Right-click on Mcoli or other creatures containing plasmids, such as cave spiders or scaly-foot snails, while holding the extractor to obtain the corresponding plasmid extract.
+
+**Analyzing Extracts** Right-click to open the sequencing analyzer. Place the extract or specific vanilla items on the left side, click the “Analyze” button, and obtain the corresponding plasmid on the right side.
+
+**Mass Replication of Plasmids** Using the PCR machine, place the plasmid or fragment in the leftmost “Plasmid” slot and the Taq enzyme in the “Taq” slot. Click the “PCR” button and wait a few seconds to complete the process. One Taq enzyme will be consumed, yielding double the amount of plasmids or fragments.
+
+**Constructing Plasmids** Plasmids can be constructed in the bio-workbench. When decomposing plasmids, place the plasmid in the central slot on the left side and press the “break” button. When synthesizing plasmids, place the fragments for the promoter, the “gene,” and the marker gene in the corresponding slots within the solid line frames and press the “synthesize” button. Blank fragments can be used interchangeably in all three regions.
+
+**Screening Mcoli** Since it is not easy to distinguish Mcoli that have successfully introduced plasmids by appearance, it is recommended to add anti-venom genes or GFP genes in the marker gene region when designing plasmids. Mcoli with the anti-venom gene can be immune to poison potions, while those without it will die. Gather the Mcoli and spray them with poison potions to easily screen out Mcoli that have successfully introduced plasmids. Mcoli with the GFP gene have a glowing effect, making it easy to screen them out from a group of Mcoli.
+
+**Obtaining Products** Mcoli containing promotor and gold/iron-producing plasmids can generate gold or iron nugget drops. Mcoli containing the GFP marker gene can generate GFP drops. Collection devices such as water flow collectors can be built to gather these drops.
+
+# Mod Feedback and Bug Reporting
+
+We will open a tutorial column on Bilibili for feedback and bug reports. Players can also engage on the Mcreator forum, a platform for mod design tailored for Minecraft enthusiasts. The mod will be available on major Minecraft mod platforms.
