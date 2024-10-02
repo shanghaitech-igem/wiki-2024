@@ -17,7 +17,7 @@ after:
 LSSKAMDNHPQQTQSSKQQTPKIQKGGNLKPLQQRSHP
 ```
 
-![Plasmid pET28a-sspA-Mut4-His(C) for V8 protease expression and purification.](server/contents/plasmid/prov8.png)
+![Plasmid pET28a-sspA-Mut4-His(C) for V8 protease expression and purification.](server/contents/plasmid/prov8.webp)
 
 We synthesized the gene sequence of V8 protease according to the preferences of translation in Escherichia coli, using PCR to amplify both the pro and mature sequences of V8 protease while introducing four amino acid mutations. The constructed plasmid was confirmed by sequencing, and after amplification in DH5α, it was transformed into the BL21 (DE3) strain for expression and purification.
 
@@ -27,15 +27,15 @@ We synthesized the gene sequence of V8 protease, tailored to the codon preferenc
 
 We added a His tag to the C-terminus of the constructed V8 protease and purified the protein using Nickel affinity chromatography. From the protein gel image, we observed the target protein at the sixth band in the marker (corresponding to a molecular weight of 39 kDa), which is consistent with the theoretical prediction. We also performed a Western blot using anti-His antibodies, and the results showed a positive signal, indicating that we successfully expressed the target protein.
 
-![Protein purification gel image.1: Flow Through; 2: Supernatant; 3: Wash flow-through; 4: Wash buffer; 5: Elution flow-through; 6: Elution buffer](server/contents/wetlab/result/v8gel-1.png)
+![Protein purification gel image.1: Flow Through; 2: Supernatant; 3: Wash flow-through; 4: Wash buffer; 5: Elution flow-through; 6: Elution buffer](server/contents/wetlab/result/v8gel-1.webp)
 
-![Western blot result image. 1: Flow Through; 2: Supernatant; 3: Wash flow-through; 4: Wash buffer; 5: Elution flow-through; 6: Elution buffer](server/contents/wetlab/result/v8gel-2.png)
+![Western blot result image. 1: Flow Through; 2: Supernatant; 3: Wash flow-through; 4: Wash buffer; 5: Elution flow-through; 6: Elution buffer](server/contents/wetlab/result/v8gel-2.webp)
 
 ## Activation of V8 Protease
 
 Next, we will use thermolysin to cleave the Ni-purified V8 protease protein for activation, resulting in V8 protease with the pro-sequence removed. After a second purification using a Q column, the gel image shows that the target protein band has shifted from the original sixth band to the fourth band, corresponding to a molecular weight of 25 kDa.
 
-![Protein purification gel image; The three visible bands in the image represent the V8 protease after cleavage with thermolysin and subsequent second purification using the Q column](server/contents/wetlab/result/v8act.jpg)
+![Protein purification gel image; The three visible bands in the image represent the V8 protease after cleavage with thermolysin and subsequent second purification using the Q column](server/contents/wetlab/result/v8act.webp)
 
 ## Enzyme Activity Assay
 
@@ -47,7 +47,7 @@ We used Z-leu-leu-glu-AMC as the substrate for V8 protease to test its activity.
 
 We aim to find a green and safe inhibitor of V8 protease. With this consideration, we have chosen several compound libraries for drug screening: the Natural Compound Library, Bioactive Compound Library, Clinical Compound Library, and Approved Drug Library. High-throughput screening technology uses microplates as experimental tools, allowing for convenient and rapid automatic liquid addition to quickly screen potential inhibitors of V8 protease. We have successfully purified active V8 protease, and we will further use a fluorescence system and a plate reader to measure fluorescence intensity as an indicator of V8 protease activity, combining this with high-throughput screening to identify potential inhibitors from the aforementioned compound libraries.
 
-![Drug screening assay](server/contents/wetlab/result/assay.jpg)
+![Drug screening assay](server/contents/wetlab/result/assay.webp)
 
 The V8 protein was diluted to final concentrations of 1 μM, 0.5 μM, 0.25 μM, and 0.125 μM, and the enzyme cleavage curves were measured using a microplate reader. The curves exhibited good linearity at concentrations greater than 0.125 μM, making them suitable for drug screening.
 
@@ -63,15 +63,15 @@ The suppression rate curve is plotted alongside the negative control curve, wher
 
 |         Name         |                          Suppression Rate                          |                                                                  Resource                                                                  |
 | :------------------: | :----------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------: |
-|        jqez5         | ![Suppression Rate: 43%](server/contents/wetlab/result/drug/1.png) |    `A` `synthetic` `EZH2` `inhibitor` `that` `can` `be` `used` `for` `targeted` `therapy` `in` `lung` `cancer` `and` `other` `tumors.`     |
-| PROTAC ERRα ligand 2 | ![Suppression Rate: 49%](server/contents/wetlab/result/drug/2.png) | `PROTAC` `ERRα` `Degrader-2` `is` `a` `compound` `composed` `of` `an` `MDM2` `ligand,` `a` `linker,` `and` `an` `ERRα` `binding` `moiety.` |
-|         thz2         | ![Suppression Rate: 44%](server/contents/wetlab/result/drug/3.png) |                `A` `synthetic` `compound` `used` `for` `the` `study` `of` `cyclin-dependent` `kinase` `(CDK)` `inhibition.`                |
-|      fiauridine      | ![Suppression Rate: 61%](server/contents/wetlab/result/drug/4.png) |                                       `Microbial` `metabolites,` `plant,` `or` `animal` `extracts.`                                        |
-|        t-5224        | ![Suppression Rate: 47%](server/contents/wetlab/result/drug/5.png) |              `Inhibiting` `the` `invasion` `and` `metastasis` `of` `liver` `cancer` `cells` `through` `chemical` `synthesis.`              |
-|    vtp-27999 tfa     | ![Suppression Rate: 44%](server/contents/wetlab/result/drug/6.png) |  `It` `is` `a` `synthetic` `selective` `renin` `inhibitor` `used` `for` `the` `treatment` `of` `hypertension` `and` `related` `diseases.`  |
-|        LQZ-7i        | ![Suppression Rate: 71%](server/contents/wetlab/result/drug/7.png) | `A` `chemical` `synthetic` `inhibitor` `targeting` `survivin,` `which` `can` `effectively` `suppress` `the` `growth` `of` `tumor` `cells.` |
-|       GFB8438        | ![Suppression Rate: 66%](server/contents/wetlab/result/drug/8.png) |   `It` `is` `an` `effective` `TRPC5` `inhibitor` `with` `good` `selectivity` `and` `in` `vitro` `activity,` `synthesized` `chemically.`    |
-|       BMV-8c3o       | ![Suppression Rate: 41%](server/contents/wetlab/result/drug/9.png) |    `A` `chemically` `synthesized` `small` `molecule` `used` `for` `studying` `biological` `activity` `or` `pharmacological` `effects.`     |
+|        jqez5         | ![Suppression Rate: 43%](server/contents/wetlab/result/drug/1.webp) |    `A` `synthetic` `EZH2` `inhibitor` `that` `can` `be` `used` `for` `targeted` `therapy` `in` `lung` `cancer` `and` `other` `tumors.`     |
+| PROTAC ERRα ligand 2 | ![Suppression Rate: 49%](server/contents/wetlab/result/drug/2.webp) | `PROTAC` `ERRα` `Degrader-2` `is` `a` `compound` `composed` `of` `an` `MDM2` `ligand,` `a` `linker,` `and` `an` `ERRα` `binding` `moiety.` |
+|         thz2         | ![Suppression Rate: 44%](server/contents/wetlab/result/drug/3.webp) |                `A` `synthetic` `compound` `used` `for` `the` `study` `of` `cyclin-dependent` `kinase` `(CDK)` `inhibition.`                |
+|      fiauridine      | ![Suppression Rate: 61%](server/contents/wetlab/result/drug/4.webp) |                                       `Microbial` `metabolites,` `plant,` `or` `animal` `extracts.`                                        |
+|        t-5224        | ![Suppression Rate: 47%](server/contents/wetlab/result/drug/5.webp) |              `Inhibiting` `the` `invasion` `and` `metastasis` `of` `liver` `cancer` `cells` `through` `chemical` `synthesis.`              |
+|    vtp-27999 tfa     | ![Suppression Rate: 44%](server/contents/wetlab/result/drug/6.webp) |  `It` `is` `a` `synthetic` `selective` `renin` `inhibitor` `used` `for` `the` `treatment` `of` `hypertension` `and` `related` `diseases.`  |
+|        LQZ-7i        | ![Suppression Rate: 71%](server/contents/wetlab/result/drug/7.webp) | `A` `chemical` `synthetic` `inhibitor` `targeting` `survivin,` `which` `can` `effectively` `suppress` `the` `growth` `of` `tumor` `cells.` |
+|       GFB8438        | ![Suppression Rate: 66%](server/contents/wetlab/result/drug/8.webp) |   `It` `is` `an` `effective` `TRPC5` `inhibitor` `with` `good` `selectivity` `and` `in` `vitro` `activity,` `synthesized` `chemically.`    |
+|       BMV-8c3o       | ![Suppression Rate: 41%](server/contents/wetlab/result/drug/9.webp) |    `A` `chemically` `synthesized` `small` `molecule` `used` `for` `studying` `biological` `activity` `or` `pharmacological` `effects.`     |
 
 <split />
 
@@ -87,21 +87,21 @@ First, we utilized the target cleavage sequence of TEV protease `ENLYFQS`, which
 
 For the protein purification results, we first performed SDS-PAGE analysis on the supernatant, precipitate, and samples before and after washing, as well as the elution fractions from the purification process. Based on protein size and the electrophoresis results, we identified the target proteins FlipGFP beta 1-9 and FlipGFP beta 10-11 (with a TEV protease cleavage site).
 
-![SDS-PAGE result of FlipGFP beta sheet 1-9](server/contents/wetlab/result/puri/1-9.jpg)
+![SDS-PAGE result of FlipGFP beta sheet 1-9](server/contents/wetlab/result/puri/1-9.webp)
 
-![SDS-PAGE result of FlipGFP beta sheet 10-11(TEV)](server/contents/wetlab/result/puri/x.jpg)
+![SDS-PAGE result of FlipGFP beta sheet 10-11(TEV)](server/contents/wetlab/result/puri/x.webp)
 
 Since the molecular weight displayed in the SDS-PAGE results may differ slightly from the calculated value, we further conducted mass spectrometry to confirm that the proteins in the bands matched the designed sequences. It is important to note that a sequence coverage exceeding 90% in mass spectrometry can be considered as confirming that the protein sequence matches the design. This is a very high coverage, as mass spectrometry rarely achieves 100% coverage.
 
-![Mass Spectrometry Result of FlipGFP beta sheet 1-9](server/contents/wetlab/result/puri/a.png)
+![Mass Spectrometry Result of FlipGFP beta sheet 1-9](server/contents/wetlab/result/puri/a.webp)
 
-![Mass Spectrometry Result of FlipGFP beta sheet 10-11(TEV)](server/contents/wetlab/result/puri/b.png)
+![Mass Spectrometry Result of FlipGFP beta sheet 10-11(TEV)](server/contents/wetlab/result/puri/b.webp)
 
 The purified beta10-11 fragment was incubated with TEV protease at 4°C for 1 hour, with an enzyme-to-substrate ratio of 1:100. After incubation, a 200 μL fluorescent protein self-assembly system was prepared, with FlipGFP beta1-9 at a concentration of 2.9 μM and FlipGFP beta10-11 at 6.5 μM. Following the initiation of the assembly process, absorbance at 535 nm was measured every hour using a plate reader, with excitation at a wavelength of 488 nm. Absorbance was recorded over a total period of 12 hours.
 
 The results from the microplate reader show that, over the course of the assembly process, the fluorescence intensity in the experimental group (which includes successfully cleaved Flip GFP beta sheet 10-11 with the TEV protease cleavage site and Flip GFP beta 1-9) steadily increased. In contrast, the fluorescence intensity in the control group (which contains the same concentration of Flip GFP beta sheet 10-11 with the TEV protease cleavage site and Flip GFP beta 1-9 but without cleavage) showed almost no change over time.
 
-![Result of FlipGFP(TEVprotease) in vitro test](server/contents/wetlab/result/tev.png)
+![Result of FlipGFP(TEVprotease) in vitro test](server/contents/wetlab/result/tev.webp)
 
 ## V8 Protease Cleavage
 
@@ -109,15 +109,15 @@ Following the successful validation of using the TEV protease for specific cleav
 
 For the protein purification results, we first performed SDS-PAGE analysis on the supernatant, precipitate, and samples before and after washing, as well as the elution fractions from the purification process. Based on protein size and the electrophoresis results, we identified the target proteins FlipGFP beta 10-11 (with a V8 protease cleavage site).
 
-![SDS-PAGE result of FlipGFP beta sheet 10-11(V8)](server/contents/wetlab/result/puri/v8.jpg)
+![SDS-PAGE result of FlipGFP beta sheet 10-11(V8)](server/contents/wetlab/result/puri/v8.webp)
 
 Similar to the target cleavage sequence using TEV protease, we also performed mass spectrometry analysis on this part. The results showed that we successfully purified the correct FlipGFP beta sheet 10-11 (V8 cleavage site) protein.
 
-![Mass Spectrometry Result of FlipGFP beta sheet 10-11(V8)](server/contents/wetlab/result/puri/c.png)
+![Mass Spectrometry Result of FlipGFP beta sheet 10-11(V8)](server/contents/wetlab/result/puri/c.webp)
 
 The results from the microplate reader show that, over the course of the assembly process, the fluorescence intensity in the experimental group (which includes successfully cleaved Flip GFP beta sheet 10-11 with the V8 protease cleavage site and Flip GFP beta 1-9) steadily increased. In contrast, the fluorescence intensity in the control group (which contains the same concentration of Flip GFP beta sheet 10-11 with the V8 protease cleavage site and Flip GFP beta 1-9 but without cleavage) showed almost no change over time.
 
-![Result of FlipGFP(V8protease) in vitro test](server/contents/wetlab/result/v8.png)
+![Result of FlipGFP(V8protease) in vitro test](server/contents/wetlab/result/v8.webp)
 
 ## V8-short cleavage site
 
@@ -125,15 +125,15 @@ We are optimizing the inserted V8 protease target cleavage sequence in the Flip 
 
 For the protein purification results, we first performed SDS-PAGE analysis on the supernatant, precipitate, and samples before and after washing, as well as the elution fractions from the purification process. Based on protein size and the electrophoresis results, we identified the target proteins FlipGFP beta 10-11 (with a V8-short protease cleavage site).
 
-![SDS-PAGE result of FlipGFP beta sheet 10-11(V8s)](server/contents/wetlab/result/puri/v8s.jpg)
+![SDS-PAGE result of FlipGFP beta sheet 10-11(V8s)](server/contents/wetlab/result/puri/v8s.webp)
 
 Similar to the target cleavage sequence using TEV protease, we also performed mass spectrometry analysis on this part. The results showed that we successfully purified the correct FlipGFP beta sheet 10-11 (V8-short cleavage site) protein.
 
-![Mass Spectrometry Result of FlipGFP beta sheet 10-11(V8s)](server/contents/wetlab/result/puri/d.jpg)
+![Mass Spectrometry Result of FlipGFP beta sheet 10-11(V8s)](server/contents/wetlab/result/puri/d.webp)
 
 After shortening the V8 protease target cleavage sequence, we observed similar fluorescence intensity compared to the original sequence (with all other experimental conditions remaining unchanged). Therefore, we believe the shortened V8-short cleavage site can be used as the final target cleavage sequence for in vivo experiments with V8 protease.
 
-![Result of FlipGFP(V8-short) in vitro test](server/contents/wetlab/result/v8s.png)
+![Result of FlipGFP(V8-short) in vitro test](server/contents/wetlab/result/v8s.webp)
 
 <split />
 
@@ -145,23 +145,23 @@ To create an in vivo Flip fluorescent reporter system, we started by testing Fli
 
 To streamline experimental procedures, we aimed to express the entire system from a single plasmid. We selected the high-copy pRSFDuet-1 plasmid from the Duet series as our template, which contains two T7 promoters for simultaneous expression of two gene segments. Using Gibson Assembly, we inserted FlipCherry beta1-9, FlipCherry beta10-11 (with the TEV cleavage site), and EGFP (as a fluorescent control) after the first T7 promoter. These gene segments were linked using T2A sequences, which enable the production of three independent proteins from a single, continuous sequence by inducing a ribosomal “skip” during translation. This results in separate translation of FlipCherry beta1-9, FlipCherry beta10-11 (with the TEV cleavage site), and EGFP, despite being linked in the sequence. For the second T7 promoter, we used the same Gibson Assembly method to insert the TEV protease gene, optimizing its codons for E. coli expression.
 
-![Plasmid pRSFDuet-Flipcherry(TEV)-EGFP-TEVprotease for in vivo Flipcherry system Testing](server/contents/plasmid/rsf-tev.png)
+![Plasmid pRSFDuet-Flipcherry(TEV)-EGFP-TEVprotease for in vivo Flipcherry system Testing](server/contents/plasmid/rsf-tev.webp)
 
 After constructing the plasmid, we introduced it into BL21 (DE3) for expression and culture. When the bacterial culture reached an OD600 range of 0.6 to 1.0 after passage, we initiated protein expression using various concentrations: 0.1 mM, 0.2 mM, 0.5 mM, and 1 mM. Following 12 hours of induction, we used a fluorescence microscope and a microplate reader to measure fluorescence results. The data obtained from these instruments confirmed the viability of the Flipcherry system for expressing protease cleavage activity in E. coli. Building on this successful validation, we developed an E. coli platform to investigate the cleavage activity of V8 protease.
 
 <Tabs>
   <Tab title="Experiment Group">
 
-![EGFP](server/contents/wetlab/result/fl/12.png)
+![EGFP](server/contents/wetlab/result/fl/12.webp)
 
-![FlipCherry](server/contents/wetlab/result/fl/fl-exp-1.png)
+![FlipCherry](server/contents/wetlab/result/fl/fl-exp-1.webp)
 
   </Tab>
   <Tab title="Control Group">
 
-![EGFP](server/contents/wetlab/result/fl/22.png)
+![EGFP](server/contents/wetlab/result/fl/22.webp)
 
-![FlipCherry-Negative](server/contents/wetlab/result/fl/fl-c-1.png)
+![FlipCherry-Negative](server/contents/wetlab/result/fl/fl-c-1.webp)
 
   </Tab>
 </Tabs>
@@ -170,29 +170,29 @@ After constructing the plasmid, we introduced it into BL21 (DE3) for expression 
 
 Due to the short length of the substituted V8 protease cleavage site and its homologous protease cleavage site, it is difficult to obtain the correct fragment using traditional Gibson Assembly methods. Therefore, we directly attached the sequence to be replaced onto the primer of the vector, incorporating it as part of the vector’s homologous arm in the plasmid. We then used standard Gibson Assembly to replace the TEV protease with Glutamyl endopeptidase (gseA), successfully constructing the desired plasmid.
 
-![Plasmid pRSFDuet-Flipcherry(V8short)-EGFP-gseA for in vivo Flipcherry system Testing](server/contents/plasmid/rsf-tev.png)
+![Plasmid pRSFDuet-Flipcherry(V8short)-EGFP-gseA for in vivo Flipcherry system Testing](server/contents/plasmid/rsf-tev.webp)
 
-![Sequencing Result of pRSFDuet-Flipcherry(V8short)-EGFP-gseA](server/contents/plasmid/gsea-seq.jpg)
+![Sequencing Result of pRSFDuet-Flipcherry(V8short)-EGFP-gseA](server/contents/plasmid/gsea-seq.webp)
 
 We had GeneScript directly synthesize the thermolysin gene sequence on the pETDuet-1 vector, completing the construction of one of the co-transformation plasmids. Both plasmids are regulated by a lactose operon system.
 
-![Plasmid pETDuet-thermolysin for in vivo Flipcherry system Testing](server/contents/plasmid/thermo.png)
+![Plasmid pETDuet-thermolysin for in vivo Flipcherry system Testing](server/contents/plasmid/thermo.webp)
 
 After constructing the plasmid, we introduced it into BL21 (DE3) for expression and culture. Once the bacterial culture reached an OD600 between 0.6 and 1.0, protein expression was induced using varying concentrations: 0.1 mM, 0.2 mM, 0.5 mM, and 1 mM. Following 12 hours of induction, fluorescence was measured with a fluorescence microscope under consistent conditions. The microscope images captured under identical settings revealed similar green fluorescence in both the control and experimental groups. The control group lacked the gseA sequence following the second T7 promoter. EGFP served as an internal reference and was expressed in the plasmids of both groups. However, differences were observed in red fluorescence; the experimental group displayed red fluorescence due to self-assembly after cleavage, a phenomenon not seen in the control group.
 
 <Tabs>
   <Tab title="Experiment Group">
 
-![EGFP](server/contents/wetlab/result/fl/31.png)
+![EGFP](server/contents/wetlab/result/fl/31.webp)
 
-![FlipCherry](server/contents/wetlab/result/fl/32.png)
+![FlipCherry](server/contents/wetlab/result/fl/32.webp)
 
   </Tab>
   <Tab title="Control Group">
 
-![EGFP](server/contents/wetlab/result/fl/01.png)
+![EGFP](server/contents/wetlab/result/fl/01.webp)
 
-![FlipCherry-Negative](server/contents/wetlab/result/fl/02.png)
+![FlipCherry-Negative](server/contents/wetlab/result/fl/02.webp)
 
   </Tab>
 </Tabs>
