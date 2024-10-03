@@ -710,7 +710,7 @@ Important: Videos could not be uploaded by `igem-cdn`, you should go to [iGEM Vi
 
 ### Audios Component
 
-Important: Audios could not be uploaded by `igem-cdn`, you should go to [iGEM Video Universe](video.igem.org), and **it requires full embed URL of the audio**.
+Important: Audios could not be uploaded by `igem-cdn`, you should go to [iGEM Video Universe](video.igem.org), and **it requires full download URL of the audio**.
 
 - **Syntax:**
 
@@ -719,17 +719,21 @@ Important: Audios could not be uploaded by `igem-cdn`, you should go to [iGEM Vi
   ```
   Your URL should look like this:
   ```url
-  https://video.igem.org/download/videos/<some-random-number>.mp3
+  https://video.igem.org/download/streaming-playlists/hls/videos/<some-random-number>.mp4
   ```
   
+  it could be get by:
+    - ![Open Download Panel](server/docs/audio-download.webp)
+    - ![Copy the URL](server/docs/audio-download-link.webp)
+
 - **Example:**
 
   - Code:
     ```jsx
-    <Audio src="https://video.igem.org/download/videos/a4251534-26e7-44eb-9906-0864ec6e016c-0.mp3" />
+    <Audio src="https://video.igem.org/download/streaming-playlists/hls/videos/23f164dc-6b6f-4cc8-96ec-87c5446fc0d9-0-fragmented.mp4" />
     ```
   - Result:
-    <Audio src="https://video.igem.org/download/videos/a4251534-26e7-44eb-9906-0864ec6e016c-0.mp3" />
+    <Audio src="https://video.igem.org/download/streaming-playlists/hls/videos/23f164dc-6b6f-4cc8-96ec-87c5446fc0d9-0-fragmented.mp4" />
 
 
 ### Model Component
