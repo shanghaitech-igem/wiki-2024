@@ -201,10 +201,6 @@ main {
               background-color: light.$pacify-primary;
             }
 
-            td {
-              word-break: break-all;
-            }
-
             tr:nth-child(even) {
               background: rgba(#111, 0.05);
             }

@@ -14,6 +14,7 @@ import Model from "src/components/mdx/model-lazy";
 import Collapse from "src/components/mdx/collapse";
 import { Tabs, Tab } from "src/components/mdx/tabs";
 import Profile from "src/components/mdx/profile";
+import BreakCell from "src/components/mdx/break-cell";
 
 const components = {
   img: Image,
@@ -30,6 +31,7 @@ const components = {
   Tab,
   Profile,
   Link,
+  BreakCell,
 };
 
 import Layout from "src/components/layout";
