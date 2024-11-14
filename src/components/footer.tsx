@@ -19,6 +19,7 @@ const {
   icon,
   communication,
   icons,
+  medals,
   snapgeneLogo,
 } = styles;
 
@@ -63,7 +64,16 @@ const Footer: React.FC = () => {
           ))}
         </div>
       </div>
+
       <div className={info}>
+        <div className={medals}>
+          <a>
+            <img
+              src="/svgs/medal-bar.svg"
+              alt="Medal"
+            />
+          </a>
+        </div>
         <div className={logos}>
           <a
             href="https://gitlab.igem.org/2024/shanghaitech-china#shanghaitech---igem-2024-wiki-repository"
