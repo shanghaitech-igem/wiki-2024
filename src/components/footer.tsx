@@ -69,7 +69,7 @@ const Footer: React.FC = () => {
         <div className={medals}>
           <a>
             <img
-              src="/svgs/medal-bar.svg"
+              src={parseRemoteURL("server/svgs/medal-bar.svg")}
               alt="Medal"
             />
           </a>
