@@ -1,6 +1,6 @@
 ---
 title: "Proof of Concept"
-favicon: "server/test/igem-favicon.svg"
+favicon: "server/svgs/main-logo.svg"
 slug: "proof-of-concept"
 ---
 
@@ -20,13 +20,13 @@ The methodology is structured around the DBTL (Design, Build, Test, Learn) cycle
 
 Based on previous studies, V8 protease is a challenging enzyme to purify due to its propensity for self-degradation in recombinant _E. coli_ systems. To overcome this, four specific amino acid mutations were introduced into the prosequence of the V8 protease to inhibit self-degradation. The mutated proenzyme was designed to carry a C-terminal His-tag for purification purposes.
 
-![](server/contents/pj/activation.jpg)
+![](server/contents/pj/activation.webp)
 
 ## Build
 
 The gene encoding the mutant V8 protease was cloned into the pET-28a vector and transformed into E. coli BL21(DE3) cells.
 
-![pET-28a-His(C)-pro-sspA-mut4 Map](server/contents/plasmid/prov8.png)
+![pET-28a-His(C)-pro-sspA-mut4 Map](server/contents/plasmid/prov8.webp)
 
 ## Test
 
@@ -36,7 +36,7 @@ The protein was successfully expressed and purified. Initial assays showed a shi
 
 A more efficient purification method involving anion exchange chromatography (Q column) was implemented, which successfully separated the prosequence, yielding active V8 protease as confirmed by fluorescence assays.
 
-![](server/contents/pj/q.jpg)
+![](server/contents/pj/q.webp)
 
 # Drug Screening
 
@@ -44,7 +44,7 @@ A more efficient purification method involving anion exchange chromatography (Q 
 
 A high-throughput screening (HTS) system was set up using a library of 3,600 small molecule compounds. The goal was to identify inhibitors of V8 protease activity.
 
-![](server/contents/pj/screen.jpg)
+![](server/contents/pj/screen.webp)
 
 ## Build
 
@@ -54,7 +54,7 @@ Using HTS technology, the compounds were screened against the active V8 protease
 
 Nine compounds were identified as potential inhibitors, with inhibition rates ranging from 40% to 71%.
 
-![](server/contents/wetlab/result/drug/7.png)
+![](server/contents/wetlab/result/drug/7.webp)
 
 ## Learn
 
@@ -66,25 +66,25 @@ While initial results were promising, the inhibition rates were not sufficiently
 
 A flip fluorescent protein system based on previous research was designed to report the cleavage activity of V8 protease. Initially, the system was tested with TEV protease to validate the cleavage mechanism.
 
-![](server/contents/pj/flipsystem.jpg)
+![](server/contents/pj/flipsystem.webp)
 
 ## Build
 
 A 6x His-tagged FlipGFP system (beta1-9 and beta10-11 with the TEV target sequence) was constructed and expressed in E. coli.
 
-![Plasmids for the FlipGFP system](server/contents/plasmid/flipgfp-1.png)
+![Plasmids for the FlipGFP system](server/contents/plasmid/flipgfp-1.webp)
 
-![Plasmids for the FlipGFP system](server/contents/plasmid/flipgfp-2.png)
+![Plasmids for the FlipGFP system](server/contents/plasmid/flipgfp-2.webp)
 
 ## Test
 
 Initial in vitro tests did not show significant fluorescence. Adjustments were made to cleavage times and protein concentrations, leading to successful validation of the system with TEV protease.
 
-![Result of FlipGFP(TEVprotease) in vitro test](server/contents/wetlab/result/tev.png)
+![Result of FlipGFP(TEVprotease) in vitro test](server/contents/wetlab/result/tev.webp)
 
-![Result of FlipGFP(V8protease) in vitro test](server/contents/wetlab/result/v8.png)
+![Result of FlipGFP(V8protease) in vitro test](server/contents/wetlab/result/v8.webp)
 
-![Result of FlipGFP(V8-short) in vitro test](server/contents/wetlab/result/v8s.png)
+![Result of FlipGFP(V8-short) in vitro test](server/contents/wetlab/result/v8s.webp)
 
 ## Learn
 
@@ -96,29 +96,29 @@ Concentration ratios and cleavage times are critical to the system's performance
 
 The goal was to simulate itching by S. aureus in E. coli using a flip fluorescent system with the V8 protease target sequence substituted for the TEV sequence. A system to express V8 protease homolog, Glutamyl endopeptidase (gseA), was designed due to its similar cleavage specificity and better folding characteristics.
 
-![The 3D structure of gseA(Glutamyl endopeptidase)](server/contents/wetlab/gsea.jpg)
+![The 3D structure of gseA(Glutamyl endopeptidase)](server/contents/wetlab/gsea.webp)
 
 ## Build
 
 Plasmids were constructed to co-express the fluorescent reporter system (FlipCherry, modified for target sequence of V8 protease) and the gseA protease in E. coli.
 
-![Plasmid pRSFDuet-Flipcherry(V8short)-EGFP-gseA for in vivo Flipcherry system Testing](server/contents/plasmid/rsf-tev.png)
+![Plasmid pRSFDuet-Flipcherry(V8short)-EGFP-gseA for in vivo Flipcherry system Testing](server/contents/plasmid/rsf-tev.webp)
 
-![Plasmid pETDuet-thermolysin for in vivo Flipcherry system Testing](server/contents/plasmid/thermo.png)
+![Plasmid pETDuet-thermolysin for in vivo Flipcherry system Testing](server/contents/plasmid/thermo.webp)
 
 ## Test
 
 Tests showed successful co-expression and specific red fluorescence indicative of cleavage activity, validated by fluorescence microscopy and plate reader measurements.
 
-![Fluorescence Result of Experimental Group](server/contents/wetlab/result/fl/fl-exp-1.png)
+![Fluorescence Result of Experimental Group](server/contents/wetlab/result/fl/fl-exp-1.webp)
 
-![Fluorescence Result of Control Group](server/contents/wetlab/result/fl/fl-c-1.png)
+![Fluorescence Result of Control Group](server/contents/wetlab/result/fl/fl-c-1.webp)
 
 ## Learn
 
 The system successfully simulates pruritus in E. coli, with fluorescence results indicating cleavage activity of gseA. Further optimization will focus on refining expression conditions to ensure robust and reproducible results.
 
-![Detecting the efficacy of substances in a fluorescent reporter system simulating human itch sensation in Escherichia coli](server/contents/pj/ecoli.jpg)
+![Detecting the efficacy of substances in a fluorescent reporter system simulating human itch sensation in Escherichia coli](server/contents/pj/ecoli.webp)
 
 <split />
 

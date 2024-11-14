@@ -1,6 +1,6 @@
 ---
 title: "Contribution"
-favicon: "server/test/igem-favicon.svg"
+favicon: "server/svgs/main-logo.svg"
 slug: "contribution"
 ---
 
@@ -18,15 +18,15 @@ Finally, for drug screening, we used high-throughput methods and computational t
 
 In our project, we aimed to address the challenge of producing active V8 protease by utilizing advanced genetic and purification strategies. V8 protease, a zymogen, is composed of three distinct segments: the preprosequence, the prosequence, and the mature sequence. The preprosequence contains a signal peptide, while the prosequence functions in deactivating enzyme activity and aiding proper folding. The active catalytic site is located within the mature sequence. A major issue with expressing wild-type V8 protease in E. coli BL21(DE3) is self-degradation which leads to low protein yields. Previous studies have indicated that introducing specific mutations into the prosequence or replacing it with a sequence from a homologous protein like GluSE can mitigate this problem. Hence, we decided to introduce four specific mutations into the prosequence to prevent degradation and subsequently activate the zymogen using thermolysin.
 
-![V8 protease is a zymogen.](server/contents/pj/zym.jpg)
+![V8 protease is a zymogen.](server/contents/pj/zym.webp)
 
 In the first cycle of our experiment, we designed a pET-28a expression plasmid, named sspA-Mut4-his(C), to express the V8 proenzyme in E. coli. The gene encoding the V8 protease was modified to lack the preprosequence but include four mutations in the prosequence, along with a C-terminal His-tag, to protect against self-degradation. We successfully expressed the V8 proenzyme and verified its production through gel electrophoresis, which showed that the protein band shifted position after cleavage by thermolysin. Mass spectrometry confirmed the anticipated molecular mass of the cleaved product, suggesting proper cleavage had occurred. However, despite successful cleavage, no protease activity was observed, likely due to non-covalent attachment of the prosequence to the mature enzyme, which may have inhibited activity by blocking the active site.
 
-![Plasmid pET28a-sspA-Mut4-His(C) for V8 protease expression and purification.](server/contents/plasmid/prov8.png)
+![Plasmid pET28a-sspA-Mut4-His(C) for V8 protease expression and purification.](server/contents/plasmid/prov8.webp)
 
 In the second cycle, we addressed this issue by hypothesizing that anion exchange chromatography could effectively separate the mature enzyme from the residual prosequence. Post-activation with thermolysin, we purified the V8 protease using an anion exchange column (Q column). This process successfully shifted the protein band position, and subsequent fluorescence assays using a substrate specific to V8 protease confirmed active enzyme production, as indicated by a steady increase in fluorescence over time during incubation.
 
-![Remove prosequence to activate V8 Protease](server/contents/pj/q.jpg)
+![Remove prosequence to activate V8 Protease](server/contents/pj/q.webp)
 
 Following successful purification and activation of the V8 protease, we proceeded to screen for potential inhibitors using high-throughput drug screening technologies. These experiments establish a method for expressing and obtaining active V8 protease by introducing specific mutations to prevent self-degradation and employing effective purification techniques. This approach not only provides a foundation for large-scale enzyme production but also sets the stage for drug discovery efforts aimed at identifying inhibitors of the V8 protease.
 
@@ -38,7 +38,7 @@ A lab at the University of California, San Francisco, initially developed a prot
 
 Aligning with this concept, we aimed to replace the TEV protease cleavage sequence in the Flip system with the V8 protease target sequence to report V8 protease activity, simulating a skin itching condition. We decided to use FlipCherry instead of FlipGFP for better brightness, as FlipCherry is based on the directed evolution of superfold Cherry.
 
-![The principle of the "Flip" protease fluorescent reporter system](server/contents/pj/flipsystem.jpg)
+![The principle of the "Flip" protease fluorescent reporter system](server/contents/pj/flipsystem.webp)
 
 Our validation began with FlipCherry using TEV protease. We confirmed the sequence through mass spectrometry and optimized the cleavage conditions. After purifying the proteins, we conducted in vitro tests which demonstrated that no significant fluorescence change occurred during the 12-hour assembly process, likely due to improper cleavage conditions and incorrect concentration of fragments. Adjusting these conditions in subsequent tests allowed successful validation of the FlipCherry system.
 
@@ -46,9 +46,9 @@ To simulate the itching caused by _Staphylococcus aureus_, which secretes V8 pro
 
 We constructed a plasmid using the pRSFDuet-1 vector to express the entire system from a single plasmid, driven by two T7 promoters. The first promoter expressed FlipCherry beta1-9, FlipCherry beta10-11 (with the target cleavage sequence), and EGFP as an internal reference, linked by T2A sequences to ensure production of separate proteins. The second promoter drove the expression of the TEV protease or Glutamyl endopeptidase gene, optimized for _E. coli_ expression, using Gibson Assembly.
 
-![Plasmids for the FlipGFP system](server/contents/plasmid/flipgfp-1.png)
+![Plasmids for the FlipGFP system](server/contents/plasmid/flipgfp-1.webp)
 
-![Plasmids for the FlipGFP system](server/contents/plasmid/flipgfp-2.png)
+![Plasmids for the FlipGFP system](server/contents/plasmid/flipgfp-2.webp)
 
 Following successful expression and validation of the FlipCherry system, we induced protein expression in _E. coli_ BL21(DE3) cells and confirmed the functionality of the modified system using fluorescence microscopy and a microplate reader. In further experiments, using a segment of the PAR1 receptor with the cleavage site of V8 protease, we observed red fluorescence induced by self-assembly after cleavage in the experimental group but not in the control group, illustrating the system's ability to report cleavage activity.
 
@@ -62,10 +62,10 @@ Overall, these experiments demonstrated the feasibility and functionality of usi
 
 We aim to find a green and safe inhibitor of V8 protease. With this consideration, we have chosen several compound libraries for drug screening: the Natural Compound Library, Bioactive Compound Library, Clinical Compound Library, and Approved Drug Library. High-throughput screening technology uses microplates as experimental tools, allowing for convenient and rapid automatic liquid addition to quickly screen potential inhibitors of V8 protease. We have successfully purified active V8 protease, and we will further use a fluorescence system and a plate reader to measure fluorescence intensity as an indicator of V8 protease activity, combining this with high-throughput screening to identify potential inhibitors from the aforementioned compound libraries.
 
-![Drug Screening in the Lab](server/contents/pj/screen.jpg)
+![Drug Screening in the Lab](server/contents/pj/screen.webp)
 
 However, we are not content with the results obtained in the lab. To identify more potential active compounds, we leveraged modern computational science to conduct virtual drug screening. By using Schrodinger and GVSrun tools, we design the grid box and screen against the ChemDiv molecule library, which comprises over 1,000,000 compounds.
 
-![Virtual Drug Screen Procedure](server/contents/pj/vs.png)
+![Virtual Drug Screen Procedure](server/contents/pj/vs.webp)
 
 We saved the top 1000 results from the aforementioned screening and, considering factors such as protein-ligand bonding, conformational matching, electronegativity compatibility, and strain energy, we ultimately identified 60 of the most promising small molecules capable of inhibiting the V8 protease. Although the lengthy drug procurement cycle prevented us from experimentally validating the virtual screening outcomes before the deadline of this year's iGEM competition, based on the quantitative results, these small molecules hold considerable promise for achieving stronger inhibitory effects than those obtained from laboratory screenings.

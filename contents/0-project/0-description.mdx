@@ -1,6 +1,6 @@
 ---
 title: "Description"
-favicon: "server/test/igem-favicon.svg"
+favicon: "server/svgs/main-logo.svg"
 slug: "description"
 ---
 
@@ -8,11 +8,11 @@ slug: "description"
 
 Itchiness, or pruritus, is a common discomfort we all face in our daily lives. Normally, it tends to subside naturally over time. But when itching is driven by specific causes and keeps lingering, it becomes a stubborn challenge that is tough to manage and relieve. In today's world of mounting health challenges, we deeply recognize the urgency and importance of developing an effective solution to tackle itching caused by Staphylococcus aureus. This pesky pathogen is everywhere—both in the environment and on our skin. When it strikes, it not only causes inflammation and redness but also brings along relentless and unbearable itching, severely impacting the quality of life for those affected.
 
-![](server/contents/pj/a1.jpg)
+![](server/contents/pj/a1.webp)
 
 The itch not only disrupts daily activities, work, and sleep but also triggers emotional turmoil, leading to anxiety and depression. Continuous scratching in the desperate attempt to find relief can further compromise the skin barrier, worsen infections, and even leave scars, affecting both appearance and self-confidence. Despite the variety of anti-itch products available on the market, most focus on using antibiotics and other medications to directly target the pathogens. While this is a valid curative approach, the sensation of itching often doesn't diminish quickly or significantly during treatment, leaving patients to continue suffering. Some products that claim to relieve itching may contain hormones, which, with prolonged use, can cause side effects such as skin thinning and pigmentation, and their effectiveness remains limited.
 
-![](server/contents/pj/a2.jpg)
+![](server/contents/pj/a2.webp)
 
 In light of the persistent nature of itching, we are committed to leveraging Escherichia coli, a simple and cost-efficient biological model, to mimic the itching sensation caused by Staphylococcus aureus in humans and identify substances that can effectively alleviate persistent itchiness. Our aim is to create a safe and user-friendly product that not only soothes itching but also aids in treatment without interfering with conventional therapeutic methods, offering people a more comfortable and pleasant experience.
 
@@ -24,15 +24,15 @@ In light of the persistent nature of itching, we are committed to leveraging Esc
 
 Our first step involves identifying potential substances that can effectively alleviate itching. To achieve this, we will focus on purifying the key enzyme responsible for the itching caused by Staphylococcus aureus, known as V8 protease. Direct expression of V8 protease in _Escherichia coli_ (BL21) results in self-degradation, so we will add the leader peptide of a homologous protein to inhibit its activity. During the purification process, we will use thermolysin to cleave the leader peptide, thereby activating the V8 protease.
 
-![Activation of V8 protease by thermolysin](server/contents/pj/activation.jpg)
+![Activation of V8 protease by thermolysin](server/contents/pj/activation.webp)
 
 By employing this meticulous method, we aim to successfully purify an active V8 protease. Once we confirm its activity, we will proceed with screening specific substances. We plan to screen 3,600 different small molecule compounds, observing the changes in enzyme activity upon the addition of each compound. This approach will help us to preliminarily identify potential substances that can inhibit itching effectively, bringing us one step closer to a solution that can provide lasting relief for those suffering from persistent itchiness.
 
-![Drug Screening in the Lab](server/contents/pj/screen.jpg)
+![Drug Screening in the Lab](server/contents/pj/screen.webp)
 
 Besides drug screening in the lab, we also did virtual screening to find further possibilities. You can find more details in the [Modeling](https://2024.igem.wiki/shanghaitech-china/model/) section.
 
-![Virtual Drug Screen Procedure](server/contents/pj/vs.png)
+![Virtual Drug Screen Procedure](server/contents/pj/vs.webp)
 
 ## Constructing a fluorescent reporting system based on _Escherichia coli_
 
@@ -42,13 +42,13 @@ Firstly, we performed virtual drug screening to identify potent candidates. For 
 
 [^1]: Deng, Liwen et al. “S. aureus drives itch and scratch-induced skin damage through a V8 protease-PAR1 axis.” Cell vol. 186,24 (2023): 5375-5393.e25. doi:10.1016/j.cell.2023.10.019
 
-![The mechanism by which human skin experiences itching upon exposure to Staphylococcus aureus.](server/contents/pj/human.jpg)
+![The mechanism by which human skin experiences itching upon exposure to Staphylococcus aureus.](server/contents/pj/human.webp)
 
 To detect this process, we designed a Flip fluorescence reporting system, which consists of two parts: the main beta barrel structure formed by the beta sheet 1-9 sequence and the beta sheet 10-11 sequence containing the V8 protease target cleavage site. When the target sequence is intact, beta sheet 10-11 orientation disrupts the correct assembly of the entire fluorescent protein, preventing it from emitting fluorescence. Once the target sequence is cleaved, beta sheet 10-11 is freed from its constraints and can eventually interact with beta sheet 1-9 to form a fully fluorescent protein structure, thereby mimicking the neural signal transmission in the human PAR1 receptor.[^2]
 
 [^2]: Zhang, Qiang et al. “Designing a Green Fluorogenic Protease Reporter by Flipping a Beta Strand of GFP for Imaging Apoptosis in Animals.” Journal of the American Chemical Society vol. 141,11 (2019): 4526-4530. doi:10.1021/jacs.8b13042
 
-![The principle of the "Flip" protease fluorescent reporter system](server/contents/pj/flipsystem.jpg)
+![The principle of the "Flip" protease fluorescent reporter system](server/contents/pj/flipsystem.webp)
 
 To ensure the feasibility of this fluorescence system, we first purified the two protein parts of the fluorescence reporting system, each tagged with a His-tag at the C-terminal.[^3] We incubated the purified FlipGFP beta sheet 10-11 with the protease, followed by adding FlipGFP beta sheet 1-9 to complete the assembly and measure fluorescence. Given the complexity of the V8 protease cleavage site, we initially conducted experiments using the more specific TEV protease and its corresponding target cleavage site.
 
@@ -60,7 +60,7 @@ Moreover, we introduced a model to predict the intensity of the fluorescence.
 
 Finally, we will introduce the potential effective small molecules identified in vitro into the E. coli culture system to verify their impact on the fluorescence results. This will provide a deeper understanding of their potential efficacy in alleviating persistent itching in human applications.
 
-![Detecting the efficacy of substances in a fluorescent reporter system simulating human itch sensation in Escherichia coli](server/contents/pj/ecoli.jpg)
+![Detecting the efficacy of substances in a fluorescent reporter system simulating human itch sensation in Escherichia coli](server/contents/pj/ecoli.webp)
 
 <split />
 
@@ -72,9 +72,9 @@ Ultimately, we hope to design a safe product specifically targeting the persiste
 
 <Gallery
   srcList={[
-    "server/contents/pj/app-1.jpg",
-    "server/contents/pj/app-2.jpg",
-    "server/contents/pj/app-3.jpg",
+    "server/contents/pj/app-1.webp",
+    "server/contents/pj/app-2.webp",
+    "server/contents/pj/app-3.webp",
   ]}
 />
 

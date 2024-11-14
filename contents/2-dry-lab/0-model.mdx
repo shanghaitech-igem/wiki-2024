@@ -1,6 +1,6 @@
 ---
 title: "Model"
-favicon: "server/test/igem-favicon.svg"
+favicon: "server/svgs/main-logo.svg"
 slug: "model"
 ---
 
@@ -122,7 +122,7 @@ Moreover, if the degradation of mRNA is sufficiently faster (say, at least 10 ti
 
 [^3]: Zhang, Schepis, A., Huang, H., Yang, J., Ma, W., Torra, J., Zhang, S.-Q., Yang, L., Wu, H., Nonell, S., Dong, Z., Kornberg, T. B., Coughlin, S. R., & Shu, X. (2019). Designing a Green Fluorogenic Protease Reporter by Flipping a Beta Strand of GFP for Imaging Apoptosis in Animals. Journal of the American Chemical Society, 141(11), 4526–4530. https://doi.org/10.1021/jacs.8b13042
 
-![Figure 2.1 The Description From The Essay (Too General)](server/contents/model/md-figure-3.png)
+![Figure 2.1 The Description From The Essay (Too General)](server/contents/model/md-figure-3.webp)
 
 This model is described in six parts:
 
@@ -249,8 +249,8 @@ We use **AlphaFold2** to get β1-β9 instead of deleting the β10-β11 part in t
   ```
   By inputing the sequence into the platform, we acquire the following results.
 
-![Figure 2.2 Sequence Coverage Graph From AlphaFold2](server/contents/model/md-figure-1.png)
-![Figure 2.3 Confidence Figure From AlphaFold2](server/contents/model/md-figure-2.png)
+![Figure 2.2 Sequence Coverage Graph From AlphaFold2](server/contents/model/md-figure-1.webp)
+![Figure 2.3 Confidence Figure From AlphaFold2](server/contents/model/md-figure-2.webp)
 
 Which shows that the generated structure is countable.
 
@@ -765,10 +765,10 @@ gmx mdrun -deffnm md -gpu_id 0 -nb gpu -pme gpu -pmefft gpu -bonded gpu -update 
 
 <Gallery srcList={
   [
-    "server/contents/model/md-figure-result-1.png", 
-    "server/contents/model/md-figure-result-2.png", 
-    "server/contents/model/md-figure-result-3.png", 
-    "server/contents/model/md-figure-result-4.png", 
+    "server/contents/model/md-figure-result-1.webp", 
+    "server/contents/model/md-figure-result-2.webp", 
+    "server/contents/model/md-figure-result-3.webp", 
+    "server/contents/model/md-figure-result-4.webp", 
   ]} 
 />
 
@@ -868,14 +868,14 @@ This model is described in three parts:
 The following flow chart shows the general steps we take to do virtual screening.
 
 <Image
-  src="server/contents/model/vs-figure-workflow-part-1.png"
+  src="server/contents/model/vs-figure-workflow-part-1.webp"
   alt="Figure 4.1-1 Flow Chart Of Virtual Screening Part 1"
   title="Figure 4.1-1 Flow Chart Of Virtual Screening Part 1"
   width="900"
 />
 
 <Image
-  src="server/contents/model/vs-figure-workflow-part-2.png"
+  src="server/contents/model/vs-figure-workflow-part-2.webp"
   alt="Figure 4.1-2 Flow Chart Of Virtual Screening Part 2"
   title="Figure 4.1-2 Flow Chart Of Virtual Screening Part 2"
   width="900"
@@ -894,7 +894,7 @@ Then, based on the functional region displayed in [UniProt (UniProt Code: Q99V45
 
 <PDF src="server/contents/model/vs-else/vs-uniprot.pdf" />
 
-![Figure 4.2 Functional Region (HIS 51, ASP 93, SER 169)](server/contents/model/vs-else/vs-figure-actice-sites.png)
+![Figure 4.2 Functional Region (HIS 51, ASP 93, SER 169)](server/contents/model/vs-else/vs-figure-actice-sites.webp)
 
 The prepared protein pocket file and the 3D small `molecule library ChemDiv (1,000,000 + molecules)` were used as inputs to perform preliminary virtual screening on a Linux cluster using the GVSrun[^7] command (which internally calls Glide's molecular docking method and its files are open-source on [Wang Lin's Github](https://github.com/Wang-Lin-boop/CADD-Scripts)). The GVS command is as follows:
 
@@ -920,8 +920,8 @@ After several days of screening _(less than one week)_, we obtained the promisin
 
 Subsequently, we utilized `Schrodinger` software to observe bond formation and assess the degree of electrostatic negativity matching for the top 1000 ranked small molecules. _(The following figures show the view in Schrodinger and he correlation between different colors and different bonds.)_
 
-![Figure 4.3-1 One Of The Results As Illustrative Examples](server/contents/model/vs-figure-1.png)
-![Figure 4.3-2 Different Bonds With Corresponding Colors](server/contents/model/vs-else/vs-figure-bonds.png)
+![Figure 4.3-1 One Of The Results As Illustrative Examples](server/contents/model/vs-figure-1.webp)
+![Figure 4.3-2 Different Bonds With Corresponding Colors](server/contents/model/vs-else/vs-figure-bonds.webp)
 
 We scored them `(see method in` [part b](#b-rating-method-used-when-screening-through-visual-inspection)`)`and calculated their [MMGBSA ΔG bind](#mmgbsa-δg-bind) to further eliminate false positive small molecules, resulting in 200 small molecules with favorable properties. Finally, based on the new protein and small molecule conformations obtained from the calculation of mmgbsa ΔG bind, we calculated the [ligand strain energy](#mmgbsa-δg-bind) for these 200 small molecules. Based on the results, and in conjunction with the previous indicators, we arrived at the final 60 small molecules. (All steps were executed within the Schrodinger software.)
 
@@ -1097,8 +1097,8 @@ Right behind the table, the **structures of these small molecules** are presente
 
 Regrettably, hydrogen bonds and other interactions (as shown in Figure 4.4-1 and Figure 4.4-2) cannot be displayed in the wiki. Relevant results will be included in our files, and interested parties can download them for viewing with software such as Schrodinger.
 
-![Figure 4.4-1 z-4650 Docking Result With Surface Shown As Example](server/contents/model/vs-else/vs-z-4650-pic-1.png)
-![Figure 4.4-2 z-4650 Docking Result Without Surface Shown As Example](server/contents/model/vs-else/vs-z-4650-pic-2.png)
+![Figure 4.4-1 z-4650 Docking Result With Surface Shown As Example](server/contents/model/vs-else/vs-z-4650-pic-1.webp)
+![Figure 4.4-2 z-4650 Docking Result Without Surface Shown As Example](server/contents/model/vs-else/vs-z-4650-pic-2.webp)
 
 **`Spinning 180°`** and **`zoom in`** to see the **Morphological Fit** of the ligand and the protein.
 
