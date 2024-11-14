@@ -14,7 +14,7 @@ In order to successfully realize our product design, which aims to identify subs
 
 The entire engineering process is logically structured under the principles of DBTL (Design, Build, Test, Learn), as recommended by iGEM. We continuously conduct transformations and iterations to refine our projects. Below is a summary of the experimental content and the logical workflow we have completed.
 
-<split/>
+<split />
 
 # V8 Purification
 
@@ -40,7 +40,7 @@ When wild-type V8 protease is directly expressed in _E. coli_ BL21(DE3), it unde
 
   The gene encoding the V8 protease, lacking the preprosequence and containing four amino acid mutations in the prosequence, was engineered to include a His-tag at the C-terminus. This design aims to prevent self-degradation of the protein in _E. coli_.
 
-  ![pET-28a-His(C)-pro-sspA-mut4 Map](assets/pET-28a-His(C)-pro-sspA-mut4 Map.png)
+  ![pET-28a-His(C)-pro-sspA-mut4 Map](server/contents/plasmid/prov8.png)
 
 - Test
 
@@ -68,17 +68,13 @@ When wild-type V8 protease is directly expressed in _E. coli_ BL21(DE3), it unde
 
   Following passage through the Q column, the protein band shifted from the fifth to the fourth position on the gel. Fluorescence assays using a V8 protease-specific substrate demonstrated a linear increase in fluorescence over time during incubation, confirming the acquisition of active V8 protease.
 
-  ![Measure the activity of the enzyme by using fluorescent substrate](server/contents/pj/screen-fluoro.jpg)
-
-<split/>
+<split />
 
 # Drug Screening
 
 - Design
 
   Using high-throughput drug screening, we tested 3,600 small molecule compounds from the Natural Compound Library, Bioactive Compound Library, Clinical Compound Library, and Approved Drug Library for their inhibitory effects on V8 protease activity.
-
-![Drug Screening in the Lab](server/contents/pj/screen-fluoro.jpg)
 
 - Build
 
@@ -94,7 +90,7 @@ When wild-type V8 protease is directly expressed in _E. coli_ BL21(DE3), it unde
 
   The nine potential inhibitors identified from over 3,600 compounds showed limited inhibition rates. As a next step, we plan to expand the screening scope to identify small molecules with higher inhibition rates.
 
-<split/>
+<split />
 
 # Flip Reporting System in vitro Verification
 
@@ -118,7 +114,9 @@ Based on previous research, a lab at the University of California, San Francisco
 
   We added a 6x His-tag to the C-terminus of both parts of the fluorescent system (beta1-9 and beta10-11) for expression and purification. We selected the same FlipGFP sequence and TEV protease target cleavage sequence as described in the literature. The TEV protease target sequence is ENLYFQS. These sequences were submitted to GeneScript for direct synthesis in the expression region of the pET-28a plasmid.
 
-![Plasmids for the FlipGFP system](server/contents/plasmid/flipgfp.jpg)
+  ![Plasmids for the FlipGFP system](server/contents/plasmid/flipgfp-1.png)
+
+  ![Plasmids for the FlipGFP system](server/contents/plasmid/flipgfp-2.png)
 
 - Test
 
@@ -136,7 +134,7 @@ Based on previous research, a lab at the University of California, San Francisco
 
 - Test
 
-  The two plasmids were separately transformed into BL21 (DE3) cells for expression. When the OD600 of the culture reached 0.6, IPTG was added at a final concentration of 0.1 mM to induce expression, and the cultures were incubated for 14 hours before collecting the cells for subsequent purification steps. The purified beta10-11 fragment was incubated with TEV protease at 4°C for 5 minutes, using enzyme-to-substrate ratios of 1:50 and 1:100. After incubation, a 200 μL fluorescent protein self-assembly system was prepared, with the concentration of FlipGFP beta1-9 at 5.8 μM and FlipGFP beta10-11 at 44.6 μM. Following the initiation of the assembly process, absorbance at 535 nm was measured using a plate reader every hour for 12 hours, with excitation at a wavelength of 488 nm.
+  The two plasmids were separately transformed into BL21 (DE3) cells for expression. When the OD600 of the culture reached 0.6, IPTG was added at a final concentration of 0.1 mM to induce expression, and the cultures were incubated for 14 hours before collecting the cells for subsequent purification steps. The purified beta10-11 fragment was incubated with TEV protease at 4°C for 5 minutes, using enzyme-to-substrate ratios of 1:50 and 1:100. After incubation, a 200 μL fluorescent protein self-assembly system was prepared, with the concentration of FlipGFP beta1-9 at 5.8 μM and FlipGFP beta10-11 at 44.6 μM. Following the initiation of the assembly process, absorbance at 535 nm was measured using a plate reader every hour for 11 hours, with excitation at a wavelength of 488 nm.
 
 ![Result of FlipGFP(TEVprotease) in vitro test](server/contents/wetlab/result/tev.png)
 
@@ -148,7 +146,7 @@ Based on previous research, a lab at the University of California, San Francisco
 
 - Design
 
-
+Following the successful validation of using the TEV protease for specific cleavage of target sequences, in our next experiment, we will replace the target cleavage sequence with that of V8 protease. For the V8 protease cleavage sequence, we selected the extracellular segment of the PAR1 receptor, which is known to be cleaved by V8 protease and involved in triggering itch sensations in humans. This is in line with our goal of designing an itch-sensing system for in vivo applications.
 
 - Build
 
@@ -156,7 +154,39 @@ Based on previous research, a lab at the University of California, San Francisco
 
   ![Plasmid for FlipGFP(V8)](server/contents/plasmid/gfp-v8.png)
 
-<split/>
+- Test
+
+  The two plasmids were separately transformed into BL21 (DE3) cells for expression. When the OD600 of the culture reached 0.6, IPTG was added at a final concentration of 0.1 mM to induce expression, and the cultures were incubated for 14 hours before collecting the cells for subsequent purification steps. The purified FlipGFP beta sheet 10-11 fragment was incubated with V8 protease at 4°C for 5 minutes, using enzyme-to-substrate ratios of 1:50 and 1:100. After incubation, a 200 μL fluorescent protein self-assembly system was prepared, with the concentration of FlipGFP beta sheet 1-9 at 5.8 μM and FlipGFP beta sheet 10-11 at 44.6 μM. Following the initiation of the assembly process, absorbance at 535 nm was measured using a plate reader every hour for 3 hours, with excitation at a wavelength of 488 nm.
+
+![Result of FlipGFP(V8protease) in vitro test](server/contents/wetlab/result/v8.png)
+
+- Learn
+
+We have successfully validated the feasibility of using the Flip system to report V8 protease activity. Building on this foundation, we are now optimizing the Flip system to ensure its robust expression in Escherichia coli.
+
+## Cycle 4
+
+- Design
+
+  We are optimizing the inserted V8 protease target cleavage sequence in the Flip system. Given that V8 protease target sequences do not exhibit strong specificity (its cleavage sites include aspartic acid and glutamic acid), we have selected a shorter sequence that contains only one cleavage site in the middle, reducing its length to one-third of the original sequence. This adjustment aims to minimize potential non-specific cleavage during future expression in Escherichia coli. Additionally, the shorter sequence helps prevent the elimination of spatial hindrance between the beta sheets 10-11 of uncut FlipGFP due to an overly long flexible sequence. Such a scenario could lead to unintended self-assembly and fluorescence in the uncut state.
+
+- Build
+
+  We construct the plasmid with V8 protease short cleavage site inserted in FlipGFP beta sheet 1-9. This is based on the former plasmid, pET-28a-FlipGFP(ß10-11)-V8protease. We did Gibson Assembly to substitute V8 protease cleavage site by adding the V8-short cleavage site directly on the primers of the vector.
+
+  ![Plasmid for FlipGFP(V8)](server/contents/plasmid/gfp-v8s.png)
+
+- Test
+
+  The two plasmids were separately transformed into BL21 (DE3) cells for expression. When the OD600 of the culture reached 0.6, IPTG was added at a final concentration of 0.1 mM to induce expression, and the cultures were incubated for 14 hours before collecting the cells for subsequent purification steps. The purified FlipGFP beta sheet 10-11 fragment was incubated with V8 protease at 4°C for 5 minutes, using enzyme-to-substrate ratios of 1:50 and 1:100. After incubation, a 200 μL fluorescent protein self-assembly system was prepared, with the concentration of FlipGFP beta sheet 1-9 at 5.8 μM and FlipGFP beta sheet 10-11 at 44.6 μM. Following the initiation of the assembly process, absorbance at 535 nm was measured using a plate reader every hour for 3 hours, with excitation at a wavelength of 488 nm.
+
+![Result of FlipGFP(V8-short) in vitro test](server/contents/wetlab/result/v8s.png)
+
+- Learn
+
+  Based on the experimental results, the use of a shorter V8 protease target cleavage sequence yields fluorescence outcomes comparable to those obtained with a longer target sequence. Taking into consideration the previously mentioned advantages—reduced non-specific cleavage and minimized spatial hindrance—we have decided to use the shorter V8 protease cleavage sequence as the insert for the FlipGFP system in subsequent experiments.
+
+<split />
 
 # E.coli Pruritus Simulation System
 
@@ -164,9 +194,13 @@ Based on previous research, a lab at the University of California, San Francisco
 
 Through literature review, we identified the mechanism by which _Staphylococcus aureus_ causes itching in humans: it secretes V8 protease, which cleaves the extracellular sequence of the PAR1 receptor on the skin. Based on this, we replaced the TEV protease cleavage sequence in the Flip system with the V8 protease target sequence to report the activity of V8 protease. To more accurately simulate the conditions of skin itching, we substituted FlipGFP with FlipCherry. FlipCherry contains a fluorescent protein structure based on the directed evolution of superfold Cherry, offering enhanced brightness.[^4]
 
+![The mechanism by which human skin experiences itching upon exposure to Staphylococcus aureus.](server/contents/pj/human.jpg)
+
 [^4]: Deng, Liwen et al. “S. aureus drives itch and scratch-induced skin damage through a V8 protease-PAR1 axis.” Cell vol. 186,24 (2023): 5375-5393.e25. doi:10.1016/j.cell.2023.10.019
 
 V8 protease, also known as Glutamyl endopeptidase from _Staphylococcus aureus_, specifically cleaves peptide bonds at the carboxyl side of glutamic acid residues, making it a valuable tool in protein mapping. However, its tendency to misfold and self-degrade when expressed in non-native systems like _E. coli_ presents challenges for experimental setups. By using Glutamyl endopeptidase as a substitute, we can preserve the same specificity at cleavage sites while avoiding the folding and degradation issues. This ensures that the cleavage analysis more accurately reflects the system’s behavior without introducing artifacts due to enzyme instability.
+
+![Detecting the efficacy of substances in a fluorescent reporter system simulating human itch sensation in Escherichia coli](server/contents/pj/ecoli.jpg)
 
 ## Cycle 1
 
@@ -178,7 +212,7 @@ V8 protease, also known as Glutamyl endopeptidase from _Staphylococcus aureus_, 
 
   To simplify experimental procedures, we aimed to express the entire system from a single plasmid. Therefore, we selected the high-copy pRSFDuet-1 plasmid from the Duet series as the template. This plasmid contains two T7 promoters, allowing for the simultaneous expression of two gene segments. After the first T7 promoter, we inserted FlipCherry beta1-9, FlipCherry beta10-11 (with the TEV cleavage site), and EGFP (as a fluorescent control) using Gibson Assembly. The three gene segments were linked using T2A sequences. The T2A sequence enables the production of three independent proteins from a single, continuous sequence by inducing a ribosomal "skip" during translation. As a result, although the genes are linked in the sequence, they are translated into separate proteins: FlipCherry beta1-9, FlipCherry beta10-11 (with the TEV cleavage site), and EGFP. This approach allows for efficient co-expression of multiple proteins from a single mRNA transcript. Similarly, after the second T7 promoter, we inserted the TEV protease gene, optimizing its codons for _E. coli_ expression using the same Gibson Assembly method.
 
-{/* <img src="assets/pRSFDuet-Flipcherry(TEV full)-T2A-EGFP-TEVprotease-final Map.png" alt="pRSFDuet-Flipcherry(TEV full)-T2A-EGFP-TEVprotease-final Map" style="zoom:50%;" /> */}
+![Plasmid pRSFDuet-Flipcherry(TEV)-EGFP-TEVprotease for in vivo Flipcherry system Testing](server/contents/plasmid/rsf-tev.png)
 
 - Test
 
@@ -196,34 +230,34 @@ V8 protease, also known as Glutamyl endopeptidase from _Staphylococcus aureus_, 
 
   At the same time, when mature V8 protease is expressed alone in _E. coli_, it may not fold correctly and can undergo self-degradation. This phenomenon can hinder accurate assessment of the protease’s activity. Therefore, to better validate the system’s representation of V8 protease cleavage, we replaced V8 protease with its homologous protease, Glutamyl endopeptidase, in our experiments. Glutamyl endopeptidase shares the same cleavage sites as V8 protease and offers a comparable mechanism of action.
 
+  ![V8 protease from _Staphylococcus aureus_ cleaves the PAR1 receptor on the skin surface.](server/contents/pj/cleave.jpg)
+
+  Protein gseA includes signal peptide and propeptide. Through research[^1], we discovered that adding a signal peptide can help gseA fold correctly and reduce its toxicity in vivo. Once gseA has folded properly, thermolysin can be used to remove the signal peptide, thereby activating the gseA. Based on this, we designed a co-transformation strategy in _E. coli_, introducing plasmids carrying both the Flipcherry reporter system and gseA with a signal peptide, along with a plasmid expressing thermolysin. We selected pETDuet-1 and pRSFDuet-1 plasmids, as this pair has been validated to successfully co-express in _E. coli_.
+
+![The 3D structure of gseA(Glutamyl endopeptidase)](server/contents/wetlab/gsea.jpg)[^5]
+
+[^5]: By Jawahar Swaminathan and MSD staff at the European Bioinformatics Institute - https://www.ebi.ac.uk/pdbe/static/entry/1qy6_deposited_chain_front_image-800x800.png, displayed on https://www.ebi.ac.uk/pdbe/entry/pdb/1qy6, Public Domain, https://commons.wikimedia.org/w/index.php?curid=6012163
+
 - Build
 
   Due to the short length of the substituted V8 protease cleavage site and its homologous protease cleavage site, it is difficult to obtain the correct fragment using traditional Gibson Assembly methods. Therefore, we directly attached the sequence to be replaced onto the primer of the vector, incorporating it as part of the vector’s homologous arm in the plasmid. We then used standard Gibson Assembly to replace the TEV protease with Glutamyl endopeptidase (gseA), successfully constructing the desired plasmid.
 
-  ![pRSFDuet-Flipcherry(V8s)-EGFP-gseA Map](assets/pRSFDuet-Flipcherry(V8s)-EGFP-gseA Map.png)
+  ![Plasmid pRSFDuet-Flipcherry(V8short)-EGFP-gseA for in vivo Flipcherry system Testing](server/contents/plasmid/rsf-tev.png)
+
+  We had GeneScript directly synthesize the thermolysin gene sequence on the pETDuet-1 vector, completing the construction of one of the co-transformation plasmids. Both plasmids are regulated by a lactose operon system.
+
+  ![Plasmid pETDuet-thermolysin for in vivo Flipcherry system Testing](server/contents/plasmid/thermo.png)
 
 - Test
 
-  After constructing the plasmid, we transferred it into BL21 (DE3) for expression and passage. After the passage, when the bacterial culture reached an OD600 range of 0.6–1.0, we induced protein expression at varying concentrations: 0.1 mM, 0.2 mM, 0.5 mM, and 1 mM. After 12 hours of induction, the fluorescence results were measured using a fluorescence microscope.
+  After constructing the plasmid, we transferred it into BL21 (DE3) for expression and passage. After the passage, when the bacterial culture reached an OD600 range of 0.6–1.0, we induced protein expression at varying concentrations: 0.1 mM, 0.2 mM, 0.5 mM, and 1 mM. After 12 hours of induction, the fluorescence results were measured using a fluorescence microscope (under the same conditions).
+
+  ![Fluorescence Result of Experimental Group](server/contents/wetlab/result/fl/fl-exp-1.png)
+
+  ![Fluorescence Result of Control Group](server/contents/wetlab/result/fl/fl-c-1.png)
 
 - Learn
 
   Fluorescence microscope images were obtained under identical imaging parameters, showing comparable green fluorescence in both the control group (where no gseA sequence was added after the second T7 promoter) and the experimental group. EGFP, used as an internal reference, was expressed in the plasmids of both groups. However, the red fluorescence differed between the two. In the experimental group, red fluorescence induced by self-assembly after cleavage was observed, while this phenomenon was absent in the control group.
 
-  These experimental results suggest the feasibility of using the Flipcherry fluorescence reporting system to characterize the cleavage activity of V8 protease. This system successfully simulates the process in _E. coli_ that mimics the itching sensation on human skin caused by _Staphylococcus aureus_.
-
-## Cycle 3
-
-- Design
-
-  hrough research, we discovered that adding a signal peptide can help V8 protease fold correctly and reduce its toxicity in vivo. Once V8 protease has folded properly, thermolysin can be used to remove the signal peptide, thereby activating the V8 protease. Based on this, we designed a co-transformation strategy in _E. coli_, introducing plasmids carrying both the Flipcherry reporter system and V8 protease with a signal peptide, along with a plasmid expressing thermolysin. We selected pETDuet-1 and pRSFDuet-1 plasmids, as this pair has been validated to successfully co-express in _E. coli_.
-
-- Build
-
-  We had GeneScript directly synthesize the thermolysin gene sequence on the pETDuet-1 vector, completing the construction of one of the co-transformation plasmids. For the pRSFDuet-1 plasmid, we added the propeptide sequence of Glutamyl endopeptidase (gseA) before the mature V8 protease to assist in proper folding of the V8 protease. Both plasmids are regulated by a lactose operon system.
-
-  ![image-20240928171724883](assets/image-20240928171724883.png)
-
-- Test
-
-  After constructing the plasmid, we transferred it into BL21 (DE3) for expression and passage. After the passage, when the bacterial culture reached an OD600 range of 0.6–1.0, we induced protein expression at varying concentrations: 0.1 mM, 0.2 mM, 0.5 mM, and 1 mM. After 12 hours of induction, the fluorescence results were measured using a fluorescence microscope.
+  These experimental results suggest the feasibility of using the Flipcherry fluorescence reporting system to characterize the cleavage activity of gseA. This system successfully simulates the process in _E. coli_ that mimics the itching sensation on human skin caused by _Staphylococcus aureus_.

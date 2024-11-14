@@ -13,48 +13,50 @@ import {
 
 import { leaves as imgLeaves } from "src/components/index/objects-img";
 import * as styles from "src/styles/modules/index.module.scss";
-import ScrollReveal from "scrollreveal";
+
 import Card from "src/components/index/card";
 import { cardData } from "src/components/index/objects-card";
 
+import ScrollReveal from "scrollreveal";
+
 const IndexPage: React.FC = () => {
-  // React.useEffect(() => {
-  //   ScrollReveal().reveal(`.${styles.leaf}`, {
-  //     scale: 0.5,
-  //     opacity: 0,
-  //     duration: 1200,
-  //     viewOffset: {
-  //       // bottom: 130,
-  //     },
-  //     reset: false, // Ensures the animation happens only one time.
-  //     afterReveal: (el) => {
-  //       if (el instanceof HTMLElement) {
-  //         el.classList.add(`${styles.leafWaving}`);
-  //       }
-  //     },
-  //   });
+  React.useEffect(() => {
+    ScrollReveal().reveal(`.${styles.leaf}`, {
+      scale: 0.5,
+      opacity: 0,
+      duration: 1200,
+      viewOffset: {
+        bottom: 130,
+      },
+      reset: false, // Ensures the animation happens only one time.
+      afterReveal: (el) => {
+        if (el instanceof HTMLElement) {
+          el.classList.add(`${styles.leafWaving}`);
+        }
+      },
+    });
 
-  //   const interval = 300;
-  //   const startDelay = 300;
+    const interval = 300;
+    const startDelay = 300;
 
-  //   ScrollReveal().reveal(`.${styles.titleBanner}`, {
-  //     delay: startDelay,
-  //     distance: "100px",
-  //     easing: "ease-out",
-  //     reset: false, // Ensures the animation happens only one time.
-  //   });
+    ScrollReveal().reveal(`.${styles.titleBanner}`, {
+      delay: startDelay,
+      distance: "100px",
+      easing: "ease-out",
+      reset: false, // Ensures the animation happens only one time.
+    });
 
-  //   ScrollReveal().reveal(`.${styles.title}`, {
-  //     delay: startDelay + interval * 1,
-  //     distance: "100px",
-  //     reset: false,
-  //   });
+    ScrollReveal().reveal(`.${styles.title}`, {
+      delay: startDelay + interval * 1,
+      distance: "100px",
+      reset: false,
+    });
 
-  //   ScrollReveal().reveal(`.${styles.titlePrompt}`, {
-  //     delay: startDelay + interval * 2,
-  //     reset: false,
-  //   });
-  // }, []);
+    ScrollReveal().reveal(`.${styles.titlePrompt}`, {
+      delay: startDelay + interval * 2,
+      reset: false,
+    });
+  }, []);
 
   return (
     <Layout>

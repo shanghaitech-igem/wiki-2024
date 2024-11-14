@@ -22,7 +22,7 @@ In our project, we aimed to address the challenge of producing active V8 proteas
 
 In the first cycle of our experiment, we designed a pET-28a expression plasmid, named sspA-Mut4-his(C), to express the V8 proenzyme in E. coli. The gene encoding the V8 protease was modified to lack the preprosequence but include four mutations in the prosequence, along with a C-terminal His-tag, to protect against self-degradation. We successfully expressed the V8 proenzyme and verified its production through gel electrophoresis, which showed that the protein band shifted position after cleavage by thermolysin. Mass spectrometry confirmed the anticipated molecular mass of the cleaved product, suggesting proper cleavage had occurred. However, despite successful cleavage, no protease activity was observed, likely due to non-covalent attachment of the prosequence to the mature enzyme, which may have inhibited activity by blocking the active site.
 
-![Plasmid pET28a-sspA-Mut4-His(C) for V8 protease expression and purification.](server/contents/plasmid/proV8.png)
+![Plasmid pET28a-sspA-Mut4-His(C) for V8 protease expression and purification.](server/contents/plasmid/prov8.png)
 
 In the second cycle, we addressed this issue by hypothesizing that anion exchange chromatography could effectively separate the mature enzyme from the residual prosequence. Post-activation with thermolysin, we purified the V8 protease using an anion exchange column (Q column). This process successfully shifted the protein band position, and subsequent fluorescence assays using a substrate specific to V8 protease confirmed active enzyme production, as indicated by a steady increase in fluorescence over time during incubation.
 
@@ -46,7 +46,9 @@ To simulate the itching caused by _Staphylococcus aureus_, which secretes V8 pro
 
 We constructed a plasmid using the pRSFDuet-1 vector to express the entire system from a single plasmid, driven by two T7 promoters. The first promoter expressed FlipCherry beta1-9, FlipCherry beta10-11 (with the target cleavage sequence), and EGFP as an internal reference, linked by T2A sequences to ensure production of separate proteins. The second promoter drove the expression of the TEV protease or Glutamyl endopeptidase gene, optimized for _E. coli_ expression, using Gibson Assembly.
 
-![Two plasmids for protein purification and expression](server/contents/plasmid/flipgfp.jpg)
+![Plasmids for the FlipGFP system](server/contents/plasmid/flipgfp-1.png)
+
+![Plasmids for the FlipGFP system](server/contents/plasmid/flipgfp-2.png)
 
 Following successful expression and validation of the FlipCherry system, we induced protein expression in _E. coli_ BL21(DE3) cells and confirmed the functionality of the modified system using fluorescence microscopy and a microplate reader. In further experiments, using a segment of the PAR1 receptor with the cleavage site of V8 protease, we observed red fluorescence induced by self-assembly after cleavage in the experimental group but not in the control group, illustrating the system's ability to report cleavage activity.
 
