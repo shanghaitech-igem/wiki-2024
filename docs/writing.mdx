@@ -1,5 +1,5 @@
 ---
-title: "Writing Tutorial"
+title: "Writing"
 slug: "docs/writing"
 ---
 
@@ -476,46 +476,7 @@ This tutorial is meant to help you get started with writing your own MDX page fo
 
 # MDX Support
 
-## Frontmatter
-
-### Overview
-
-Frontmatter is pretty much just a configuration block for the page, at the beginning of your MDX file.
-
-Like this:
-
-```yaml
----
-title: "Title"
-favicon: "path/to/favicon"
-slug: "path/to/page"
----
-```
-
-Currently, the following frontmatter fields are supported:
-
-- `title`: The big title on the top of the page.
-
-- `slug`: The URL path of the page.
-
-- `favicon` (optional) : The favicon of the page, which will be shown in the browser tab.
-
-- `tracer` (optional) : The cursor tracer of the page, which will following user's cursor.
-
-### An Example of Frontmatter
-
-The frontmatter of the current page is:
-
-```yaml
----
-title: "Writing Tutorial"
-slug: "docs/writing"
----
-```
-
 ## JSX Components
-
-### Overview
 
 Currently, following components are supported in our Wiki MDX pages:
 
@@ -541,7 +502,7 @@ Currently, following components are supported in our Wiki MDX pages:
 
 - [`Profile`](#profile-component): Create a profile card with a image, name, role and brief.
 
-### An Example of JSX Component
+## An Example of JSX Component
 
 JSX component are components that could take props.
 
@@ -550,7 +511,7 @@ JSX component are components that could take props.
   <ComponentName prop1="value1" prop2="value2" />
   ```
 
-### Image Component
+## Image Component
 
 Actually, simply using [standard markdown image syntax](http://localhost:8000/docs/writing/#images) is already calling the `Image` component.
 
@@ -589,7 +550,7 @@ If you want to specify the height and width manually or simply want to directly 
       width="300"
     />
 
-### Plot Component
+## Plot Component
 
 Plot component use `plotly.js` to create interactive plots, **the data need to be store externally and imported**.
 
@@ -617,7 +578,7 @@ import data_1 from "/test/data/testData-1";
 
 More details about this component are [here](/docs/plot) and **need to be read if you want to actually use it**.
 
-### Modal Component
+## Modal Component
 
 Modal is a component that could create a modal with a button, once the button is clicked, the modal will pop up.
 
@@ -666,7 +627,7 @@ Modal is a component that could create a modal with a button, once the button is
 - Notes:
   _Please keep to indent the contents in the `<Modal>`, the indentation is essential_
 
-### PDF Component
+## PDF Component
 
 - **Syntax:**
   ```jsx
@@ -683,7 +644,7 @@ Modal is a component that could create a modal with a button, once the button is
     <PDF src="server/test/test.pdf" />
 
 
-### Video Component
+## Video Component
 
 Important: Videos could not be uploaded by `igem-cdn`, you should go to [iGEM Video Universe](video.igem.org), and **it requires full embed URL of the video**.
 
@@ -706,7 +667,7 @@ Important: Videos could not be uploaded by `igem-cdn`, you should go to [iGEM Vi
   - Result:
     <Video src="https://video.igem.org/videos/embed/426c83d7-d298-400e-b534-bddecd176aab" />
 
-### Audios Component
+## Audios Component
 
 Important: Audios could not be uploaded by `igem-cdn`, you should go to [iGEM Video Universe](video.igem.org), and **it requires full download URL of the audio**.
 
@@ -734,7 +695,7 @@ Important: Audios could not be uploaded by `igem-cdn`, you should go to [iGEM Vi
     <Audio src="https://video.igem.org/download/streaming-playlists/hls/videos/23f164dc-6b6f-4cc8-96ec-87c5446fc0d9-0-fragmented.mp4" />
 
 
-### Model Component
+## Model Component
 
 Model component renders 3D models in real time, **the data need to be store externally on the iGEM CDN Server**.
 
@@ -755,7 +716,7 @@ Model component renders 3D models in real time, **the data need to be store exte
     <Model title="A Protein" src="server/test/test-protein.stl" />
 
 
-### Collapse Component
+## Collapse Component
 
 The Collapse component creates a collapsible container, which can be used to hide any MDX content.
 
@@ -801,7 +762,7 @@ The Collapse component creates a collapsible container, which can be used to hid
   _Please keep to indent the contents in the `<Modal>`, the indentation is essential_
 
 
-### Gallery Component
+## Gallery Component
 
 Gallery component is a component that could create a gallery with multiple images.
 
@@ -847,7 +808,7 @@ Gallery component is a component that could create a gallery with multiple image
       ]} 
     />
 
-### Tabs Component
+## Tabs Component
 
 Tabs component is a component that could create a tabbed container.
 
@@ -939,7 +900,7 @@ Tabs component is a component that could create a tabbed container.
       </Tabs>
 
 
-### Profile Component
+## Profile Component
 
 Profile component is a component that could create a profile card with a image, name, role and brief.
 

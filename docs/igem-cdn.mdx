@@ -1,0 +1,146 @@
+---
+title: iGEM CDN Tool
+slug: docs/igem-cdn
+---
+
+# Installation
+
+If you haven't installed the iGEM CDN Tool, you should go check [here](/docs/environment/#step-5-cdn-tool)
+
+# Concept
+
+iGEM CDN Tool is meant to make the editing experience more congregated and easier in VSCode.
+
+If you want to showing images, STL models on the wiki, those files must be first uploaded to the iGEM CDN server.
+
+Utilizing the iGEM CDN Tool, you could easily upload, download, delete files and directories on the iGEM CDN server by typing commands in the VSCode's integrated terminal.
+
+You might say typing command is boring, but I'd like to say it's not happy when you want to upload dozens of the files at the same time in the Official Web Tool.
+Plus, you have to get and write the link of the uploaded files into the MDX files. 
+
+More important, to know what's already on the CDN server, you have to go to the Official Web Tool and check it one by one.
+
+With those said, iGEM CDN Tool is a must-have tool for the iGEM wiki editing, especially, our wiki framework has been adapted to this tool originally.
+You'll see it during the real usage.
+
+
+# Usage
+
+## For the First Time
+
+If you haven't used the iGEM CDN Tool any before (you can't find a `server/` folder in the root of the project), you should first run the following command in the terminal:
+  
+```shell
+igem-cdn download server -r
+```
+
+This command will create a folder called `server/` in the root of the project, download all the files and directories on the CDN server to the `server/` folder.
+
+After that, you could see all the files and directories on the CDN server in the `server/` folder locally in the VSCode.
+
+![The `server/` Folder](server/docs/server-folder.webp)
+
+## Options Explained
+
+for a brief usage help, you could always run `igem-cdn --help` in the terminal.
+
+```shell
+igem-cdn --help
+```
+
+And this output will appear:
+```
+usage: igem-cdn [-h] [-rp REMOTE_PATH] [--config CONFIG] [-r]
+                {delete,sync,download,upload,query} local_path
+
+iGEM CDN File and Directory Management CLI
+
+positional arguments:
+  {delete,sync,download,upload,query}
+                        Action to perform
+  local_path            Local path
+
+options:
+  -h, --help            show this help message and exit
+  -rp REMOTE_PATH, --remote-path REMOTE_PATH
+                        Remote path
+  --config CONFIG       Path to the configuration file
+  -r, --recursive       Recursively upload/download directories
+```
+
+Let's explain the options one by one:
+
+- `-r`, `--recursive`: **A must know option**, if `-r` is added to the tail of the command, the `upload`, `download`, `delete` operation, will also been applied to all the files in the subfolder of the folder you specified, otherwise, only the files **directly** in the folder will be operated.
+
+- `-h`, `--help`: Show the help message and exit, just as it said in the above.
+
+- `-rp`, `--remote-path`: If you want to upload to the CDN server, without following the local file structure, you can specify it.
+
+- `--config`: If you don't want to use the default configuration file when installing the tool, you can specify the path to another configuration file.
+
+## Upload a File
+
+To upload a file, typically, you should first put the file in the `server/` folder, and when upload, the place you put the file in the `server/` folder will be the same as the place on the CDN server.
+
+For example if you want to upload a file called `server-folder.webp` in the `server/docs/` folder to the CDN server, you should run the following command in the terminal:
+
+```shell
+igem-cdn upload server/docs/server-folder.webp
+```
+
+then, it will be uploaded to the CDN server's `docs/` folder. In this specific case, the file's link will be outputted in the terminal:
+```
+'server-folder.webp' uploaded https://static.igem.wiki/teams/5174/docs/server-folder.webp
+```
+
+If you want to upload files in a folder, you could just specify the folder path in the command, and if you also want to recursively upload all the files in the subfolder, you should add `-r` to the tail of the command.
+
+If you are not happy with typing the path of the file in command, you could smartly use VSCode's feature, "copy the relative path", and paste it in the terminal. 
+![Copy the Relative Path](server/docs/copy-relative-path.webp )
+
+## Use the Uploaded File
+
+In above, we've uploaded a file called `server-folder.webp` to the CDN server, and the link is `https://static.igem.wiki/teams/5174/docs/server-folder.webp`.
+
+To use it, we can indeed use the link directly:
+```mdx
+![The `server/` Folder](https://static.igem.wiki/teams/5174/docs/server-folder.webp)
+```
+
+But, remember, we just copy the relative path of that file? We could also use it in the MDX file:
+```mdx
+![The `server/` Folder](server/docs/server-folder.webp)
+```
+
+As you can see, the second usage, is just like we are using the local file, but it will actually fetch the file from the CDN server, just like the first usage.
+
+## Download a File
+
+The logic is just like the upload, but in the opposite direction.
+
+## Query Files
+
+Sometimes, the local `server/` folder might be out of sync with the CDN server, like if someone else has uploaded a file to the CDN server, you won't see it in the local `server/` folder.
+
+Or you just want to check out what exactly is on the CDN server, you could run the following command in the terminal:
+
+```shell
+igem-cdn query path/to/the/folder
+```
+
+Then, something like this will be outputted in the terminal:
+```
+Logging in...
+Team: 5174 Shanghaitech-China 2024
+Role: student
++----------+---------------+--------------------------------------------------------+
+|   Type   |      Name     |                  DirectoryKey/FileURL                  |
++----------+---------------+--------------------------------------------------------+
+|  Folder  |     images    |                      home/images/                      |
+| File-svg | leaf-main.svg | https://static.igem.wiki/teams/5174/home/leaf-main.svg |
+| File-svg | leaf-stem.svg | https://static.igem.wiki/teams/5174/home/leaf-stem.svg |
+| File-svg |   stem-1.svg  |  https://static.igem.wiki/teams/5174/home/stem-1.svg   |
++----------+---------------+--------------------------------------------------------+
+'home' found: 4
+```
+

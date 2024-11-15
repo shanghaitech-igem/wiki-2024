@@ -1,0 +1,139 @@
+---
+title: "Page Creation"
+slug: "docs/page-creation"
+---
+
+# File Structure
+
+As you can see in the Explorer of the VSCode, the project is basically structured like this:
+
+```
+.
+├── LICENSE
+├── README.md
+├── archive/
+├── contents/
+├── data/
+├── docs/
+├── gatsby-browser.tsx
+├── gatsby-config.mjs
+├── gatsby-node.ts
+├── lib/
+├── node_modules/
+├── package.json
+├── pnpm-lock.yaml
+├── postcss.config.mjs
+├── public/
+├── server/
+├── src/
+├── test/
+└── tsconfig.json
+```
+
+The `contents/` folder contains all the MDX files that will be rendered into pages. 
+Thus if you want to create a new page, you should create a new MDX file in the `contents/` folder.
+
+# Page Creation
+
+Take a closer look at the `contents/` folder, you will see that there are already some MDX files in it.
+
+```
+contents/
+├── 0-project
+│   ├── 0-description.mdx
+│   ├── 1-design.mdx
+│   ├── 2-contribution.mdx
+│   ├── 3-P.O.C..mdx
+│   └── 4-implementation.mdx
+├── 1-wet-lab
+│   ├── 0-engineering.mdx
+│   ├── 1-results.mdx
+│   ├── 2-parts.mdx
+│   ├── 3-protocol.mdx
+│   └── 4-notebook.mdx
+├── 2-dry-lab
+│   ├── 0-model.mdx
+│   └── 1-hardware.mdx
+├── 3-human-practices.mdx
+├── 4-education.mdx
+├── 5-safety.mdx
+└── 6-attributions.mdx
+```
+
+Noticed that the MDX files are named in a certain pattern? 
+Indeed, the naming pattern is important, as it will determine the order of the pages in the navigation.
+For example, the `3-human-practices.mdx` will be the 4th item in the navigation.
+
+Also, you might have noticed that some of the MDX files are in subfolders.
+This is because the subfolders will be rendered as a dropdown menu in the navigation.
+
+In conclusion, the prefix number determines the order of the navigation items, and the folder structure determines the dropdown menu structure.
+
+Also, the rendered name of the page in the navigation, will be converted following rules:
+1. The number prefix will be removed.
+2. The hyphens will be replaced by spaces.
+3. The letters will be capitalized according to the hyphens.
+4. If the letter in file name is capitalized, it will be kept capitalized.
+
+Now, you can try to create a new MDX file in the `contents/0-project/` folder called `5-test-page.mdx`, and writing:
+  
+````mdx
+---
+title: "Test Page"
+slug: "test-page"
+---
+
+# This is a test page
+
+Test test test.
+
+````
+
+Then you can run the project by:
+
+```shell
+pnpm run develop
+```
+
+Finally, open your browser to `http://localhost:8000/test-page` to see the new page, and it should be the last item in the navigation's dropdown menu of the `Project` item.
+
+**Note Remember, if any new MDX file is created, you should restart the project to see the changes.**
+
+# Frontmatter
+
+## Overview
+
+Frontmatter is pretty much just a configuration block for the page, at the beginning of your MDX file.
+
+Like this:
+
+```yaml
+---
+title: "Title"
+favicon: "path/to/favicon"
+slug: "path/to/page"
+---
+```
+
+Currently, the following frontmatter fields are supported:
+
+- `title`: The big title on the top of the page.
+
+- `slug`: The URL path of the page.
+
+- `favicon` (optional) : The favicon of the page, which will be shown in the browser tab.
+
+- `tracer` (optional) : The cursor tracer of the page, which will following user's cursor.
+
+## An Example of Frontmatter
+
+The frontmatter of the current page is:
+
+```yaml
+---
+title: "Page Creation"
+slug: "docs/page-creation"
+---
+```
+
+**Note: Remember to restart the project after changing the `slug` filed of any MDX file.**
