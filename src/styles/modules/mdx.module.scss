@@ -124,6 +124,8 @@ main {
           }
           a {
             color: light.$pacify-success;
+
+            // Apply styles only if the parent does not have the class .js-plotly-plot
             &:has(code[class*="language-"]) {
               position: relative;
               text-decoration: none;
@@ -151,9 +153,9 @@ main {
               }
             }
 
-            &:not([data-footnote-ref]):not([data-footnote-backref]):not(
-                [aria-label*="permalink"]
-              ):not(code[class*="language-"]) {
+            &:not([data-footnote-ref]):not([data-footnote-backref])::not(
+                [rel*="tooltip"]
+              ):not([aria-label*="permalink"]):not(code[class*="language-"]) {
               background-image: linear-gradient(
                 to right,
                 light.$pacify-success,
