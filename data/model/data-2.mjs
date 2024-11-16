@@ -2318,4 +2318,4 @@ const layout = {
   },
 };
 
-export { data as data2, layout as layout2 };
+export default { "data": data, "layout": layout };

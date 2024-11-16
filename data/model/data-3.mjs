@@ -399,4 +399,4 @@ const layout = {
   }
 };
 
-export {data as data3, layout as layout3}
+export default { "data": data, "layout": layout };

@@ -86,9 +86,9 @@ Therefore, we notice that **$c_{v8 protease}$, $c_{beta1-9}$ and $c_{beta10-11 }
 
 To take a deeper insight into the change of each component with time, we import the above 5 ODEs into Matlab and utilize the ODE45 numerical method to simulate the entire process.
 
-import { data1, layout1 } from "data/model/data-1";
+import data1 from "data/model/data-1";
 
-<Plot data={data1} layout={layout1} />
+<Plot {...data1}  />
 
 Then to examine the impact of V8 protease competitive inhibitor, we modify the following ODEs, for _competitive inhibitor can increase the $k_{m}$ of enzymatic reactions\_.[^2]
 
@@ -101,9 +101,9 @@ $$
 \end{align*}
 $$
 
-import { data2, layout2 } from "data/model/data-2";
+import data2 from "data/model/data-2";
 
-<Plot data={data2} layout={layout2} />
+<Plot {...data2}  />
 
 As the figure revealed, inhibitor can decrease the concentration of Flipcherry at steady state, demonstrating that **the purpose of our project is practical**.
 
@@ -500,9 +500,9 @@ gmx grompp -f mdp_final_step/em.mdp -c system.pdb -p topol.top -o em.tpr -maxwar
 gmx mdrun -v -deffnm em -gpu_id 0 -nt 36 -pin on -pinstride 1 -pinoffset 0 
 ```
 
-import { data_em_potential, layout_em_potential } from "data/model/em-potential";
+import data_em_potential from "data/model/em-potential";
 
-<Plot data={data_em_potential} layout={layout_em_potential} />
+<Plot {...data_em_potential} />
 
 This potential plot demonstrates the nice, steady convergence of $E_{pot}$.
 
@@ -592,9 +592,9 @@ gmx mdrun -deffnm nvt -gpu_id 0 -nb gpu -pme gpu -pmefft gpu -bonded gpu  -updat
 
 From the plot, it is clear that the temperature of the system quickly reaches the target value (310 K), and remains stable over the remainder of the equilibration.
 
-import { data_nvt_temperature, layout_nvt_temperature } from "data/model/nvt-temperature";
+import data_nvt_temperature from "data/model/nvt-temperature";
 
-<Plot data={data_nvt_temperature} layout={layout_nvt_temperature} />
+<Plot {...data_nvt_temperature} />
 
 
 
@@ -781,13 +781,13 @@ The _self-assembly process was not fully completed in the cleaved state_, which 
 
 It is worth noting that observing the blue and brown alone in Figure 4 may not be as striking in terms of morphological recovery, as the blue represents the initial state of the md stage, not the initial state of the β10-E5-β11 segment. Its actual initial state can be seen in [Protein 2.6](#4-molecular-dynamics-using-gromacs). However, recall that the initial state of the β10-E5-β11 segment is the same in both the uncleaved and cleaved conditions. Therefore, by comparing the green (results of the uncleaved state) and brown (results of the cleaved state), it is evident that the folding of β10-E5-β11 is quite pronounced.
 
-import { data_md_rmsd, layout_md_rmsd } from "data/model/md-rmsd";
+import data_md_rmsd from "data/model/md-rmsd";
 
-<Plot data={data_md_rmsd} layout={layout_md_rmsd} />
+<Plot {...data_md_rmsd}  />
 
-import { data_md_rmsd_cleaved, layout_md_rmsd_cleaved } from "data/model/md-rmsd-cleaved";
+import data_md_rmsd_cleaved from "data/model/md-rmsd-cleaved";
 
-<Plot data={data_md_rmsd_cleaved} layout={layout_md_rmsd_cleaved} />
+<Plot {...data_md_rmsd_cleaved}  />
 
 
 ## 6. Discussion
@@ -835,9 +835,9 @@ to predict the change of relative fluorescence intensity with time.
 
 we import the above 2 ODEs and the physical equation into Matlab and utilize the ODE45 numerical method to simulate the change of relative fluorescence intensity with time.
 
-import { data3, layout3 } from "data/model/data-3";
+import data3 from "data/model/data-3";
 
-<Plot data={data3} layout={layout3} />
+<Plot {...data3} />
 
 This figure illustrates that **our relative fluorescence intensity model matches the experimental results to some extent**.
 

@@ -363,4 +363,4 @@ const layout = {
   }
 };
 
-export {data as data_md_rmsd, layout as layout_md_rmsd};
+export default { "data": data, "layout": layout };

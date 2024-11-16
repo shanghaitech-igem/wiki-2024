@@ -3,3 +3,70 @@ title: Plotting
 slug: docs/plot
 ---
 
+# Plotly.js
+
+We use `plotly.js` to making interactive plots. 
+
+The `Plot` component is a wrapper around the `plotly.js` library.
+
+To make a plot, we need to prepare an object containing the data and layout of the plot.
+
+Note since data needs to be embedded in the page and iGEM limits the size of the zipped file of our website is less than 5MB, so we can't visualize large datasets. 
+
+And also due to the size limitation, we don't use the full-version of the `plotly.js` library.
+Instead, we use the finance distro of `plotly.js` which only contains:
+- [`bar`](https://plotly.com/javascript/bar-charts/)
+- [`line` and `scatter`](https://plotly.com/javascript/line-and-scatter/)
+- [`histogram`](https://plotly.com/javascript/histograms/)
+- [`candlestick`](https://plotly.com/javascript/candlestick-charts/)
+- [`pie`](https://plotly.com/javascript/pie-charts/)
+- [`funnel` and `funnelarea`](https://plotly.com/javascript/funnel-charts/)
+- [`indicator`](https://plotly.com/javascript/indicator/)
+- [`ohlc`](https://plotly.com/javascript/ohlc-charts/)
+- [`waterfall`](https://plotly.com/javascript/waterfall-charts/)
+
+# Usage
+
+First, we won't draw the graph directly in the `jsx` file. 
+Instead, we will prepare the data and layout in a separate file and import it into the `jsx` file.
+
+The most recommended way to prepare the data and layout is to use the `plotly.js`'s official online editor: [chart-studio.plotly.com](https://chart-studio.plotly.com/create/#/).
+
+You may directly edit a graph without logging in, but to export the graph, you need to sign up for a free account and save the graph to your account.
+
+> *Revise: Sadly, they stop their free service, so we can't use it anymore, details can be found [here](https://plotly.com/chart-studio-updates/)*.
+
+Then after making the graph, you can export the data and layout as a `plotly.js` code.
+![Export the Data](server/docs/export-data-popup.webp)
+
+To finally use it, we have to goto the JS code, and **make every variable `const`**, then export the `data` and `layout` variable in the way below:
+
+
+```js
+...
+...
+...
+
+export default { "data": data, "layout": layout };
+```
+
+Then we import the data and use it with the `Plot` component. 
+Notice the imported variables need to have unique names.
+
+```jsx
+import data_1 from "/test/data/testData-1";
+import data_2 from "/test/data/testData-2";
+
+<Plot {...data_1} />
+
+<Plot {...data_2} />
+```
+
+The result is two plots rendered on the page.
+
+import data_1 from "/test/data/testData-1";
+import data_2 from "/test/data/testData-2";
+
+<Plot {...data_1} />
+
+<Plot {...data_2} />

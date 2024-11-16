@@ -464,4 +464,4 @@ const layout = {
   },
 };
 
-export { data as data_nvt_temperature, layout as layout_nvt_temperature };
+export default { "data": data, "layout": layout };

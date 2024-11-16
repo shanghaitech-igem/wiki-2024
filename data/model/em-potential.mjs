@@ -1446,4 +1446,4 @@ const layout = {
   },
 };
 
-export { data as data_em_potential, layout as layout_em_potential };
+export default { "data": data, "layout": layout };

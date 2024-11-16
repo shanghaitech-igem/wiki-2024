@@ -382,4 +382,5 @@ const layout = {
     themeRef: 'PLOTLY_WHITE'
   }
 };
-export {data as data_md_rmsd_cleaved, layout as layout_md_rmsd_cleaved};
+
+export default { "data": data, "layout": layout };
