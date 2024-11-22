@@ -17,7 +17,6 @@ pages:
     - mkdir public/
     - mv ${CI_PROJECT_NAME}-${DEPLOY_BRANCH}/* public/
     - rm public/~partytown/debug/ -rf
-    - rm public/*.LICENSE.txt
     - find public -type f -regex '.*\.\(htm\|html\|txt\|text\|js\|css\)' -exec brotli -f -k {} \;
     - du -sh public/
     - zip -r public.test.zip public/
