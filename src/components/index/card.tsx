@@ -28,11 +28,12 @@ const Card: React.FC<CardProps> = ({
   useEffect(() => {
     if (cardRef.current) {
       ScrollReveal().reveal(cardRef.current, {
-        distance: '50px',
+        distance: "100px",
+        viewFactor: 0.5,
         duration: 1000,
-        easing: 'ease-in-out',
-        origin: 'bottom',
-        reset: true,
+        easing: "ease-in-out",
+        origin: "bottom",
+        reset: false,
       });
     }
   }, []);
