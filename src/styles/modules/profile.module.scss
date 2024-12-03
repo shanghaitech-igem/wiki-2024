@@ -30,10 +30,11 @@
     padding: 2em;
     align-items: flex-end;
 
-    .intro {
+    .brief {
       position: absolute;
       overflow: scroll;
       align-items: center;
+      line-height: 0.5em;
     }
   }
 

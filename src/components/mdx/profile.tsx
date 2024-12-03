@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSpring, animated } from "@react-spring/web";
 import useMeasure from "react-use-measure";
+import ReactMarkdown from "react-markdown";
 import parseRemoteURL from "src/utils/remote-url-parser";
 import * as styles from "src/styles/modules/profile.module.scss";
 
@@ -72,8 +73,8 @@ const Profile: React.FC<ProfileProps> = ({
         }}
       />
       <animated.div style={{ ...spring }} className={styles.secondaryContainer}>
-        <animated.div style={{ ...springText }} className={styles.intro}>
-          {brief}
+        <animated.div style={{ ...springText }} className={styles.brief}>
+          <ReactMarkdown>{brief}</ReactMarkdown>
         </animated.div>
       </animated.div>
       <animated.div style={{ ...spring }} className={styles.thirdContainer}>
