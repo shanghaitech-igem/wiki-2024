@@ -26,11 +26,15 @@
   - For local running web server
   - LTS version is recommended
   - Using Prebuilt Installer is recommended for Windows
-  - Using `nvm` is recommended for Linux and MacOS
+  - Using `fnm` is recommended for Linux and MacOS
 
 - [Git](https://git-scm.com/downloads)
   - For cloning the repository
   - For version control
+
+- [PNPM](https://pnpm.io)
+  - For node pacakges management
+  - Install dependencies of the project
 
 ### Running the Project
 
@@ -49,16 +53,16 @@
     
 3. Install dependencies
     ```bash
-    npm install
+    pnpm install
     ```
 
-4. Start the development server if you choose to install `gatsby-cli` globally by `npm install -g gatsby-cli` you can run the following command:
+4. Start the development server if you choose to install `gatsby-cli` globally by `pnpm install -g gatsby-cli` you can run the following command:
     ```bash
     gatsby develop
     ```
     Otherwise, you can run:
     ```bash
-    npm run develop
+    pnpm run develop
     ```
 
 5. The site is now running at `http://localhost:8000` if nothing is running on port 8000 already, otherwise, it will be running on the next available port.
